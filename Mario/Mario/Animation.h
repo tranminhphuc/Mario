@@ -21,8 +21,8 @@ public:
 	Animation(vector<string> name, vector<float> time);
 	~Animation();
 	void Update(float time);
-	void Draw(sf::RenderWindow& window, Vector2f position);
-	void Draw(sf::RenderWindow& window, float x, float y);
+	Textures* getTexture();
+	Textures* getTexture(int id);
 };
 
 #endif

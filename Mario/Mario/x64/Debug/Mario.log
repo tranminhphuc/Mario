@@ -1,7 +1,2 @@
-﻿  Textures.cpp
-  Object.cpp
-  Map.cpp
-  main.cpp
-  Animation.cpp
-  Generating Code...
+﻿  Windows.cpp
   Mario.vcxproj -> E:\Mario\Mario\x64\Debug\Mario.exe

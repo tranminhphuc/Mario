@@ -1,21 +1,31 @@
 #include "Object.h"
 
-Object::Object(int objectID)
+Object::Object(Animation* anim, bool isCollision)
 {
-	id = objectID;
+	animation = anim;
+	collision = isCollision;
 }
 
 Object::~Object()
 {
-
 }
 
-void Object::SetID(int objectID)
+void Object::Draw(sf::RenderWindow & window, Vector2f position)
 {
-	id = objectID;
+	animation->getTexture()->Draw(window, position);
 }
 
-int Object::GetID()
+void Object::Draw(sf::RenderWindow & window, float x, float y)
 {
-	return id;
+	animation->getTexture()->Draw(window, x, y);
+}
+
+Animation* Object::GetAnimation()
+{
+	return animation;
+}
+
+bool Object::getCollision()
+{
+	return collision;
 }

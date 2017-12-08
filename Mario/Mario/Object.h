@@ -3,15 +3,20 @@
 #ifndef _OBJECT
 #define _OBJECT
 
+#include "Animation.h"
+
 class Object
 {
 private:
-	int id;
+	Animation* animation;
+	bool collision;
 public:
-	Object(int objectID);
+	Object(Animation* anim, bool isCollision);
 	~Object();
-	void SetID(int objectID);
-	int GetID();
+	void Draw(sf::RenderWindow& window, Vector2f position);
+	void Draw(sf::RenderWindow& window, float x, float y);
+	Animation* GetAnimation();
+	bool getCollision();
 };
 
 #endif

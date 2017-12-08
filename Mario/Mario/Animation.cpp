@@ -39,12 +39,12 @@ void Animation::Update(float time)
 	}
 }
 
-void Animation::Draw(sf::RenderWindow& window, Vector2f position)
+Textures* Animation::getTexture()
 {
-	texture[currentFrame]->Draw(window, position);
+	return texture[currentFrame];
 }
 
-void Animation::Draw(sf::RenderWindow & window, float x, float y)
+Textures* Animation::getTexture(int id)
 {
-	texture[currentFrame]->Draw(window, x, y);
+	return texture[id];
 }

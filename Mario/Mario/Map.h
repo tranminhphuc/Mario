@@ -3,15 +3,14 @@
 #ifndef _MAP
 #define _MAP
 
-#include "Library.h"
-#include "Animation.h"
 #include "Object.h"
+#include "TileSet.h"
 
 class Map
 {
 private:
-	vector<Animation*> listBlock;
-	vector<vector<Object*>> listObject;
+	vector<Object*> listBlock;
+	vector<vector<TileSet*>> tile;
 
 	enum MapType
 	{
@@ -69,7 +68,6 @@ private:
 	float Xmap;
 	float Ymap;
 
-
 	void LoadGameData();
 	void LoadLevel();
 	void CreateMap();
@@ -124,6 +122,7 @@ private:
 
 	int GetStartMap();
 	int GetEndMap();
+	Vector2i getBlock(float x, float y);
 public:
 	Map();
 	~Map();
@@ -132,6 +131,7 @@ public:
 	void DrawMap(RenderWindow& window);
 	void MoveMap(int x);
 	void SetBackGroundColor(RenderWindow& window);
+	bool CheckCollision(int x, int y);
 };
 
 #endif
