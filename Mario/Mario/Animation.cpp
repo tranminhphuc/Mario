@@ -7,7 +7,7 @@ Animation::Animation(vector<string> name, vector<float> time)
 
 	for (int i = 0; i < name.size(); i++)
 	{
-		texture.push_back(new Textures(name[i]));
+		texture.push_back(new Texture(name[i]));
 	}
 
 	currentFrame = 0;
@@ -17,7 +17,7 @@ Animation::Animation(vector<string> name, vector<float> time)
 
 Animation::~Animation()
 {
-	for (vector<Textures*>::iterator i = texture.begin(); i != texture.end(); i++)
+	for (vector<Texture*>::iterator i = texture.begin(); i != texture.end(); i++)
 	{
 		delete (*i);
 	}
@@ -39,12 +39,12 @@ void Animation::Update(float time)
 	}
 }
 
-Textures* Animation::getTexture()
+Texture* Animation::getTexture()
 {
 	return texture[currentFrame];
 }
 
-Textures* Animation::getTexture(int id)
+Texture* Animation::getTexture(int id)
 {
 	return texture[id];
 }

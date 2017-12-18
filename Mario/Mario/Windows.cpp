@@ -1,19 +1,19 @@
 #include "Windows.h"
 
-Map* Windows::map;
+Map* Window::map;
 
-Windows::Windows(unsigned int width, unsigned int heigth, string name)
+Window::Window(unsigned int width, unsigned int heigth, string name)
 {
-	window = new RenderWindow(VideoMode(width, heigth), name);
+	window = new sf::RenderWindow(sf::VideoMode(width, heigth), name);
 	map = new Map();
 }
 
-Windows::~Windows()
+Window::~Window()
 {
 	delete window;
 }
 
-void Windows::Play()
+void Window::Play()
 {
 	while (window->isOpen())
 	{
@@ -21,15 +21,15 @@ void Windows::Play()
 
 		while (window->pollEvent(event))
 		{
-			if (event.type == Event::Closed)
+			if (event.type == sf::Event::Closed)
 			{
 				window->close();
 			}
-			if (event.type == Event::KeyPressed)
+			if (event.type == sf::Event::KeyPressed)
 			{
-				if (event.key.code == Keyboard::Right)
+				if (event.key.code == sf::Keyboard::Right)
 				{
-					map->MoveMap(-10);
+					map->MoveMap(-50);
 				}
 			}
 		}
@@ -41,18 +41,18 @@ void Windows::Play()
 	
 }
 
-void Windows::Update(float time)
+void Window::Update(float time)
 {
 	map->Update(time);
 }
 
-void Windows::Draw()
+void Window::Draw()
 {
 	map->SetBackGroundColor(*window);
 	map->DrawMap(*window);
 }
 
-Map* Windows::getMap()
+Map* Window::getMap()
 {
 	return map;
 }

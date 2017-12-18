@@ -10,7 +10,7 @@ Object::~Object()
 {
 }
 
-void Object::Draw(sf::RenderWindow & window, Vector2f position)
+void Object::Draw(sf::RenderWindow & window, sf::Vector2f position)
 {
 	animation->getTexture()->Draw(window, position);
 }

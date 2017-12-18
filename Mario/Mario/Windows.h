@@ -5,16 +5,16 @@
 
 #include "Map.h"
 
-class Windows
+class Window
 {
 private:
-	RenderWindow* window;
-	Event event;
-	Clock clock;
+	sf::RenderWindow* window;
+	sf::Event event;
+	sf::Clock clock;
 	static Map* map;
 public:
-	Windows(unsigned int width, unsigned int heigth, string name);
-	~Windows();
+	Window(unsigned int width, unsigned int heigth, string name);
+	~Window();
 	void Play();
 	void Update(float time);
 	void Draw();

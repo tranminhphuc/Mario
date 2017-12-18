@@ -8,7 +8,7 @@
 class Animation
 {
 private:
-	vector<Textures*> texture;
+	vector<Texture*> texture;
 	vector<float> deltaTime;
 
 	int currentFrame;
@@ -21,8 +21,8 @@ public:
 	Animation(vector<string> name, vector<float> time);
 	~Animation();
 	void Update(float time);
-	Textures* getTexture();
-	Textures* getTexture(int id);
+	Texture* getTexture();
+	Texture* getTexture(int id);
 };
 
 #endif

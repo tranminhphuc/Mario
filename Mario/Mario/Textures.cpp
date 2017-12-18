@@ -1,46 +1,46 @@
 #include "Textures.h"
 
-Textures::Textures(String name)
+Texture::Texture(string name)
 {
-	texture = new Texture();
-	texture->loadFromFile(name);
-	rect.setTexture(texture);
+	texturess = new sf::Texture();
+	texturess->loadFromFile(name);
+	rect.setTexture(texturess);
 
-	SetSize((float)texture->getSize().x, (float)texture->getSize().y);
+	SetSize((float)texturess->getSize().x, (float)texturess->getSize().y);
 }
 
-void Textures::SetSize(float x, float y)
+void Texture::SetSize(float x, float y)
 {
-	rect.setSize(Vector2f(x, y));
+	rect.setSize(sf::Vector2f(x, y));
 }
 
-void Textures::SetSize(Vector2f size)
+void Texture::SetSize(sf::Vector2f size)
 {
 	rect.setSize(size);
 }
 
-void Textures::SetPosition(float x, float y)
+void Texture::SetPosition(float x, float y)
 {
-	rect.setPosition(Vector2f(x, y));
+	rect.setPosition(sf::Vector2f(x, y));
 }
 
-void Textures::SetPosition(Vector2f position)
+void Texture::SetPosition(sf::Vector2f position)
 {
 	rect.setPosition(position);
 }
 
-void Textures::SetRect(Texture* texture)
+void Texture::SetRect(sf::Texture* textures)
 {
-	rect.setTexture(texture);
+	rect.setTexture(textures);
 }
 
-void Textures::Draw(RenderWindow& window, Vector2f position)
+void Texture::Draw(sf::RenderWindow& window, sf::Vector2f position)
 {
 	SetPosition(position);
 	window.draw(rect);
 }
 
-void Textures::Draw(RenderWindow & window, float x, float y)
+void Texture::Draw(sf::RenderWindow & window, float x, float y)
 {
 	SetPosition(x, y);
 	window.draw(rect);

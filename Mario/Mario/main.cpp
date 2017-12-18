@@ -2,6 +2,6 @@
 
 int main()
 {
-	Windows window(800, 480, "phuc");
+	Window window(800, 480, "phuc");
 	window.Play();
 }

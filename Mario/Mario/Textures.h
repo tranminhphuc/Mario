@@ -5,20 +5,20 @@
 
 #include "Library.h"
 
-class Textures
+class Texture
 {
 private:
-	Texture* texture;
-	RectangleShape rect;
+	sf::Texture* texturess;
+	sf::RectangleShape rect;
 public:
-	Textures(String name);
+	Texture(string name);
 	void SetSize(float x, float y);
-	void SetSize(Vector2f size);
+	void SetSize(sf::Vector2f size);
 	void SetPosition(float x, float y);
-	void SetPosition(Vector2f position);
-	void SetRect(Texture* texture);
-	void Draw(RenderWindow& window, Vector2f position);
-	void Draw(RenderWindow& window, float x, float y);
+	void SetPosition(sf::Vector2f position);
+	void SetRect(sf::Texture* textures);
+	void Draw(sf::RenderWindow& window, sf::Vector2f position);
+	void Draw(sf::RenderWindow& window, float x, float y);
 };
 
 #endif

@@ -23,7 +23,7 @@ private:
 		ThienDuong, // 5
 		DiaNguc // 6
 	};
-	MapType maptype;
+	MapType mapType;
 
 	enum Level
 	{
@@ -65,9 +65,13 @@ private:
 	int mapWidth;
 	int mapHeight;
 	int mapTime;
-	float Xmap;
-	float Ymap;
+	float xMap;
+	float yMap;
+	bool underWater;
 
+	void LoadImage(string image, bool collision = true);
+	void LoadImage(string image1, string image2, string image3, string image4, bool collision = true);
+	void LoadImage(string image1, string image2, string image3, bool collision = true);
 	void LoadGameData();
 	void LoadLevel();
 	void CreateMap();
@@ -111,27 +115,57 @@ private:
 	void DrawGND2(int x, int y, int size, bool direction);
 	void DrawBrick(int x, int y, int width, int height);
 	void DrawBlockQ(int x, int y, int width);
-	void DrawPiPe(int x, int y, int height);
-	void DrawPiPeHorizontal(int x, int y, int width);
-	void DrawPiPeVertical(int x, int y, int height);
-	void DrawCoin(int x, int y, int width, int height);
+	void DrawPipe(int x, int y, int height);
+	void DrawPipeHorizontal(int x, int y, int width);
+	void DrawPipeVertical(int x, int y, int height);
+	void DrawCoins(int x, int y, int width, int height);
 	void DrawEnd(int x, int y, int height);
 	void DrawCastleSmall(int x, int y);
 	void DrawCastleBig(int x, int y);
 	void DrawCastleWall(int x, int y, int width, int height);
+	void DrawT(int x, int y, int width, int height);
+	void DrawTMush(int x, int y, int width, int height);
+	void DrawWater(int x, int y, int width, int height);
+	void DrawLava(int x, int y, int width, int height);
+	void DrawBridge(int x, int y, int width);
+	void DrawBridge2(int x, int y, int width);
+	void DrawBonus(int x, int y, int width);
 
 	int GetStartMap();
 	int GetEndMap();
-	Vector2i getBlock(float x, float y);
 public:
 	Map();
 	~Map();
 	void Update(float time);
-	void Draw(RenderWindow& window);
-	void DrawMap(RenderWindow& window);
+
+	void Draw(sf::RenderWindow& window);
+	void DrawMap(sf::RenderWindow& window);
+
 	void MoveMap(int x);
-	void SetBackGroundColor(RenderWindow& window);
-	bool CheckCollision(int x, int y);
+	void SetBackGroundColor(sf::RenderWindow& window);
+
+	float GetX();
+	void SetX(float x);
+	float GetY();
+	void SetY(float y);
+
+	int GetWidth();
+	int GetHeight();
+
+	bool CheckObject(int x, int y);
+
+	int GetMapType();
+	void SetMapType(MapType mapType);
+
+	int GetMapTime();
+	void SetMapTime(int time);
+	
+	bool GetUnderWater();
+	void SetUnderWater(bool underWater);
+
+	Object* GetObject(int id);
+	TileSet* GetTile(int x, int y);
+	sf::Vector2i getTilePosition(int x, int y);
 };
 
 #endif
