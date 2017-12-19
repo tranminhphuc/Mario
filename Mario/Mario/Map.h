@@ -15,7 +15,9 @@ private:
 	enum MapType
 	{
 		NgoaiTroiBanNgay, // 0
+		NgoaiTroiBuoiTrua,
 		NgoaiTroiBanDem, // 4
+		NgoaiTroiNuaDem,
 		LongDat, // 1
 		NuiLua, //3
 		Bien, // 2
@@ -76,6 +78,7 @@ private:
 	void LoadLevel();
 	void CreateMap();
 	void ClearMap();
+	void SetTileID(int x, int y, int id);
 
 	void LoadLevel_1_1();
 	void LoadLevel_1_2();
