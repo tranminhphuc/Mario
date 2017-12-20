@@ -656,6 +656,12 @@ void Map::LoadLevel_1_1()
 	DrawEnd(198, 11, 9);
 	DrawCastleSmall(202, 12);
 
+	tile[94][9]->SetNumberOfCoin(4);
+	tile[21][5]->SetMustroom(true);
+	tile[78][9]->SetMustroom(true);
+	tile[101][9]->SetStar(true);
+	tile[109][5]->SetMustroom(true);
+
 	mapType = LongDat;
 	DrawGND(240, 14, 17, 2);
 
@@ -752,6 +758,16 @@ void Map::LoadLevel_1_2()
 
 	DrawPipeVertical(168, 9, 8);
 	DrawPipeHorizontal(166, 9, 1);
+	
+	tile[10][9]->SetMustroom(true);
+	tile[69][8]->SetMustroom(true);
+	tile[89][2]->SetMustroom(true);
+	tile[150][8]->SetMustroom(true);
+
+	tile[46][7]->SetStar(true);
+
+	tile[29][8]->SetNumberOfCoin(10);
+	tile[73][8]->SetNumberOfCoin(8);
 
 	mapType = NgoaiTroiBanNgay;
 	DrawGND(210, 14, 24, 2);
@@ -774,6 +790,8 @@ void Map::LoadLevel_1_2()
 
 	DrawPipeVertical(255, 12, 11);
 	DrawPipeHorizontal(253, 12, 1);
+
+	tile[252][9]->SetNumberOfCoin(10);
 
 	mapType = NgoaiTroiBanNgay;
 	DrawGND(281, 14, 42, 2);
@@ -844,6 +862,10 @@ void Map::LoadLevel_1_3()
 	DrawCastleSmall(0, 12);
 	DrawCastleBig(155, 12);
 	DrawCastleWall(164, 12, 12, 6);
+
+	tile[59][10]->SetMustroom(true);	
+
+	mapType = NgoaiTroiBanNgay;
 }
 
 void Map::LoadLevel_1_4()
@@ -901,6 +923,8 @@ void Map::LoadLevel_1_4()
 	tile[84][9]->SetID(19);
 	tile[88][4]->SetID(19);
 	tile[92][9]->SetID(19);
+
+	mapType = NuiLua;
 }
 
 void Map::LoadLevel_2_1()
@@ -958,6 +982,16 @@ void Map::LoadLevel_2_1()
 	DrawCastleSmall(204, 12);
 	DrawCastleBig(-2, 12);
 
+	tile[16][9]->SetMustroom(true);
+	tile[28][5]->SetMustroom(true);
+	tile[53][9]->SetMustroom(true);
+	tile[125][5]->SetMustroom(true);
+	tile[172][5]->SetMustroom(true);
+
+	tile[69][5]->SetStar(true);
+
+	tile[161][9]->SetNumberOfCoin(7);
+
 	mapType = LongDat;
 	DrawGND(230, 14, 17, 2);
 
@@ -981,6 +1015,8 @@ void Map::LoadLevel_2_1()
 	DrawCoins(306, 5, 16, 1);
 	DrawCoins(323, 4, 3, 1);
 	DrawCoins(333, 12, 3, 1);
+
+	mapType = NgoaiTroiBanNgay;
 }
 
 void Map::LoadLevel_2_2()
@@ -1148,6 +1184,10 @@ void Map::LoadLevel_2_3()
 	DrawCastleSmall(0, 12);
 	DrawCastleBig(228, 12);
 	DrawCastleWall(237, 12, 13, 6);
+
+	tile[102][5]->SetMustroom(true);
+
+	mapType = NgoaiTroiBanNgay;
 }
 
 void Map::LoadLevel_2_4()
@@ -1214,6 +1254,10 @@ void Map::LoadLevel_2_4()
 	tile[82][6]->SetID(19);
 	tile[92][10]->SetID(19);
 	tile[103][11]->SetID(19);
+
+	tile[23][3]->SetMustroom(true);
+
+	mapType = NuiLua;
 }
 
 void Map::LoadLevel_3_1()
@@ -1282,6 +1326,15 @@ void Map::LoadLevel_3_1()
 	DrawCastleSmall(204, 12);
 	DrawCastleBig(-2, 12);
 
+	tile[22][8]->SetMustroom(true);
+	tile[82][5]->SetMustroom(true);
+	tile[117][5]->SetMustroom(true);
+	tile[156][9]->SetMustroom(true);
+
+	tile[90][5]->SetStar(true);
+
+	tile[167][9]->SetNumberOfCoin(8);
+
 	mapType = LongDat;
 	DrawGND(240, 14, 17, 2);
 
@@ -1311,6 +1364,8 @@ void Map::LoadLevel_3_1()
 
 	DrawPipeVertical(255, 12, 11);
 	DrawPipeHorizontal(253, 12, 1);
+
+	tile[245][5]->SetMustroom(true);
 
 	mapType = ThienDuong;
 	DrawBonus(270, 13, 4);
@@ -1375,6 +1430,14 @@ void Map::LoadLevel_3_2()
 	DrawEnd(209, 11, 9);
 	DrawCastleSmall(0, 12);
 	DrawCastleSmall(213, 12);
+
+	tile[60][6]->SetMustroom(true);
+
+	tile[77][5]->SetStar(true);
+
+	tile[77][9]->SetNumberOfCoin(10);
+
+	mapType = NgoaiTroiBanDem;
 }
 
 void Map::LoadLevel_3_3()
@@ -1435,6 +1498,10 @@ void Map::LoadLevel_3_3()
 	DrawCastleSmall(0, 12);
 	DrawCastleBig(154, 12);
 	DrawCastleWall(163, 12, 12, 6);
+
+	tile[49][3]->SetMustroom(true);
+
+	mapType = NgoaiTroiNuaDem;
 }
 
 void Map::LoadLevel_3_4()
@@ -1504,6 +1571,10 @@ void Map::LoadLevel_3_4()
 	tile[64][5]->SetID(19);
 	tile[80][11]->SetID(19);
 	tile[80][5]->SetID(19);
+
+	tile[43][9]->SetMustroom(true);
+
+	mapType = NuiLua;
 }
 
 void Map::LoadLevel_4_1()
@@ -1561,6 +1632,12 @@ void Map::LoadLevel_4_1()
 	DrawCastleSmall(229, 12);
 	DrawCastleBig(-2, 12);
 
+	tile[25][9]->SetMustroom(true);
+	tile[92][5]->SetMustroom(true);
+	tile[148][9]->SetMustroom(true);
+
+	tile[220][9]->SetNumberOfCoin(6);
+
 	mapType = LongDat;
 	DrawGND(250, 14, 17, 2);
 
@@ -1578,6 +1655,8 @@ void Map::LoadLevel_4_1()
 
 	DrawPipeVertical(265, 12, 11);
 	DrawPipeHorizontal(263, 12, 1);
+
+	tile[263][9]->SetMustroom(true);
 
 	mapType = NgoaiTroiBanNgay;
 }
@@ -1658,6 +1737,16 @@ void Map::LoadLevel_4_2()
 	DrawPipeVertical(189, 9, 8);
 	DrawPipeHorizontal(187, 9, 1);
 
+	tile[28][9]->SetMustroom(true);
+	tile[55][9]->SetMustroom(true);
+	tile[120][5]->SetMustroom(true);
+	tile[161][9]->SetMustroom(true);
+
+	tile[81][9]->SetStar(true);
+
+	tile[43][4]->SetNumberOfCoin(8);
+	tile[77][9]->SetNumberOfCoin(6);
+
 	mapType = NgoaiTroiBanNgay;
 	DrawGND(240, 14, 24, 2);
 
@@ -1676,13 +1765,14 @@ void Map::LoadLevel_4_2()
 	DrawBrick(280, 7, 1, 6);
 	DrawBrick(281, 6, 2, 1);
 	DrawBrick(274, 2, 6, 1);
-
 	DrawBrick(284, 7, 1, 1);
 
 	DrawCoins(275, 6, 5, 2);
 
 	DrawPipeVertical(285, 12, 11);
 	DrawPipeHorizontal(283, 12, 1);
+
+	tile[284][7]->SetNumberOfCoin(8);
 
 	mapType = ThienDuong;
 	DrawGND(310, 14, 4, 2);
@@ -1782,6 +1872,10 @@ void Map::LoadLevel_4_3()
 	DrawCastleSmall(0, 12);
 	DrawCastleBig(150, 12);
 	DrawCastleWall(159, 12, 12, 6);
+
+	tile[43][2]->SetMustroom(true);
+
+	mapType = ThienDuong;
 }
 
 void Map::LoadLevel_4_4()
@@ -1891,6 +1985,10 @@ void Map::LoadLevel_5_1()
 	DrawCastleSmall(0, 12);
 	DrawCastleSmall(203, 12);
 
+	tile[148][9]->SetMustroom(true);
+
+	tile[91][5]->SetStar(true);
+
 	mapType = LongDat;
 	DrawGND(228, 14, 17, 2);
 
@@ -1907,6 +2005,8 @@ void Map::LoadLevel_5_1()
 
 	DrawPipeVertical(243, 12, 11);
 	DrawPipeHorizontal(241, 12, 1);
+
+	tile[242][7]->SetNumberOfCoin(8);
 
 	mapType = NgoaiTroiBuoiTrua;
 }
@@ -1977,6 +2077,14 @@ void Map::LoadLevel_5_2()
 	DrawCastleSmall(80, 12);
 	DrawCastleSmall(284, 12);
 
+	tile[114][5]->SetMustroom(true);
+	tile[222][11]->SetMustroom(true);
+	tile[248][9]->SetMustroom(true);
+
+	tile[205][5]->SetStar(true);
+
+	tile[221][11]->SetNumberOfCoin(6);
+
 	mapType = Bien;
 	DrawWater(0, 14, 65, 13);
 	DrawPipeHorizontal(62, 8, 1);
@@ -2013,6 +2121,8 @@ void Map::LoadLevel_5_2()
 	DrawCoins(361, 5, 16, 1);
 	DrawCoins(378, 4, 3, 1);
 	DrawCoins(394, 12, 3, 1);
+
+	mapType = NgoaiTroiBuoiTrua;
 }
 
 void Map::LoadLevel_5_3()
@@ -2070,6 +2180,10 @@ void Map::LoadLevel_5_3()
 	DrawCastleSmall(0, 12);
 	DrawCastleBig(155, 12);
 	DrawCastleWall(164, 12, 12, 6);
+
+	tile[59][10]->SetMustroom(true);
+
+	mapType = NgoaiTroiBanNgay;
 }
 
 void Map::LoadLevel_5_4()
@@ -2136,6 +2250,10 @@ void Map::LoadLevel_5_4()
 	tile[82][6]->SetID(19);
 	tile[92][10]->SetID(19);
 	tile[103][11]->SetID(19);
+
+	tile[23][3]->SetMustroom(true);
+
+	mapType = NuiLua;
 }
 
 void Map::LoadLevel_6_1()
@@ -2200,6 +2318,15 @@ void Map::LoadLevel_6_1()
 	DrawEnd(186, 11, 9);
 	DrawCastleSmall(192, 12);
 	DrawCastleBig(-2, 12);
+
+	tile[36][5]->SetMustroom(true);
+	tile[90][8]->SetMustroom(true);
+	tile[130][8]->SetMustroom(true);
+
+	tile[43][9]->SetNumberOfCoin(7);
+	tile[152][9]->SetNumberOfCoin(8);
+
+	mapType = NgoaiTroiNuaDem;
 }
 
 void Map::LoadLevel_6_2()
@@ -2279,6 +2406,12 @@ void Map::LoadLevel_6_2()
 	DrawCastleSmall(85, 12);
 	DrawCastleSmall(305, 12);
 
+	tile[137][9]->SetMustroom(true);
+
+	tile[225][5]->SetStar(true);
+
+	tile[109][5]->SetNumberOfCoin(8);
+
 	mapType = Bien;
 	DrawWater(0, 14, 65, 13);
 	DrawPipeHorizontal(62, 8, 1);
@@ -2323,6 +2456,8 @@ void Map::LoadLevel_6_2()
 	DrawPipeVertical(345, 12, 11);
 	DrawPipeHorizontal(343, 12, 1);
 
+	tile[344][7]->SetNumberOfCoin(8);
+
 	mapType = LongDat;
 	DrawGND(360, 13, 17, 2);
 
@@ -2338,6 +2473,8 @@ void Map::LoadLevel_6_2()
 
 	DrawPipeVertical(375, 12, 11);
 	DrawPipeHorizontal(373, 12, 1);
+
+	tile[373][9]->SetMustroom(true);
 
 	mapType = NgoaiTroiNuaDem;
 	DrawBonus(390, 13, 4);
@@ -2359,6 +2496,8 @@ void Map::LoadLevel_6_2()
 	DrawCoins(442, 5, 8, 1);
 	DrawCoins(461, 5, 10, 1);
 	DrawCoins(475, 11, 3, 1);
+
+	mapType = NgoaiTroiNuaDem;
 }
 
 void Map::LoadLevel_6_3()
@@ -2416,6 +2555,10 @@ void Map::LoadLevel_6_3()
 	DrawCoins(154, 3, 2, 1);
 
 	DrawEnd(167, 11, 9);
+
+	tile[55][3]->SetMustroom(true);
+
+	mapType = DiaNguc;
 }
 
 void Map::LoadLevel_6_4()
@@ -2473,6 +2616,10 @@ void Map::LoadLevel_6_4()
 	tile[76][9]->SetID(19);
 	tile[84][9]->SetID(19);
 	tile[88][4]->SetID(19);
+
+	tile[30][6]->SetMustroom(true);
+
+	mapType = NuiLua;
 }
 
 void Map::LoadLevel_7_1()
@@ -2520,6 +2667,12 @@ void Map::LoadLevel_7_1()
 	DrawCastleSmall(183, 12);
 	DrawCastleBig(-2, 12);
 
+	tile[27][5]->SetMustroom(true);
+	tile[93][5]->SetMustroom(true);
+	tile[151][2]->SetMustroom(true);
+	
+	tile[65][9]->SetNumberOfCoin(8);
+
 	mapType = LongDat;
 	DrawGND(210, 14, 17, 2);
 
@@ -2534,7 +2687,7 @@ void Map::LoadLevel_7_1()
 	DrawPipeVertical(225, 12, 11);
 	DrawPipeHorizontal(223, 12, 1);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = NgoaiTroiBuoiTrua;
 }
 
 void Map::LoadLevel_7_2()
@@ -2700,6 +2853,10 @@ void Map::LoadLevel_7_3()
 	DrawCastleSmall(0, 12);
 	DrawCastleBig(228, 12);
 	DrawCastleWall(237, 12, 13, 6);
+
+	tile[102][5]->SetMustroom(true);
+
+	mapType = NgoaiTroiBanNgay;
 }
 
 void Map::LoadLevel_7_4()
@@ -2783,6 +2940,8 @@ void Map::LoadLevel_7_4()
 	DrawBridge(256, 10, 13);
 
 	tile[167][7]->SetID(19);
+
+	mapType = NuiLua;
 }
 
 void Map::LoadLevel_8_1()
@@ -2866,6 +3025,12 @@ void Map::LoadLevel_8_1()
 	DrawCastleSmall(380, 12);
 	DrawCastleBig(-2, 12);
 
+	tile[80][8]->SetMustroom(true);
+
+	tile[186][8]->SetStar(true);
+
+	tile[158][5]->SetNumberOfCoin(8);
+
 	mapType = LongDat;
 	DrawGND(410, 14, 17, 2);
 
@@ -2879,6 +3044,8 @@ void Map::LoadLevel_8_1()
 
 	DrawPipeVertical(425, 12, 11);
 	DrawPipeHorizontal(423, 12, 1);
+
+	tile[422][9]->SetNumberOfCoin(10);
 
 	mapType = NgoaiTroiBanNgay;
 }
@@ -2943,6 +3110,11 @@ void Map::LoadLevel_8_2()
 	DrawCastleSmall(0, 12);
 	DrawCastleSmall(220, 12);
 
+	tile[44][5]->SetMustroom(true);
+	tile[100][9]->SetMustroom(true);
+
+	tile[120][9]->SetNumberOfCoin(8);
+
 	mapType = LongDat;
 	DrawGND(240, 14, 17, 2);
 
@@ -2958,6 +3130,8 @@ void Map::LoadLevel_8_2()
 
 	DrawPipeVertical(255, 12, 11);
 	DrawPipeHorizontal(253, 12, 1);
+
+	tile[254][7]->SetNumberOfCoin(8);
 
 	mapType = NgoaiTroiBanNgay;
 }
@@ -3012,6 +3186,11 @@ void Map::LoadLevel_8_3()
 	DrawEnd(214, 11, 9);
 	DrawCastleSmall(0, 12);
 	DrawCastleBig(220, 12);
+
+	tile[66][5]->SetMustroom(true);
+	tile[116][5]->SetMustroom(true);
+
+	mapType = NgoaiTroiBanNgay;
 }
 
 void Map::LoadLevel_8_4()
