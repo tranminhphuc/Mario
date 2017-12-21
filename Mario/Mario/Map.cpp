@@ -148,9 +148,35 @@ void Map::Destroy(int x, int y, int id, int direction)
 			{
 				tile[x][y]->SetNumberOfCoin(0);
 			}
+		case 10: case 11: case 12:
+			if (tile[x][y]->GetStar())
+			{
+
+			}
+			else if (tile[x][y]->GetMushroom())
+			{
+				if (tile[x][y]->GetPowerUp())
+				{
+
+
+				}
+			}
+			else if (tile[x][y]->getNumberOfCoin() > 0)
+			{
+				tile[x][y]->SetNumberOfCoin(tile[x][y]->getNumberOfCoin() - 1);
+
+				if (tile[x][y]->getNumberOfCoin() == 0)
+				{
+
+				}
+			}
 		default:
 			break;
 		}
+	}
+	else if (direction == 1)
+	{
+
 	}
 }
 
