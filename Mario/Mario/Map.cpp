@@ -503,6 +503,34 @@ void Map::LoadGameData()
 	LoadImage("axe_0.bmp", "axe_1.bmp", "axe_2.bmp");
 	// ----- 119 -----
 	LoadImage("bonus.bmp");
+	// ----- 120 -----
+	LoadImage("transp.bmp", true, true, false);
+	// ----- 121 -----
+	LoadImage("transp.bmp", true, true, true);
+	// ----- 122 -----
+	LoadImage("seesaw_0.bmp", false, false, true);
+	// ----- 123 -----
+	LoadImage("seesaw_1.bmp", false, false, true);
+	// ----- 124 -----
+	LoadImage("seesaw_2.bmp", false, false, true);
+	// ----- 125 -----
+	LoadImage("seesaw_3.bmp", false, false, true);
+	// ----- 126 -----
+	LoadImage("seesaw1_0.bmp", false, false, true);
+	// ----- 127 -----
+	LoadImage("seesaw1_1.bmp", false, false, true);
+	// ----- 128 -----
+	LoadImage("seesaw1_2.bmp", false, false, true);
+	// ----- 129 -----
+	LoadImage("seesaw1_3.bmp", false, false, true);
+	// ----- 130 -----
+	LoadImage("b_bot.bmp",  true, false, true);
+	// ----- 131 -----
+	LoadImage("b_top.bmp", true, false, true);
+	// ----- 132 -----
+	LoadImage("b_top1.bmp", true, false, true);
+	// ----- 133 -----
+	LoadImage("platform1.bmp", false, false, true);
 }
 
 void Map::LoadLevel()
@@ -3402,6 +3430,14 @@ void Map::DrawBlockQ(int x, int y, int width)
 	}
 }
 
+void Map::DrawBlockQ2(int x, int y, int width)
+{
+	for (int i = 0; i < width; i++)
+	{
+		SetTileID(x + i, y, 120);
+	}
+}
+
 void Map::DrawPipe(int x, int y, int height)
 {
 	for (int i = 0; i < height; i++)
@@ -3678,6 +3714,44 @@ void Map::DrawBonus(int x, int y, int width)
 	for (int i = 0; i < width; i++)
 	{
 		SetTileID(x + i, y, 119);
+	}
+}
+
+void Map::DrawBonusEnd(int x)
+{
+	for (int i = 0; i < 20; i++)
+	{
+		SetTileID(x + i, 14, 121);
+	}
+}
+
+void Map::DrawSeeSaw(int x, int y, int width)
+{
+	SetTileID(x, y, mapType == DiaNguc ? 126 : 122);
+	SetTileID(x + width - 1, y, mapType == DiaNguc ? 127 : 123);
+
+	for (int i = 1; i < width - 1; i++)
+	{
+		SetTileID(x + i, y, mapType == DiaNguc ? 128 : 124);
+	}
+}
+
+void Map::DrawBulletBill(int x, int y, int height)
+{
+	SetTileID(x, y - height - 1, 131);
+	SetTileID(x, y - height, 132);
+
+	for (int i = 0; i < height; i++)
+	{
+		SetTileID(x, y - i, 130);
+	}
+}
+
+void Map::DrawPlatformLine(int x)
+{
+	for (int i = 0; i < mapHeight; i++)
+	{
+		SetTileID(x, i, 133);
 	}
 }
 

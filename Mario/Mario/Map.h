@@ -118,6 +118,7 @@ private:
 	void DrawGND2(int x, int y, int size, bool direction);
 	void DrawBrick(int x, int y, int width, int height);
 	void DrawBlockQ(int x, int y, int width);
+	void DrawBlockQ2(int x, int y, int width);
 	void DrawPipe(int x, int y, int height);
 	void DrawPipeHorizontal(int x, int y, int width);
 	void DrawPipeVertical(int x, int y, int height);
@@ -133,6 +134,10 @@ private:
 	void DrawBridge(int x, int y, int width);
 	void DrawBridge2(int x, int y, int width);
 	void DrawBonus(int x, int y, int width);
+	void DrawBonusEnd(int x);
+	void DrawSeeSaw(int x, int y, int width);
+	void DrawBulletBill(int x, int y, int height);
+	void DrawPlatformLine(int x);
 
 	int GetStartMap();
 	int GetEndMap();
