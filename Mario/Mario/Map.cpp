@@ -92,7 +92,7 @@ int Map::GetHeight()
 
 bool Map::CheckObject(int x, int y)
 {
-	return listBlock[tile[x][y]->GetID()]->getCollision();
+	return listBlock[tile[x][y]->GetID()]->GetCollision();
 }
 
 int Map::GetMapType()
@@ -125,6 +125,35 @@ void Map::SetUnderWater(bool underWater)
 	this->underWater = underWater;
 }
 
+void Map::Destroy(int x, int y, int id, int direction)
+{
+	if (direction == 0)
+	{
+		switch (id)
+		{
+		case 16: case 18:
+			if (tile[x][y]->GetMushroom())
+			{
+				if (tile[x][y]->GetPowerUp())
+				{
+
+				}
+			}
+
+			if (tile[x][y]->getNumberOfCoin() > 1)
+			{
+				tile[x][y]->SetNumberOfCoin(tile[x][y]->getNumberOfCoin() - 1);
+			}
+			else
+			{
+				tile[x][y]->SetNumberOfCoin(0);
+			}
+		default:
+			break;
+		}
+	}
+}
+
 Object* Map::GetObject(int id)
 {
 	return listBlock[id];
@@ -152,7 +181,7 @@ void Map::MoveMap(int x)
 	}
 }
 
-void Map::LoadImage(string image, bool collision)
+void Map::LoadImage(string image, bool collision, bool canDestroy, bool visible)
 {
 	vector<string> name;
 	vector<float> time;
@@ -161,10 +190,10 @@ void Map::LoadImage(string image, bool collision)
 
 	name.push_back(image);
 	time.push_back(0);
-	listBlock.push_back(new Object(new Animation(name, time), collision));
+	listBlock.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
 
-void Map::LoadImage(string image1, string image2, string image3, string image4, bool collision)
+void Map::LoadImage(string image1, string image2, string image3, string image4, bool collision, bool canDestroy, bool visible)
 {
 	vector<string> name;
 	vector<float> time;
@@ -182,10 +211,10 @@ void Map::LoadImage(string image1, string image2, string image3, string image4, 
 	time.push_back(0.13f);
 	name.push_back(image4);
 	time.push_back(0.14f);
-	listBlock.push_back(new Object(new Animation(name, time), collision));
+	listBlock.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
 
-void Map::LoadImage(string image1, string image2, string image3, bool collision)
+void Map::LoadImage(string image1, string image2, string image3, bool collision, bool canDestroy, bool visible)
 {
 	vector<string> name;
 	vector<float> time;
@@ -200,7 +229,7 @@ void Map::LoadImage(string image1, string image2, string image3, bool collision)
 	time.push_back(0.225f);
 	name.push_back(image3);
 	time.push_back(0.2f);
-	listBlock.push_back(new Object(new Animation(name, time), collision));
+	listBlock.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
 
 void Map::LoadGameData()
@@ -209,7 +238,7 @@ void Map::LoadGameData()
 	vector<float> time;
 
 	// ----- 0 -----
-	LoadImage("transp.bmp");
+	LoadImage("transp.bmp", false, false, false);
 	// ----- 1 -----
 	LoadImage("gnd_red_1.bmp");
 	// ----- 2 -----
@@ -251,9 +280,9 @@ void Map::LoadGameData()
 	// ----- 20 -----
 	LoadImage("blockq2_used.bmp");
 	// ----- 21 -----
-	LoadImage("pipe_left_bot.bmp");
+	LoadImage("pipe_left_bot.bmp", true, false, true);
 	// ----- 22 -----
-	LoadImage("pipe_right_bot.bmp");
+	LoadImage("pipe_right_bot.bmp", true, false, true);
 	// ----- 23 -----
 	LoadImage("pipe_left_top.bmp");
 	// ----- 24 -----
@@ -263,17 +292,17 @@ void Map::LoadGameData()
 	// ----- 26 -----
 	LoadImage("pipe_hor_top_left.bmp");
 	// ----- 27 -----
-	LoadImage("pipe_hor_bot_center.bmp");
+	LoadImage("pipe_hor_bot_center.bmp", true, false, true);
 	// ----- 28 -----
-	LoadImage("pipe_hor_top_center.bmp");
+	LoadImage("pipe_hor_top_center.bmp", true, false, true);
 	// ----- 29 -----
-	LoadImage("pipe_hor_bot_right.bmp");
+	LoadImage("pipe_hor_bot_right.bmp", true, false, true);
 	// ----- 30 -----
-	LoadImage("pipe_hor_top_right.bmp");
+	LoadImage("pipe_hor_top_right.bmp", true, false, true);
 	// ----- 31 -----
-	LoadImage("pipe1_left_bot.bmp");
+	LoadImage("pipe1_left_bot.bmp", true, false, true);
 	// ----- 32 -----
-	LoadImage("pipe1_right_bot.bmp");
+	LoadImage("pipe1_right_bot.bmp", true, false, true);
 	// ----- 33 -----
 	LoadImage("pipe1_left_top.bmp");
 	// ----- 34 -----
@@ -283,17 +312,17 @@ void Map::LoadGameData()
 	// ----- 36 -----
 	LoadImage("pipe1_hor_top_left.bmp");
 	// ----- 37 -----
-	LoadImage("pipe1_hor_bot_center.bmp");
+	LoadImage("pipe1_hor_bot_center.bmp", true, false, true);
 	// ----- 38 -----
-	LoadImage("pipe1_hor_top_center.bmp");
+	LoadImage("pipe1_hor_top_center.bmp", true, false, true);
 	// ----- 39 -----
-	LoadImage("pipe1_hor_bot_right.bmp");
+	LoadImage("pipe1_hor_bot_right.bmp", true, false, true);
 	// ----- 40 -----
-	LoadImage("pipe1_hor_top_right.bmp");
+	LoadImage("pipe1_hor_top_right.bmp", true, false, true);
 	// ----- 41 -----
-	LoadImage("pipe2_left_bot.bmp");
+	LoadImage("pipe2_left_bot.bmp", true, false, true);
 	// ----- 42 -----
-	LoadImage("pipe2_right_bot.bmp");
+	LoadImage("pipe2_right_bot.bmp", true, false, true);
 	// ----- 43 -----
 	LoadImage("pipe2_left_top.bmp");
 	// ----- 44 -----
@@ -303,17 +332,17 @@ void Map::LoadGameData()
 	// ----- 46 -----
 	LoadImage("pipe2_hor_top_left.bmp");
 	// ----- 47 -----
-	LoadImage("pipe2_hor_bot_center.bmp");
+	LoadImage("pipe2_hor_bot_center.bmp", true, false, true);
 	// ----- 48 -----
-	LoadImage("pipe2_hor_top_center.bmp");
+	LoadImage("pipe2_hor_top_center.bmp", true, false, true);
 	// ----- 49 -----
-	LoadImage("pipe2_hor_bot_right.bmp");
+	LoadImage("pipe2_hor_bot_right.bmp", true, false, true);
 	// ----- 50 -----
-	LoadImage("pipe2_hor_top_right.bmp");
+	LoadImage("pipe2_hor_top_right.bmp", true, false, true);
 	// ----- 51 -----
-	LoadImage("pipe3_left_bot.bmp");
+	LoadImage("pipe3_left_bot.bmp", true, false, true);
 	// ----- 52 -----
-	LoadImage("pipe3_right_bot.bmp");
+	LoadImage("pipe3_right_bot.bmp", true, false, true);
 	// ----- 53 -----
 	LoadImage("pipe3_left_top.bmp");
 	// ----- 54 -----
@@ -323,33 +352,33 @@ void Map::LoadGameData()
 	// ----- 56 -----
 	LoadImage("pipe3_hor_top_left.bmp");
 	// ----- 57 -----
-	LoadImage("pipe3_hor_bot_center.bmp");
+	LoadImage("pipe3_hor_bot_center.bmp", true, false, true);
 	// ----- 58 -----
-	LoadImage("pipe3_hor_top_center.bmp");
+	LoadImage("pipe3_hor_top_center.bmp", true, false, true);
 	// ----- 59 -----
-	LoadImage("pipe3_hor_bot_right.bmp");
+	LoadImage("pipe3_hor_bot_right.bmp", true, false, true);
 	// ----- 60 -----
-	LoadImage("pipe3_hor_top_right.bmp");
+	LoadImage("pipe3_hor_top_right.bmp", true, false, true);
 	// ----- 61 -----
-	LoadImage("pipe4_left_bot.bmp");
+	LoadImage("pipe4_left_bot.bmp", true, false, true);
 	// ----- 62 -----
-	LoadImage("pipe4_right_bot.bmp");
+	LoadImage("pipe4_right_bot.bmp", true, false, true);
 	// ----- 63 -----
 	LoadImage("pipe4_left_top.bmp");
 	// ----- 64 -----
 	LoadImage("pipe4_right_top.bmp");
 	// ----- 65 -----
-	LoadImage("pipe5_left_bot.bmp");
+	LoadImage("pipe5_left_bot.bmp", true, false, true);
 	// ----- 66 -----
-	LoadImage("pipe5_right_bot.bmp");
+	LoadImage("pipe5_right_bot.bmp", true, false, true);
 	// ----- 67 -----
 	LoadImage("pipe5_left_top.bmp");
 	// ----- 68 -----
 	LoadImage("pipe5_right_top.bmp");
 	// ----- 69 -----
-	LoadImage("pipe6_left_bot.bmp");
+	LoadImage("pipe6_left_bot.bmp", true, false, true);
 	// ----- 70 -----
-	LoadImage("pipe6_right_bot.bmp");
+	LoadImage("pipe6_right_bot.bmp", true, false, true);
 	// ----- 71 -----
 	LoadImage("pipe6_left_top.bmp");
 	// ----- 72 -----
@@ -361,41 +390,41 @@ void Map::LoadGameData()
 	// ----- 75 -----
 	LoadImage("coin_use30.bmp", "coin_use32.bmp", "coin_use31.bmp", "coin_use32.bmp");
 	// ----- 76 -----
-	LoadImage("end0_l.bmp");
+	LoadImage("end0_l.bmp", false, true, true);
 	// ----- 77 -----
-	LoadImage("end0_dot.bmp");
+	LoadImage("end0_dot.bmp", false, true, true);
 	// ----- 78 -----
-	LoadImage("end1_l.bmp");
+	LoadImage("end1_l.bmp", false, true, true);
 	// ----- 79 -----
-	LoadImage("end1_dot.bmp");
+	LoadImage("end1_dot.bmp", false, true, true);
 	// ----- 80 -----
-	LoadImage("castle0_brick.bmp");
+	LoadImage("castle0_brick.bmp", false, false, true);
 	// ----- 81 -----
-	LoadImage("castle0_center_center.bmp");
+	LoadImage("castle0_center_center.bmp", false, false, true);
 	// ----- 82 -----
-	LoadImage("castle0_center_center_top.bmp");
+	LoadImage("castle0_center_center_top.bmp", false, false, true);
 	// ----- 83 -----
-	LoadImage("castle0_center_left.bmp");
+	LoadImage("castle0_center_left.bmp", false, false, true);
 	// ----- 84 -----
-	LoadImage("castle0_center_right.bmp");
+	LoadImage("castle0_center_right.bmp", false, false, true);
 	// ----- 85 -----
-	LoadImage("castle0_top0.bmp");
+	LoadImage("castle0_top0.bmp", false, false, true);
 	// ----- 86 -----
-	LoadImage("castle0_top1.bmp");
+	LoadImage("castle0_top1.bmp", false, false, true);
 	// ----- 87 -----
-	LoadImage("castle1_brick.bmp");
+	LoadImage("castle1_brick.bmp", false, false, true);
 	// ----- 88 -----
-	LoadImage("castle1_center_center.bmp");
+	LoadImage("castle1_center_center.bmp", false, false, true);
 	// ----- 89 -----
-	LoadImage("castle1_center_center_top.bmp");
+	LoadImage("castle1_center_center_top.bmp", false, false, true);
 	// ----- 90 -----
-	LoadImage("castle1_center_left.bmp");
+	LoadImage("castle1_center_left.bmp", false, false, true);
 	// ----- 91 -----
-	LoadImage("castle1_center_right.bmp");
+	LoadImage("castle1_center_right.bmp", false, false, true);
 	// ----- 92 -----
-	LoadImage("castle1_top0.bmp");
+	LoadImage("castle1_top0.bmp", false, false, true);
 	// ----- 93 -----
-	LoadImage("castle1_top1.bmp");
+	LoadImage("castle1_top1.bmp", false, false, true);
 	// ----- 94 -----
 	LoadImage("t_bot.bmp");
 	// ----- 95 -----
@@ -423,27 +452,27 @@ void Map::LoadGameData()
 	// ----- 106 -----
 	LoadImage("t_right2.bmp");
 	// ----- 107 -----
-	LoadImage("water_0.bmp");
+	LoadImage("water_0.bmp", false, false, true);
 	// ----- 108 -----
-	LoadImage("water_1.bmp");
+	LoadImage("water_1.bmp", false, false, true);
 	// ----- 109 -----
-	LoadImage("water_2.bmp");
+	LoadImage("water_2.bmp", false, false, true);
 	// ----- 110 -----
-	LoadImage("water_3.bmp");
+	LoadImage("water_3.bmp", false, false, true);
 	// ----- 111 -----
-	LoadImage("lava_0.bmp");
+	LoadImage("lava_0.bmp", false, false, true);
 	// ----- 112 -----
-	LoadImage("lava_1.bmp");
+	LoadImage("lava_1.bmp", false, false, true);
 	// ----- 113 -----
 	LoadImage("bridge_0.bmp");
 	// ----- 114 -----
-	LoadImage("bridge_1.bmp");
+	LoadImage("bridge_1.bmp", false, false, true);
 	// ----- 115 -----
-	LoadImage("bridge2.bmp");
+	LoadImage("bridge2.bmp", true, false, true);
 	// ----- 116 -----
-	LoadImage("bridge3.bmp");
+	LoadImage("bridge3.bmp", true, false, true);
 	// ----- 117 -----
-	LoadImage("bridge4.bmp");
+	LoadImage("bridge4.bmp", false, false, true);
 	// ----- 118 -----
 	LoadImage("axe_0.bmp", "axe_1.bmp", "axe_2.bmp");
 	// ----- 119 -----
@@ -656,11 +685,15 @@ void Map::LoadLevel_1_1()
 	DrawEnd(198, 11, 9);
 	DrawCastleSmall(202, 12);
 
-	tile[94][9]->SetNumberOfCoin(4);
+	
 	tile[21][5]->SetMustroom(true);
 	tile[78][9]->SetMustroom(true);
-	tile[101][9]->SetStar(true);
 	tile[109][5]->SetMustroom(true);
+	tile[78][9]->SetPowerUp(false);
+
+	tile[101][9]->SetStar(true);
+
+	tile[94][9]->SetNumberOfCoin(4);
 
 	mapType = LongDat;
 	DrawGND(240, 14, 17, 2);
@@ -763,6 +796,7 @@ void Map::LoadLevel_1_2()
 	tile[69][8]->SetMustroom(true);
 	tile[89][2]->SetMustroom(true);
 	tile[150][8]->SetMustroom(true);
+	tile[89][2]->SetPowerUp(false);
 
 	tile[46][7]->SetStar(true);
 
@@ -987,6 +1021,7 @@ void Map::LoadLevel_2_1()
 	tile[53][9]->SetMustroom(true);
 	tile[125][5]->SetMustroom(true);
 	tile[172][5]->SetMustroom(true);
+	tile[28][5]->SetPowerUp(false);
 
 	tile[69][5]->SetStar(true);
 
@@ -1330,6 +1365,7 @@ void Map::LoadLevel_3_1()
 	tile[82][5]->SetMustroom(true);
 	tile[117][5]->SetMustroom(true);
 	tile[156][9]->SetMustroom(true);
+	tile[82][5]->SetPowerUp(false);
 
 	tile[90][5]->SetStar(true);
 
@@ -1635,6 +1671,7 @@ void Map::LoadLevel_4_1()
 	tile[25][9]->SetMustroom(true);
 	tile[92][5]->SetMustroom(true);
 	tile[148][9]->SetMustroom(true);
+	tile[92][5]->SetPowerUp(false);
 
 	tile[220][9]->SetNumberOfCoin(6);
 
@@ -2322,6 +2359,7 @@ void Map::LoadLevel_6_1()
 	tile[36][5]->SetMustroom(true);
 	tile[90][8]->SetMustroom(true);
 	tile[130][8]->SetMustroom(true);
+	tile[90][8]->SetPowerUp(false);
 
 	tile[43][9]->SetNumberOfCoin(7);
 	tile[152][9]->SetNumberOfCoin(8);
@@ -2670,7 +2708,7 @@ void Map::LoadLevel_7_1()
 	tile[27][5]->SetMustroom(true);
 	tile[93][5]->SetMustroom(true);
 	tile[151][2]->SetMustroom(true);
-	
+	tile[93][5]->SetPowerUp(false);
 	tile[65][9]->SetNumberOfCoin(8);
 
 	mapType = LongDat;
@@ -3112,6 +3150,7 @@ void Map::LoadLevel_8_2()
 
 	tile[44][5]->SetMustroom(true);
 	tile[100][9]->SetMustroom(true);
+	tile[44][9]->SetPowerUp(false);
 
 	tile[120][9]->SetNumberOfCoin(8);
 

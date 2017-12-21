@@ -71,9 +71,9 @@ private:
 	float yMap;
 	bool underWater;
 
-	void LoadImage(string image, bool collision = true);
-	void LoadImage(string image1, string image2, string image3, string image4, bool collision = true);
-	void LoadImage(string image1, string image2, string image3, bool collision = true);
+	void LoadImage(string image, bool collision = true, bool canDestroy = true, bool visible = true);
+	void LoadImage(string image1, string image2, string image3, string image4, bool collision = true, bool canDestroy = true, bool visible = true);
+	void LoadImage(string image1, string image2, string image3, bool collision = true, bool canDestroy = true, bool visible = true);
 	void LoadGameData();
 	void LoadLevel();
 	void CreateMap();
@@ -165,6 +165,8 @@ public:
 	
 	bool GetUnderWater();
 	void SetUnderWater(bool underWater);
+
+	void Destroy(int x, int y, int id, int direction);
 
 	Object* GetObject(int id);
 	TileSet* GetTile(int x, int y);

@@ -1,9 +1,11 @@
 #include "Object.h"
 
-Object::Object(Animation* anim, bool isCollision)
+Object::Object(Animation* anim, bool collision, bool canDestroy, bool visible)
 {
-	animation = anim;
-	collision = isCollision;
+	this->animation = anim;
+	this->collision = collision;
+	this->canDestroy = canDestroy;
+	this->visible = visible;
 }
 
 Object::~Object()
@@ -25,7 +27,17 @@ Animation* Object::GetAnimation()
 	return animation;
 }
 
-bool Object::getCollision()
+bool Object::GetCollision()
 {
 	return collision;
+}
+
+bool Object::GetCanDestroy()
+{
+	return canDestroy;
+}
+
+bool Object::GetVisible()
+{
+	return visible;
 }

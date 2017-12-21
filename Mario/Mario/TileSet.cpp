@@ -6,6 +6,7 @@ TileSet::TileSet(int tileID)
 	numberOfCoin = 0;
 	mushroom = false;
 	star = false;
+	powerUp = true;
 }
 
 TileSet::~TileSet()

@@ -64,13 +64,34 @@ void Player::MoveY(int y)
 			{
 				sf::Vector2i RT = Window::getMap()->getTilePosition((int)(xPlayer - Window::getMap()->GetX() + width - 1), (int)(yPlayer + y));
 
-				if (!Window::getMap()->GetObject(Window::getMap()->GetTile(RT.x, RT.y)->GetID()))
+				if (!Window::getMap()->GetObject(Window::getMap()->GetTile(RT.x, RT.y)->GetID())->GetVisible())
+				{
+
+				}
+				else if(Window::getMap()->GetObject(Window::getMap()->GetTile(RT.x, RT.y)->GetID())->GetCanDestroy())
+				{
+					jumpState = NhayXuong;
+				}
+				else
+				{
+					jumpState = NhayXuong;
+				}
+			}
+			else if (left && !right)
+			{
+				sf::Vector2i LT = Window::getMap()->getTilePosition((int)(xPlayer - Window::getMap()->GetX() + 1), (int)(yPlayer + y));
+
+				if (!Window::getMap()->GetObject(Window::getMap()->GetTile(LT.x, LT.y)->GetID())->GetVisible())
+				{
+
+				}
+				else if (Window::getMap()->GetObject(Window::getMap()->GetTile(LT.x, LT.y)->GetID())->GetCanDestroy())
 				{
 
 				}
 				else
 				{
-					jumpState = NhayXuong;
+
 				}
 			}
 		}
@@ -302,7 +323,18 @@ void Player::Playerphysics()
 {
 	if (!Window::getMap()->GetUnderWater())
 	{
+		if (jumpState == NhayLen)
+		{
+			MoveY(-(int)currentJumpSpeed);
+			currentJumpDistance += (int)currentJumpSpeed;
 
+			currentJumpSpeed *= (currentJumpDistance / jumpDistance > 0.75f ? 0.972f : 0.986f);
+
+			if (currentJumpSpeed < 2.5f)
+			{
+				currentJumpSpeed = 2.5f;
+			}
+		}
 	}
 }
 
