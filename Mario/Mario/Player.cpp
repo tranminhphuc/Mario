@@ -24,6 +24,28 @@ void Player::MoveX(int x)
 		else
 		{
 			MoveX(x - 1);
+			if (moveSpeed > 1 && jumpState == TrenMatDat)
+				moveSpeed--;
+		}
+	}
+	else if (x < 0)
+	{
+		if (!CheckCollisionLB(x, -2) && !CheckCollisionLT(x, 2) && (level == 0 ? true : (!CheckCollisionLC(x))))
+		{
+			if (xPlayer <= 192)
+			{
+				Window::getMap()->MoveMap(-x);
+			}
+			else
+			{
+				xPlayer += x;
+			}
+		}
+		else
+		{
+			MoveX(x + 1);
+			if (moveSpeed > 1 && jumpSpeed == TrenMatDat)
+				moveSpeed--;
 		}
 	}
 }
@@ -44,7 +66,7 @@ void Player::MoveY(int y)
 		{
 			if (jumpState == NhayXuong)
 			{
-				jumpState = DungYen;
+				jumpState = TrenMatDat;
 			}
 			MoveY(y - 1);
 		}

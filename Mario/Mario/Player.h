@@ -12,7 +12,7 @@ private:
 
 	enum State
 	{
-		DungYen,
+		TrenMatDat,
 		NhayLen,
 		NhayXuong
 	};
