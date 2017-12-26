@@ -1,8 +1,5 @@
 ﻿  Player.cpp
-  Object.cpp
-  Map.cpp
+  Mushroom.cpp
+  Minion.cpp
   Generating Code...
-  Skipping... (no relevant changes detected)
-  main.cpp
-  Windows.cpp
   Mario.vcxproj -> E:\Mario\Mario\x64\Debug\Mario.exe

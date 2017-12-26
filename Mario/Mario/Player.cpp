@@ -103,6 +103,55 @@ void Player::UpdateAnimation(float time)
 	//mario->Update(time - 0.65f + moveSpeed * 0.04f);
 }
 
+void Player::StartMove()
+{
+	moveSpeed = 1;
+	move = true;
+}
+
+void Player::ResetMove()
+{
+	moveSpeed--;
+	move = false;
+}
+
+void Player::StopMove()
+{
+	moveSpeed = 0;
+	move = false;
+	squat = false;
+}
+
+int Player::GetWidth()
+{
+	return level == 0 ? smallWidth : smallHeight;
+}
+
+int Player::GetHeight()
+{
+	return level == 0 ? smallHeight : squat ? 44 : bigHeight;
+}
+
+int Player::GetMoveSpeed()
+{
+	return moveSpeed;
+}
+
+void Player::SetMoveSpeed(int moveSpeed)
+{
+	this->moveSpeed = moveSpeed;
+}
+
+bool Player::getSquat()
+{
+	return squat;
+}
+
+void Player::SetSquat(bool squat)
+{
+	this->squat = squat;
+}
+
 void Player::LoadData()
 {
 	vector<string> name;
@@ -340,7 +389,7 @@ void Player::Playerphysics()
 
 bool Player::CheckCollisionLB(int distanceX, int distanceY)
 {
-	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + distanceX), (int)(yPlayer + height + distanceY));
+	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + distanceX), (int)(yPlayer + GetHeight() + distanceY));
 }
 
 bool Player::CheckCollisionLT(int distanceX, int distanceY)
@@ -350,20 +399,20 @@ bool Player::CheckCollisionLT(int distanceX, int distanceY)
 
 bool Player::CheckCollisionRB(int distanceX, int distanceY)
 {
-	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + width + distanceX), (int)(yPlayer + height + distanceY));
+	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + GetWidth() + distanceX), (int)(yPlayer + GetHeight() + distanceY));
 }
 
 bool Player::CheckCollisionRT(int distanceX, int distanceY)
 {
-	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + width + distanceX), (int)(yPlayer + distanceY));
+	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + GetWidth() + distanceX), (int)(yPlayer + distanceY));
 }
 
 bool Player::CheckCollisionLC(int distance)
 {
-	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + width + distance), (int)(yPlayer + (width / 2)));
+	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + GetWidth() + distance), (int)(yPlayer + (GetHeight() / 2)));
 }
 
 bool Player::CheckCollisionRC(int distance)
 {
-	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + distance), (int)(yPlayer + (width / 2)));
+	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + distance), (int)(yPlayer + (GetHeight() / 2)));
 }

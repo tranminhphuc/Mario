@@ -266,57 +266,57 @@ void Map::LoadGameData()
 	// ----- 0 -----
 	LoadImage("transp.bmp", false, false, false);
 	// ----- 1 -----
-	LoadImage("gnd_red_1.bmp");
+	LoadImage("gnd_red_1.bmp", true, true, true);
 	// ----- 2 -----
-	LoadImage("gnd1.bmp");
+	LoadImage("gnd1.bmp", true, true, true);
 	// ----- 3 -----
-	LoadImage("uw_0.bmp");
+	LoadImage("uw_0.bmp", true, true, true);
 	// ----- 4 -----
-	LoadImage("gnd2.bmp");
+	LoadImage("gnd2.bmp", true, true, true);
 	// ----- 5 -----
-	LoadImage("gnd_4.bmp");
+	LoadImage("gnd_4.bmp", true, true, true);
 	// ----- 6 -----
-	LoadImage("gnd_5.bmp");
+	LoadImage("gnd_5.bmp", true, true, true);
 	// ----- 7 -----
-	LoadImage("gnd_red2.bmp");
+	LoadImage("gnd_red2.bmp", true, true, true);
 	// ----- 8 -----
-	LoadImage("gnd1_2.bmp");
+	LoadImage("gnd1_2.bmp", true, true, true);
 	// ----- 9 -----
-	LoadImage("gnd2_2.bmp");
+	LoadImage("gnd2_2.bmp", true, true, true);
 	// ----- 10 -----
-	LoadImage("brickred.bmp");
+	LoadImage("brickred.bmp", true, true, true);
 	// ----- 11 -----
-	LoadImage("brick1.bmp");
+	LoadImage("brick1.bmp", true, true, true);
 	// ----- 12 -----
-	LoadImage("brick2.bmp");
+	LoadImage("brick2.bmp", true, true, true);
 	// ----- 13 -----
-	LoadImage("gnd_red2.bmp");
+	LoadImage("gnd_red2.bmp", true, true, true);
 	// ----- 14 -----
-	LoadImage("gnd1_2.bmp");
+	LoadImage("gnd1_2.bmp", true, true, true);
 	// ----- 15 -----
-	LoadImage("gnd2_2.bmp", true);
+	LoadImage("gnd2_2.bmp", true, true, true);
 	// ----- 16 -----
-	LoadImage("blockq_0.bmp", "blockq_2.bmp", "blockq_1.bmp", "blockq_2.bmp");
+	LoadImage("blockq_0.bmp", "blockq_2.bmp", "blockq_1.bmp", "blockq_2.bmp", true, true, true);
 	// ----- 17 -----
-	LoadImage("blockq_used.bmp");
+	LoadImage("blockq_used.bmp", true, true, true);
 	// ----- 18 -----
-	LoadImage("blockq1_0.bmp", "blockq1_2.bmp", "blockq1_1.bmp", "blockq1_2.bmp");
+	LoadImage("blockq1_0.bmp", "blockq1_2.bmp", "blockq1_1.bmp", "blockq1_2.bmp", true, true, true);
 	// ----- 19 -----
-	LoadImage("blockq1_used.bmp");
+	LoadImage("blockq1_used.bmp", true, true, true);
 	// ----- 20 -----
-	LoadImage("blockq2_used.bmp");
+	LoadImage("blockq2_used.bmp", true, true, true);
 	// ----- 21 -----
 	LoadImage("pipe_left_bot.bmp", true, false, true);
 	// ----- 22 -----
 	LoadImage("pipe_right_bot.bmp", true, false, true);
 	// ----- 23 -----
-	LoadImage("pipe_left_top.bmp");
+	LoadImage("pipe_left_top.bmp", true, true, true);
 	// ----- 24 -----
-	LoadImage("pipe_right_top.bmp");
+	LoadImage("pipe_right_top.bmp", true, true, true);
 	// ----- 25 -----
-	LoadImage("pipe_hor_bot_left.bmp");
+	LoadImage("pipe_hor_bot_left.bmp", true, true, true);
 	// ----- 26 -----
-	LoadImage("pipe_hor_top_left.bmp");
+	LoadImage("pipe_hor_top_left.bmp", true, true, true);
 	// ----- 27 -----
 	LoadImage("pipe_hor_bot_center.bmp", true, false, true);
 	// ----- 28 -----
@@ -330,13 +330,13 @@ void Map::LoadGameData()
 	// ----- 32 -----
 	LoadImage("pipe1_right_bot.bmp", true, false, true);
 	// ----- 33 -----
-	LoadImage("pipe1_left_top.bmp");
+	LoadImage("pipe1_left_top.bmp", true, true, true);
 	// ----- 34 -----
-	LoadImage("pipe1_right_top.bmp");
+	LoadImage("pipe1_right_top.bmp", true, true, true);
 	// ----- 35 -----
-	LoadImage("pipe1_hor_bot_left.bmp");
+	LoadImage("pipe1_hor_bot_left.bmp", true, true, true);
 	// ----- 36 -----
-	LoadImage("pipe1_hor_top_left.bmp");
+	LoadImage("pipe1_hor_top_left.bmp", true, true, true);
 	// ----- 37 -----
 	LoadImage("pipe1_hor_bot_center.bmp", true, false, true);
 	// ----- 38 -----
@@ -350,13 +350,13 @@ void Map::LoadGameData()
 	// ----- 42 -----
 	LoadImage("pipe2_right_bot.bmp", true, false, true);
 	// ----- 43 -----
-	LoadImage("pipe2_left_top.bmp");
+	LoadImage("pipe2_left_top.bmp", true, true, true);
 	// ----- 44 -----
-	LoadImage("pipe2_right_top.bmp");
+	LoadImage("pipe2_right_top.bmp", true, true, true);
 	// ----- 45 -----
-	LoadImage("pipe2_hor_bot_left.bmp");
+	LoadImage("pipe2_hor_bot_left.bmp", true, true, true);
 	// ----- 46 -----
-	LoadImage("pipe2_hor_top_left.bmp");
+	LoadImage("pipe2_hor_top_left.bmp", true, true, true);
 	// ----- 47 -----
 	LoadImage("pipe2_hor_bot_center.bmp", true, false, true);
 	// ----- 48 -----
@@ -370,13 +370,13 @@ void Map::LoadGameData()
 	// ----- 52 -----
 	LoadImage("pipe3_right_bot.bmp", true, false, true);
 	// ----- 53 -----
-	LoadImage("pipe3_left_top.bmp");
+	LoadImage("pipe3_left_top.bmp", true, true, true);
 	// ----- 54 -----
-	LoadImage("pipe3_right_top.bmp");
+	LoadImage("pipe3_right_top.bmp", true, true, true);
 	// ----- 55 -----
-	LoadImage("pipe3_hor_bot_left.bmp");
+	LoadImage("pipe3_hor_bot_left.bmp", true, true, true);
 	// ----- 56 -----
-	LoadImage("pipe3_hor_top_left.bmp");
+	LoadImage("pipe3_hor_top_left.bmp", true, true, true);
 	// ----- 57 -----
 	LoadImage("pipe3_hor_bot_center.bmp", true, false, true);
 	// ----- 58 -----
@@ -390,31 +390,31 @@ void Map::LoadGameData()
 	// ----- 62 -----
 	LoadImage("pipe4_right_bot.bmp", true, false, true);
 	// ----- 63 -----
-	LoadImage("pipe4_left_top.bmp");
+	LoadImage("pipe4_left_top.bmp", true, true, true);
 	// ----- 64 -----
-	LoadImage("pipe4_right_top.bmp");
+	LoadImage("pipe4_right_top.bmp", true, true, true);
 	// ----- 65 -----
 	LoadImage("pipe5_left_bot.bmp", true, false, true);
 	// ----- 66 -----
 	LoadImage("pipe5_right_bot.bmp", true, false, true);
 	// ----- 67 -----
-	LoadImage("pipe5_left_top.bmp");
+	LoadImage("pipe5_left_top.bmp", true, true, true);
 	// ----- 68 -----
-	LoadImage("pipe5_right_top.bmp");
+	LoadImage("pipe5_right_top.bmp", true, true, true);
 	// ----- 69 -----
 	LoadImage("pipe6_left_bot.bmp", true, false, true);
 	// ----- 70 -----
 	LoadImage("pipe6_right_bot.bmp", true, false, true);
 	// ----- 71 -----
-	LoadImage("pipe6_left_top.bmp");
+	LoadImage("pipe6_left_top.bmp", true, true, true);
 	// ----- 72 -----
-	LoadImage("pipe6_right_top.bmp");
+	LoadImage("pipe6_right_top.bmp", true, true, true);
 	// ----- 73 -----
-	LoadImage("coin_use00.bmp", "coin_use02.bmp", "coin_use01.bmp", "coin_use02.bmp");
+	LoadImage("coin_use00.bmp", "coin_use02.bmp", "coin_use01.bmp", "coin_use02.bmp", true, true, true);
 	// ----- 74 -----
-	LoadImage("coin_use0.bmp", "coin_use2.bmp", "coin_use1.bmp", "coin_use2.bmp");
+	LoadImage("coin_use0.bmp", "coin_use2.bmp", "coin_use1.bmp", "coin_use2.bmp", true, true, true);
 	// ----- 75 -----
-	LoadImage("coin_use30.bmp", "coin_use32.bmp", "coin_use31.bmp", "coin_use32.bmp");
+	LoadImage("coin_use30.bmp", "coin_use32.bmp", "coin_use31.bmp", "coin_use32.bmp", true, true, true);
 	// ----- 76 -----
 	LoadImage("end0_l.bmp", false, true, true);
 	// ----- 77 -----
@@ -452,31 +452,31 @@ void Map::LoadGameData()
 	// ----- 93 -----
 	LoadImage("castle1_top1.bmp", false, false, true);
 	// ----- 94 -----
-	LoadImage("t_bot.bmp");
+	LoadImage("t_bot.bmp", true, true, true);
 	// ----- 95 -----
-	LoadImage("t_bot0.bmp");
+	LoadImage("t_bot0.bmp", true, true, true);
 	// ----- 96 -----
-	LoadImage("t_bot1.bmp");
+	LoadImage("t_bot1.bmp", true, true, true);
 	// ----- 97 -----
-	LoadImage("t_bot2.bmp");
+	LoadImage("t_bot2.bmp", true, true, true);
 	// ----- 98 -----
-	LoadImage("t_left.bmp");
+	LoadImage("t_left.bmp", true, true, true);
 	// ----- 99 -----
-	LoadImage("t_center.bmp");
+	LoadImage("t_center.bmp", true, true, true);
 	// ----- 100 -----
-	LoadImage("t_right.bmp");
+	LoadImage("t_right.bmp", true, true, true);
 	// ----- 101 -----
-	LoadImage("t_left1.bmp");
+	LoadImage("t_left1.bmp", true, true, true);
 	// ----- 102 -----
-	LoadImage("t_center1.bmp");
+	LoadImage("t_center1.bmp", true, true, true);
 	// ----- 103 -----
-	LoadImage("t_right1.bmp");
+	LoadImage("t_right1.bmp", true, true, true);
 	// ----- 104 -----
-	LoadImage("t_left2.bmp");
+	LoadImage("t_left2.bmp", true, true, true);
 	// ----- 105 -----
-	LoadImage("t_center2.bmp");
+	LoadImage("t_center2.bmp", true, true, true);
 	// ----- 106 -----
-	LoadImage("t_right2.bmp");
+	LoadImage("t_right2.bmp", true, true, true);
 	// ----- 107 -----
 	LoadImage("water_0.bmp", false, false, true);
 	// ----- 108 -----
@@ -490,7 +490,7 @@ void Map::LoadGameData()
 	// ----- 112 -----
 	LoadImage("lava_1.bmp", false, false, true);
 	// ----- 113 -----
-	LoadImage("bridge_0.bmp");
+	LoadImage("bridge_0.bmp", true, true, true);
 	// ----- 114 -----
 	LoadImage("bridge_1.bmp", false, false, true);
 	// ----- 115 -----
@@ -500,9 +500,9 @@ void Map::LoadGameData()
 	// ----- 117 -----
 	LoadImage("bridge4.bmp", false, false, true);
 	// ----- 118 -----
-	LoadImage("axe_0.bmp", "axe_1.bmp", "axe_2.bmp");
+	LoadImage("axe_0.bmp", "axe_1.bmp", "axe_2.bmp", true, true, true);
 	// ----- 119 -----
-	LoadImage("bonus.bmp");
+	LoadImage("bonus.bmp", true, true, true);
 	// ----- 120 -----
 	LoadImage("transp.bmp", true, true, false);
 	// ----- 121 -----
@@ -1098,6 +1098,7 @@ void Map::LoadLevel_2_1()
 	mapType = NgoaiTroiBanNgay;
 	DrawBonus(270, 13, 4);
 	DrawBonus(275, 13, 57);
+	DrawBonusEnd(332);
 
 	DrawCoins(285, 6, 16, 1);
 	DrawCoins(302, 4, 3, 1);
@@ -1471,6 +1472,7 @@ void Map::LoadLevel_3_1()
 	DrawBonus(345, 6, 1);
 	DrawBonus(347, 6, 1);
 	DrawBonus(349, 6, 1);
+	DrawBonusEnd(353);
 
 	DrawCoins(284, 6, 16, 1);
 	DrawCoins(303, 6, 16, 1);
@@ -1583,6 +1585,9 @@ void Map::LoadLevel_3_3()
 	DrawCoins(90, 5, 1, 1);
 	DrawCoins(105, 4, 2, 1);
 	DrawCoins(108, 10, 1, 1);
+
+	DrawSeeSaw(82, 2, 8);
+	DrawSeeSaw(137, 2, 5);
 
 	DrawEnd(151, 11, 9);
 	DrawCastleSmall(0, 12);
@@ -1959,6 +1964,11 @@ void Map::LoadLevel_4_3()
 	DrawTMush(121, 14, 7, 2);
 	DrawTMush(130, 14, 5, 5);
 
+	DrawSeeSaw(49, 2, 8);
+	DrawSeeSaw(81, 2, 9);
+	DrawSeeSaw(92, 2, 6);
+	DrawSeeSaw(103, 2, 7);
+
 	DrawEnd(147, 11, 9);
 	DrawCastleSmall(0, 12);
 	DrawCastleBig(150, 12);
@@ -2049,6 +2059,10 @@ void Map::LoadLevel_5_1()
 
 	CreateMap();
 
+	DrawBulletBill(111, 12, 0);
+	DrawBulletBill(159, 12, 0);
+	DrawBulletBill(170, 12, 0);
+
 	DrawGND(0, 14, 49, 2);
 	DrawGND(51, 14, 41, 2);
 	DrawGND(96, 14, 18, 2);
@@ -2112,6 +2126,9 @@ void Map::LoadLevel_5_2()
 	mapType = NgoaiTroiBuoiTrua;
 
 	CreateMap();
+
+	DrawBulletBill(97, 8, 0);
+	DrawBulletBill(187, 12, 0);
 
 	DrawGND(74, 14, 33, 2);
 	DrawGND(109, 14, 37, 2);
@@ -2206,6 +2223,7 @@ void Map::LoadLevel_5_2()
 	mapType = ThienDuong;
 	DrawBonus(325, 13, 4);
 	DrawBonus(330, 13, 57);
+	DrawBonusEnd(387);
 
 	DrawCoins(340, 6, 16, 1);
 	DrawCoins(357, 4, 3, 1);
@@ -2329,6 +2347,9 @@ void Map::LoadLevel_5_4()
 	DrawCoins(102, 8, 3, 1);
 
 	DrawBridge(128, 10, 13);
+
+	DrawPlatformLine(86);
+	DrawPlatformLine(89);
 
 	tile[23][7]->SetID(19);
 	tile[43][13]->SetID(19);
@@ -2582,6 +2603,7 @@ void Map::LoadLevel_6_2()
 	DrawBonus(465, 6, 1);
 	DrawBonus(467, 6, 1);
 	DrawBonus(469, 6, 1);
+	DrawBonusEnd(473);
 
 	DrawCoins(404, 6, 16, 1);
 	DrawCoins(423, 6, 16, 1);
@@ -2629,6 +2651,10 @@ void Map::LoadLevel_6_3()
 	DrawT(132, 14, 4, 2);
 	DrawT(135, 14, 4, 6);
 	DrawT(156, 14, 3, 10);
+
+	DrawSeeSaw(71, 2, 5);
+	DrawSeeSaw(79, 2, 4);
+	DrawSeeSaw(127, 2, 4);
 
 	DrawCastleSmall(0, 12);
 	DrawCastleBig(170, 12);
@@ -2724,6 +2750,20 @@ void Map::LoadLevel_7_1()
 	mapType = NgoaiTroiBuoiTrua;
 
 	CreateMap();
+
+	DrawBulletBill(19, 12, 0);
+	DrawBulletBill(28, 13, 0);
+	DrawBulletBill(28, 11, 0);
+	DrawBulletBill(36, 12, 0);
+	DrawBulletBill(46, 12, 1);
+	DrawBulletBill(56, 13, 0);
+	DrawBulletBill(56, 11, 0);
+	DrawBulletBill(64, 8, 0);
+	DrawBulletBill(68, 12, 0);
+	DrawBulletBill(104, 12, 0);
+	DrawBulletBill(122, 12, 0);
+	DrawBulletBill(146, 13, 0);
+	DrawBulletBill(146, 11, 0);
 
 	DrawGND(0, 14, 73, 2);
 	DrawGND(75, 14, 77, 2);
@@ -3153,6 +3193,17 @@ void Map::LoadLevel_8_2()
 
 	CreateMap();
 
+	DrawBulletBill(85, 12, 0);
+	DrawBulletBill(93, 11, 0);
+	DrawBulletBill(93, 13, 0);
+	DrawBulletBill(105, 12, 0);
+	DrawBulletBill(115, 13, 0);
+	DrawBulletBill(119, 8, 0);
+	DrawBulletBill(125, 12, 1);
+	DrawBulletBill(175, 12, 0);
+	DrawBulletBill(191, 13, 0);
+	DrawBulletBill(191, 11, 0);
+
 	DrawGND(0, 14, 15, 2);
 	DrawGND(16, 14, 5, 2);
 	DrawGND(22, 14, 14, 2);
@@ -3239,6 +3290,10 @@ void Map::LoadLevel_8_3()
 	mapType = NgoaiTroiBanNgay;
 
 	CreateMap();
+
+	DrawBulletBill(18, 12, 0);
+	DrawBulletBill(34, 12, 1);
+	DrawBulletBill(86, 12, 0);
 
 	DrawGND(0, 14, 69, 2);
 	DrawGND(71, 14, 4, 2);

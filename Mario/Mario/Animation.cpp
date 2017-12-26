@@ -25,6 +25,7 @@ Animation::~Animation()
 
 void Animation::Update(float time)
 {
+	
 	totalTime += time;
 
 	if (totalTime >= deltaTime[currentFrame])

@@ -124,6 +124,8 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Minion.cpp" />
+    <ClCompile Include="Mushroom.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Textures.cpp" />
@@ -134,6 +136,8 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="Map.h" />
+    <ClInclude Include="Minion.h" />
+    <ClInclude Include="Mushroom.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Textures.h" />
