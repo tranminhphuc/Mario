@@ -151,6 +151,7 @@ public:
 
 	void MoveMap(int x);
 	void SetBackGroundColor(sf::RenderWindow& window);
+	void SetBackGroundColor(sf::RenderWindow& window, int r, int g, int b, int a);
 
 	float GetX();
 	void SetX(float x);

@@ -8,7 +8,7 @@
 class Texture
 {
 private:
-	sf::Texture* texturess;
+	sf::Texture* textures;
 	sf::RectangleShape rect;
 public:
 	Texture(string name);

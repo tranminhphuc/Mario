@@ -2,11 +2,15 @@
 
 Texture::Texture(string name)
 {
-	texturess = new sf::Texture();
-	texturess->loadFromFile(name);
-	rect.setTexture(texturess);
+	sf::Image image;
+	image.loadFromFile(name);
+	image.createMaskFromColor(sf::Color(255, 0, 255, 255));
 
-	SetSize((float)texturess->getSize().x, (float)texturess->getSize().y);
+	textures = new sf::Texture();
+	textures->loadFromImage(image);
+	rect.setTexture(textures);
+
+	SetSize((float)textures->getSize().x, (float)textures->getSize().y);
 }
 
 void Texture::SetSize(float x, float y)

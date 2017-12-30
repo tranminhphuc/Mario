@@ -60,6 +60,11 @@ void Map::SetBackGroundColor(sf::RenderWindow & window)
 	}
 }
 
+void Map::SetBackGroundColor(sf::RenderWindow & window, int r, int g, int b, int a)
+{
+	window.clear(sf::Color(r, g, b, a));
+}
+
 float Map::GetX()
 {
 	return xMap;
