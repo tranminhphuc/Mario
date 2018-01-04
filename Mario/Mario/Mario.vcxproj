@@ -122,6 +122,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="LoadingMenu.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -134,6 +135,7 @@
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="OptionMenu.cpp" />
     <ClCompile Include="PauseMenu.cpp" />
+    <ClCompile Include="Pipe.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="TileSet.cpp" />
@@ -142,6 +144,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="LoadingMenu.h" />
     <ClInclude Include="MainMenu.h" />
@@ -154,6 +157,7 @@
     <ClInclude Include="Object.h" />
     <ClInclude Include="OptionMenu.h" />
     <ClInclude Include="PauseMenu.h" />
+    <ClInclude Include="Pipe.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="TileSet.h" />

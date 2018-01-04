@@ -6,7 +6,7 @@ MainMenu::MainMenu()
 	menuOption.push_back(new MenuOption("OPTIONS", 222, 308));
 	menuOption.push_back(new MenuOption("ABOUT", 237, 340));
 
-	numberOfMenuOption = menuOption.size();
+	numberOfMenuOption = (int)menuOption.size();
 	selectWorld = false;
 	activeWorldID = activeSecondWorldID = 0;
 

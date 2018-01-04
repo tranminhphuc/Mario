@@ -1,6 +1,6 @@
 #include "Animation.h"
 
-Animation::Animation(vector<string> name, vector<float> time)
+Animation::Animation(vector<string> name, vector<unsigned int> time)
 {
 	totalTime = 0;
 	deltaTime = time;
@@ -23,14 +23,13 @@ Animation::~Animation()
 	}
 }
 
-void Animation::Update(float time)
+void Animation::Update(unsigned int time)
 {
-	
-	totalTime += time;
+	totalTime = time;
 
-	if (totalTime >= deltaTime[currentFrame])
+	if (totalTime - deltaTime[currentFrame] > switchTime)
 	{
-		totalTime -= deltaTime[currentFrame];
+		switchTime = totalTime;
 		currentFrame++;
 
 		if (currentFrame >= EndFrame)

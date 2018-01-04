@@ -21,6 +21,9 @@ private:
 	float xPlayer, yPlayer;
 	float width, height;
 
+	unsigned int score;
+	unsigned int coin;
+
 	const int smallWidth = 24, smallHeight = 32;
 	const int bigWidth = 32, bigHeight = 64;
 
@@ -48,11 +51,13 @@ private:
 	bool CheckCollisionLC(int distance);
 	bool CheckCollisionRC(int distance);
 public:
-	Player();
+	Player(float xPlayer, float yPlayer);
 	~Player();
 
 	void MoveX(int distance);
 	void MoveY(int distance);
+
+	void Update();
 
 	void UpdateAnimation(float time);
 
@@ -63,11 +68,27 @@ public:
 	int GetWidth();
 	int GetHeight();
 
+	int GetLevel();
+	void SetLevel(int level);
+
+	int getLive();
+	void SetLive(int live);
+
 	int GetMoveSpeed();
 	void SetMoveSpeed(int moveSpeed);
 
-	bool getSquat();
+	bool GetSquat();
 	void SetSquat(bool squat);
+
+	int GetScore();
+	void SetScore(int score);
+
+	int GetCoin();
+	void SetCoin(int coin);
+
+	int GetJumpState();
+
+	bool getMove();
 };
 
 #endif

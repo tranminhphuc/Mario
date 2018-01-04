@@ -1,7 +1,10 @@
 #include "Map.h"
+#include "Game.h"
 
 Map::Map()
 {
+	player = new Player(84, 368);
+
 	xMap = 0;
 	yMap = 0;
 	mapType = NgoaiTroiBanNgay;
@@ -16,13 +19,22 @@ Map::~Map()
 
 }
 
-void Map::Update(float time)
+void Map::UpdatePlayer()
+{
+	player->Update();
+}
+
+void Map::UpdateBlock(unsigned int time)
 {
 	listBlock[16]->GetAnimation()->Update(time);
 	listBlock[18]->GetAnimation()->Update(time);
 	listBlock[73]->GetAnimation()->Update(time);
 	listBlock[74]->GetAnimation()->Update(time);
 	listBlock[75]->GetAnimation()->Update(time);
+}
+
+void Map::UpdateMinion()
+{
 }
 
 void Map::Draw(sf::RenderWindow & window)
@@ -42,6 +54,24 @@ void Map::DrawMap(sf::RenderWindow & window)
 			}
 		}
 	}
+}
+
+void Map::DrawGameLayout(sf::RenderWindow & window)
+{
+	Game::GetText()->Draw(window, "MARIO", 54, 16);
+
+	if (player->GetScore() < 100)
+		Game::GetText()->Draw(window, "0000" + to_string(player->GetScore()), 54, 32);
+	else if(player->GetScore() < 1000)
+		Game::GetText()->Draw(window, "000" + to_string(player->GetScore()), 54, 32);
+	else if (player->GetScore() < 10000)
+		Game::GetText()->Draw(window, "00" + to_string(player->GetScore()), 54, 32);
+	else if (player->GetScore() < 100000)
+		Game::GetText()->Draw(window, "0" + to_string(player->GetScore()), 54, 32);
+	else
+		Game::GetText()->Draw(window, to_string(player->GetScore()), 54, 32);
+
+	Game::GetText()->Draw(window, "WORLD", 462, 16);
 }
 
 void Map::SetBackGroundColor(sf::RenderWindow & window)
@@ -156,13 +186,12 @@ void Map::Destroy(int x, int y, int id, int direction)
 		case 10: case 11: case 12:
 			if (tile[x][y]->GetStar())
 			{
-
+				SetTileID(x, y, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiBuoiTrua || mapType == NgoaiTroiBanDem || mapType == NgoaiTroiNuaDem ? 17 : mapType == LongDat ? 19 : 20);
 			}
 			else if (tile[x][y]->GetMushroom())
 			{
 				if (tile[x][y]->GetPowerUp())
 				{
-
 
 				}
 			}
@@ -204,6 +233,7 @@ void Map::MoveMap(int x)
 {
 	if (xMap + x > 0)
 	{
+		//player->MoveX(x - xMap);
 		xMap = 0;
 	}
 	else
@@ -215,7 +245,7 @@ void Map::MoveMap(int x)
 void Map::LoadImage(string image, bool collision, bool canDestroy, bool visible)
 {
 	vector<string> name;
-	vector<float> time;
+	vector<unsigned int> time;
 
 	image = "Source/images/" + image;
 
@@ -227,7 +257,7 @@ void Map::LoadImage(string image, bool collision, bool canDestroy, bool visible)
 void Map::LoadImage(string image1, string image2, string image3, string image4, bool collision, bool canDestroy, bool visible)
 {
 	vector<string> name;
-	vector<float> time;
+	vector<unsigned int> time;
 
 	image1 = "Source/images/" + image1;
 	image2 = "Source/images/" + image2;
@@ -235,39 +265,36 @@ void Map::LoadImage(string image1, string image2, string image3, string image4, 
 	image4 = "Source/images/" + image4;
 
 	name.push_back(image1);
-	time.push_back(0.3f);
+	time.push_back(300);
 	name.push_back(image2);
-	time.push_back(0.03f);
+	time.push_back(30);
 	name.push_back(image3);
-	time.push_back(0.13f);
+	time.push_back(130);
 	name.push_back(image4);
-	time.push_back(0.14f);
+	time.push_back(140);
 	listBlock.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
 
 void Map::LoadImage(string image1, string image2, string image3, bool collision, bool canDestroy, bool visible)
 {
 	vector<string> name;
-	vector<float> time;
+	vector<unsigned int> time;
 
 	image1 = "Source/images/" + image1;
 	image2 = "Source/images/" + image2;
 	image3 = "Source/images/" + image3;
 
 	name.push_back(image1);
-	time.push_back(0.225f);
+	time.push_back(225);
 	name.push_back(image2);
-	time.push_back(0.225f);
+	time.push_back(225);
 	name.push_back(image3);
-	time.push_back(0.2f);
+	time.push_back(200);
 	listBlock.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
 
 void Map::LoadGameData()
 {
-	vector<string> name;
-	vector<float> time;
-
 	// ----- 0 -----
 	LoadImage("transp.bmp", false, false, false);
 	// ----- 1 -----

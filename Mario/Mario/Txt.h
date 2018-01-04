@@ -16,7 +16,8 @@ public:
 	Text();
 	~Text();
 	void SetFont(string file);
-	void Draw(sf::RenderWindow& window, string text, int fontSize, float x, float y);
+	void Draw(sf::RenderWindow& window, string text, float x, float y, int fontSize = 16);
+	void Draw(sf::RenderWindow& window, string text, float x, float y, int r, int g, int b, int fontSize = 16);
 };
 
 #endif

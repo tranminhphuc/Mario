@@ -9,16 +9,16 @@ class MenuOption
 {
 private:
 	string text;
-	int x, y;
+	float x, y;
 public:
-	MenuOption(string text, int x, int y);
+	MenuOption(string text, float x, float y);
 	~MenuOption();
 
 	string GetText();
 	void SetText(string text);
 
-	int GetX();
-	int GetY();
+	float GetX();
+	float GetY();
 };
 
 #endif

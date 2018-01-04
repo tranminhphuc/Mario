@@ -9,18 +9,18 @@ class Animation
 {
 private:
 	vector<Texture*> texture;
-	vector<float> deltaTime;
+	vector<unsigned int> deltaTime;
 
 	int currentFrame;
 	int StartFrame;
 	int EndFrame;
 
-	float totalTime;
-	float switchTime;
+	unsigned int totalTime;
+	unsigned int switchTime;
 public:
-	Animation(vector<string> name, vector<float> time);
+	Animation(vector<string> name, vector<unsigned int> time);
 	~Animation();
-	void Update(float time);
+	void Update(unsigned int time);
 	Texture* getTexture();
 	Texture* getTexture(int id);
 };

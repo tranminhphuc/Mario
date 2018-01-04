@@ -7,9 +7,16 @@
 
 class LoadingMenu : public Menu
 {
+private:
+	unsigned int time;
 public:
+	bool loading;
+
 	LoadingMenu();
 	~LoadingMenu();
+
+	void Update(unsigned int time);
+	void Draw(sf::RenderWindow& window);
 };
 
 #endif

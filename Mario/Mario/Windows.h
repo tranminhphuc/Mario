@@ -11,12 +11,14 @@ private:
 	sf::RenderWindow* window;
 	sf::Event event;
 	sf::Clock clock;
+
 	static Map* map;
+	static bool keyA, keyD, keyS, keyW;
 public:
 	Window(unsigned int width, unsigned int heigth, string name);
 	~Window();
 	void Play();
-	void Update(float time);
+	void Update(unsigned int time);
 	void Draw();
 	static Map* getMap();
 };

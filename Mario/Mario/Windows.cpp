@@ -1,11 +1,22 @@
 #include "Windows.h"
+#include "Game.h"
 
 Map* Window::map;
+bool Window::keyA = false;
+bool Window::keyD = false;
+bool Window::keyS = false;
+bool Window::keyW = false;
 
 Window::Window(unsigned int width, unsigned int heigth, string name)
 {
 	window = new sf::RenderWindow(sf::VideoMode(width, heigth), name);
 	map = new Map();
+
+	Game::keyA = sf::Keyboard::A;
+	Game::keyD = sf::Keyboard::D;
+	Game::keyS = sf::Keyboard::S;
+	Game::keySpace = sf::Keyboard::Space;
+	Game::keyShift = sf::Keyboard::LShift;
 }
 
 Window::~Window()
@@ -17,7 +28,7 @@ void Window::Play()
 {
 	while (window->isOpen())
 	{
-		float time = clock.restart().asSeconds();
+		unsigned int time = clock.getElapsedTime().asMilliseconds();
 
 		while (window->pollEvent(event))
 		{
@@ -41,9 +52,9 @@ void Window::Play()
 	
 }
 
-void Window::Update(float time)
+void Window::Update(unsigned int time)
 {
-	map->Update(time);
+	map->UpdateBlock(time);
 }
 
 void Window::Draw()

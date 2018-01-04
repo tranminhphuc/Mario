@@ -5,6 +5,7 @@
 
 #include "Object.h"
 #include "TileSet.h"
+#include "Player.h"
 
 class Map
 {
@@ -64,11 +65,15 @@ private:
 	};
 	Level level;
 
+	Player* player;
+
 	int mapWidth;
 	int mapHeight;
 	int mapTime;
+
 	float xMap;
 	float yMap;
+
 	bool underWater;
 
 	void LoadImage(string image, bool collision = true, bool canDestroy = true, bool visible = true);
@@ -144,10 +149,14 @@ private:
 public:
 	Map();
 	~Map();
-	void Update(float time);
+
+	void UpdatePlayer();
+	void UpdateBlock(unsigned int time);
+	void UpdateMinion();
 
 	void Draw(sf::RenderWindow& window);
 	void DrawMap(sf::RenderWindow& window);
+	void DrawGameLayout(sf::RenderWindow& window);
 
 	void MoveMap(int x);
 	void SetBackGroundColor(sf::RenderWindow& window);

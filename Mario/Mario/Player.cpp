@@ -1,8 +1,14 @@
 #include "Player.h"
 #include "Windows.h"
 
-Player::Player()
+Player::Player(float xPlayer, float yPlayer)
 {
+	this->xPlayer = xPlayer;
+	this->yPlayer = yPlayer;
+	this->live = 3;
+	this->level = 0;
+	this->score = 0;
+	this->coin = 0;
 	LoadData();
 }
 
@@ -120,6 +126,10 @@ void Player::MoveY(int y)
 	}
 }
 
+void Player::Update()
+{
+}
+
 void Player::UpdateAnimation(float time)
 {
 	//mario->Update(time - 0.65f + moveSpeed * 0.04f);
@@ -154,6 +164,26 @@ int Player::GetHeight()
 	return level == 0 ? smallHeight : squat ? 44 : bigHeight;
 }
 
+int Player::GetLevel()
+{
+	return level;
+}
+
+void Player::SetLevel(int level)
+{
+	this->level = level;
+}
+
+int Player::getLive()
+{
+	return live;
+}
+
+void Player::SetLive(int live)
+{
+	this->live = live;
+}
+
 int Player::GetMoveSpeed()
 {
 	return moveSpeed;
@@ -164,7 +194,7 @@ void Player::SetMoveSpeed(int moveSpeed)
 	this->moveSpeed = moveSpeed;
 }
 
-bool Player::getSquat()
+bool Player::GetSquat()
 {
 	return squat;
 }
@@ -174,10 +204,40 @@ void Player::SetSquat(bool squat)
 	this->squat = squat;
 }
 
+int Player::GetScore()
+{
+	return score;
+}
+
+void Player::SetScore(int score)
+{
+	this->score = score;
+}
+
+int Player::GetCoin()
+{
+	return coin;
+}
+
+void Player::SetCoin(int coin)
+{
+	this->coin = coin;
+}
+
+int Player::GetJumpState()
+{
+	return jumpState;
+}
+
+bool Player::getMove()
+{
+	return move;
+}
+
 void Player::LoadData()
 {
 	vector<string> name;
-	vector<float> time;
+	vector<unsigned int> time;
 	time.push_back(0);
 
 	// ---- 0 ----
@@ -397,7 +457,7 @@ void Player::Playerphysics()
 		if (jumpState == NhayLen)
 		{
 			MoveY(-(int)currentJumpSpeed);
-			currentJumpDistance += (int)currentJumpSpeed;
+			currentJumpDistance += currentJumpSpeed;
 
 			currentJumpSpeed *= (currentJumpDistance / jumpDistance > 0.75f ? 0.972f : 0.986f);
 

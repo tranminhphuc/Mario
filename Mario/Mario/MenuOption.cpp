@@ -1,6 +1,6 @@
 #include "MenuOption.h"
 
-MenuOption::MenuOption(string text, int x, int y)
+MenuOption::MenuOption(string text, float x, float y)
 {
 	this->text = text;
 	this->x = x;
@@ -21,12 +21,12 @@ void MenuOption::SetText(string text)
 	this->text = text;
 }
 
-int MenuOption::GetX()
+float MenuOption::GetX()
 {
 	return x;
 }
 
-int MenuOption::GetY()
+float MenuOption::GetY()
 {
 	return y;
 }

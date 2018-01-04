@@ -1,4 +1,5 @@
 #include "OptionMenu.h"
+#include "Game.h"
 
 OptionMenu::OptionMenu()
 {
@@ -22,7 +23,7 @@ OptionMenu::OptionMenu()
 	menuOption.push_back(new MenuOption("RUN", 73, 185));
 	menuOption.push_back(new MenuOption("MAIN MENU", 73, 257));
 
-	numberOfMenuOption = menuOption.size();
+	numberOfMenuOption = (int)menuOption.size();
 	setKey = resetKey = false;
 	escapeToMainMenu = true;
 }
@@ -42,6 +43,13 @@ void OptionMenu::Update()
 
 void OptionMenu::Draw(sf::RenderWindow & window)
 {
+	for (int i = 0; i < menuOption.size(); i++)
+	{
+		if(i == activeMenuOption)
+			Game::GetText()->Draw(window, menuOption[i]->GetText(), menuOption[i]->GetX(), menuOption[i]->GetY(), 255, 255, 255);
+		else
+			Game::GetText()->Draw(window, menuOption[i]->GetText(), menuOption[i]->GetX(), menuOption[i]->GetY(), 90, 90, 90);
+	}
 }
 
 void OptionMenu::Enter()
@@ -77,6 +85,52 @@ void OptionMenu::Escape()
 
 void OptionMenu::SetKey(int keyID)
 {
+	if (setKey && keyID != sf::Keyboard::Return && keyID != sf::Keyboard::Escape)
+	{
+		switch (activeMenuOption)
+		{
+		case 1:
+			Game::keyA = keyID;
+			if (Game::keyD == keyID) Game::keyD = 0;
+			if (Game::keyS == keyID) Game::keyS = 0;
+			if (Game::keySpace == keyID) Game::keySpace = 0;
+			if (Game::keyShift == keyID) Game::keyShift = 0;
+			break;
+		case 2:
+			Game::keyD = keyID;
+			if (Game::keyA == keyID) Game::keyA = 0;
+			if (Game::keyS == keyID) Game::keyS = 0;
+			if (Game::keySpace == keyID) Game::keySpace = 0;
+			if (Game::keyShift == keyID) Game::keyShift = 0;
+			break;
+		case 3:
+			Game::keyS = keyID;
+			if (Game::keyA == keyID) Game::keyA = 0;
+			if (Game::keyD == keyID) Game::keyD = 0;
+			if (Game::keySpace == keyID) Game::keySpace = 0;
+			if (Game::keyShift == keyID) Game::keyShift = 0;
+			break;
+		case 4:
+			Game::keySpace = keyID;
+			if (Game::keyA == keyID) Game::keyA = 0;
+			if (Game::keyD == keyID) Game::keyD = 0;
+			if (Game::keyS == keyID) Game::keyS = 0;
+			if (Game::keyShift == keyID) Game::keyShift = 0;
+			break;
+		case 5:
+			Game::keyShift = keyID;
+			if (Game::keyA == keyID) Game::keyA = 0;
+			if (Game::keyD == keyID) Game::keyD = 0;
+			if (Game::keyS == keyID) Game::keyS = 0;
+			if (Game::keySpace == keyID) Game::keySpace = 0;
+			break;
+		}
+		resetKey = true;
+	}
+	else if (keyID == sf::Keyboard::Escape)
+	{
+		resetKey = true;
+	}
 }
 
 void OptionMenu::UpdateActiveButton(int id)
