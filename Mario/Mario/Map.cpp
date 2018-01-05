@@ -19,6 +19,10 @@ Map::~Map()
 
 }
 
+void Map::Update()
+{
+}
+
 void Map::UpdatePlayer()
 {
 	player->Update();
@@ -95,6 +99,17 @@ void Map::SetBackGroundColor(sf::RenderWindow & window, int r, int g, int b, int
 	window.clear(sf::Color(r, g, b, a));
 }
 
+void Map::ResetGameData()
+{
+	level = Level_1_1;
+
+	player->SetCoin(0);
+	player->ResetLevel();
+	player->SetLive(3);
+
+	LoadLevel();
+}
+
 float Map::GetX()
 {
 	return xMap;
@@ -158,6 +173,11 @@ bool Map::GetUnderWater()
 void Map::SetUnderWater(bool underWater)
 {
 	this->underWater = underWater;
+}
+
+string Map::GetLevelName()
+{
+	return to_string(level / 4 + 1) + "-" + to_string(level % 4 + 1);
 }
 
 void Map::Destroy(int x, int y, int id, int direction)

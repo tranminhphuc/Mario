@@ -1,2 +1,11 @@
-﻿  Windows.cpp
+﻿  MenuManager.cpp
+  Generating Code...
+  Compiling...
+  Game.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  Windows.cpp
+  OptionMenu.cpp
+  Map.cpp
+  LoadingMenu.cpp
   Mario.vcxproj -> E:\Mario\Mario\x64\Debug\Mario.exe

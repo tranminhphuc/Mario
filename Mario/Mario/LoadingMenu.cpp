@@ -22,9 +22,14 @@ void LoadingMenu::Update(unsigned int time)
 		}
 		else
 		{
-
+			Window::getMap()->ResetGameData();
 		}
 	}
+	else
+	{
+
+	}
+	Window::getMap()->UpdateBlock(time);
 }
 
 void LoadingMenu::Draw(sf::RenderWindow & window)

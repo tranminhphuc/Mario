@@ -65,6 +65,8 @@ public:
 	void ResetMove();
 	void StopMove();
 
+	void ResetLevel();
+
 	int GetWidth();
 	int GetHeight();
 

@@ -154,6 +154,11 @@ void Player::StopMove()
 	squat = false;
 }
 
+void Player::ResetLevel()
+{
+	level = 0;
+}
+
 int Player::GetWidth()
 {
 	return level == 0 ? smallWidth : smallHeight;

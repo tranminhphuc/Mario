@@ -19,19 +19,19 @@ private:
 
 	enum GameState
 	{
-		MainMenu,
-		Game,
-		Loading,
-		Option,
+		MainMenuGame,
+		GamePlay,
+		GameLoading,
+		GameOption,
 		Pause
 	};
 
-	GameState currentgameState;
+	GameState currentGameState;
 public:
 	MenuManager();
 	~MenuManager();
 
-	void Update();
+	void Update(unsigned int time);
 	void Draw(sf::RenderWindow& window);
 
 	void SetBackGroundColor(sf::RenderWindow& window);

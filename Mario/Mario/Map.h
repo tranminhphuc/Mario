@@ -150,6 +150,7 @@ public:
 	Map();
 	~Map();
 
+	void Update();
 	void UpdatePlayer();
 	void UpdateBlock(unsigned int time);
 	void UpdateMinion();
@@ -161,6 +162,8 @@ public:
 	void MoveMap(int x);
 	void SetBackGroundColor(sf::RenderWindow& window);
 	void SetBackGroundColor(sf::RenderWindow& window, int r, int g, int b, int a);
+
+	void ResetGameData();
 
 	float GetX();
 	void SetX(float x);
@@ -180,6 +183,8 @@ public:
 	
 	bool GetUnderWater();
 	void SetUnderWater(bool underWater);
+
+	string GetLevelName();
 
 	void Destroy(int x, int y, int id, int direction);
 
