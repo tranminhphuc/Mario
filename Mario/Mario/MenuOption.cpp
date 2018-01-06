@@ -1,10 +1,10 @@
 #include "MenuOption.h"
 
-MenuOption::MenuOption(string text, float x, float y)
+MenuOption::MenuOption(string text, float X, float Y)
 {
 	this->text = text;
-	this->x = x;
-	this->y = y;
+	this->x = X;
+	this->y = Y;
 }
 
 MenuOption::~MenuOption()

@@ -15,7 +15,7 @@ public:
 	LoadingMenu();
 	~LoadingMenu();
 
-	void Update(unsigned int time);
+	void Update(unsigned int Loadingtime);
 	void Draw(sf::RenderWindow& window);
 };
 

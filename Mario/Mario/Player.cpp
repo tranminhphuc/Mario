@@ -9,6 +9,7 @@ Player::Player(float xPlayer, float yPlayer)
 	this->level = 0;
 	this->score = 0;
 	this->coin = 0;
+
 	LoadData();
 }
 

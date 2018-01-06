@@ -1,8 +1,8 @@
 #include "Object.h"
 
-Object::Object(Animation* anim, bool collision, bool canDestroy, bool visible)
+Object::Object(Animation* animation, bool collision, bool canDestroy, bool visible)
 {
-	this->animation = anim;
+	this->animation = animation;
 	this->collision = collision;
 	this->canDestroy = canDestroy;
 	this->visible = visible;

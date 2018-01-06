@@ -122,6 +122,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="EventGame.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="LoadingMenu.cpp" />
     <ClCompile Include="main.cpp" />
@@ -144,6 +145,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="EventGame.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="LoadingMenu.h" />

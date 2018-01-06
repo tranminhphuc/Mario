@@ -12,9 +12,9 @@ LoadingMenu::~LoadingMenu()
 {
 }
 
-void LoadingMenu::Update(unsigned int time)
+void LoadingMenu::Update(unsigned int Loadingtime)
 {
-	if (time > time + 2500 + (loading ? 0 : 2750))
+	if (Loadingtime > time + 2500 + (loading ? 0 : 2750))
 	{
 		if (loading)
 		{
