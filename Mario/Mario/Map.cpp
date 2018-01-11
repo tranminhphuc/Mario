@@ -165,6 +165,16 @@ void Map::SetMapTime(int time)
 	this->mapTime = time;
 }
 
+bool Map::GetMoveMap()
+{
+	return moveMap;
+}
+
+void Map::SetMoveMap(bool moveMap)
+{
+	this->moveMap = moveMap;
+}
+
 bool Map::GetUnderWater()
 {
 	return underWater;
@@ -178,6 +188,11 @@ void Map::SetUnderWater(bool underWater)
 string Map::GetLevelName()
 {
 	return to_string(level / 4 + 1) + "-" + to_string(level % 4 + 1);
+}
+
+Player* Map::GetPlayer()
+{
+	return player;
 }
 
 void Map::Destroy(int x, int y, int id, int direction)

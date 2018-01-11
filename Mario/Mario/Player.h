@@ -70,6 +70,12 @@ public:
 	int GetWidth();
 	int GetHeight();
 
+	float GetX();
+	void SetX(float xPlayer);
+	
+	float GetY();
+	void SetY(float yPlayer);
+
 	int GetLevel();
 	void SetLevel(int level);
 

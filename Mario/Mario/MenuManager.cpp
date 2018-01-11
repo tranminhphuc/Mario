@@ -41,8 +41,21 @@ void MenuManager::Update(unsigned int time)
 	}
 }
 
-void MenuManager::Draw(sf::RenderWindow & window)
+void MenuManager::Draw(sf::RenderWindow& window)
 {
+	switch (currentGameState)
+	{
+	case MainMenuGame:
+		Window::getMap()->Draw(window);
+		mainMenu->Draw(window);
+		break;
+	case GameLoading:
+		loadingMenu->Draw(window);
+		break;
+	case GamePlay:
+		Window::getMap()->Draw(window);
+		break;
+	}
 }
 
 void MenuManager::SetBackGroundColor(sf::RenderWindow & window)

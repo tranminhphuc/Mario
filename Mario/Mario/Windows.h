@@ -13,7 +13,11 @@ private:
 	sf::Clock clock;
 
 	static Map* map;
-	static bool keyA, keyD, keyS, keyW;
+	static bool keyA, keyD, keyS, keyW, keyShift;
+
+	void Input();
+	void InputPlayer();
+	void InputMenu();
 public:
 	Window(unsigned int width, unsigned int heigth, string name);
 	~Window();

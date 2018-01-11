@@ -40,12 +40,19 @@ void Texture::SetRect(sf::Texture* textures)
 
 void Texture::Draw(sf::RenderWindow& window, sf::Vector2f position)
 {
-	SetPosition(position);
+	rect.setPosition(position);
 	window.draw(rect);
 }
 
 void Texture::Draw(sf::RenderWindow & window, float x, float y)
 {
-	SetPosition(x, y);
+	rect.setPosition(x, y);
+	window.draw(rect);
+}
+
+void Texture::Draw(sf::RenderWindow& window, sf::Vector2f position, sf::IntRect IMGRect)
+{
+	rect.setTextureRect(IMGRect);
+	rect.setPosition(position);
 	window.draw(rect);
 }

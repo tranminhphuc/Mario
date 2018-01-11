@@ -170,6 +170,26 @@ int Player::GetHeight()
 	return level == 0 ? smallHeight : squat ? 44 : bigHeight;
 }
 
+float Player::GetX()
+{
+	return xPlayer;
+}
+
+void Player::SetX(float xPlayer)
+{
+	this->xPlayer = xPlayer;
+}
+
+float Player::GetY()
+{
+	return yPlayer;
+}
+
+void Player::SetY(float yPlayer)
+{
+	this->yPlayer = yPlayer;
+}
+
 int Player::GetLevel()
 {
 	return level;

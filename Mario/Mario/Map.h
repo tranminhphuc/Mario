@@ -75,6 +75,7 @@ private:
 	float yMap;
 
 	bool underWater;
+	bool moveMap;
 
 	void LoadImage(string image, bool collision = true, bool canDestroy = true, bool visible = true);
 	void LoadImage(string image1, string image2, string image3, string image4, bool collision = true, bool canDestroy = true, bool visible = true);
@@ -180,11 +181,16 @@ public:
 
 	int GetMapTime();
 	void SetMapTime(int time);
+
+	bool GetMoveMap();
+	void SetMoveMap(bool moveMap);
 	
 	bool GetUnderWater();
 	void SetUnderWater(bool underWater);
 
 	string GetLevelName();
+
+	Player* GetPlayer();
 
 	void Destroy(int x, int y, int id, int direction);
 

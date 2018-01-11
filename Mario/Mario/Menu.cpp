@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "Game.h"
 
 Menu::Menu()
 {
@@ -13,11 +14,11 @@ void Menu::Update()
 {
 }
 
-void Menu::Draw(sf::RenderWindow & window)
+void Menu::Draw(sf::RenderWindow& window)
 {
 	for (int i = 0; i < menuOption.size(); i++)
 	{
-
+		Game::GetText()->Draw(window, menuOption[i]->GetText(), menuOption[i]->GetX(), menuOption[i]->GetY());
 	}
 }
 

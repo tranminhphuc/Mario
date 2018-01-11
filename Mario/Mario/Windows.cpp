@@ -6,6 +6,7 @@ bool Window::keyA = false;
 bool Window::keyD = false;
 bool Window::keyS = false;
 bool Window::keyW = false;
+bool Window::keyShift = false;
 
 Window::Window(unsigned int width, unsigned int heigth, string name)
 {
@@ -66,4 +67,86 @@ void Window::Draw()
 Map* Window::getMap()
 {
 	return map;
+}
+
+void Window::Input()
+{
+
+}
+
+void Window::InputPlayer()
+{
+	if (event.type == sf::Event::KeyPressed)
+	{
+		if (event.key.code == Game::keyD)
+		{
+			keyD = true;
+		}
+
+		if (event.key.code == Game::keyS)
+		{
+			keyS = true;
+
+			if (!map->GetUnderWater())
+				map->GetPlayer()->SetSquat(true);
+		}
+
+		if (event.key.code == Game::keyA)
+		{
+			keyA = true;
+		}
+
+		if (event.key.code == Game::keySpace)
+		{
+			if (!Game::keySpace)
+			{
+				//map->GetPlayer()->j
+			}
+		}
+
+		if (event.key.code == Game::keyShift)
+		{
+			if (!keyShift)
+			{
+				map->GetPlayer()->StartMove();
+				keyShift = true;
+			}
+		}
+	}
+
+	if (event.type == sf::Event::KeyReleased)
+	{
+		if (event.key.code == Game::keyD)
+		{
+			keyD = false;
+		}
+
+		if (event.key.code == Game::keyS)
+		{
+			keyS = false;
+		}
+
+		if (event.key.code == Game::keyA)
+		{
+			keyA = false;
+		}
+
+		if (event.key.code == Game::keySpace)
+		{
+			Game::keySpace = false;
+		}
+
+		if (event.key.code == Game::keyShift)
+		{
+			if (keyShift)
+			{
+				map->GetPlayer()->ResetMove();
+				keyShift = false;
+			}
+		}
+	}
+}
+
+void Window::InputMenu()
+{
 }
