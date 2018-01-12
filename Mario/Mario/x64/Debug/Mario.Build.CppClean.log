@@ -1,6 +1,5 @@
 e:\mario\mario\mario\x64\debug\vc141.pdb
 e:\mario\mario\mario\x64\debug\vc141.idb
-e:\mario\mario\mario\x64\debug\eventgame.obj
 e:\mario\mario\mario\x64\debug\game.obj
 e:\mario\mario\mario\x64\debug\loadingmenu.obj
 e:\mario\mario\mario\x64\debug\main.obj
@@ -16,11 +15,13 @@ e:\mario\mario\mario\x64\debug\optionmenu.obj
 e:\mario\mario\mario\x64\debug\pausemenu.obj
 e:\mario\mario\mario\x64\debug\pipe.obj
 e:\mario\mario\mario\x64\debug\player.obj
+e:\mario\mario\mario\x64\debug\star.obj
 e:\mario\mario\mario\x64\debug\textures.obj
 e:\mario\mario\mario\x64\debug\tileset.obj
 e:\mario\mario\mario\x64\debug\txt.obj
 e:\mario\mario\mario\x64\debug\windows.obj
 e:\mario\mario\mario\x64\debug\animation.obj
+e:\mario\mario\mario\x64\debug\eventgame.obj
 e:\mario\mario\x64\debug\mario.ilk
 e:\mario\mario\x64\debug\mario.exe
 e:\mario\mario\x64\debug\mario.pdb

@@ -2,6 +2,7 @@
   Txt.cpp
   TileSet.cpp
   Textures.cpp
+  Star.cpp
   Player.cpp
   Pipe.cpp
   PauseMenu.cpp
@@ -17,9 +18,9 @@
   main.cpp
   LoadingMenu.cpp
   Game.cpp
-  EventGame.cpp
   Generating Code...
   Compiling...
+  EventGame.cpp
   Animation.cpp
   Generating Code...
   Mario.vcxproj -> E:\Mario\Mario\x64\Debug\Mario.exe

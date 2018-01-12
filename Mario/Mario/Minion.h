@@ -18,7 +18,7 @@ public:
 
 	int minionState;
 
-	float x, y;
+	float xMinion, yMinion;
 	int width, height;
 
 	bool moveDirection;
@@ -35,6 +35,8 @@ public:
 	bool minionSpawned;
 	bool onAnotherMinion;
 
+	bool collisionOnlyWithPlayer;
+
 	Minion();
 	~Minion();
 
@@ -49,6 +51,14 @@ public:
 
 	virtual void CollisionEffect();
 	virtual void MinionDeathAnimation();
+
+	virtual void CollisionWithPlayer();
+	virtual void CollisionWithAnotherMinion();
+
+	virtual void LockMinion();
+
+	virtual void SetMinionState(int minionState);
+	virtual void GetPowerUp();
 
 	void PhysicsState1();
 	void PhysicsState2();

@@ -14,46 +14,21 @@ Minion::Minion()
 	jumpDistance = 0;
 	currentJumpDistance = 0;
 
+	jumpState = TrenMatDat;
+	currentFallingSpeed = 2.2f;
+
+	deadTime = -1;
+
 	minionSpawned = false;
+	onAnotherMinion = false;
+	collisionOnlyWithPlayer = false;
 }
 
 Minion::~Minion()
 {
 }
 
-bool Minion::CheckCollisionLB(int distanceX, int distanceY)
-{
-	return Window::getMap()->CheckObject((int)(x - Window::getMap()->GetX() + distanceX), (int)(y + height + distanceY));
-}
-
-bool Minion::CheckCollisionLT(int distanceX, int distanceY)
-{
-	return Window::getMap()->CheckObject((int)(x - Window::getMap()->GetX() + distanceX), (int)(y + distanceY));
-}
-
-bool Minion::CheckCollisionRB(int distanceX, int distanceY)
-{
-	return Window::getMap()->CheckObject((int)(x - Window::getMap()->GetX() + width + distanceX), (int)(y + height + distanceY));
-}
-
-bool Minion::CheckCollisionRT(int distanceX, int distanceY)
-{
-	return Window::getMap()->CheckObject((int)(x - Window::getMap()->GetX() + width + distanceX), (int)(y + distanceY));
-}
-
-bool Minion::CheckCollisionLC(int distance)
-{
-	return Window::getMap()->CheckObject((int)(x - Window::getMap()->GetX() + width + distance), (int)(y + (width / 2)));
-}
-
-bool Minion::CheckCollisionRC(int distance)
-{
-	return Window::getMap()->CheckObject((int)(x - Window::getMap()->GetX() + distance), (int)(y + (width / 2)));
-}
-
-void Minion::Update()
-{
-}
+void Minion::Update() { }
 
 void Minion::Draw()
 {
@@ -69,22 +44,22 @@ void Minion::MoveX()
 		}
 		else
 		{
-			x -= (float)(jumpState == TrenMatDat ? moveSpeed : moveSpeed / 2);
+			xMinion -= (float)(jumpState == TrenMatDat ? moveSpeed : moveSpeed / 2);
 		}
 	}
 	else
 	{
-		if (CheckCollisionRB(moveSpeed, 2) || CheckCollisionRT(moveSpeed, 2))
+		if (CheckCollisionRB(moveSpeed, -2) || CheckCollisionRT(moveSpeed, 2))
 		{
 			moveDirection = !moveDirection;
 		}
 		else
 		{
-			x += (float)(jumpState == TrenMatDat ? moveSpeed : moveSpeed / 2);
+			xMinion += (float)(jumpState == TrenMatDat ? moveSpeed : moveSpeed / 2);
 		}
 	}
 
-	if (x < -width)
+	if (xMinion < -width)
 	{
 		minionState = -1;
 	}
@@ -96,7 +71,7 @@ void Minion::MoveY(int distance)
 	{
 		if (!CheckCollisionLB(2, distance) && !CheckCollisionRB(-2, distance))
 		{
-			y += distance;
+			yMinion += distance;
 		}
 		else
 		{
@@ -110,7 +85,7 @@ void Minion::MoveY(int distance)
 	{
 		if (CheckCollisionLT(2, distance) && !CheckCollisionRT(-2, distance))
 		{
-			y += distance;
+			yMinion += distance;
 		}
 		else
 		{
@@ -121,13 +96,18 @@ void Minion::MoveY(int distance)
 		}
 	}
 
-	if ((int)y % 2 == 1)
-		y += 1;
+	if ((int)yMinion % 2 == 1)
+		yMinion += 1;
 }
 
 bool Minion::UpdateMinion()
 {
-	return false;
+	if (!minionSpawned)
+		Spawn();
+	else
+		MinionPhysics();
+
+	return minionSpawned;
 }
 
 void Minion::MinionPhysics()
@@ -138,7 +118,7 @@ void Minion::MinionPhysics()
 	}
 	else
 	{
-		if (!CheckCollisionLB(2, 2) && CheckCollisionRB(-2, 2))
+		if (!CheckCollisionLB(2, 2) && !CheckCollisionRB(-2, 2) && !onAnotherMinion)
 		{
 			PhysicsState2();
 		}
@@ -152,19 +132,42 @@ void Minion::MinionPhysics()
 
 void Minion::CollisionEffect()
 {
-
+	if (minionSpawned)
+		moveDirection = !moveDirection;
 }
 
 void Minion::MinionDeathAnimation()
 {
-	x += (moveDirection ? -1.5f : 1.5f);
-	y += 2 * (deadTime > 8 ? -1 : deadTime > 2 ? 1 : 4.25f);
+	xMinion += (moveDirection ? -1.5f : 1.5f);
+	yMinion += 2 * (deadTime > 8 ? -1 : deadTime > 2 ? 1 : 4.25f);
 
 	if (deadTime > 0)
 		deadTime--;
 
-	if (y > Game::gameHeight)
+	if (yMinion > Game::gameHeight)
 		minionState = -1;
+}
+
+void Minion::CollisionWithPlayer() { }
+
+void Minion::CollisionWithAnotherMinion() { }
+
+void Minion::LockMinion() { }
+
+void Minion::SetMinionState(int minionState)
+{
+	this->minionState = minionState;
+
+	if (minionState == -2)
+	{
+		deadTime = 16;
+		yMinion -= (float)height / 4;
+		collisionOnlyWithPlayer = true;
+	}
+}
+
+void Minion::GetPowerUp()
+{
 }
 
 void Minion::PhysicsState1()
@@ -194,7 +197,7 @@ void Minion::PhysicsState2()
 
 	jumpState = NhayXuong;
 
-	if (y > Game::gameHeight)
+	if (yMinion > Game::gameHeight)
 	{
 		minionState = -1;
 	}
@@ -216,7 +219,7 @@ void Minion::ResetJump()
 
 void Minion::Spawn()
 {
-	if (x >= -Window::getMap()->GetX() && -Window::getMap()->GetX() + Game::gameWidth || x + width >= -Window::getMap()->GetX() && x + width <= -Window::getMap()->GetX() + Game::gameWidth)
+	if (xMinion >= -Window::getMap()->GetX() && -Window::getMap()->GetX() + Game::gameWidth || xMinion + width >= -Window::getMap()->GetX() && xMinion + width <= -Window::getMap()->GetX() + Game::gameWidth)
 	{
 		minionSpawned = true;
 	}
@@ -224,20 +227,51 @@ void Minion::Spawn()
 
 float Minion::GetX()
 {
-	return x;
+	return xMinion;
 }
 
 float Minion::GetY()
 {
-	return y;
+	return yMinion;
 }
 
 void Minion::SetY(float y)
 {
-	this->y = y;
+	this->yMinion = y;
 }
 
 int Minion::GetMinionState()
 {
 	return minionState;
 }
+
+bool Minion::CheckCollisionLB(int distanceX, int distanceY)
+{
+	return Window::getMap()->CheckObject((int)(xMinion - Window::getMap()->GetX() + distanceX), (int)(yMinion + height + distanceY));
+}
+
+bool Minion::CheckCollisionLT(int distanceX, int distanceY)
+{
+	return Window::getMap()->CheckObject((int)(xMinion - Window::getMap()->GetX() + distanceX), (int)(yMinion + distanceY));
+}
+
+bool Minion::CheckCollisionRB(int distanceX, int distanceY)
+{
+	return Window::getMap()->CheckObject((int)(xMinion - Window::getMap()->GetX() + width + distanceX), (int)(yMinion + height + distanceY));
+}
+
+bool Minion::CheckCollisionRT(int distanceX, int distanceY)
+{
+	return Window::getMap()->CheckObject((int)(xMinion - Window::getMap()->GetX() + width + distanceX), (int)(yMinion + distanceY));
+}
+
+bool Minion::CheckCollisionLC(int distance)
+{
+	return Window::getMap()->CheckObject((int)(xMinion - Window::getMap()->GetX() + width + distance), (int)(yMinion + (width / 2)));
+}
+
+bool Minion::CheckCollisionRC(int distance)
+{
+	return Window::getMap()->CheckObject((int)(xMinion - Window::getMap()->GetX() + distance), (int)(yMinion + (width / 2)));
+}
+

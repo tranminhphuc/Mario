@@ -138,6 +138,7 @@
     <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="Pipe.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Star.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="TileSet.cpp" />
     <ClCompile Include="Txt.cpp" />
@@ -161,6 +162,7 @@
     <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="Pipe.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Star.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="TileSet.h" />
     <ClInclude Include="Txt.h" />

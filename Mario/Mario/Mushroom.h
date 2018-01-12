@@ -8,11 +8,22 @@
 class Mushroom : public Minion
 {
 private:
-	int x, y;
+	float x, y;
 	bool powerUp;
+	bool inSpawnState;
+	int inSpawnY;
 public:
-	Mushroom();
+	Mushroom(float xMinion, float yMinion, bool powerUp, float x, float y);
 	~Mushroom();
+
+	void Update();
+	bool UpdateMinion();
+
+	void Draw();
+
+	void CollisionWithPlayer();
+
+	void SetMinionState(int minionState);
 };
 
 #endif
