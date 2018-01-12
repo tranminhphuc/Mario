@@ -22,7 +22,7 @@ void MenuManager::Update(unsigned int time)
 {
 	switch (currentGameState)
 	{
-	case MainMenuGame:
+	case MenuGame:
 		mainMenu->Update();
 		Window::getMap()->UpdateBlock(time);
 		break;
@@ -45,7 +45,7 @@ void MenuManager::Draw(sf::RenderWindow& window)
 {
 	switch (currentGameState)
 	{
-	case MainMenuGame:
+	case MenuGame:
 		Window::getMap()->Draw(window);
 		mainMenu->Draw(window);
 		break;
@@ -62,7 +62,7 @@ void MenuManager::SetBackGroundColor(sf::RenderWindow & window)
 {
 	switch (currentGameState)
 	{
-	case MainMenuGame:
+	case MenuGame:
 		Window::getMap()->SetBackGroundColor(window);
 		break;
 	case GameLoading:
@@ -78,7 +78,7 @@ void MenuManager::Enter()
 {
 	switch (currentGameState)
 	{
-	case MainMenuGame:
+	case MenuGame:
 		mainMenu->Enter();
 		break;
 	case GamePlay:
@@ -96,7 +96,7 @@ void MenuManager::Escape()
 {
 	switch (currentGameState)
 	{
-	case MainMenuGame:
+	case MenuGame:
 		mainMenu->Escape();
 		break;
 	case GamePlay:
@@ -126,7 +126,7 @@ void MenuManager::keyPressed(int id)
 {
 	switch (currentGameState)
 	{
-	case MainMenuGame:
+	case MenuGame:
 		mainMenu->UpdateActiveButton(id);
 		break;
 	case GameOption:
@@ -144,7 +144,7 @@ void MenuManager::ResetActiveOption(GameState id)
 {
 	switch (id)
 	{
-	case MainMenuGame:
+	case MenuGame:
 		mainMenu->activeMenuOption = 0;
 		break;
 	case GameOption:

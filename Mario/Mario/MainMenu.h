@@ -11,7 +11,7 @@ private:
 	bool selectWorld;
 	int activeWorldID, activeSecondWorldID;
 
-	sf::RectangleShape selectWorldLabel;
+	sf::IntRect selectWorldLabel;
 public:
 	MainMenu();
 	~MainMenu();

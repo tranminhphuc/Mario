@@ -10,8 +10,10 @@ MainMenu::MainMenu()
 	selectWorld = false;
 	activeWorldID = activeSecondWorldID = 0;
 
-	selectWorldLabel.setPosition(122, 280);
-	selectWorldLabel.setSize(sf::Vector2f(307, 72));
+	selectWorldLabel.left = 122;
+	selectWorldLabel.top = 280;
+	selectWorldLabel.width = 306;
+	selectWorldLabel.height = 72;
 }
 
 MainMenu::~MainMenu()

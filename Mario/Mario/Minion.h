@@ -7,20 +7,34 @@
 
 class Minion
 {
-private:
+public:
+	enum State
+	{
+		TrenMatDat,
+		NhayLen,
+		NhayXuong
+	};
+	State jumpState;
+
+	int minionState;
+
 	float x, y;
 	int width, height;
 
 	bool moveDirection;
 	int moveSpeed;
 
-	bool CheckCollisionLB(int distanceX, int distanceY);
-	bool CheckCollisionLT(int distanceX, int distanceY);
-	bool CheckCollisionRB(int distanceX, int distanceY);
-	bool CheckCollisionRT(int distanceX, int distanceY);
-	bool CheckCollisionLC(int distance);
-	bool CheckCollisionRC(int distance);
-public:
+	float startJumpSpeed;
+	float currentJumpSpeed;
+	float jumpDistance;
+	float currentJumpDistance;
+	float currentFallingSpeed;
+
+	int deadTime;
+
+	bool minionSpawned;
+	bool onAnotherMinion;
+
 	Minion();
 	~Minion();
 
@@ -28,10 +42,34 @@ public:
 	virtual void Draw();
 
 	virtual void MoveX();
-	virtual void moveY();
+	virtual void MoveY(int distance);
 
 	virtual bool UpdateMinion();
 	virtual void MinionPhysics();
+
+	virtual void CollisionEffect();
+	virtual void MinionDeathAnimation();
+
+	void PhysicsState1();
+	void PhysicsState2();
+
+	void StartJump(int distance);
+	void ResetJump();
+
+	void Spawn();
+
+	float GetX();
+	float GetY();
+	void SetY(float y);
+
+	int GetMinionState();
+
+	bool CheckCollisionLB(int distanceX, int distanceY);
+	bool CheckCollisionLT(int distanceX, int distanceY);
+	bool CheckCollisionRB(int distanceX, int distanceY);
+	bool CheckCollisionRT(int distanceX, int distanceY);
+	bool CheckCollisionLC(int distance);
+	bool CheckCollisionRC(int distance);
 };
 
 #endif

@@ -19,13 +19,12 @@ private:
 
 	enum GameState
 	{
-		MainMenuGame,
+		MenuGame,
 		GamePlay,
 		GameLoading,
 		GameOption,
 		Pause
 	};
-
 	GameState currentGameState;
 public:
 	MenuManager();
