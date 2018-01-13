@@ -14,10 +14,7 @@ Map::Map()
 	LoadLevel();
 }
 
-Map::~Map()
-{
-
-}
+Map::~Map() { }
 
 void Map::Update()
 {
@@ -54,7 +51,7 @@ void Map::DrawMap(sf::RenderWindow & window)
 		{
 			if (tile[i][j]->GetID() != 0)
 			{
-				listBlock[tile[i][j]->GetID()]->Draw(window, (float)(32 * i + xMap), (float)(j * 32));
+				listBlock[tile[i][j]->GetID()]->Draw(window, sf::Vector2f(32.0f * i + xMap, j * 32.0f));
 			}
 		}
 	}
@@ -142,7 +139,15 @@ int Map::GetHeight()
 
 bool Map::CheckObject(int x, int y)
 {
-	return listBlock[tile[x][y]->GetID()]->GetCollision();
+	if (x <= 0 || x >= Game::gameWidth || y <= 0 || y >= Game::gameHeight)
+	{
+		return false;
+	}
+	else
+	{
+		TileSet* tileset = GetTile(x, y);
+		return listBlock[tileset->GetID()]->GetCollision();
+	}
 }
 
 int Map::GetMapType()
@@ -3669,13 +3674,9 @@ void Map::DrawCastleBig(int x, int y)
 	for (int i = 0; i < 9; i++)
 	{
 		if (i < 2 || i > 6)
-		{
 			SetTileID(x + i, y - 5, mapType == DiaNguc ? 93 : 86);
-		}
 		else
-		{
 			SetTileID(x + i, y - 5, mapType == DiaNguc ? 92 : 85);
-		}
 	}
 
 	for (int i = 0; i < 2; i++)

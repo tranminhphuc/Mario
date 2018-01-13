@@ -33,9 +33,7 @@ void Animation::Update(unsigned int time)
 		currentFrame++;
 
 		if (currentFrame >= EndFrame)
-		{
 			currentFrame = 0;
-		}
 	}
 }
 

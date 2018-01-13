@@ -16,7 +16,6 @@ public:
 	Object(Animation* animation, bool collision, bool canDestroy, bool visible);
 	~Object();
 	void Draw(sf::RenderWindow& window, sf::Vector2f position);
-	void Draw(sf::RenderWindow& window, float x, float y);
 	Animation* GetAnimation();
 	bool GetCollision();
 	bool GetCanDestroy();

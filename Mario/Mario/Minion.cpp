@@ -24,9 +24,7 @@ Minion::Minion()
 	collisionOnlyWithPlayer = false;
 }
 
-Minion::~Minion()
-{
-}
+Minion::~Minion() { }
 
 void Minion::Update() { }
 
@@ -39,30 +37,20 @@ void Minion::MoveX()
 	if (moveDirection)
 	{
 		if (CheckCollisionLB(-moveSpeed, -2) || CheckCollisionLT(-moveSpeed, 2))
-		{
 			moveDirection = !moveDirection;
-		}
 		else
-		{
 			xMinion -= (float)(jumpState == TrenMatDat ? moveSpeed : moveSpeed / 2);
-		}
 	}
 	else
 	{
 		if (CheckCollisionRB(moveSpeed, -2) || CheckCollisionRT(moveSpeed, 2))
-		{
 			moveDirection = !moveDirection;
-		}
 		else
-		{
 			xMinion += (float)(jumpState == TrenMatDat ? moveSpeed : moveSpeed / 2);
-		}
 	}
 
 	if (xMinion < -width)
-	{
 		minionState = -1;
-	}
 }
 
 void Minion::MoveY(int distance)
@@ -83,7 +71,7 @@ void Minion::MoveY(int distance)
 	}
 	else if(distance < 0)
 	{
-		if (CheckCollisionLT(2, distance) && !CheckCollisionRT(-2, distance))
+		if (!CheckCollisionLT(2, distance) && !CheckCollisionRT(-2, distance))
 		{
 			yMinion += distance;
 		}
@@ -166,8 +154,9 @@ void Minion::SetMinionState(int minionState)
 	}
 }
 
-void Minion::GetPowerUp()
+bool Minion::GetPowerUp()
 {
+	return true;
 }
 
 void Minion::PhysicsState1()
@@ -181,13 +170,12 @@ void Minion::PhysicsState1()
 		currentJumpSpeed = 2.5f;
 
 	if (jumpDistance <= currentJumpDistance)
-	{
 		jumpState = NhayXuong;
-	}
 }
 
 void Minion::PhysicsState2()
 {
+	jumpState = NhayXuong;
 	currentFallingSpeed *= 1.06f;
 
 	if (currentFallingSpeed > startJumpSpeed)
@@ -195,19 +183,15 @@ void Minion::PhysicsState2()
 
 	MoveY((int)currentFallingSpeed);
 
-	jumpState = NhayXuong;
-
 	if (yMinion > Game::gameHeight)
-	{
 		minionState = -1;
-	}
 }
 
 void Minion::StartJump(int distance)
 {
 	jumpState = NhayLen;
 	currentJumpSpeed = startJumpSpeed;
-	jumpDistance *= 32 * distance * 16.0f;
+	jumpDistance *= 32 * distance + 16.0f;
 	currentJumpDistance = 0;
 }
 
@@ -220,9 +204,7 @@ void Minion::ResetJump()
 void Minion::Spawn()
 {
 	if (xMinion >= -Window::getMap()->GetX() && -Window::getMap()->GetX() + Game::gameWidth || xMinion + width >= -Window::getMap()->GetX() && xMinion + width <= -Window::getMap()->GetX() + Game::gameWidth)
-	{
 		minionSpawned = true;
-	}
 }
 
 float Minion::GetX()

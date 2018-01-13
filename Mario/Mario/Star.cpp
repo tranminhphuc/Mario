@@ -91,7 +91,7 @@ void Star::MinionPhysics()
 	else
 	{
 		if (!CheckCollisionLB(2, 2) && !CheckCollisionRB(-2, 2))
-			Minion::PhysicsState2();
+			PhysicsState2();
 		else
 			jumpState = TrenMatDat;
 	}

@@ -58,7 +58,7 @@ public:
 	virtual void LockMinion();
 
 	virtual void SetMinionState(int minionState);
-	virtual void GetPowerUp();
+	virtual bool GetPowerUp();
 
 	void PhysicsState1();
 	void PhysicsState2();
