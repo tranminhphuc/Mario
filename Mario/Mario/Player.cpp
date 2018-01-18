@@ -155,6 +155,34 @@ void Player::StopMove()
 	squat = false;
 }
 
+void Player::Jump()
+{
+	if (Window::getMap()->GetUnderWater())
+	{
+		StartJump(1);
+	}
+	else if (jumpState == TrenMatDat)
+	{
+		StartJump(4);
+	}
+}
+
+void Player::StartJump(int distance)
+{
+	currentJumpSpeed = jumpSpeed;
+	jumpDistance = 32.0f * distance + 24;
+	currentJumpDistance = 0;
+	jumpState = NhayLen;
+}
+
+void Player::ResetJump()
+{
+	jumpState = TrenMatDat;
+	jumpDistance = 0;
+	currentJumpDistance = 0;
+	currentFallingSpeed = 2.7f;
+}
+
 void Player::ResetLevel()
 {
 	level = 0;
@@ -228,6 +256,16 @@ bool Player::GetSquat()
 void Player::SetSquat(bool squat)
 {
 	this->squat = squat;
+}
+
+bool Player::GetStarEffect()
+{
+	return starEffect;
+}
+
+void Player::SetStarEffect(bool startEffect)
+{
+	this->starEffect = startEffect;
 }
 
 int Player::GetScore()

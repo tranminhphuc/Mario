@@ -124,6 +124,8 @@
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="EventGame.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Goombas.cpp" />
+    <ClCompile Include="Koopa.cpp" />
     <ClCompile Include="LoadingMenu.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -148,6 +150,8 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="EventGame.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Goombas.h" />
+    <ClInclude Include="Koopa.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="LoadingMenu.h" />
     <ClInclude Include="MainMenu.h" />

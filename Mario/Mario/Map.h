@@ -6,12 +6,16 @@
 #include "Object.h"
 #include "TileSet.h"
 #include "Player.h"
+#include "Goombas.h"
 
 class Map
 {
 private:
 	vector<Object*> listBlock;
 	vector<vector<TileSet*>> tile;
+
+	vector<Object*> listMinion;
+	vector<vector<Minion*>> minion;
 
 	enum MapType
 	{
@@ -77,13 +81,18 @@ private:
 	bool underWater;
 	bool moveMap;
 
-	void LoadImage(string image, bool collision = true, bool canDestroy = true, bool visible = true);
-	void LoadImage(string image1, string image2, string image3, string image4, bool collision = true, bool canDestroy = true, bool visible = true);
-	void LoadImage(string image1, string image2, string image3, bool collision = true, bool canDestroy = true, bool visible = true);
+	void LoadImage(string image, bool collision, bool canDestroy, bool visible);
+	void LoadImage(string image1, string image2, string image3, string image4, bool collision, bool canDestroy, bool visible);
+	void LoadImage(string image1, string image2, string image3, bool collision, bool canDestroy, bool visible);
+
+	void LoadImage(string image, int delay, bool collision, bool canDestroy);
+	void LoadImage(string image1, string image2, string image3, string image4, int delay, bool collision, bool canDestroy);
+	void LoadImage(string image1, string image2, int delay, bool collision, bool canDestroy);
 	void LoadGameData();
 	void LoadLevel();
 	void CreateMap();
 	void ClearMap();
+	void ClearMinion();
 	void SetTileID(int x, int y, int id);
 
 	void LoadLevel_1_1();
@@ -119,6 +128,41 @@ private:
 	void LoadLevel_8_3();
 	void LoadLevel_8_4();
 
+	void LoadMinionLevel_1_1();
+	void LoadMinionLevel_1_2();
+	void LoadMinionLevel_1_3();
+	void LoadMinionLevel_1_4();
+	void LoadMinionLevel_2_1();
+	void LoadMinionLevel_2_2();
+	void LoadMinionLevel_2_3();
+	void LoadMinionLevel_2_4();
+	void LoadMinionLevel_3_1();
+	void LoadMinionLevel_3_2();
+	void LoadMinionLevel_3_3();
+	void LoadMinionLevel_3_4();
+	void LoadMinionLevel_4_1();
+	void LoadMinionLevel_4_2();
+	void LoadMinionLevel_4_3();
+	void LoadMinionLevel_4_4();
+	void LoadMinionLevel_5_1();
+	void LoadMinionLevel_5_2();
+	void LoadMinionLevel_5_3();
+	void LoadMinionLevel_5_4();
+	void LoadMinionLevel_6_1();
+	void LoadMinionLevel_6_2();
+	void LoadMinionLevel_6_3();
+	void LoadMinionLevel_6_4();
+	void LoadMinionLevel_7_1();
+	void LoadMinionLevel_7_2();
+	void LoadMinionLevel_7_3();
+	void LoadMinionLevel_7_4();
+	void LoadMinionLevel_8_1();
+	void LoadMinionLevel_8_2();
+	void LoadMinionLevel_8_3();
+	void LoadMinionLevel_8_4();
+
+	void AddGoombas(float x, float y, bool moveDirection);
+
 	void DrawGND(int x, int y, int width, int height);
 	void DrawGND2(int x, int y, int width, int height);
 	void DrawGND2(int x, int y, int size, bool direction);
@@ -147,6 +191,8 @@ private:
 
 	int GetStartMap();
 	int GetEndMap();
+
+	int GetListID(int x);
 public:
 	Map();
 	~Map();
@@ -158,6 +204,7 @@ public:
 
 	void Draw(sf::RenderWindow& window);
 	void DrawMap(sf::RenderWindow& window);
+	void DrawMinion(sf::RenderWindow& window);
 	void DrawGameLayout(sf::RenderWindow& window);
 
 	void MoveMap(int x);
@@ -193,6 +240,7 @@ public:
 	Player* GetPlayer();
 
 	void Destroy(int x, int y, int id, int direction);
+	void PlayerDeath();
 
 	Object* GetObject(int id);
 	TileSet* GetTile(int x, int y);

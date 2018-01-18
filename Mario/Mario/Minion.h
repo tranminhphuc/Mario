@@ -4,6 +4,7 @@
 #define _MINION
 
 #include "Library.h"
+#include "Textures.h"
 
 class Minion
 {
@@ -17,6 +18,7 @@ public:
 	State jumpState;
 
 	int minionState;
+	int id;
 
 	float xMinion, yMinion;
 	int width, height;
@@ -40,19 +42,19 @@ public:
 	Minion();
 	~Minion();
 
-	virtual void Update();
-	virtual void Draw();
+	virtual void Update(unsigned int time);
+	virtual void Draw(sf::RenderWindow& window, Texture* texture);
 
 	virtual void MoveX();
 	virtual void MoveY(int distance);
 
 	virtual bool UpdateMinion();
 	virtual void MinionPhysics();
-
+	
 	virtual void CollisionEffect();
 	virtual void MinionDeathAnimation();
 
-	virtual void CollisionWithPlayer();
+	virtual void CollisionWithPlayer(bool top);
 	virtual void CollisionWithAnotherMinion();
 
 	virtual void LockMinion();
@@ -71,6 +73,9 @@ public:
 	float GetX();
 	float GetY();
 	void SetY(float y);
+
+	int GetID();
+	void SetID(int id);
 
 	int GetMinionState();
 

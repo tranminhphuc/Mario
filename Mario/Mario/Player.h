@@ -36,9 +36,12 @@ private:
 	float currentJumpSpeed;
 	float jumpDistance;
 	float currentJumpDistance;
+	float currentFallingSpeed;
 
 	bool move;
 	bool squat;
+
+	bool starEffect;
 
 	void LoadData();
 	void MovePlayer();
@@ -65,6 +68,10 @@ public:
 	void ResetMove();
 	void StopMove();
 
+	void Jump();
+	void StartJump(int distance);
+	void ResetJump();
+
 	void ResetLevel();
 
 	int GetWidth();
@@ -87,6 +94,9 @@ public:
 
 	bool GetSquat();
 	void SetSquat(bool squat);
+
+	bool GetStarEffect();
+	void SetStarEffect(bool startEffect);
 
 	int GetScore();
 	void SetScore(int score);

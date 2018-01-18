@@ -41,6 +41,7 @@ void Map::UpdateMinion()
 void Map::Draw(sf::RenderWindow & window)
 {
 	DrawMap(window);
+	DrawMinion(window);
 }
 
 void Map::DrawMap(sf::RenderWindow & window)
@@ -55,6 +56,17 @@ void Map::DrawMap(sf::RenderWindow & window)
 			}
 		}
 	}
+}
+
+void Map::DrawMinion(sf::RenderWindow& window)
+{
+	//for (int i = 0; i < minion.size(); i++)
+	//{
+		//for (int j = 0; j < minion[i].size(); j++)
+		//{
+			//minion[i][j]->Draw(window, listMinion[minion[i][j]->GetID()]->GetAnimation()->getTexture());
+		//}
+	//}
 }
 
 void Map::DrawGameLayout(sf::RenderWindow & window)
@@ -254,6 +266,10 @@ void Map::Destroy(int x, int y, int id, int direction)
 	}
 }
 
+void Map::PlayerDeath()
+{
+}
+
 Object* Map::GetObject(int id)
 {
 	return listBlock[id];
@@ -331,6 +347,52 @@ void Map::LoadImage(string image1, string image2, string image3, bool collision,
 	name.push_back(image3);
 	time.push_back(200);
 	listBlock.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
+}
+
+void Map::LoadImage(string image, int delay, bool collision, bool canDestroy)
+{
+	vector<string> name;
+	vector<unsigned int> time;
+
+	image = "Source/images/" + image;
+
+	name.push_back(image);
+	time.push_back(delay);
+	listMinion.push_back(new Object(new Animation(name, time), collision, canDestroy, true));
+}
+
+void Map::LoadImage(string image1, string image2, string image3, string image4, int delay, bool collision, bool canDestroy)
+{
+	vector<string> name;
+	vector<unsigned int> time;
+
+	image1 = "Source/images/" + image1;
+	image2 = "Source/images/" + image2;
+	image3 = "Source/images/" + image3;
+	image4 = "Source/images/" + image4;
+
+	name.push_back(image1);
+	time.push_back(delay);
+	name.push_back(image2);
+	time.push_back(delay);
+	name.push_back(image3);
+	time.push_back(delay);
+	listMinion.push_back(new Object(new Animation(name, time), collision, canDestroy, true));
+}
+
+void Map::LoadImage(string image1, string image2, int delay, bool collision, bool canDestroy)
+{
+	vector<string> name;
+	vector<unsigned int> time;
+
+	image1 = "Source/images/" + image1;
+	image2 = "Source/images/" + image2;
+
+	name.push_back(image1);
+	time.push_back(delay);
+	name.push_back(image2);
+	time.push_back(delay);
+	listMinion.push_back(new Object(new Animation(name, time), collision, canDestroy, true));
 }
 
 void Map::LoadGameData()
@@ -603,6 +665,135 @@ void Map::LoadGameData()
 	LoadImage("b_top1.bmp", true, false, true);
 	// ----- 133 -----
 	LoadImage("platform1.bmp", false, false, true);
+
+	// ----- 0 ----
+	LoadImage("mushroom.bmp", 0, true, true);
+	// ----- 1 ----
+	LoadImage("mushroom_1up.bmp", 0, true, true);
+	// ----- 2 ----
+	LoadImage("mushroom1_1up.bmp", 0, true, true);
+	// ----- 3 ----
+	LoadImage("flower0.bmp", "flower1.bmp", "flower2.bmp", "flower3.bmp", 50, true, true);
+	// ----- 4 ----
+	LoadImage("star_0.bmp", "star_1.bmp", "star_2.bmp", "star_3.bmp", 75, true, true);
+	// ----- 5 ----
+	LoadImage("goombas_0.bmp", "goombas_1.bmp", 200, true, true);
+	// ----- 6 ----
+	LoadImage("goombas_ded.bmp", 0, true, true);
+	// ----- 7 ----
+	LoadImage("goombas1_0.bmp", "goombas1_1.bmp", 200, true, true);
+	// ----- 8 ----
+	LoadImage("goombas1_ded.bmp", 0, true, true);
+	// ----- 9 ----
+	LoadImage("goombas2_0.bmp", "goombas2_1.bmp", 200, true, true);
+	// ----- 10 ----
+	LoadImage("goombas2_ded.bmp", 0, true, true);
+	// ----- 11 ----
+	LoadImage("koopa_0.bmp", "koopa_1.bmp", 200, true, true);
+	// ----- 12 ----
+	LoadImage("koopa_2.bmp", "koopa_3.bmp", 200, true, true);
+	// ----- 13 ----
+	LoadImage("koopa_ded.bmp", 0, true, true);
+	// ----- 14 ----
+	LoadImage("koopa1_0.bmp", "koopa1_1.bmp", 200, true, true);
+	// ----- 15 ----
+	LoadImage("koopa1_2.bmp", "koopa1_3.bmp", 200, true, true);
+	// ----- 16 ----
+	LoadImage("koopa1_ded.bmp", 0, true, true);
+	// ----- 17 ----
+	LoadImage("koopa2_0.bmp", "koopa2_1.bmp", 200, true, true);
+	// ----- 18 ----
+	LoadImage("koopa2_2.bmp", "koopa2_3.bmp", 200, true, true);
+	// ----- 19 ----
+	LoadImage("koopa2_ded.bmp", 0, true, true);
+	// ----- 20 ----
+	LoadImage("plant_0.bmp", "plant_1.bmp", 125, true, true);
+	// ----- 21 ----
+	LoadImage("plant1_0.bmp", "plant1_1.bmp", 125, true, true);
+	// ----- 22 ----
+	LoadImage("bowser0.bmp", "bowser1.bmp", 285, true, true);
+	// ----- 23 ----
+	LoadImage("bowser2.bmp", "bowser3.bmp", 285, true, true);
+	// ----- 24 ----
+	LoadImage("fire_0.bmp", "fire_1.bmp", 35, true, true);
+	// ----- 25 ----
+	LoadImage("fireball_0.bmp", "fireball_1.bmp", "fireball_2.bmp", "fireball_3.bmp", 75, true, true);
+	// ----- 26 ----
+	LoadImage("toad.bmp", 0, true, true);
+	// ----- 27 ----
+	LoadImage("peach.bmp", 0, true, true);
+	// ----- 28 ----
+	LoadImage("squid0.bmp", 0, true, true);
+	// ----- 29 ----
+	LoadImage("squid1.bmp", 0, true, true);
+	// ----- 30 ----
+	LoadImage("cheep0.bmp", "cheep1.bmp", 110, true, true);
+	// ----- 31 ----
+	LoadImage("cheep2.bmp", "cheep3.bmp", 110, true, true);
+	// ----- 32 ----
+	LoadImage("upfire.bmp", 0, true, true);
+	// ----- 33 ----
+	LoadImage("vine.bmp", 0, true, true);
+	// ----- 34 ----
+	LoadImage("vine_top.bmp", 0, true, true);
+	// ----- 35 ----
+	LoadImage("vine1.bmp", 0, true, true);
+	// ----- 36 ----
+	LoadImage("vine1_top.bmp", 0, true, true);
+	// ----- 37 ----
+	LoadImage("spring_0.bmp", 0, true, true);
+	// ----- 38 ----
+	LoadImage("spring_1.bmp", 0, true, true);
+	// ----- 39 ----
+	LoadImage("spring_2.bmp", 0, true, true);
+	// ----- 40 ----
+	LoadImage("spring1_0.bmp", 0, true, true);
+	// ----- 41 ----
+	LoadImage("spring1_1.bmp", 0, true, true);
+	// ----- 42 ----
+	LoadImage("spring1_2.bmp", 0, true, true);
+	// ----- 43 ----
+	LoadImage("hammer_0.bmp", "hammer_1.bmp", "hammer_2.bmp", "hammer_3.bmp", 95, true, true);
+	// ----- 44 ----
+	LoadImage("hammer1_0.bmp", "hammer1_1.bmp", "hammer1_2.bmp", "hammer1_3.bmp", 95, true, true);
+	// ----- 45 ----
+	LoadImage("hammerbro_0.bmp", "hammerbro_1.bmp", 175, true, true);
+	// ----- 46 ----
+	LoadImage("hammerbro_2.bmp", "hammerbro_3.bmp", 155, true, true);
+	// ----- 47 ----
+	LoadImage("hammerbro1_0.bmp", "hammerbro1_1.bmp", 175, true, true);
+	// ----- 48 ----
+	LoadImage("hammerbro1_2.bmp", "hammerbro1_3.bmp", 155, true, true);
+	// ----- 49 ----
+	LoadImage("lakito_0.bmp", 0, true, true);
+	// ----- 50 ----
+	LoadImage("lakito_1.bmp", 0, true, true);
+	// ----- 51 ----
+	LoadImage("spikey0_0.bmp", "spikey0_1.bmp", 135, true, true);
+	// ----- 52 ----
+	LoadImage("spikey1_0.bmp", "spikey1_1.bmp", 75, true, true);
+	// ----- 53 ----
+	LoadImage("beetle_0.bmp", "beetle_1.bmp", 155, true, true);
+	// ----- 54 ----
+	LoadImage("beetle_2.bmp", 0, true, true);
+	// ----- 55 ----
+	LoadImage("beetle1_0.bmp", "beetle1_1.bmp", 155, true, true);
+	// ----- 56 ----
+	LoadImage("beetle1_2.bmp", 0, true, true);
+	// ----- 57 ----
+	LoadImage("beetle2_0.bmp", "beetle2_1.bmp", 155, true, true);
+	// ----- 58 ----
+	LoadImage("beetle2_2.bmp", 0, true, true);
+	// ----- 59 ----
+	LoadImage("bulletbill.bmp", 0, true, true);
+	// ----- 60 ----
+	LoadImage("bulletbill1.bmp", 0, true, true);
+	// ----- 61 ----
+	LoadImage("fireball_0.bmp", "fireball_1.bmp", "fireball_2.bmp", "fireball_3.bmp", 155, true, true);
+	// ----- 62 ----
+	LoadImage("firework0.bmp", 0, true, true);
+	// ----- 63 ----
+	LoadImage("firework1.bmp", 0, true, true);
 }
 
 void Map::LoadLevel()
@@ -738,6 +929,19 @@ void Map::ClearMap()
 	tile.clear();
 }
 
+void Map::ClearMinion()
+{
+	for (int i = 0; i < minion.size(); i++)
+	{
+		for (int j = 0; j < minion[i].size(); j++)
+		{
+			delete minion[i][j];
+		}
+		minion[i].clear();
+	}
+	minion.clear();
+}
+
 void Map::SetTileID(int x, int y, int id)
 {
 	if (x >= 0 && x <= mapWidth)
@@ -756,6 +960,8 @@ void Map::LoadLevel_1_1()
 	mapType = NgoaiTroiBanNgay;
 
 	CreateMap();
+
+	LoadMinionLevel_1_1();
 
 	DrawGND(0, 14, 69, 2);
 	DrawGND(71, 14, 15, 2);
@@ -3490,6 +3696,173 @@ void Map::LoadLevel_8_4()
 	mapType = NuiLua;
 }
 
+void Map::LoadMinionLevel_1_1()
+{
+	ClearMinion();
+
+	AddGoombas(100, 100, true);
+}
+
+void Map::LoadMinionLevel_1_2()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_1_3()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_1_4()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_2_1()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_2_2()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_2_3()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_2_4()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_3_1()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_3_2()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_3_3()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_3_4()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_4_1()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_4_2()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_4_3()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_4_4()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_5_1()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_5_2()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_5_3()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_5_4()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_6_1()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_6_2()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_6_3()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_6_4()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_7_1()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_7_2()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_7_3()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_7_4()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_8_1()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_8_2()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_8_3()
+{
+	ClearMinion();
+}
+
+void Map::LoadMinionLevel_8_4()
+{
+	ClearMinion();
+}
+
+void Map::AddGoombas(float x, float y, bool moveDirection)
+{
+	//minion[GetListID((int)x)].push_back(new Goombas(x, y, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiBanDem || mapType == NgoaiTroiBuoiTrua || mapType == NgoaiTroiNuaDem ? 5 : mapType == LongDat ? 7 : 9, moveDirection));
+}
+
 void Map::DrawGND(int x, int y, int width, int height)
 {
 	for (int i = 0; i < width; i++)
@@ -3886,4 +4259,9 @@ int Map::GetStartMap()
 int Map::GetEndMap()
 {
 	return (int)(-xMap - (-(int)xMap % 32) + 800) / 32 + 2;
+}
+
+int Map::GetListID(int x)
+{
+	return x / 160;
 }
