@@ -61,7 +61,7 @@ void Window::Update(unsigned int time)
 void Window::Draw()
 {
 	map->SetBackGroundColor(*window);
-	map->DrawMap(*window);
+	map->Draw(*window);
 }
 
 Map* Window::getMap()

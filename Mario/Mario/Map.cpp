@@ -60,13 +60,13 @@ void Map::DrawMap(sf::RenderWindow & window)
 
 void Map::DrawMinion(sf::RenderWindow& window)
 {
-	//for (int i = 0; i < minion.size(); i++)
-	//{
-		//for (int j = 0; j < minion[i].size(); j++)
-		//{
-			//minion[i][j]->Draw(window, listMinion[minion[i][j]->GetID()]->GetAnimation()->getTexture());
-		//}
-	//}
+	for (int i = 0; i < minion.size(); i++)
+	{
+		for (int j = 0; j < minion[i].size(); j++)
+		{
+			minion[i][j]->Draw(window, listMinion[minion[i][j]->GetID()]->GetAnimation()->getTexture());
+		}
+	}
 }
 
 void Map::DrawGameLayout(sf::RenderWindow & window)
@@ -903,6 +903,12 @@ void Map::LoadLevel()
 
 void Map::CreateMap()
 {
+	for (int i = 0; i < mapWidth; i += 5)
+	{
+		vector<Minion*> object;
+		minion.push_back(object);
+	}
+
 	for (int i = 0; i < mapWidth; i++)
 	{
 		vector<TileSet*> object;
@@ -939,7 +945,6 @@ void Map::ClearMinion()
 		}
 		minion[i].clear();
 	}
-	minion.clear();
 }
 
 void Map::SetTileID(int x, int y, int id)
@@ -3700,7 +3705,22 @@ void Map::LoadMinionLevel_1_1()
 {
 	ClearMinion();
 
-	AddGoombas(100, 100, true);
+	AddGoombas(22 * 32, 383, true);
+	AddGoombas(40 * 32, 383, true);
+	AddGoombas(51 * 32, 383, true);
+	AddGoombas(52 * 32 + 16, 383, true);
+	AddGoombas(80 * 32, 127, true);
+	AddGoombas(82 * 32, 127, true);
+	AddGoombas(97 * 32, 383, true);
+	AddGoombas(98 * 32 + 16, 383, true);
+	AddGoombas(114 * 32, 383, true);
+	AddGoombas(115 * 32 + 16, 383, true);
+	AddGoombas(124 * 32, 383, true);
+	AddGoombas(125 * 32 + 16, 383, true);
+	AddGoombas(128 * 32, 383, true);
+	AddGoombas(129 * 32 + 16, 383, true);
+	AddGoombas(174 * 32, 383, true);
+	AddGoombas(175 * 32 + 12, 383, true);
 }
 
 void Map::LoadMinionLevel_1_2()
@@ -3860,7 +3880,7 @@ void Map::LoadMinionLevel_8_4()
 
 void Map::AddGoombas(float x, float y, bool moveDirection)
 {
-	//minion[GetListID((int)x)].push_back(new Goombas(x, y, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiBanDem || mapType == NgoaiTroiBuoiTrua || mapType == NgoaiTroiNuaDem ? 5 : mapType == LongDat ? 7 : 9, moveDirection));
+	minion[GetListID((int)x)].push_back(new Goombas(x, y, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiBanDem || mapType == NgoaiTroiBuoiTrua || mapType == NgoaiTroiNuaDem ? 5 : mapType == LongDat ? 7 : 9, moveDirection));
 }
 
 void Map::DrawGND(int x, int y, int width, int height)

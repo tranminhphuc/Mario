@@ -1,2 +1,28 @@
-﻿  Map.cpp
+﻿  Windows.cpp
+  Txt.cpp
+  TileSet.cpp
+  Textures.cpp
+  Star.cpp
+  Player.cpp
+  Pipe.cpp
+  PauseMenu.cpp
+  OptionMenu.cpp
+  Object.cpp
+  Mushroom.cpp
+  Minion.cpp
+  MenuOption.cpp
+  MenuManager.cpp
+  Menu.cpp
+  Map.cpp
+  MainMenu.cpp
+  main.cpp
+  LoadingMenu.cpp
+  Koopa.cpp
+  Generating Code...
+  Compiling...
+  Goombas.cpp
+  Game.cpp
+  EventGame.cpp
+  Animation.cpp
+  Generating Code...
   Mario.vcxproj -> E:\Mario\Mario\x64\Debug\Mario.exe
