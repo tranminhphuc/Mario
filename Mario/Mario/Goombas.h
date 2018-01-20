@@ -8,7 +8,7 @@
 class Goombas : public Minion
 {
 public:
-	Goombas(float xMinion, float yMinion, int id, bool moveDirection);
+	Goombas(int xMinion, int yMinion, int id, bool moveDirection);
 	~Goombas();
 
 	void Update(unsigned int time);

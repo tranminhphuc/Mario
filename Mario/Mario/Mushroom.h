@@ -13,7 +13,7 @@ private:
 	bool inSpawnState;
 	int inSpawnY;
 public:
-	Mushroom(float xMinion, float yMinion, bool powerUp, float x, float y);
+	Mushroom(int xMinion, int yMinion, bool powerUp, float x, float y);
 	~Mushroom();
 
 	void Update();

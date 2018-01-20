@@ -18,7 +18,7 @@ private:
 	};
 	State jumpState;
 
-	float xPlayer, yPlayer;
+	int xPlayer, yPlayer;
 	float width, height;
 
 	unsigned int score;
@@ -54,7 +54,7 @@ private:
 	bool CheckCollisionLC(int distance);
 	bool CheckCollisionRC(int distance);
 public:
-	Player(float xPlayer, float yPlayer);
+	Player(int xPlayer, int yPlayer);
 	~Player();
 
 	void MoveX(int distance);
@@ -77,11 +77,11 @@ public:
 	int GetWidth();
 	int GetHeight();
 
-	float GetX();
-	void SetX(float xPlayer);
+	int GetX();
+	void SetX(int xPlayer);
 	
-	float GetY();
-	void SetY(float yPlayer);
+	int GetY();
+	void SetY(int yPlayer);
 
 	int GetLevel();
 	void SetLevel(int level);

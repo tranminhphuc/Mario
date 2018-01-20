@@ -7,7 +7,7 @@ Map::Map()
 
 	xMap = 0;
 	yMap = 0;
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 	level = Level_1_1;
 
 	LoadGameData();
@@ -91,10 +91,10 @@ void Map::SetBackGroundColor(sf::RenderWindow & window)
 {
 	switch (mapType)
 	{
-	case NgoaiTroiBanNgay: case NgoaiTroiBuoiTrua: case Bien: case Ho: case ThienDuong:
+	case BanNgay: case HoangHon: case Bien: case Ho: case ThienDuong:
 		window.clear(sf::Color(93, 148, 252, 255));
 		break;
-	case LongDat: case NuiLua: case NgoaiTroiBanDem: case NgoaiTroiNuaDem: case DiaNguc:
+	case LongDat: case NuiLua: case BuoiToi: case BinhMinh: case DiaNguc:
 		window.clear(sf::Color(0, 0, 0, 255));
 		break;
 	default:
@@ -119,22 +119,22 @@ void Map::ResetGameData()
 	LoadLevel();
 }
 
-float Map::GetX()
+int Map::GetX()
 {
 	return xMap;
 }
 
-void Map::SetX(float x)
+void Map::SetX(int x)
 {
 	this->xMap = x;
 }
 
-float Map::GetY()
+int Map::GetY()
 {
 	return yMap;
 }
 
-void Map::SetY(float y)
+void Map::SetY(int y)
 {
 	this->yMap = y;
 }
@@ -238,7 +238,7 @@ void Map::Destroy(int x, int y, int id, int direction)
 		case 10: case 11: case 12:
 			if (tile[x][y]->GetStar())
 			{
-				SetTileID(x, y, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiBuoiTrua || mapType == NgoaiTroiBanDem || mapType == NgoaiTroiNuaDem ? 17 : mapType == LongDat ? 19 : 20);
+				SetTileID(x, y, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh ? 17 : mapType == LongDat ? 19 : 20);
 			}
 			else if (tile[x][y]->GetMushroom())
 			{
@@ -962,7 +962,7 @@ void Map::LoadLevel_1_1()
 	mapWidth = 260;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 
 	CreateMap();
 
@@ -1046,7 +1046,7 @@ void Map::LoadLevel_1_1()
 	DrawPipeVertical(255, 12, 11);
 	DrawPipeHorizontal(253, 12, 1);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 }
 
 void Map::LoadLevel_1_2()
@@ -1140,7 +1140,7 @@ void Map::LoadLevel_1_2()
 	tile[29][8]->SetNumberOfCoin(10);
 	tile[73][8]->SetNumberOfCoin(8);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 	DrawGND(210, 14, 24, 2);
 
 	DrawPipe(222, 12, 3);
@@ -1164,7 +1164,7 @@ void Map::LoadLevel_1_2()
 
 	tile[252][9]->SetNumberOfCoin(10);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 	DrawGND(281, 14, 42, 2);
 
 	DrawGND2(286, 12, 8, true);
@@ -1186,7 +1186,7 @@ void Map::LoadLevel_1_3()
 	mapWidth = 270;
 	mapHeight = 15;
 	mapTime = 300;
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 
 	CreateMap();
 
@@ -1236,7 +1236,7 @@ void Map::LoadLevel_1_3()
 
 	tile[59][10]->SetMustroom(true);	
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 }
 
 void Map::LoadLevel_1_4()
@@ -1305,7 +1305,7 @@ void Map::LoadLevel_2_1()
 	mapWidth = 365;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 
 	CreateMap();
 
@@ -1378,7 +1378,7 @@ void Map::LoadLevel_2_1()
 	DrawPipeVertical(245, 12, 11);
 	DrawPipeHorizontal(243, 12, 1);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 	DrawBonus(270, 13, 4);
 	DrawBonus(275, 13, 57);
 	DrawBonusEnd(332);
@@ -1389,7 +1389,7 @@ void Map::LoadLevel_2_1()
 	DrawCoins(323, 4, 3, 1);
 	DrawCoins(333, 12, 3, 1);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 }
 
 void Map::LoadLevel_2_2()
@@ -1456,7 +1456,7 @@ void Map::LoadLevel_2_2()
 	DrawCoins(159, 9, 3, 1);
 	DrawCoins(159, 12, 3, 1);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 	DrawGND(220, 14, 24, 2);
 
 	DrawPipe(232, 12, 3);
@@ -1464,7 +1464,7 @@ void Map::LoadLevel_2_2()
 
 	DrawCastleSmall(220, 12);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 	DrawGND(271, 14, 42, 2);
 
 	DrawGND2(276, 12, 8, true);
@@ -1486,7 +1486,7 @@ void Map::LoadLevel_2_3()
 	mapWidth = 250;
 	mapHeight = 15;
 	mapTime = 300;
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 
 	CreateMap();
 
@@ -1560,7 +1560,7 @@ void Map::LoadLevel_2_3()
 
 	tile[102][5]->SetMustroom(true);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 }
 
 void Map::LoadLevel_2_4()
@@ -1640,7 +1640,7 @@ void Map::LoadLevel_3_1()
 	mapWidth = 375;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = NgoaiTroiBanDem;
+	mapType = BuoiToi;
 
 	CreateMap();
 
@@ -1763,7 +1763,7 @@ void Map::LoadLevel_3_1()
 	DrawCoins(341, 5, 10, 1);
 	DrawCoins(355, 11, 3, 1);
 
-	mapType = NgoaiTroiBanDem;
+	mapType = BuoiToi;
 }
 
 void Map::LoadLevel_3_2()
@@ -1773,7 +1773,7 @@ void Map::LoadLevel_3_2()
 	mapWidth = 230;
 	mapHeight = 15;
 	mapTime = 300;
-	mapType = NgoaiTroiBanDem;
+	mapType = BuoiToi;
 
 	CreateMap();
 
@@ -1812,7 +1812,7 @@ void Map::LoadLevel_3_2()
 
 	tile[77][9]->SetNumberOfCoin(10);
 
-	mapType = NgoaiTroiBanDem;
+	mapType = BuoiToi;
 }
 
 void Map::LoadLevel_3_3()
@@ -1822,7 +1822,7 @@ void Map::LoadLevel_3_3()
 	mapWidth = 180;
 	mapHeight = 15;
 	mapTime = 300;
-	mapType = NgoaiTroiNuaDem;
+	mapType = BinhMinh;
 
 	CreateMap();
 
@@ -1879,7 +1879,7 @@ void Map::LoadLevel_3_3()
 
 	tile[49][3]->SetMustroom(true);
 
-	mapType = NgoaiTroiNuaDem;
+	mapType = BinhMinh;
 }
 
 void Map::LoadLevel_3_4()
@@ -1962,7 +1962,7 @@ void Map::LoadLevel_4_1()
 	mapWidth = 325;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 
 	CreateMap();
 
@@ -2037,7 +2037,7 @@ void Map::LoadLevel_4_1()
 
 	tile[263][9]->SetMustroom(true);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 }
 
 void Map::LoadLevel_4_2()
@@ -2126,7 +2126,7 @@ void Map::LoadLevel_4_2()
 	tile[43][4]->SetNumberOfCoin(8);
 	tile[77][9]->SetNumberOfCoin(6);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 	DrawGND(240, 14, 24, 2);
 
 	DrawPipe(252, 12, 3);
@@ -2181,7 +2181,7 @@ void Map::LoadLevel_4_2()
 	DrawPipe(364, 12, 2);
 	DrawPipe(368, 12, 2);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 	DrawGND(391, 14, 42, 2);
 
 	DrawGND2(396, 12, 8, true);
@@ -2338,7 +2338,7 @@ void Map::LoadLevel_5_1()
 	mapWidth = 300;
 	mapHeight = 15;
 	mapTime = 300;
-	mapType = NgoaiTroiBuoiTrua;
+	mapType = HoangHon;
 
 	CreateMap();
 
@@ -2396,7 +2396,7 @@ void Map::LoadLevel_5_1()
 
 	tile[242][7]->SetNumberOfCoin(8);
 
-	mapType = NgoaiTroiBuoiTrua;
+	mapType = HoangHon;
 }
 
 void Map::LoadLevel_5_2()
@@ -2406,7 +2406,7 @@ void Map::LoadLevel_5_2()
 	mapWidth = 415;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = NgoaiTroiBuoiTrua;
+	mapType = HoangHon;
 
 	CreateMap();
 
@@ -2514,7 +2514,7 @@ void Map::LoadLevel_5_2()
 	DrawCoins(378, 4, 3, 1);
 	DrawCoins(394, 12, 3, 1);
 
-	mapType = NgoaiTroiBuoiTrua;
+	mapType = HoangHon;
 }
 
 void Map::LoadLevel_5_3()
@@ -2524,7 +2524,7 @@ void Map::LoadLevel_5_3()
 	mapWidth = 270;
 	mapHeight = 15;
 	mapTime = 300;
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 
 	CreateMap();
 
@@ -2575,7 +2575,7 @@ void Map::LoadLevel_5_3()
 
 	tile[59][10]->SetMustroom(true);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 }
 
 void Map::LoadLevel_5_4()
@@ -2658,7 +2658,7 @@ void Map::LoadLevel_6_1()
 	mapWidth = 210;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = NgoaiTroiNuaDem;
+	mapType = BinhMinh;
 
 	CreateMap();
 
@@ -2722,7 +2722,7 @@ void Map::LoadLevel_6_1()
 	tile[43][9]->SetNumberOfCoin(7);
 	tile[152][9]->SetNumberOfCoin(8);
 
-	mapType = NgoaiTroiNuaDem;
+	mapType = BinhMinh;
 }
 
 void Map::LoadLevel_6_2()
@@ -2732,7 +2732,7 @@ void Map::LoadLevel_6_2()
 	mapWidth = 495;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = NgoaiTroiNuaDem;
+	mapType = BinhMinh;
 
 	CreateMap();
 
@@ -2872,7 +2872,7 @@ void Map::LoadLevel_6_2()
 
 	tile[373][9]->SetMustroom(true);
 
-	mapType = NgoaiTroiNuaDem;
+	mapType = BinhMinh;
 	DrawBonus(390, 13, 4);
 	DrawBonus(395, 13, 78);
 	DrawBonus(421, 8, 1);
@@ -2894,7 +2894,7 @@ void Map::LoadLevel_6_2()
 	DrawCoins(461, 5, 10, 1);
 	DrawCoins(475, 11, 3, 1);
 
-	mapType = NgoaiTroiNuaDem;
+	mapType = BinhMinh;
 }
 
 void Map::LoadLevel_6_3()
@@ -2943,7 +2943,7 @@ void Map::LoadLevel_6_3()
 	DrawCastleBig(170, 12);
 	DrawCastleWall(179, 12, 11, 6);
 
-	mapType = NgoaiTroiBanDem;
+	mapType = BuoiToi;
 	DrawBlockQ(55, 3, 1);
 
 	DrawCoins(28, 2, 2, 1);
@@ -3030,7 +3030,7 @@ void Map::LoadLevel_7_1()
 	mapWidth = 300;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = NgoaiTroiBuoiTrua;
+	mapType = HoangHon;
 
 	CreateMap();
 
@@ -3102,7 +3102,7 @@ void Map::LoadLevel_7_1()
 	DrawPipeVertical(225, 12, 11);
 	DrawPipeHorizontal(223, 12, 1);
 
-	mapType = NgoaiTroiBuoiTrua;
+	mapType = HoangHon;
 }
 
 void Map::LoadLevel_7_2()
@@ -3167,7 +3167,7 @@ void Map::LoadLevel_7_2()
 	DrawCoins(159, 9, 3, 1);
 	DrawCoins(159, 12, 3, 1);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 	DrawGND(220, 14, 24, 2);
 
 	DrawPipe(232, 12, 3);
@@ -3175,7 +3175,7 @@ void Map::LoadLevel_7_2()
 
 	DrawCastleSmall(220, 12);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 	DrawGND(271, 14, 42, 2);
 
 	DrawGND2(276, 12, 8, true);
@@ -3197,7 +3197,7 @@ void Map::LoadLevel_7_3()
 	mapWidth = 250;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 
 	CreateMap();
 
@@ -3271,7 +3271,7 @@ void Map::LoadLevel_7_3()
 
 	tile[102][5]->SetMustroom(true);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 }
 
 void Map::LoadLevel_7_4()
@@ -3366,7 +3366,7 @@ void Map::LoadLevel_8_1()
 	mapWidth = 440;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 
 	CreateMap();
 
@@ -3462,7 +3462,7 @@ void Map::LoadLevel_8_1()
 
 	tile[422][9]->SetNumberOfCoin(10);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 }
 
 void Map::LoadLevel_8_2()
@@ -3472,7 +3472,7 @@ void Map::LoadLevel_8_2()
 	mapWidth = 400;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 
 	CreateMap();
 
@@ -3560,7 +3560,7 @@ void Map::LoadLevel_8_2()
 
 	tile[254][7]->SetNumberOfCoin(8);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 }
 
 void Map::LoadLevel_8_3()
@@ -3570,7 +3570,7 @@ void Map::LoadLevel_8_3()
 	mapWidth = 240;
 	mapHeight = 15;
 	mapTime = 300;
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 
 	CreateMap();
 
@@ -3621,7 +3621,7 @@ void Map::LoadLevel_8_3()
 	tile[66][5]->SetMustroom(true);
 	tile[116][5]->SetMustroom(true);
 
-	mapType = NgoaiTroiBanNgay;
+	mapType = BanNgay;
 }
 
 void Map::LoadLevel_8_4()
@@ -3726,11 +3726,30 @@ void Map::LoadMinionLevel_1_1()
 void Map::LoadMinionLevel_1_2()
 {
 	ClearMinion();
+
+	AddGoombas(16 * 32, 368, true);
+	AddGoombas(17 * 32 + 8, 336, true);
+	AddGoombas(29 * 32, 368, true);
+	AddGoombas(62 * 32, 368, true);
+	AddGoombas(64 * 32, 368, true);
+	AddGoombas(73 * 32, 368 - 8 * 32, true);
+	AddGoombas(76 * 32, 368 - 4 * 32, true);
+	AddGoombas(77 * 32 + 16, 368 - 4 * 32, true);
+	AddGoombas(99 * 32, 368, true);
+	AddGoombas(100 * 32 + 16, 368, true);
+	AddGoombas(102 * 32, 368, true);
+	AddGoombas(113 * 32, 368, true);
+	AddGoombas(135 * 32, 368 - 3 * 32, true);
+	AddGoombas(136 * 32 + 16, 368 - 4 * 32, true);
 }
 
 void Map::LoadMinionLevel_1_3()
 {
 	ClearMinion();
+
+	AddGoombas(44 * 32, Game::gameHeight - 16 - 11 * 32, true);
+	AddGoombas(46 * 32, Game::gameHeight - 16 - 11 * 32, true);
+	AddGoombas(80 * 32, Game::gameHeight - 16 - 9 * 32, true);
 }
 
 void Map::LoadMinionLevel_1_4()
@@ -3741,6 +3760,23 @@ void Map::LoadMinionLevel_1_4()
 void Map::LoadMinionLevel_2_1()
 {
 	ClearMinion();
+
+	AddGoombas(24 * 32, Game::gameHeight - 16 - 7 * 32, true);
+	AddGoombas(42 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(43 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(59 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(60 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(68 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(69 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(71 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(87 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(88 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(90 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(102 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(114 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(120 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(162 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(163 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
 }
 
 void Map::LoadMinionLevel_2_2()
@@ -3761,16 +3797,49 @@ void Map::LoadMinionLevel_2_4()
 void Map::LoadMinionLevel_3_1()
 {
 	ClearMinion();
+
+	AddGoombas(37 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(53 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(54 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(56 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(82 * 32, Game::gameHeight - 16 - 6 * 32, true);
+	AddGoombas(83 * 32 + 16, Game::gameHeight - 16 - 6 * 32, true);
+	AddGoombas(85 * 32, Game::gameHeight - 16 - 6 * 32, true);
+	AddGoombas(94 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(95 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(139 * 32 - 4, Game::gameHeight - 16 - 6 * 32, true);
+	AddGoombas(140 * 32, Game::gameHeight - 16 - 7 * 32, true);
+	AddGoombas(154 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(155 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(157 * 32, Game::gameHeight - 16 - 2 * 32, true);
 }
 
 void Map::LoadMinionLevel_3_2()
 {
 	ClearMinion();
+
+	AddGoombas(24 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(25 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(27 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(71 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(72 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(74 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(119 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(120 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(122 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(179 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(180 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(182 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(188 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(189 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(191 * 32, Game::gameHeight - 16 - 2 * 32, true);
 }
 
 void Map::LoadMinionLevel_3_3()
 {
 	ClearMinion();
+
+	AddGoombas(26 * 32, Game::gameHeight - 16 - 8 * 32, true);
 }
 
 void Map::LoadMinionLevel_3_4()
@@ -3786,6 +3855,10 @@ void Map::LoadMinionLevel_4_1()
 void Map::LoadMinionLevel_4_2()
 {
 	ClearMinion();
+
+	AddGoombas(43 * 32, Game::gameHeight - 16 - 6 * 32, true);
+	AddGoombas(44 * 32 + 16, Game::gameHeight - 16 - 6 * 32, true);
+	AddGoombas(46 * 32, Game::gameHeight - 16 - 6 * 32, true);
 }
 
 void Map::LoadMinionLevel_4_3()
@@ -3801,16 +3874,46 @@ void Map::LoadMinionLevel_4_4()
 void Map::LoadMinionLevel_5_1()
 {
 	ClearMinion();
+
+	AddGoombas(19 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(20 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(22 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(30 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(31 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(33 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(65 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(66 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(68 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(76 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(77 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(103 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(104 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(106 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(121 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(122 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(124 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(135 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(136 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(138 * 32, Game::gameHeight - 16 - 2 * 32, true);
 }
 
 void Map::LoadMinionLevel_5_2()
 {
 	ClearMinion();
+
+	AddGoombas(143 * 32, Game::gameHeight - 16 - 4 * 32, true);
+	AddGoombas(145 * 32, Game::gameHeight - 16 - 6 * 32, true);
+	AddGoombas(235 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(236 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
 }
 
 void Map::LoadMinionLevel_5_3()
 {
 	ClearMinion();
+
+	AddGoombas(44 * 32, Game::gameHeight - 16 - 11 * 32, true);
+	AddGoombas(46 * 32, Game::gameHeight - 16 - 11 * 32, true);
+	AddGoombas(80 * 32, Game::gameHeight - 16 - 9 * 32, true);
 }
 
 void Map::LoadMinionLevel_5_4()
@@ -3861,11 +3964,41 @@ void Map::LoadMinionLevel_7_4()
 void Map::LoadMinionLevel_8_1()
 {
 	ClearMinion();
+
+	AddGoombas(23 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(24 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(26 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(30 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(31 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(33 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(69 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(70 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(72 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(108 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(109 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(111 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(148 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(149 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(151 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(232 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(233 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(235 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(257 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(258 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(260 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(264 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(265 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(267 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(272 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(273 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
 }
 
 void Map::LoadMinionLevel_8_2()
 {
 	ClearMinion();
+
+	AddGoombas(184 * 32, Game::gameHeight - 16 - 5 * 32, true);
+	AddGoombas(186 * 32, Game::gameHeight - 16 - 7 * 32, true);
 }
 
 void Map::LoadMinionLevel_8_3()
@@ -3876,11 +4009,15 @@ void Map::LoadMinionLevel_8_3()
 void Map::LoadMinionLevel_8_4()
 {
 	ClearMinion();
+
+	AddGoombas(56 * 32, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(57 * 32 + 16, Game::gameHeight - 16 - 2 * 32, true);
+	AddGoombas(59 * 32, Game::gameHeight - 16 - 2 * 32, true);
 }
 
-void Map::AddGoombas(float x, float y, bool moveDirection)
+void Map::AddGoombas(int x, int y, bool moveDirection)
 {
-	minion[GetListID((int)x)].push_back(new Goombas(x, y, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiBanDem || mapType == NgoaiTroiBuoiTrua || mapType == NgoaiTroiNuaDem ? 5 : mapType == LongDat ? 7 : 9, moveDirection));
+	minion[GetListID(x)].push_back(new Goombas(x, y, mapType == BanNgay || mapType == BuoiToi || mapType == HoangHon || mapType == BinhMinh ? 5 : mapType == LongDat ? 7 : 9, moveDirection));
 }
 
 void Map::DrawGND(int x, int y, int width, int height)
@@ -3900,7 +4037,7 @@ void Map::DrawGND2(int x, int y, int width, int height)
 	{
 		for (int j = 0; j < height; j++)
 		{
-			SetTileID(x + i, y - j, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiBuoiTrua || mapType == NgoaiTroiBanDem || mapType == NgoaiTroiNuaDem || mapType == ThienDuong ? 13 : mapType == DiaNguc ? 15 : 14);
+			SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 13 : mapType == DiaNguc ? 15 : 14);
 		}
 	}
 }
@@ -3913,7 +4050,7 @@ void Map::DrawGND2(int x, int y, int size, bool direction)
 		{
 			for (int j = 0; j < k; j++)
 			{
-				SetTileID(x + i, y - j, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiBuoiTrua || mapType == NgoaiTroiBanDem || mapType == NgoaiTroiNuaDem || mapType == ThienDuong ? 13 : mapType == NuiLua ? 15 : 14);
+				SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 13 : mapType == NuiLua ? 15 : 14);
 			}
 			k++;
 		}
@@ -3924,7 +4061,7 @@ void Map::DrawGND2(int x, int y, int size, bool direction)
 		{
 			for (int j = k; j > 0; j--)
 			{
-				SetTileID(x + i, y - j + 1, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiBanDem ? 13 : mapType == NuiLua ? 15 : 14);
+				SetTileID(x + i, y - j + 1, mapType == BanNgay || mapType == BuoiToi ? 13 : mapType == NuiLua ? 15 : 14);
 			}
 			k--;
 		}
@@ -3937,7 +4074,7 @@ void Map::DrawBrick(int x, int y, int width, int height)
 	{
 		for (int j = 0; j < height; j++)
 		{
-			SetTileID(x + i, y - j, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiBuoiTrua || mapType == NgoaiTroiBanDem || mapType == NgoaiTroiNuaDem ? 10 : mapType == LongDat ? 11 : 12);
+			SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh ? 10 : mapType == LongDat ? 11 : 12);
 		}
 	}
 }
@@ -3946,7 +4083,7 @@ void Map::DrawBlockQ(int x, int y, int width)
 {
 	for (int i = 0; i < width; i++)
 	{
-		SetTileID(x + i, y, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiBuoiTrua || mapType == NgoaiTroiBanDem || mapType == NgoaiTroiNuaDem || mapType == ThienDuong ? 16 : 18);
+		SetTileID(x + i, y, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 16 : 18);
 	}
 }
 
@@ -3962,35 +4099,35 @@ void Map::DrawPipe(int x, int y, int height)
 {
 	for (int i = 0; i < height; i++)
 	{
-		SetTileID(x, y - i, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiNuaDem ? 21 : mapType == Bien ? 41 : mapType == NgoaiTroiBanDem || mapType == NgoaiTroiBuoiTrua || mapType == NuiLua ? 51 : mapType == ThienDuong ? 61 : mapType == Ho ? 65 : 31);
-		SetTileID(x + 1, y - i, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiNuaDem ? 22 : mapType == Bien ? 42 : mapType == NgoaiTroiBanDem || mapType == NgoaiTroiBuoiTrua || mapType == NuiLua ? 52 : mapType == ThienDuong ? 62 : mapType == Ho ? 66 : 32);
+		SetTileID(x, y - i, mapType == BanNgay || mapType == BinhMinh ? 21 : mapType == Bien ? 41 : mapType == BuoiToi || mapType == HoangHon || mapType == NuiLua ? 51 : mapType == ThienDuong ? 61 : mapType == Ho ? 65 : 31);
+		SetTileID(x + 1, y - i, mapType == BanNgay || mapType == BinhMinh ? 22 : mapType == Bien ? 42 : mapType == BuoiToi || mapType == HoangHon || mapType == NuiLua ? 52 : mapType == ThienDuong ? 62 : mapType == Ho ? 66 : 32);
 	}
 
-	SetTileID(x, y - height, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiNuaDem ? 23 : mapType == Bien ? 43 : mapType == NgoaiTroiBanDem || mapType == NgoaiTroiBuoiTrua || mapType == NuiLua ? 53 : mapType == ThienDuong ? 63 : mapType == Ho ? 67 : 33);
-	SetTileID(x + 1, y - height, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiNuaDem ? 24 : mapType == Bien ? 44 : mapType == NgoaiTroiBanDem || mapType == NgoaiTroiBuoiTrua || mapType == NuiLua ? 54 : mapType == ThienDuong ? 64 : mapType == Ho ? 68 : 34);
+	SetTileID(x, y - height, mapType == BanNgay || mapType == BinhMinh ? 23 : mapType == Bien ? 43 : mapType == BuoiToi || mapType == HoangHon || mapType == NuiLua ? 53 : mapType == ThienDuong ? 63 : mapType == Ho ? 67 : 33);
+	SetTileID(x + 1, y - height, mapType == BanNgay || mapType == BinhMinh ? 24 : mapType == Bien ? 44 : mapType == BuoiToi || mapType == HoangHon || mapType == NuiLua ? 54 : mapType == ThienDuong ? 64 : mapType == Ho ? 68 : 34);
 }
 
 void Map::DrawPipeHorizontal(int x, int y, int width)
 {
-	SetTileID(x, y, mapType == NgoaiTroiBanNgay ? 25 : mapType == Bien ? 45 : mapType == NgoaiTroiBanDem ? 55 : 35);
-	SetTileID(x, y - 1, mapType == NgoaiTroiBanNgay ? 26 : mapType == Bien ? 46 : mapType == NgoaiTroiBanDem ? 56 : 36);
+	SetTileID(x, y, mapType == BanNgay ? 25 : mapType == Bien ? 45 : mapType == BuoiToi ? 55 : 35);
+	SetTileID(x, y - 1, mapType == BanNgay ? 26 : mapType == Bien ? 46 : mapType == BuoiToi ? 56 : 36);
 
 	for (int i = 0; i < width; i++)
 	{
-		SetTileID(x + i + 1, y, mapType == NgoaiTroiBanNgay ? 27 : mapType == Bien ? 47 : mapType == NgoaiTroiBanDem ? 57 : 37);
-		SetTileID(x + i + 1, y - 1, mapType == NgoaiTroiBanNgay ? 28 : mapType == Bien ? 48 : mapType == NgoaiTroiBanDem ? 58 : 38);
+		SetTileID(x + i + 1, y, mapType == BanNgay ? 27 : mapType == Bien ? 47 : mapType == BuoiToi ? 57 : 37);
+		SetTileID(x + i + 1, y - 1, mapType == BanNgay ? 28 : mapType == Bien ? 48 : mapType == BuoiToi ? 58 : 38);
 	}
 
-	SetTileID(x + width + 1, y, mapType == NgoaiTroiBanNgay ? 29 : mapType == Bien ? 49 : mapType == NgoaiTroiBanDem ? 59 : 39);
-	SetTileID(x + width + 1, y - 1, mapType == NgoaiTroiBanNgay ? 30 : mapType == Bien ? 50 : mapType == NgoaiTroiBanDem ? 60 : 40);
+	SetTileID(x + width + 1, y, mapType == BanNgay ? 29 : mapType == Bien ? 49 : mapType == BuoiToi ? 59 : 39);
+	SetTileID(x + width + 1, y - 1, mapType == BanNgay ? 30 : mapType == Bien ? 50 : mapType == BuoiToi ? 60 : 40);
 }
 
 void Map::DrawPipeVertical(int x, int y, int height)
 {
 	for (int i = 0; i < height; i++)
 	{
-		SetTileID(x, y - i, mapType == NgoaiTroiBanNgay ? 21 : mapType == Bien ? 41 : mapType == NgoaiTroiBanDem ? 51 : 31);
-		SetTileID(x + 1, y - i, mapType == NgoaiTroiBanNgay ? 22 : mapType == Bien ? 42 : mapType == NgoaiTroiBanDem ? 52 : 32);
+		SetTileID(x, y - i, mapType == BanNgay ? 21 : mapType == Bien ? 41 : mapType == BuoiToi ? 51 : 31);
+		SetTileID(x + 1, y - i, mapType == BanNgay ? 22 : mapType == Bien ? 42 : mapType == BuoiToi ? 52 : 32);
 	}
 }
 
@@ -4000,7 +4137,7 @@ void Map::DrawCoins(int x, int y, int width, int height)
 	{
 		for (int j = 0; j < height; j++)
 		{
-			SetTileID(x + i, y - j, mapType == NgoaiTroiBanNgay || mapType == NgoaiTroiBuoiTrua || mapType == NgoaiTroiBanDem || mapType == NgoaiTroiNuaDem || mapType == ThienDuong ? 73 : mapType == Bien ? 75 : 74);
+			SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 73 : mapType == Bien ? 75 : 74);
 		}
 	}
 }
@@ -4009,9 +4146,9 @@ void Map::DrawEnd(int x, int y, int height)
 {
 	for (int i = 0; i < height; i++)
 	{
-		SetTileID(x, y - i, mapType == NgoaiTroiBanDem || mapType == NgoaiTroiBuoiTrua ? 78 : 76);
+		SetTileID(x, y - i, mapType == BuoiToi || mapType == HoangHon ? 78 : 76);
 	}
-	SetTileID(x, y - height, mapType == NgoaiTroiBanDem || mapType == NgoaiTroiBuoiTrua ? 79 : 77);
+	SetTileID(x, y - height, mapType == BuoiToi || mapType == HoangHon ? 79 : 77);
 }
 
 void Map::DrawCastleSmall(int x, int y)
@@ -4221,7 +4358,7 @@ void Map::DrawBridge2(int x, int y, int width)
 	for (int i = 0; i < width; i++)
 	{
 		SetTileID(x + i, y, 115);
-		SetTileID(x + i, y - 1, mapType == NgoaiTroiBanDem ? 117 : 116);
+		SetTileID(x + i, y - 1, mapType == BuoiToi ? 117 : 116);
 	}
 }
 

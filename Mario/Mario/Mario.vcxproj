@@ -122,10 +122,21 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Beetle.cpp" />
+    <ClCompile Include="Bowser.cpp" />
+    <ClCompile Include="BulletBill.cpp" />
+    <ClCompile Include="Cheep.cpp" />
     <ClCompile Include="EventGame.cpp" />
+    <ClCompile Include="Fire.cpp" />
+    <ClCompile Include="FireBall.cpp" />
+    <ClCompile Include="Flag.cpp" />
+    <ClCompile Include="Flower.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Goombas.cpp" />
+    <ClCompile Include="Hammer.cpp" />
+    <ClCompile Include="HammerBro.cpp" />
     <ClCompile Include="Koopa.cpp" />
+    <ClCompile Include="Lakito.cpp" />
     <ClCompile Include="LoadingMenu.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenu.cpp" />
@@ -139,19 +150,35 @@
     <ClCompile Include="OptionMenu.cpp" />
     <ClCompile Include="PauseMenu.cpp" />
     <ClCompile Include="Pipe.cpp" />
+    <ClCompile Include="Plant.cpp" />
+    <ClCompile Include="Platform.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Spikey.cpp" />
+    <ClCompile Include="Squid.cpp" />
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="Textures.cpp" />
     <ClCompile Include="TileSet.cpp" />
+    <ClCompile Include="Toad.cpp" />
     <ClCompile Include="Txt.cpp" />
     <ClCompile Include="Windows.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Beetle.h" />
+    <ClInclude Include="Bowser.h" />
+    <ClInclude Include="BulletBill.h" />
+    <ClInclude Include="Cheep.h" />
     <ClInclude Include="EventGame.h" />
+    <ClInclude Include="Fire.h" />
+    <ClInclude Include="FireBall.h" />
+    <ClInclude Include="Flag.h" />
+    <ClInclude Include="Flower.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Goombas.h" />
+    <ClInclude Include="Hammer.h" />
+    <ClInclude Include="HammerBro.h" />
     <ClInclude Include="Koopa.h" />
+    <ClInclude Include="Lakito.h" />
     <ClInclude Include="Library.h" />
     <ClInclude Include="LoadingMenu.h" />
     <ClInclude Include="MainMenu.h" />
@@ -165,10 +192,15 @@
     <ClInclude Include="OptionMenu.h" />
     <ClInclude Include="PauseMenu.h" />
     <ClInclude Include="Pipe.h" />
+    <ClInclude Include="Plant.h" />
+    <ClInclude Include="Platform.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="Spikey.h" />
+    <ClInclude Include="Squid.h" />
     <ClInclude Include="Star.h" />
     <ClInclude Include="Textures.h" />
     <ClInclude Include="TileSet.h" />
+    <ClInclude Include="Toad.h" />
     <ClInclude Include="Txt.h" />
     <ClInclude Include="Windows.h" />
   </ItemGroup>

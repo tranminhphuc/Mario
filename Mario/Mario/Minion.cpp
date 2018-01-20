@@ -38,14 +38,14 @@ void Minion::MoveX()
 		if (CheckCollisionLB(-moveSpeed, -2) || CheckCollisionLT(-moveSpeed, 2))
 			moveDirection = !moveDirection;
 		else
-			xMinion -= (float)(jumpState == TrenMatDat ? moveSpeed : moveSpeed / 2);
+			xMinion -= jumpState == TrenMatDat ? moveSpeed : moveSpeed / 2;
 	}
 	else
 	{
 		if (CheckCollisionRB(moveSpeed, -2) || CheckCollisionRT(moveSpeed, 2))
 			moveDirection = !moveDirection;
 		else
-			xMinion += (float)(jumpState == TrenMatDat ? moveSpeed : moveSpeed / 2);
+			xMinion += jumpState == TrenMatDat ? moveSpeed : moveSpeed / 2;
 	}
 
 	if (xMinion < -width)
@@ -122,8 +122,8 @@ void Minion::CollisionEffect()
 
 void Minion::MinionDeathAnimation()
 {
-	xMinion += (moveDirection ? -1.5f : 1.5f);
-	yMinion += 2 * (deadTime > 8 ? -1 : deadTime > 2 ? 1 : 4.25f);
+	//xMinion += (moveDirection ? -1.5f : 1.5f);
+	//yMinion += 2 * (deadTime > 8 ? -1 : deadTime > 2 ? 1 : 4.25f);
 
 	if (deadTime > 0)
 		deadTime--;
@@ -145,7 +145,7 @@ void Minion::SetMinionState(int minionState)
 	if (minionState == -2)
 	{
 		deadTime = 16;
-		yMinion -= (float)height / 4;
+		yMinion -= height / 4;
 		collisionOnlyWithPlayer = true;
 	}
 }
@@ -203,17 +203,17 @@ void Minion::Spawn()
 		minionSpawned = true;
 }
 
-float Minion::GetX()
+int Minion::GetX()
 {
 	return xMinion;
 }
 
-float Minion::GetY()
+int Minion::GetY()
 {
 	return yMinion;
 }
 
-void Minion::SetY(float y)
+void Minion::SetY(int y)
 {
 	this->yMinion = y;
 }

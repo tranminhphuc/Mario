@@ -11,7 +11,7 @@ private:
 	int distance;
 	bool flyDirection;
 public:
-	Koopa(float xMinion, float yMinion, int minionState, bool moveDirection);
+	Koopa(int xMinion, int yMinion, int minionState, bool moveDirection);
 	~Koopa();
 
 	void Update(unsigned int time);

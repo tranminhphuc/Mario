@@ -39,9 +39,9 @@ public:
 	int newLevel;
 	int newLevelType;
 
-	float newMapX;
-	float newPlayerX;
-	float newPlayerY;
+	int newMapX;
+	int newPlayerX;
+	int newPlayerY;
 
 	bool inEvent;
 	bool newUnderWater;

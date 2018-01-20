@@ -1,7 +1,7 @@
 #include "Koopa.h"
 #include "Game.h"
 
-Koopa::Koopa(float xMinion, float yMinion, int minionState, bool moveDirection)
+Koopa::Koopa(int xMinion, int yMinion, int minionState, bool moveDirection)
 {
 	this->xMinion = xMinion;
 	this->yMinion = yMinion;

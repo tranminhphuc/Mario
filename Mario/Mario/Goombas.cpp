@@ -1,7 +1,7 @@
 #include "Goombas.h"
 #include "Windows.h"
 
-Goombas::Goombas(float xMinion, float yMinion, int id, bool moveDirection)
+Goombas::Goombas(int xMinion, int yMinion, int id, bool moveDirection)
 {
 	this->xMinion = xMinion;
 	this->yMinion = yMinion;
@@ -32,7 +32,7 @@ void Goombas::Update(unsigned int time)
 void Goombas::Draw(sf::RenderWindow& window, Texture* texture)
 {
 	if (minionState != 2)
-		texture->Draw(window, sf::Vector2f(xMinion + Window::getMap()->GetX(), yMinion + 2));
+		texture->Draw(window, sf::Vector2f((float)xMinion + Window::getMap()->GetX(), (float)yMinion + 2));
 }
 
 void Goombas::CollisionWithPlayer(bool top)

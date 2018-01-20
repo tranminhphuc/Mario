@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Windows.h"
 
-Player::Player(float xPlayer, float yPlayer)
+Player::Player(int xPlayer, int yPlayer)
 {
 	this->xPlayer = xPlayer;
 	this->yPlayer = yPlayer;
@@ -198,22 +198,22 @@ int Player::GetHeight()
 	return level == 0 ? smallHeight : squat ? 44 : bigHeight;
 }
 
-float Player::GetX()
+int Player::GetX()
 {
 	return xPlayer;
 }
 
-void Player::SetX(float xPlayer)
+void Player::SetX(int xPlayer)
 {
 	this->xPlayer = xPlayer;
 }
 
-float Player::GetY()
+int Player::GetY()
 {
 	return yPlayer;
 }
 
-void Player::SetY(float yPlayer)
+void Player::SetY(int yPlayer)
 {
 	this->yPlayer = yPlayer;
 }

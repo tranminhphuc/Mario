@@ -10,19 +10,13 @@
 
 class Map
 {
-private:
-	vector<Object*> listBlock;
-	vector<vector<TileSet*>> tile;
-
-	vector<Object*> listMinion;
-	vector<vector<Minion*>> minion;
-
+public:
 	enum MapType
 	{
-		NgoaiTroiBanNgay, // 0
-		NgoaiTroiBuoiTrua,
-		NgoaiTroiBanDem, // 4
-		NgoaiTroiNuaDem,
+		BanNgay, // 0
+		HoangHon,
+		BuoiToi, // 4
+		BinhMinh,
 		LongDat, // 1
 		NuiLua, //3
 		Bien, // 2
@@ -30,8 +24,6 @@ private:
 		ThienDuong, // 5
 		DiaNguc // 6
 	};
-	MapType mapType;
-
 	enum Level
 	{
 		Level_1_1,
@@ -67,6 +59,14 @@ private:
 		Level_8_3,
 		Level_8_4
 	};
+private:
+	vector<Object*> listBlock;
+	vector<vector<TileSet*>> tile;
+
+	vector<Object*> listMinion;
+	vector<vector<Minion*>> minion;
+
+	MapType mapType;
 	Level level;
 
 	Player* player;
@@ -75,8 +75,8 @@ private:
 	int mapHeight;
 	int mapTime;
 
-	float xMap;
-	float yMap;
+	int xMap;
+	int yMap;
 
 	bool underWater;
 	bool moveMap;
@@ -161,7 +161,7 @@ private:
 	void LoadMinionLevel_8_3();
 	void LoadMinionLevel_8_4();
 
-	void AddGoombas(float x, float y, bool moveDirection);
+	void AddGoombas(int x, int y, bool moveDirection);
 
 	void DrawGND(int x, int y, int width, int height);
 	void DrawGND2(int x, int y, int width, int height);
@@ -213,10 +213,10 @@ public:
 
 	void ResetGameData();
 
-	float GetX();
-	void SetX(float x);
-	float GetY();
-	void SetY(float y);
+	int GetX();
+	void SetX(int x);
+	int GetY();
+	void SetY(int y);
 
 	int GetWidth();
 	int GetHeight();
