@@ -4,6 +4,8 @@
 
 MenuManager::MenuManager()
 {
+	currentGameState = MenuGame;
+
 	mainMenu = new MainMenu();
 	loadingMenu = new LoadingMenu();
 	optionMenu = new OptionMenu();
@@ -18,19 +20,19 @@ MenuManager::~MenuManager()
 	delete pauseMenu;
 }
 
-void MenuManager::Update(unsigned int time)
+void MenuManager::Update()
 {
 	switch (currentGameState)
 	{
 	case MenuGame:
 		mainMenu->Update();
-		Window::getMap()->UpdateBlock(time);
+		Window::GetMap()->UpdateBlock();
 		break;
 	case GameLoading:
-		loadingMenu->Update(time);
+		loadingMenu->Update();
 		break;
 	case GamePlay:
-		Window::getMap()->Update();
+		Window::GetMap()->Update();
 		break;
 	case GameOption:
 		optionMenu->Update();
@@ -46,14 +48,27 @@ void MenuManager::Draw(sf::RenderWindow& window)
 	switch (currentGameState)
 	{
 	case MenuGame:
-		Window::getMap()->Draw(window);
+		Window::GetMap()->Draw(window);
+		Window::GetMap()->DrawGameLayout(window);
 		mainMenu->Draw(window);
 		break;
 	case GameLoading:
 		loadingMenu->Draw(window);
 		break;
 	case GamePlay:
-		Window::getMap()->Draw(window);
+		Window::GetMap()->Draw(window);
+		break;
+	case GameOption:
+		Window::GetMap()->DrawMap(window);
+		Window::GetMap()->DrawMinion(window);
+		Window::GetMap()->DrawGameLayout(window);
+		optionMenu->Draw(window);
+		break;
+	case Pause:
+		Window::GetMap()->DrawMap(window);
+		Window::GetMap()->DrawMinion(window);
+		Window::GetMap()->DrawGameLayout(window);
+		pauseMenu->Draw(window);
 		break;
 	}
 }
@@ -63,13 +78,13 @@ void MenuManager::SetBackGroundColor(sf::RenderWindow & window)
 	switch (currentGameState)
 	{
 	case MenuGame:
-		Window::getMap()->SetBackGroundColor(window);
+		Window::GetMap()->SetBackGroundColor(window);
 		break;
 	case GameLoading:
-		Window::getMap()->SetBackGroundColor(window, 0, 0, 0, 255);
+		Window::GetMap()->SetBackGroundColor(window, 0, 0, 0, 255);
 		break;
 	case GamePlay:
-		Window::getMap()->SetBackGroundColor(window);
+		Window::GetMap()->SetBackGroundColor(window);
 		break;
 	}
 }
@@ -106,6 +121,8 @@ void MenuManager::Escape()
 		break;
 	case Pause:
 		pauseMenu->Escape();
+		break;
+	default:
 		break;
 	}
 }
@@ -166,4 +183,14 @@ int MenuManager::GetState()
 void MenuManager::SetState(GameState ID)
 {
 	currentGameState = ID;
+}
+
+LoadingMenu * MenuManager::GetLoadingMenu()
+{
+	return loadingMenu;
+}
+
+OptionMenu * MenuManager::GetOptionMenu()
+{
+	return optionMenu;
 }

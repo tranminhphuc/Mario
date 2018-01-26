@@ -16,7 +16,7 @@ private:
 	LoadingMenu* loadingMenu;
 	OptionMenu* optionMenu;
 	PauseMenu* pauseMenu;
-
+public:
 	enum GameState
 	{
 		MenuGame,
@@ -26,11 +26,11 @@ private:
 		Pause
 	};
 	GameState currentGameState;
-public:
+
 	MenuManager();
 	~MenuManager();
 
-	void Update(unsigned int time);
+	void Update();
 	void Draw(sf::RenderWindow& window);
 
 	void SetBackGroundColor(sf::RenderWindow& window);
@@ -44,6 +44,9 @@ public:
 
 	int GetState();
 	void SetState(GameState ID);
+
+	LoadingMenu* GetLoadingMenu();
+	OptionMenu* GetOptionMenu();
 };
 
 #endif

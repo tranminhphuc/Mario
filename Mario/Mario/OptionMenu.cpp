@@ -1,4 +1,5 @@
 #include "OptionMenu.h"
+#include "Windows.h"
 #include "Game.h"
 
 OptionMenu::OptionMenu()
@@ -61,7 +62,8 @@ void OptionMenu::Enter()
 	case 1 : case 2 : case 3 : case 4: case 5:
 		setKey = true;
 		break;
-	case 6:
+	case 7:
+		Window::GetMap()->ResetGameData();
 		break;
 	default:
 		break;
@@ -78,7 +80,7 @@ void OptionMenu::Escape()
 	{
 		if (escapeToMainMenu)
 		{
-
+			Window::GetMap()->ResetGameData();
 		}
 	}
 }
@@ -135,4 +137,9 @@ void OptionMenu::SetKey(int keyID)
 
 void OptionMenu::UpdateActiveButton(int id)
 {
+}
+
+void OptionMenu::SetEscapeToMainMenu(bool escapeToMainMenu)
+{
+	this->escapeToMainMenu = escapeToMainMenu;
 }

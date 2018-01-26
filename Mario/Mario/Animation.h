@@ -15,12 +15,11 @@ private:
 	int StartFrame;
 	int EndFrame;
 
-	unsigned int totalTime;
 	unsigned int switchTime;
 public:
 	Animation(vector<string> name, vector<unsigned int> time);
 	~Animation();
-	void Update(unsigned int time);
+	void Update();
 	Texture* getTexture();
 	Texture* getTexture(int id);
 };

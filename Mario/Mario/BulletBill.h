@@ -11,8 +11,10 @@ public:
 	BulletBill(int xMinion, int yMinion);
 	~BulletBill();
 
-	void Update(unsigned int time);
+	void Update();
 	void Draw(sf::RenderWindow& window, Texture* texture);
+
+	void CollisionWithPlayer(bool top);
 };
 
 #endif

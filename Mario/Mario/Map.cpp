@@ -18,6 +18,7 @@ Map::~Map() { }
 
 void Map::Update()
 {
+	UpdateBlock();
 }
 
 void Map::UpdatePlayer()
@@ -25,13 +26,13 @@ void Map::UpdatePlayer()
 	player->Update();
 }
 
-void Map::UpdateBlock(unsigned int time)
+void Map::UpdateBlock()
 {
-	listBlock[16]->GetAnimation()->Update(time);
-	listBlock[18]->GetAnimation()->Update(time);
-	listBlock[73]->GetAnimation()->Update(time);
-	listBlock[74]->GetAnimation()->Update(time);
-	listBlock[75]->GetAnimation()->Update(time);
+	listBlock[16]->GetAnimation()->Update();
+	listBlock[18]->GetAnimation()->Update();
+	listBlock[73]->GetAnimation()->Update();
+	listBlock[74]->GetAnimation()->Update();
+	listBlock[75]->GetAnimation()->Update();
 }
 
 void Map::UpdateMinion()
@@ -200,6 +201,15 @@ bool Map::GetUnderWater()
 void Map::SetUnderWater(bool underWater)
 {
 	this->underWater = underWater;
+}
+
+void Map::SetLevel(int level)
+{
+	if (this->level != level)
+	{
+		this->level = (Level)level;
+		LoadLevel();
+	}
 }
 
 string Map::GetLevelName()
@@ -1060,6 +1070,8 @@ void Map::LoadLevel_1_2()
 
 	CreateMap();
 
+	LoadMinionLevel_1_2();
+
 	DrawGND(0, 14, 80, 2);
 	DrawGND(83, 14, 37, 2);
 	DrawGND(122, 14, 2, 2);
@@ -1190,6 +1202,8 @@ void Map::LoadLevel_1_3()
 
 	CreateMap();
 
+	LoadMinionLevel_1_3();
+
 	DrawGND(0, 14, 16, 2);
 	DrawGND(129, 14, 47, 2);
 
@@ -1250,6 +1264,8 @@ void Map::LoadLevel_1_4()
 
 	CreateMap();
 
+	LoadMinionLevel_1_4();
+
 	DrawLava(13, 14, 2, 3);
 	DrawLava(26, 14, 3, 2);
 	DrawLava(32, 14, 3, 2);
@@ -1308,6 +1324,8 @@ void Map::LoadLevel_2_1()
 	mapType = BanNgay;
 
 	CreateMap();
+
+	LoadMinionLevel_2_1();
 
 	DrawGND(0, 14, 92, 2);
 	DrawGND(96, 14, 10, 2);
@@ -1404,6 +1422,8 @@ void Map::LoadLevel_2_2()
 	CreateMap();
 	underWater = true;
 
+	LoadMinionLevel_2_2();
+
 	DrawWater(0, 14, 200, 13);
 	DrawPipeHorizontal(189, 8, 1);
 
@@ -1490,6 +1510,8 @@ void Map::LoadLevel_2_3()
 
 	CreateMap();
 
+	LoadMinionLevel_2_3();
+
 	DrawGND(0, 14, 7, 2);
 	DrawGND(207, 14, 43, 2);
 
@@ -1574,6 +1596,8 @@ void Map::LoadLevel_2_4()
 
 	CreateMap();
 
+	LoadMinionLevel_2_4();
+
 	DrawLava(16, 14, 16, 2);
 	DrawLava(109, 14, 2, 2);
 	DrawLava(113, 14, 2, 2);
@@ -1643,6 +1667,8 @@ void Map::LoadLevel_3_1()
 	mapType = BuoiToi;
 
 	CreateMap();
+
+	LoadMinionLevel_3_1();
 
 	DrawGND(0, 14, 45, 2);
 	DrawGND(48, 14, 29, 2);
@@ -1777,6 +1803,8 @@ void Map::LoadLevel_3_2()
 
 	CreateMap();
 
+	LoadMinionLevel_3_2();
+
 	DrawGND(0, 14, 80, 2);
 	DrawGND(82, 14, 41, 2);
 	DrawGND(125, 14, 3, 2);
@@ -1825,6 +1853,8 @@ void Map::LoadLevel_3_3()
 	mapType = BinhMinh;
 
 	CreateMap();
+
+	LoadMinionLevel_3_3();
 
 	DrawGND(0, 14, 16, 2);
 	DrawGND(144, 14, 31, 2);
@@ -1892,6 +1922,8 @@ void Map::LoadLevel_3_4()
 	mapType = NuiLua;
 
 	CreateMap();
+
+	LoadMinionLevel_3_4();
 
 	DrawLava(46, 14, 2, 2);
 	DrawLava(48, 14, 40, 2);
@@ -1965,6 +1997,8 @@ void Map::LoadLevel_4_1()
 	mapType = BanNgay;
 
 	CreateMap();
+
+	LoadMinionLevel_4_1();
 
 	DrawGND(0, 14, 32, 2);
 	DrawGND(34, 14, 44, 2);
@@ -2050,6 +2084,8 @@ void Map::LoadLevel_4_2()
 	mapType = LongDat;
 
 	CreateMap();
+
+	LoadMinionLevel_4_2();
 
 	DrawGND(0, 14, 11, 2);
 	DrawGND(13, 14, 2, 2);
@@ -2207,6 +2243,8 @@ void Map::LoadLevel_4_3()
 
 	CreateMap();
 
+	LoadMinionLevel_4_3();
+
 	DrawGND(0, 14, 15, 2);
 	DrawGND(141, 14, 30, 2);
 
@@ -2272,6 +2310,8 @@ void Map::LoadLevel_4_4()
 	mapType = NuiLua;
 
 	CreateMap();
+
+	LoadMinionLevel_4_4();
 
 	DrawLava(7, 14, 2, 2);
 	DrawLava(11, 14, 2, 2);
@@ -2342,6 +2382,8 @@ void Map::LoadLevel_5_1()
 
 	CreateMap();
 
+	LoadMinionLevel_5_1();
+
 	DrawBulletBill(111, 12, 0);
 	DrawBulletBill(159, 12, 0);
 	DrawBulletBill(170, 12, 0);
@@ -2409,6 +2451,8 @@ void Map::LoadLevel_5_2()
 	mapType = HoangHon;
 
 	CreateMap();
+
+	LoadMinionLevel_5_2();
 
 	DrawBulletBill(97, 8, 0);
 	DrawBulletBill(187, 12, 0);
@@ -2528,6 +2572,8 @@ void Map::LoadLevel_5_3()
 
 	CreateMap();
 
+	LoadMinionLevel_5_3();
+
 	DrawGND(0, 14, 16, 2);
 	DrawGND(129, 14, 47, 2);
 
@@ -2588,6 +2634,8 @@ void Map::LoadLevel_5_4()
 	mapType = NuiLua;
 
 	CreateMap();
+
+	LoadMinionLevel_5_4();
 
 	DrawLava(16, 14, 16, 2);
 	DrawLava(109, 14, 2, 2);
@@ -2662,6 +2710,8 @@ void Map::LoadLevel_6_1()
 
 	CreateMap();
 
+	LoadMinionLevel_6_1();
+
 	DrawGND(0, 14, 20, 2);
 	DrawGND(22, 14, 9, 2);
 	DrawGND(37, 14, 2, 2);
@@ -2735,6 +2785,8 @@ void Map::LoadLevel_6_2()
 	mapType = BinhMinh;
 
 	CreateMap();
+
+	LoadMinionLevel_6_2();
 
 	DrawGND(77, 14, 131, 2);
 	DrawGND(214, 14, 12, 2);
@@ -2908,6 +2960,8 @@ void Map::LoadLevel_6_3()
 
 	CreateMap();
 
+	LoadMinionLevel_6_3();
+
 	DrawGND(0, 14, 16, 2);
 	DrawGND(160, 14, 30, 2);
 
@@ -2973,6 +3027,8 @@ void Map::LoadLevel_6_4()
 
 	CreateMap();
 
+	LoadMinionLevel_6_4();
+
 	DrawLava(13, 14, 2, 3);
 	DrawLava(26, 14, 3, 2);
 	DrawLava(32, 14, 3, 2);
@@ -3033,6 +3089,8 @@ void Map::LoadLevel_7_1()
 	mapType = HoangHon;
 
 	CreateMap();
+
+	LoadMinionLevel_7_1();
 
 	DrawBulletBill(19, 12, 0);
 	DrawBulletBill(28, 13, 0);
@@ -3115,6 +3173,8 @@ void Map::LoadLevel_7_2()
 	mapType = Bien;
 
 	CreateMap();
+
+	LoadMinionLevel_7_2();
 
 	DrawWater(0, 14, 200, 13);
 	DrawPipeHorizontal(189, 8, 1);
@@ -3201,6 +3261,8 @@ void Map::LoadLevel_7_3()
 
 	CreateMap();
 
+	LoadMinionLevel_7_3();
+
 	DrawGND(0, 14, 7, 2);
 	DrawGND(207, 14, 43, 2);
 
@@ -3284,6 +3346,8 @@ void Map::LoadLevel_7_4()
 	mapType = NuiLua;
 
 	CreateMap();
+
+	LoadMinionLevel_7_4();
 
 	DrawLava(16, 14, 11, 2);
 	DrawLava(164, 14, 3, 2);
@@ -3369,6 +3433,8 @@ void Map::LoadLevel_8_1()
 	mapType = BanNgay;
 
 	CreateMap();
+
+	LoadMinionLevel_8_1();
 
 	DrawGND(0, 14, 46, 2);
 	DrawGND(47, 14, 1, 2);
@@ -3476,6 +3542,8 @@ void Map::LoadLevel_8_2()
 
 	CreateMap();
 
+	LoadMinionLevel_8_2();
+
 	DrawBulletBill(85, 12, 0);
 	DrawBulletBill(93, 11, 0);
 	DrawBulletBill(93, 13, 0);
@@ -3574,6 +3642,8 @@ void Map::LoadLevel_8_3()
 
 	CreateMap();
 
+	LoadMinionLevel_8_3();
+
 	DrawBulletBill(18, 12, 0);
 	DrawBulletBill(34, 12, 1);
 	DrawBulletBill(86, 12, 0);
@@ -3634,6 +3704,8 @@ void Map::LoadLevel_8_4()
 	mapType = NuiLua;
 
 	CreateMap();
+
+	LoadMinionLevel_8_4();
 
 	DrawLava(6, 14, 5, 2);
 	DrawLava(66, 14, 9, 2);
@@ -3721,35 +3793,58 @@ void Map::LoadMinionLevel_1_1()
 	AddGoombas(129 * 32 + 16, 383, true);
 	AddGoombas(174 * 32, 383, true);
 	AddGoombas(175 * 32 + 12, 383, true);
+
+	AddKoppa(107 * 32, 383, 1, true);
 }
 
 void Map::LoadMinionLevel_1_2()
 {
 	ClearMinion();
 
-	AddGoombas(16 * 32, 368, true);
-	AddGoombas(17 * 32 + 8, 336, true);
-	AddGoombas(29 * 32, 368, true);
-	AddGoombas(62 * 32, 368, true);
-	AddGoombas(64 * 32, 368, true);
-	AddGoombas(73 * 32, 368 - 8 * 32, true);
-	AddGoombas(76 * 32, 368 - 4 * 32, true);
+	AddGoombas(16 * 32, 383, true);
+	AddGoombas(17 * 32 + 8, 351, true);
+	AddGoombas(29 * 32, 383, true);
+	AddGoombas(62 * 32, 383, true);
+	AddGoombas(64 * 32, 383, true);
+	AddGoombas(73 * 32, 383 - 8 * 32, true);
+	AddGoombas(76 * 32, 383 - 4 * 32, true);
 	AddGoombas(77 * 32 + 16, 368 - 4 * 32, true);
-	AddGoombas(99 * 32, 368, true);
-	AddGoombas(100 * 32 + 16, 368, true);
-	AddGoombas(102 * 32, 368, true);
-	AddGoombas(113 * 32, 368, true);
-	AddGoombas(135 * 32, 368 - 3 * 32, true);
-	AddGoombas(136 * 32 + 16, 368 - 4 * 32, true);
+	AddGoombas(99 * 32, 383, true);
+	AddGoombas(100 * 32 + 16, 383, true);
+	AddGoombas(102 * 32, 383, true);
+	AddGoombas(113 * 32, 383, true);
+	AddGoombas(135 * 32, 383 - 3 * 32, true);
+	AddGoombas(136 * 32 + 16, 383 - 4 * 32, true);
+
+	AddKoppa(44 * 32, 383, 1, true);
+	AddKoppa(45 * 32 + 16, 383, 1, true);
+	AddKoppa(59 * 32, 383, 1, true);
+
+	mapType = NuiLua;
+	AddKoppa(146 * 32, 383, 1, true);
+
+	mapType = LongDat;
 }
 
 void Map::LoadMinionLevel_1_3()
 {
 	ClearMinion();
 
-	AddGoombas(44 * 32, Game::gameHeight - 16 - 11 * 32, true);
-	AddGoombas(46 * 32, Game::gameHeight - 16 - 11 * 32, true);
-	AddGoombas(80 * 32, Game::gameHeight - 16 - 9 * 32, true);
+	AddGoombas(44 * 32, Game::gameHeight - 32 - 11 * 32, true);
+	AddGoombas(46 * 32, Game::gameHeight - 32 - 11 * 32, true);
+	AddGoombas(80 * 32, Game::gameHeight - 32 - 9 * 32, true);
+
+	mapType = NuiLua;
+
+	AddKoppa(30 * 32 - 8, Game::gameHeight - 32 - 10 * 32, 1, true);
+	AddKoppa(110 * 32 - 8, Game::gameHeight - 32 - 8 * 32, 1, true);
+
+	AddKoppa(74 * 32 - 8, Game::gameHeight - 32 - 10 * 32, 3, false);
+	AddKoppa(114 * 32 - 8, Game::gameHeight - 32 - 9 * 32, 3, false);
+
+	AddKoppa(133 * 32 - 8, Game::gameHeight - 32 - 2 * 32, 1, true);
+
+	mapType = BanNgay;
 }
 
 void Map::LoadMinionLevel_1_4()
@@ -4019,6 +4114,100 @@ void Map::AddGoombas(int x, int y, bool moveDirection)
 {
 	minion[GetListID(x)].push_back(new Goombas(x, y, mapType == BanNgay || mapType == BuoiToi || mapType == HoangHon || mapType == BinhMinh ? 5 : mapType == LongDat ? 7 : 9, moveDirection));
 }
+
+void Map::AddKoppa(int x, int y, int minionState, bool moveDirection)
+{
+	int id;
+
+	switch (minionState)
+	{
+	case 0 : case 3:
+		id = mapType == BanNgay || mapType == BuoiToi || mapType == BinhMinh || mapType == HoangHon ? 12 : mapType == LongDat ? 15 : 18;
+		break;
+	case 1:
+		id = mapType == BanNgay || mapType == BuoiToi || mapType == BinhMinh || mapType == HoangHon ? 11 : mapType == LongDat ? 14 : 17;
+		break;
+	case 2:
+		id = mapType == BanNgay || mapType == BuoiToi || mapType == BinhMinh || mapType == HoangHon ? 13 : mapType == LongDat ? 16 : 19;
+		break;
+	}
+
+	minion[GetListID(x)].push_back(new Koopa(x, y, id, minionState, moveDirection));
+}
+void Map::AddBowser(int x, int y, bool spawnHammer)
+{
+	minion[GetListID(x)].push_back(new Bowser(x, y));
+}
+
+void Map::AddToad(int x, int y, bool peach)
+{
+	minion[GetListID(x)].push_back(new Toad());
+}
+
+void Map::AddSquid(int x, int y)
+{
+	minion[GetListID(x)].push_back(new Squid(x, y));
+}
+
+void Map::AddCheep(int x, int y, int minionType, int moveSpeed, bool moveDirection)
+{
+	minion[GetListID(x)].push_back(new Cheep(x, y));
+}
+
+void Map::AddCheepSpawner(int x, int xEnd)
+{
+}
+
+void Map::AddHammerBro(int x, int y)
+{
+	minion[GetListID(x)].push_back(new HammerBro(x, y));
+}
+
+void Map::AddHammer(int x, int y, bool moveDirection)
+{
+	minion[GetListID(x)].push_back(new Hammer(x, y));
+}
+
+void Map::AddLakito(int x, int y, int maxX)
+{
+	minion[GetListID(x)].push_back(new Lakito(x, y));
+}
+
+void Map::AddSpikey(int x, int y)
+{
+	minion[GetListID(x)].push_back(new Spikey(x, y));
+}
+
+void Map::AddVine(int x, int y, int id, int minionState)
+{
+	minion[GetListID(x)].push_back(new Vine());
+}
+
+void Map::AddFire(float x, float y, int toY)
+{
+	//minion[GetListID(x)].push_back(new Fire(x, y));
+}
+
+void Map::AddFireBall(int x, int y, int width, int id, bool left)
+{
+	for (int i = 9; i < width; i++)
+	{
+		minion[GetListID(x)].push_back(new FireBall());
+	}
+}
+
+void Map::AddBubble(int x, int y)
+{
+}
+
+void Map::AddBulletBillSpawner(int x, int y, int minionState)
+{
+}
+
+void Map::AddBulletBill(int x, int y, int minionState, bool moveDirection)
+{
+}
+
 
 void Map::DrawGND(int x, int y, int width, int height)
 {

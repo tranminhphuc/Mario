@@ -3,7 +3,9 @@
 #ifndef _FIREBALL
 #define _FIREBALL
 
-class FireBall
+#include "Minion.h"
+
+class FireBall : public Minion
 {
 public:
 	FireBall();

@@ -10,7 +10,7 @@ Fire::~Fire()
 {
 }
 
-void Fire::Update(unsigned int time)
+void Fire::Update()
 {
 }
 

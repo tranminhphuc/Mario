@@ -1,8 +1,8 @@
 #include "Animation.h"
+#include "Windows.h"
 
 Animation::Animation(vector<string> name, vector<unsigned int> time)
 {
-	totalTime = 0;
 	deltaTime = time;
 
 	for (int i = 0; i < name.size(); i++)
@@ -23,13 +23,11 @@ Animation::~Animation()
 	}
 }
 
-void Animation::Update(unsigned int time)
+void Animation::Update()
 {
-	totalTime = time;
-
-	if (totalTime - deltaTime[currentFrame] > switchTime)
+	if (Window::GetTime() - deltaTime[currentFrame] > switchTime)
 	{
-		switchTime = totalTime;
+		switchTime = Window::GetTime();
 		currentFrame++;
 
 		if (currentFrame >= EndFrame)

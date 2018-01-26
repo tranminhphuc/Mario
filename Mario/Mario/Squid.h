@@ -11,8 +11,12 @@ public:
 	Squid(int xMinion, int yMinion);
 	~Squid();
 
-	void Update(unsigned int time);
+	void Update();
 	void Draw(sf::RenderWindow& window, Texture* texture);
+
+	void CollisionWithPlayer(bool top);
+
+	void ChangeID();
 };
 
 #endif

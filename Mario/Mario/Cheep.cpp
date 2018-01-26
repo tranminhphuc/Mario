@@ -17,3 +17,7 @@ void Cheep::Update(unsigned int time)
 void Cheep::Draw(sf::RenderWindow & window, Texture * texture)
 {
 }
+
+void Cheep::CollisionWithPlayer(bool top)
+{
+}

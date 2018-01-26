@@ -1,10 +1,12 @@
 #include "Koopa.h"
+#include "Windows.h"
 #include "Game.h"
 
-Koopa::Koopa(int xMinion, int yMinion, int minionState, bool moveDirection)
+Koopa::Koopa(int xMinion, int yMinion, int id, int minionState, bool moveDirection)
 {
 	this->xMinion = xMinion;
 	this->yMinion = yMinion;
+	this->id = id;
 	this->minionState = minionState;
 	this->moveDirection = moveDirection;
 	this->flyDirection = moveDirection;
@@ -36,7 +38,7 @@ Koopa::~Koopa()
 {
 }
 
-void Koopa::Update(unsigned int time)
+void Koopa::Update()
 {
 	if (minionState == 0)
 	{
@@ -55,8 +57,10 @@ void Koopa::Update(unsigned int time)
 	}
 }
 
-void Koopa::Draw()
+void Koopa::Draw(sf::RenderWindow& window, Texture* texture)
 {
+	if (minionState != -2)
+		texture->Draw(window, sf::Vector2f((float)xMinion + Window::GetMap()->GetX(), (float)yMinion + (minionState <= 1 ? -14 : 2)));
 }
 
 void Koopa::MoveX()

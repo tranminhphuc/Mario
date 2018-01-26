@@ -11,7 +11,7 @@ public:
 	Fire(int xMinon, int yMinion);
 	~Fire();
 
-	void Update(unsigned int time);
+	void Update();
 	void Draw(sf::RenderWindow& window, Texture* texture);
 };
 

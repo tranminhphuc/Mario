@@ -18,7 +18,7 @@ public:
 	void Update();
 	bool UpdateMinion();
 
-	void Draw();
+	void Draw(sf::RenderWindow& window, Texture* texture);
 
 	void MinionPhysics();
 

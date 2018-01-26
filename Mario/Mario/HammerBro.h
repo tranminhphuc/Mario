@@ -11,8 +11,12 @@ public:
 	HammerBro(int xMinion, int yMinion);
 	~HammerBro();
 
-	void Update(unsigned int time);
+	void Update();
 	void Draw(sf::RenderWindow& window, Texture* texture);
+
+	void MinionPhysics();
+
+	void CollisionWithPlayer(bool top);
 };
 
 #endif

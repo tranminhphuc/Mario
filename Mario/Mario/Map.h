@@ -7,6 +7,18 @@
 #include "TileSet.h"
 #include "Player.h"
 #include "Goombas.h"
+#include "Koopa.h"
+#include "Bowser.h"
+#include "Toad.h"
+#include "Squid.h"
+#include "Cheep.h"
+#include "Hammer.h"
+#include "HammerBro.h"
+#include "Lakito.h"
+#include "Spikey.h"
+#include "Vine.h"
+#include "Fire.h"
+#include "FireBall.h"
 
 class Map
 {
@@ -162,6 +174,25 @@ private:
 	void LoadMinionLevel_8_4();
 
 	void AddGoombas(int x, int y, bool moveDirection);
+	void AddKoppa(int x, int y, int minionState, bool moveDirection);
+	void AddBowser(int x, int y, bool spawnHammer = false);
+	void AddToad(int x, int y, bool peach);
+	void AddSquid(int x, int y);
+	void AddCheep(int x, int y, int minionType, int moveSpeed, bool moveDirection = false);
+	void AddCheepSpawner(int x, int xEnd);
+	void AddHammerBro(int x, int y);
+	void AddHammer(int x, int y, bool moveDirection);
+	void AddLakito(int x, int y, int maxX);
+	void AddSpikey(int x, int y);
+
+	void AddVine(int x, int y, int id, int minionState);
+
+	void AddFire(float x, float y, int toY);
+	void AddFireBall(int x, int y, int width, int id, bool left);
+
+	void AddBubble(int x, int y);
+	void AddBulletBillSpawner(int x, int y, int minionState);
+	void AddBulletBill(int x, int y, int minionState, bool moveDirection);
 
 	void DrawGND(int x, int y, int width, int height);
 	void DrawGND2(int x, int y, int width, int height);
@@ -199,7 +230,7 @@ public:
 
 	void Update();
 	void UpdatePlayer();
-	void UpdateBlock(unsigned int time);
+	void UpdateBlock();
 	void UpdateMinion();
 
 	void Draw(sf::RenderWindow& window);
@@ -234,6 +265,8 @@ public:
 	
 	bool GetUnderWater();
 	void SetUnderWater(bool underWater);
+
+	void SetLevel(int level);
 
 	string GetLevelName();
 

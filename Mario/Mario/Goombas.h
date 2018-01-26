@@ -11,7 +11,7 @@ public:
 	Goombas(int xMinion, int yMinion, int id, bool moveDirection);
 	~Goombas();
 
-	void Update(unsigned int time);
+	void Update();
 	void Draw(sf::RenderWindow& window, Texture* texture);
 
 	void CollisionWithPlayer(bool top);

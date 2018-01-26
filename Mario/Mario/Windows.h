@@ -12,6 +12,8 @@ private:
 	sf::Event event;
 	sf::Clock clock;
 
+	static unsigned int time;
+
 	static Map* map;
 	static bool keyA, keyD, keyS, keyW, keyShift;
 
@@ -21,10 +23,14 @@ private:
 public:
 	Window(unsigned int width, unsigned int heigth, string name);
 	~Window();
+
 	void Play();
-	void Update(unsigned int time);
+	void Update();
 	void Draw();
-	static Map* getMap();
+
+	static Map* GetMap();
+
+	static unsigned int GetTime();
 };
 
 #endif

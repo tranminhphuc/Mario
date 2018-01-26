@@ -24,7 +24,7 @@ void Player::MoveX(int x)
 		if (!CheckCollisionRB(x, -2) && !CheckCollisionRT(x, 2) && CheckCollisionRC(x))
 		{
 			if (xPlayer > 416)
-				Window::getMap()->MoveMap(-x);
+				Window::GetMap()->MoveMap(-x);
 			else
 				xPlayer += x;
 		}
@@ -41,7 +41,7 @@ void Player::MoveX(int x)
 		{
 			if (xPlayer <= 192)
 			{
-				Window::getMap()->MoveMap(-x);
+				Window::GetMap()->MoveMap(-x);
 			}
 			else
 			{
@@ -91,13 +91,13 @@ void Player::MoveY(int y)
 		{
 			if (!left && right)
 			{
-				sf::Vector2i RT = Window::getMap()->getTilePosition((int)(xPlayer - Window::getMap()->GetX() + width - 1), (int)(yPlayer + y));
+				sf::Vector2i RT = Window::GetMap()->getTilePosition((int)(xPlayer - Window::GetMap()->GetX() + width - 1), (int)(yPlayer + y));
 
-				if (!Window::getMap()->GetObject(Window::getMap()->GetTile(RT.x, RT.y)->GetID())->GetVisible())
+				if (!Window::GetMap()->GetObject(Window::GetMap()->GetTile(RT.x, RT.y)->GetID())->GetVisible())
 				{
 
 				}
-				else if(Window::getMap()->GetObject(Window::getMap()->GetTile(RT.x, RT.y)->GetID())->GetCanDestroy())
+				else if(Window::GetMap()->GetObject(Window::GetMap()->GetTile(RT.x, RT.y)->GetID())->GetCanDestroy())
 				{
 					jumpState = NhayXuong;
 				}
@@ -108,13 +108,13 @@ void Player::MoveY(int y)
 			}
 			else if (left && !right)
 			{
-				sf::Vector2i LT = Window::getMap()->getTilePosition((int)(xPlayer - Window::getMap()->GetX() + 1), (int)(yPlayer + y));
+				sf::Vector2i LT = Window::GetMap()->getTilePosition((int)(xPlayer - Window::GetMap()->GetX() + 1), (int)(yPlayer + y));
 
-				if (!Window::getMap()->GetObject(Window::getMap()->GetTile(LT.x, LT.y)->GetID())->GetVisible())
+				if (!Window::GetMap()->GetObject(Window::GetMap()->GetTile(LT.x, LT.y)->GetID())->GetVisible())
 				{
 
 				}
-				else if (Window::getMap()->GetObject(Window::getMap()->GetTile(LT.x, LT.y)->GetID())->GetCanDestroy())
+				else if (Window::GetMap()->GetObject(Window::GetMap()->GetTile(LT.x, LT.y)->GetID())->GetCanDestroy())
 				{
 
 				}
@@ -157,7 +157,7 @@ void Player::StopMove()
 
 void Player::Jump()
 {
-	if (Window::getMap()->GetUnderWater())
+	if (Window::GetMap()->GetUnderWater())
 	{
 		StartJump(1);
 	}
@@ -516,7 +516,7 @@ void Player::MovePlayer()
 
 void Player::Playerphysics()
 {
-	if (!Window::getMap()->GetUnderWater())
+	if (!Window::GetMap()->GetUnderWater())
 	{
 		if (jumpState == NhayLen)
 		{
@@ -535,30 +535,30 @@ void Player::Playerphysics()
 
 bool Player::CheckCollisionLB(int distanceX, int distanceY)
 {
-	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + distanceX), (int)(yPlayer + GetHeight() + distanceY));
+	return Window::GetMap()->CheckObject((int)(xPlayer - Window::GetMap()->GetX() + distanceX), (int)(yPlayer + GetHeight() + distanceY));
 }
 
 bool Player::CheckCollisionLT(int distanceX, int distanceY)
 {
-	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + distanceX), (int)(yPlayer + distanceY));
+	return Window::GetMap()->CheckObject((int)(xPlayer - Window::GetMap()->GetX() + distanceX), (int)(yPlayer + distanceY));
 }
 
 bool Player::CheckCollisionRB(int distanceX, int distanceY)
 {
-	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + GetWidth() + distanceX), (int)(yPlayer + GetHeight() + distanceY));
+	return Window::GetMap()->CheckObject((int)(xPlayer - Window::GetMap()->GetX() + GetWidth() + distanceX), (int)(yPlayer + GetHeight() + distanceY));
 }
 
 bool Player::CheckCollisionRT(int distanceX, int distanceY)
 {
-	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + GetWidth() + distanceX), (int)(yPlayer + distanceY));
+	return Window::GetMap()->CheckObject((int)(xPlayer - Window::GetMap()->GetX() + GetWidth() + distanceX), (int)(yPlayer + distanceY));
 }
 
 bool Player::CheckCollisionLC(int distance)
 {
-	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + GetWidth() + distance), (int)(yPlayer + (GetHeight() / 2)));
+	return Window::GetMap()->CheckObject((int)(xPlayer - Window::GetMap()->GetX() + GetWidth() + distance), (int)(yPlayer + (GetHeight() / 2)));
 }
 
 bool Player::CheckCollisionRC(int distance)
 {
-	return Window::getMap()->CheckObject((int)(xPlayer - Window::getMap()->GetX() + distance), (int)(yPlayer + (GetHeight() / 2)));
+	return Window::GetMap()->CheckObject((int)(xPlayer - Window::GetMap()->GetX() + distance), (int)(yPlayer + (GetHeight() / 2)));
 }

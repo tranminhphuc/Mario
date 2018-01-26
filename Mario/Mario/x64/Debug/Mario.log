@@ -1,4 +1,5 @@
 ﻿  Windows.cpp
+  Vine.cpp
   Txt.cpp
   Toad.cpp
   TileSet.cpp
@@ -17,9 +18,9 @@
   Minion.cpp
   MenuOption.cpp
   MenuManager.cpp
-  Menu.cpp
   Generating Code...
   Compiling...
+  Menu.cpp
   Map.cpp
   MainMenu.cpp
   main.cpp
@@ -39,6 +40,8 @@
   BulletBill.cpp
   Bowser.cpp
   Beetle.cpp
+  Generating Code...
+  Compiling...
   Animation.cpp
   Generating Code...
   Mario.vcxproj -> E:\Mario\Mario\x64\Debug\Mario.exe

@@ -42,7 +42,7 @@ public:
 	Minion();
 	~Minion();
 
-	virtual void Update(unsigned int time);
+	virtual void Update();
 	virtual void Draw(sf::RenderWindow& window, Texture* texture);
 
 	virtual void MoveX();

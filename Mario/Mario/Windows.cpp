@@ -7,6 +7,7 @@ bool Window::keyD = false;
 bool Window::keyS = false;
 bool Window::keyW = false;
 bool Window::keyShift = false;
+unsigned int Window::time = 0;
 
 Window::Window(unsigned int width, unsigned int heigth, string name)
 {
@@ -29,7 +30,7 @@ void Window::Play()
 {
 	while (window->isOpen())
 	{
-		unsigned int time = clock.getElapsedTime().asMilliseconds();
+		time = clock.getElapsedTime().asMilliseconds();
 
 		while (window->pollEvent(event))
 		{
@@ -46,16 +47,16 @@ void Window::Play()
 			}
 		}
 
-		Update(time);
+		Update();
 		Draw();
 		window->display();
 	}
 	
 }
 
-void Window::Update(unsigned int time)
+void Window::Update()
 {
-	map->UpdateBlock(time);
+	map->Update();
 }
 
 void Window::Draw()
@@ -64,9 +65,14 @@ void Window::Draw()
 	map->Draw(*window);
 }
 
-Map* Window::getMap()
+Map* Window::GetMap()
 {
 	return map;
+}
+
+unsigned int Window::GetTime()
+{
+	return time;
 }
 
 void Window::Input()

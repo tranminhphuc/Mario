@@ -71,8 +71,9 @@ bool Star::UpdateMinion()
 	return minionSpawned;
 }
 
-void Star::Draw()
+void Star::Draw(sf::RenderWindow& window, Texture* texture)
 {
+	texture->Draw(window, sf::Vector2f((float)xMinion + Window::GetMap()->GetX(), (float)yMinion + 2));
 }
 
 void Star::MinionPhysics()

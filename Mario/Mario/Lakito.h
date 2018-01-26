@@ -7,12 +7,18 @@
 
 class Lakito : public Minion
 {
+private:
+	int maxX;
+	bool end;
+	bool followPlayer;
 public:
 	Lakito(int xMinion, int yMinion);
 	~Lakito();
 
-	void Update(unsigned int time);
+	void Update();
 	void Draw(sf::RenderWindow& window, Texture* texture);
+
+	void CollisionWithPlayer(bool top);
 };
 
 #endif

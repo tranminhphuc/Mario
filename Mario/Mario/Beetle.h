@@ -11,7 +11,7 @@ public:
 	Beetle(int xMinion, int yMinion, bool moveDirection);
 	~Beetle();
 
-	void Update(unsigned int time);
+	void Update();
 	void Draw(sf::RenderWindow& window, Texture* texture);
 };
 

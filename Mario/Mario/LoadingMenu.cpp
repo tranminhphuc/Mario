@@ -12,9 +12,9 @@ LoadingMenu::~LoadingMenu()
 {
 }
 
-void LoadingMenu::Update(unsigned int Loadingtime)
+void LoadingMenu::Update()
 {
-	if (Loadingtime > time + 2500 + (loading ? 0 : 2750))
+	if (Window::GetTime() > time + 2500 + (loading ? 0 : 2750))
 	{
 		if (loading)
 		{
@@ -22,18 +22,23 @@ void LoadingMenu::Update(unsigned int Loadingtime)
 		}
 		else
 		{
-			Window::getMap()->ResetGameData();
+			Window::GetMap()->ResetGameData();
 		}
 	}
 	else
 	{
 
 	}
-	Window::getMap()->UpdateBlock(time);
+	Window::GetMap()->UpdateBlock();
 }
 
 void LoadingMenu::Draw(sf::RenderWindow & window)
 {
-	Window::getMap()->DrawGameLayout(window);
+	Window::GetMap()->DrawGameLayout(window);
 	Game::GetText()->Draw(window, "WORLD", 320, 144);
+}
+
+void LoadingMenu::UpdateTime()
+{
+	time = Window::GetTime();
 }

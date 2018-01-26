@@ -13,7 +13,7 @@ Goombas::~Goombas()
 {
 }
 
-void Goombas::Update(unsigned int time)
+void Goombas::Update()
 {
 	if (minionState == 0)
 	{
@@ -23,7 +23,7 @@ void Goombas::Update(unsigned int time)
 	{
 		MinionDeathAnimation();
 	}
-	else if (time - 500 >= (unsigned)deadTime)
+	else if (Window::GetTime() - 500 >= (unsigned)deadTime)
 	{
 		minionState = -1;
 	}
@@ -32,7 +32,7 @@ void Goombas::Update(unsigned int time)
 void Goombas::Draw(sf::RenderWindow& window, Texture* texture)
 {
 	if (minionState != 2)
-		texture->Draw(window, sf::Vector2f((float)xMinion + Window::getMap()->GetX(), (float)yMinion + 2));
+		texture->Draw(window, sf::Vector2f((float)xMinion + Window::GetMap()->GetX(), (float)yMinion + 2));
 }
 
 void Goombas::CollisionWithPlayer(bool top)

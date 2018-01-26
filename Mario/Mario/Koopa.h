@@ -11,11 +11,11 @@ private:
 	int distance;
 	bool flyDirection;
 public:
-	Koopa(int xMinion, int yMinion, int minionState, bool moveDirection);
+	Koopa(int xMinion, int yMinion, int id, int minionState, bool moveDirection);
 	~Koopa();
 
-	void Update(unsigned int time);
-	void Draw();
+	void Update();
+	void Draw(sf::RenderWindow& window, Texture* texture);
 
 	void MoveX();
 	void MinionPhysics();

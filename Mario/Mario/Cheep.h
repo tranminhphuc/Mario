@@ -13,6 +13,8 @@ public:
 
 	void Update(unsigned int time);
 	void Draw(sf::RenderWindow& window, Texture* texture);
+
+	void CollisionWithPlayer(bool top);
 };
 
 #endif

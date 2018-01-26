@@ -160,6 +160,7 @@
     <ClCompile Include="TileSet.cpp" />
     <ClCompile Include="Toad.cpp" />
     <ClCompile Include="Txt.cpp" />
+    <ClCompile Include="Vine.cpp" />
     <ClCompile Include="Windows.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -202,6 +203,7 @@
     <ClInclude Include="TileSet.h" />
     <ClInclude Include="Toad.h" />
     <ClInclude Include="Txt.h" />
+    <ClInclude Include="Vine.h" />
     <ClInclude Include="Windows.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

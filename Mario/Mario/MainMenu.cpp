@@ -1,4 +1,6 @@
 #include "MainMenu.h"
+#include "Windows.h"
+#include "Game.h"
 
 MainMenu::MainMenu()
 {
@@ -22,6 +24,7 @@ MainMenu::~MainMenu()
 
 void MainMenu::Update()
 {
+	Menu::Update();
 }
 
 void MainMenu::Draw(sf::RenderWindow & window)
@@ -30,12 +33,83 @@ void MainMenu::Draw(sf::RenderWindow & window)
 
 void MainMenu::UpdateActiveButton(int number)
 {
+	switch (number)
+	{
+	case 0 : case 2:
+		if (!selectWorld)
+		{
+			Menu::UpdateActiveButton(number);
+		}
+		else
+		{
+			switch (number)
+			{
+			case 0:
+				if (activeSecondWorldID < 1)
+					activeSecondWorldID = 3;
+				else
+					activeSecondWorldID--;
+				break;
+			case 2:
+				if (activeSecondWorldID > 2)
+					activeSecondWorldID = 0;
+				else
+					activeSecondWorldID++;
+				break;
+			}
+		}
+		break;
+	case 1:
+		if (selectWorld)
+		{
+			if (activeWorldID < 7)
+				activeWorldID++;
+			else
+				activeWorldID = 0;
+		}
+		break;
+	case 3:
+		if (selectWorld)
+		{
+			if (activeWorldID > 0)
+				activeWorldID--;
+			else
+				activeWorldID = 7;
+		}
+		break;
+	}
 }
 
 void MainMenu::Enter()
 {
+	switch (activeMenuOption)
+	{
+	case 0:
+		if (!selectWorld)
+		{
+			selectWorld = true;
+		}
+		else
+		{
+			Game::GetMenuManager()->GetLoadingMenu()->UpdateTime();
+			Window::GetMap()->ResetGameData();
+			Window::GetMap()->SetLevel(activeWorldID * 4 + activeSecondWorldID);
+			Game::GetMenuManager()->GetLoadingMenu()->loading = true;
+			selectWorld = false;
+		}
+		break;
+	case 1:
+		Game::GetMenuManager()->GetOptionMenu()->SetEscapeToMainMenu(true);
+		Game::GetMenuManager()->ResetActiveOption(Game::GetMenuManager()->GameOption);
+		//......
+		break;
+	case 2:
+		//......
+		break;
+	}
 }
 
 void MainMenu::Escape()
 {
+	selectWorld = false;
 }

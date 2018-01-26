@@ -3,7 +3,9 @@
 #ifndef _TOAD
 #define _TOAD
 
-class Toad
+#include "Minion.h"
+
+class Toad : public Minion
 {
 public:
 	Toad();

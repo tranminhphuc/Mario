@@ -11,7 +11,7 @@ public:
 	Flower(int xMinion, int yMinion);
 	~Flower();
 
-	void Update(unsigned int time);
+	void Update();
 	void Draw(sf::RenderWindow& window, Texture* texture);
 };
 

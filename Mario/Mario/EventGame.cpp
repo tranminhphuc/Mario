@@ -23,19 +23,19 @@ void Event::Normal()
 				switch (oldDir[step])
 				{
 				case Top:
-					Window::getMap()->SetY(Window::getMap()->GetPlayer()->GetY() - speed);
+					Window::GetMap()->SetY(Window::GetMap()->GetPlayer()->GetY() - speed);
 					oldLength[step] -= speed;
 					break;
 				case Bot:
-					Window::getMap()->SetY(Window::getMap()->GetPlayer()->GetY() + speed);
+					Window::GetMap()->SetY(Window::GetMap()->GetPlayer()->GetY() + speed);
 					oldLength[step] -= speed;
 					break;
 				case Left:
-					Window::getMap()->SetX(Window::getMap()->GetPlayer()->GetX() - speed);
+					Window::GetMap()->SetX(Window::GetMap()->GetPlayer()->GetX() - speed);
 					oldLength[step] -= speed;
 					break;
 				case Right:
-					Window::getMap()->SetX(Window::getMap()->GetPlayer()->GetX() + speed);
+					Window::GetMap()->SetX(Window::GetMap()->GetPlayer()->GetX() + speed);
 					oldLength[step] -= speed;
 					break;
 				}
@@ -58,19 +58,19 @@ void Event::Normal()
 				switch (newDir[step])
 				{
 				case Top:
-					Window::getMap()->GetPlayer()->SetY(Window::getMap()->GetPlayer()->GetY() - speed);
+					Window::GetMap()->GetPlayer()->SetY(Window::GetMap()->GetPlayer()->GetY() - speed);
 					newLenght[step] -= speed;
 					break;
 				case Bot:
-					Window::getMap()->GetPlayer()->SetY(Window::getMap()->GetPlayer()->GetY() + speed);
+					Window::GetMap()->GetPlayer()->SetY(Window::GetMap()->GetPlayer()->GetY() + speed);
 					newLenght[step] -= speed;
 					break;
 				case Left:
-					Window::getMap()->GetPlayer()->SetX(Window::getMap()->GetPlayer()->GetY() - speed);
+					Window::GetMap()->GetPlayer()->SetX(Window::GetMap()->GetPlayer()->GetY() - speed);
 					newLenght[step] -= speed;
 					break;
 				case Right:
-					Window::getMap()->GetPlayer()->SetX(Window::getMap()->GetPlayer()->GetY() + speed);
+					Window::GetMap()->GetPlayer()->SetX(Window::GetMap()->GetPlayer()->GetY() + speed);
 					newLenght[step] -= speed;
 					break;
 				}
@@ -94,10 +94,10 @@ void Event::End()
 
 void Event::NewLevel()
 {
-	Window::getMap()->SetX(newMapX);
-	Window::getMap()->GetPlayer()->SetX(newPlayerX);
-	Window::getMap()->GetPlayer()->SetY(newPlayerY);
-	Window::getMap()->SetMoveMap(newMoveMap);
+	Window::GetMap()->SetX(newMapX);
+	Window::GetMap()->GetPlayer()->SetX(newPlayerX);
+	Window::GetMap()->GetPlayer()->SetY(newPlayerY);
+	Window::GetMap()->SetMoveMap(newMoveMap);
 }
 
 void Event::ResetData()

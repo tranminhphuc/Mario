@@ -1,6 +1,5 @@
 e:\mario\mario\mario\x64\debug\vc141.pdb
 e:\mario\mario\mario\x64\debug\vc141.idb
-e:\mario\mario\mario\x64\debug\menu.obj
 e:\mario\mario\mario\x64\debug\menumanager.obj
 e:\mario\mario\mario\x64\debug\menuoption.obj
 e:\mario\mario\mario\x64\debug\minion.obj
@@ -19,8 +18,8 @@ e:\mario\mario\mario\x64\debug\textures.obj
 e:\mario\mario\mario\x64\debug\tileset.obj
 e:\mario\mario\mario\x64\debug\toad.obj
 e:\mario\mario\mario\x64\debug\txt.obj
+e:\mario\mario\mario\x64\debug\vine.obj
 e:\mario\mario\mario\x64\debug\windows.obj
-e:\mario\mario\mario\x64\debug\animation.obj
 e:\mario\mario\mario\x64\debug\beetle.obj
 e:\mario\mario\mario\x64\debug\bowser.obj
 e:\mario\mario\mario\x64\debug\bulletbill.obj
@@ -40,6 +39,8 @@ e:\mario\mario\mario\x64\debug\loadingmenu.obj
 e:\mario\mario\mario\x64\debug\main.obj
 e:\mario\mario\mario\x64\debug\mainmenu.obj
 e:\mario\mario\mario\x64\debug\map.obj
+e:\mario\mario\mario\x64\debug\menu.obj
+e:\mario\mario\mario\x64\debug\animation.obj
 e:\mario\mario\x64\debug\mario.ilk
 e:\mario\mario\x64\debug\mario.exe
 e:\mario\mario\x64\debug\mario.pdb

@@ -58,8 +58,12 @@ bool Mushroom::UpdateMinion()
 	return minionSpawned;
 }
 
-void Mushroom::Draw()
+void Mushroom::Draw(sf::RenderWindow& window, Texture* texture)
 {
+	if (minionState >= 0)
+	{
+		texture->Draw(window, sf::Vector2f((float)xMinion + Window::GetMap()->GetX(), (float)yMinion + 2));
+	}
 }
 
 void Mushroom::CollisionWithPlayer()
@@ -68,11 +72,11 @@ void Mushroom::CollisionWithPlayer()
 	{
 		if (powerUp)
 		{
-			Window::getMap()->GetPlayer()->SetLevel(Window::getMap()->GetPlayer()->GetLevel() + 1);
+			Window::GetMap()->GetPlayer()->SetLevel(Window::GetMap()->GetPlayer()->GetLevel() + 1);
 		}
 		else
 		{
-			Window::getMap()->GetPlayer()->SetLive(Window::getMap()->GetPlayer()->getLive() + 1);
+			Window::GetMap()->GetPlayer()->SetLive(Window::GetMap()->GetPlayer()->getLive() + 1);
 		}
 
 		minionState = -1;
