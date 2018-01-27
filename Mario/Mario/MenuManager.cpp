@@ -33,6 +33,7 @@ void MenuManager::Update()
 		break;
 	case GamePlay:
 		Window::GetMap()->Update();
+		Window::GetMap()->UpdateMinionsCollision();
 		break;
 	case GameOption:
 		optionMenu->Update();

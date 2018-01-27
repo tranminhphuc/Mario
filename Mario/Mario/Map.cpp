@@ -39,6 +39,10 @@ void Map::UpdateMinion()
 {
 }
 
+void Map::UpdateMinionsCollision()
+{
+}
+
 void Map::Draw(sf::RenderWindow & window)
 {
 	DrawMap(window);

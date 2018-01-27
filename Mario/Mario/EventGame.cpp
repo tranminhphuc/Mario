@@ -1,5 +1,6 @@
 #include "EventGame.h"
 #include "Windows.h"
+#include "Game.h"
 
 Event::Event()
 {
@@ -42,10 +43,28 @@ void Event::Normal()
 			}
 			else
 			{
-				if (!endGame)
+				step++;
+				time = Window::GetTime();
+			}
+		}
+		else
+		{
+			if (!endGame)
+			{
+				if (Window::GetTime() >= time + delay)
 				{
-
+					state = false;
+					step = 0;
+					NewLevel();
+					//Window::GetMap()->GetPlayer()->StopMove();
+					//......
+					Game::keySpace = false;
 				}
+			}
+			else
+			{
+				Window::GetMap()->ResetGameData();
+				//......
 			}
 		}
 	}
@@ -82,7 +101,7 @@ void Event::Normal()
 		}
 		else
 		{
-
+			//......
 		}
 	}
 }
@@ -98,9 +117,25 @@ void Event::NewLevel()
 	Window::GetMap()->GetPlayer()->SetX(newPlayerX);
 	Window::GetMap()->GetPlayer()->SetY(newPlayerY);
 	Window::GetMap()->SetMoveMap(newMoveMap);
+	//......
+	if (newUnderWater)
+	{
+		Window::GetMap()->GetPlayer()->ResetMove();
+	}
+
+	Window::GetMap()->SetUnderWater(newUnderWater);
 }
 
 void Event::ResetData()
 {
+	newDir.clear();
+	newLenght.clear();
+	oldDir.clear();
+	oldLength.clear();
 
+	step = 0;
+	state = true;
+	inEvent = false;
+	endGame = false;
+	newUnderWater = false;
 }

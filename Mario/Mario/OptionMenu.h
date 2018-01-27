@@ -27,6 +27,7 @@ public:
 	void SetKey(int keyID);
 
 	void UpdateActiveButton(int id);
+	void UpdateVolumeRect();
 
 	void SetEscapeToMainMenu(bool escapeToMainMenu);
 };

@@ -232,6 +232,7 @@ public:
 	void UpdatePlayer();
 	void UpdateBlock();
 	void UpdateMinion();
+	void UpdateMinionsCollision();
 
 	void Draw(sf::RenderWindow& window);
 	void DrawMap(sf::RenderWindow& window);

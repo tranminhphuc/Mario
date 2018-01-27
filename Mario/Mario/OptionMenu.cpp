@@ -62,7 +62,7 @@ void OptionMenu::Enter()
 	case 1 : case 2 : case 3 : case 4: case 5:
 		setKey = true;
 		break;
-	case 7:
+	case 6:
 		Window::GetMap()->ResetGameData();
 		break;
 	default:
@@ -137,6 +137,26 @@ void OptionMenu::SetKey(int keyID)
 
 void OptionMenu::UpdateActiveButton(int id)
 {
+	if (activeMenuOption == 0 && (id == 1 || id == 3))
+	{
+		switch (id)
+		{
+		case 1:
+			break;
+		case 3:
+			break;
+		}
+
+		UpdateVolumeRect();
+	}
+
+	if (!setKey)
+		Menu::UpdateActiveButton(id);
+}
+
+void OptionMenu::UpdateVolumeRect()
+{
+
 }
 
 void OptionMenu::SetEscapeToMainMenu(bool escapeToMainMenu)
