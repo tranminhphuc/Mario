@@ -26,6 +26,7 @@ void Event::Normal()
 				case Top:
 					Window::GetMap()->SetY(Window::GetMap()->GetPlayer()->GetY() - speed);
 					oldLength[step] -= speed;
+					//...
 					break;
 				case Bot:
 					Window::GetMap()->SetY(Window::GetMap()->GetPlayer()->GetY() + speed);
