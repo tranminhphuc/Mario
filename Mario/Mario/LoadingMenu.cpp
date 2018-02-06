@@ -18,11 +18,12 @@ void LoadingMenu::Update()
 	{
 		if (loading)
 		{
-			
+			Game::GetMenuManager()->SetView(Game::GetMenuManager()->GamePlay);
 		}
 		else
 		{
 			Window::GetMap()->ResetGameData();
+			Game::GetMenuManager()->SetView(Game::GetMenuManager()->MenuGame);
 		}
 	}
 	else

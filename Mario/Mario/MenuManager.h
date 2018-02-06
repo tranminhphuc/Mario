@@ -38,12 +38,15 @@ public:
 	void Enter();
 	void Escape();
 
+	//sua nut
 	void SetKey(int id);
+	//nut da an
 	void keyPressed(int id);
+	//quay ve lua chon dau tien
 	void ResetActiveOption(GameState id);
 
-	int GetState();
-	void SetState(GameState ID);
+	int GetView();
+	void SetView(GameState ID);
 
 	LoadingMenu* GetLoadingMenu();
 	OptionMenu* GetOptionMenu();

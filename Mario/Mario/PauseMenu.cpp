@@ -32,16 +32,16 @@ void PauseMenu::Enter()
 	switch (activeMenuOption)
 	{
 	case 0:
-		//......
+		Game::GetMenuManager()->SetView(Game::GetMenuManager()->GamePlay);
 		break;
 	case 1:
 		Game::GetMenuManager()->GetOptionMenu()->SetEscapeToMainMenu(false);
 		Game::GetMenuManager()->ResetActiveOption(Game::GetMenuManager()->GameOption);
-		//......
+		Game::GetMenuManager()->SetView(Game::GetMenuManager()->GameOption);
 		break;
 	case 2:
 		Window::GetMap()->ResetGameData();
-		//......
+		Game::GetMenuManager()->SetView(Game::GetMenuManager()->MenuGame);
 		break;
 	case 3:
 		//......

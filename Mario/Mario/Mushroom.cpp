@@ -6,8 +6,8 @@ Mushroom::Mushroom(int xMinion, int yMinion, bool powerUp, float x, float y)
 	this->xMinion = xMinion;
 	this->yMinion = yMinion;
 	this->powerUp = powerUp;
-	this->x = x;
-	this->y = y;
+	//this->x = x;
+	//this->y = y;
 
 	this->moveSpeed = 2;
 	this->inSpawnY = 30;

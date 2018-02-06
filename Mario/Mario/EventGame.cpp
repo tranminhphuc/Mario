@@ -24,20 +24,19 @@ void Event::Normal()
 				switch (oldDir[step])
 				{
 				case Top:
-					Window::GetMap()->SetY(Window::GetMap()->GetPlayer()->GetY() - speed);
+					Window::GetMap()->GetPlayer()->SetY(Window::GetMap()->GetPlayer()->GetY() - speed);
 					oldLength[step] -= speed;
-					//...
 					break;
 				case Bot:
-					Window::GetMap()->SetY(Window::GetMap()->GetPlayer()->GetY() + speed);
+					Window::GetMap()->GetPlayer()->SetY(Window::GetMap()->GetPlayer()->GetY() + speed);
 					oldLength[step] -= speed;
 					break;
 				case Left:
-					Window::GetMap()->SetX(Window::GetMap()->GetPlayer()->GetX() - speed);
+					Window::GetMap()->GetPlayer()->SetX(Window::GetMap()->GetPlayer()->GetX() - speed);
 					oldLength[step] -= speed;
 					break;
 				case Right:
-					Window::GetMap()->SetX(Window::GetMap()->GetPlayer()->GetX() + speed);
+					Window::GetMap()->GetPlayer()->SetX(Window::GetMap()->GetPlayer()->GetX() + speed);
 					oldLength[step] -= speed;
 					break;
 				}

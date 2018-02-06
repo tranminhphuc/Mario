@@ -44,9 +44,10 @@ void Texture::Draw(sf::RenderWindow& window, sf::Vector2f position)
 	window.draw(rect);
 }
 
-void Texture::Draw(sf::RenderWindow& window, sf::Vector2f position, sf::IntRect IMGRect)
+void Texture::Draw(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size, sf::IntRect IMGRect)
 {
 	rect.setTextureRect(IMGRect);
+	rect.setSize(size);
 	rect.setPosition(position);
 	window.draw(rect);
 }

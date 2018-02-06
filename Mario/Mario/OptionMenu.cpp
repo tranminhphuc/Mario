@@ -64,6 +64,7 @@ void OptionMenu::Enter()
 		break;
 	case 6:
 		Window::GetMap()->ResetGameData();
+		Game::GetMenuManager()->SetView(Game::GetMenuManager()->MenuGame);
 		break;
 	default:
 		break;
@@ -81,6 +82,11 @@ void OptionMenu::Escape()
 		if (escapeToMainMenu)
 		{
 			Window::GetMap()->ResetGameData();
+			Game::GetMenuManager()->SetView(Game::GetMenuManager()->MenuGame);
+		}
+		else
+		{
+			Game::GetMenuManager()->SetView(Game::GetMenuManager()->Pause);
 		}
 	}
 }

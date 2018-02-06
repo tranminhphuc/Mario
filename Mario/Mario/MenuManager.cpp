@@ -33,7 +33,7 @@ void MenuManager::Update()
 		break;
 	case GamePlay:
 		Window::GetMap()->Update();
-		Window::GetMap()->UpdateMinionsCollision();
+		//Window::GetMap()->UpdateMinionsCollision();
 		break;
 	case GameOption:
 		optionMenu->Update();
@@ -104,6 +104,8 @@ void MenuManager::Enter()
 		break;
 	case Pause:
 		pauseMenu->Enter();
+		break;
+	default:
 		break;
 	}
 }
@@ -176,22 +178,22 @@ void MenuManager::ResetActiveOption(GameState id)
 	}
 }
 
-int MenuManager::GetState()
+int MenuManager::GetView()
 {
 	return currentGameState;
 }
 
-void MenuManager::SetState(GameState ID)
+void MenuManager::SetView(GameState ID)
 {
 	currentGameState = ID;
 }
 
-LoadingMenu * MenuManager::GetLoadingMenu()
+LoadingMenu* MenuManager::GetLoadingMenu()
 {
 	return loadingMenu;
 }
 
-OptionMenu * MenuManager::GetOptionMenu()
+OptionMenu* MenuManager::GetOptionMenu()
 {
 	return optionMenu;
 }

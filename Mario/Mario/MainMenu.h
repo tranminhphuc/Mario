@@ -8,7 +8,9 @@
 class MainMenu : public Menu
 {
 private:
+	//chon level
 	bool selectWorld;
+	//thay doi level 
 	int activeWorldID, activeSecondWorldID;
 
 	sf::IntRect selectWorldLabel;

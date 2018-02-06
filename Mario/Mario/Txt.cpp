@@ -23,17 +23,17 @@ Text::~Text()
 void Text::Draw(sf::RenderWindow& window, string text, float x, float y, int fontSize)
 {
 	this->fontSize = fontSize;
+	
 	this->extraLeft = 0;
 	this->nextExtraLeft = 0;
 
 	for (int i = 0; i < text.size(); i++)
 	{
 		crop.left = GetPos(text.at(i));
-
 		rect.setPosition(x + fontSize * i - extraLeft, y);
 		rect.setSize(sf::Vector2f((float)fontSize, (float)fontSize));
 		
-		font->Draw(window, rect.getPosition(), crop);
+		font->Draw(window, rect.getPosition(), rect.getSize(), crop);
 		extraLeft += nextExtraLeft;
 		nextExtraLeft = 0;
 	}
@@ -53,7 +53,7 @@ void Text::Draw(sf::RenderWindow& window, string text, float x, float y, int r, 
 		rect.setPosition(x + fontSize * i - extraLeft, y);
 		rect.setSize(sf::Vector2f((float)fontSize, (float)fontSize));
 
-		font->Draw(window, rect.getPosition(), crop);
+		font->Draw(window, rect.getPosition(), rect.getSize(), crop);
 		extraLeft += nextExtraLeft;
 		nextExtraLeft = 0;
 		rect.setFillColor(sf::Color(255, 255, 255));
@@ -81,15 +81,15 @@ int Text::GetTextWidth(std::string text, int fontSize)
 
 int Text::GetPos(int text)
 {
-	if (text >= 43 && text <= 92)
+	if (text >= 43 && text < 91)
 	{
 		CheckExtra(text);
-		return (text - 43) * crop.left + crop.left;
+		return (text - 43) * crop.width + crop.width;
 	}
 
-	if (text > 118 && text < 123)
+	if (text >= 118 && text < 123)
 	{
-		return (text - 70) * crop.left + crop.left;
+		return (text - 70) * crop.width + crop.width;
 	}
 
 	return 0;

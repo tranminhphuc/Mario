@@ -10,6 +10,8 @@ Map::Map()
 	mapType = BanNgay;
 	level = Level_1_1;
 
+	Game::GetText()->SetFont("Source/images/font.bmp");
+
 	LoadGameData();
 	LoadLevel();
 }
@@ -37,10 +39,59 @@ void Map::UpdateBlock()
 
 void Map::UpdateMinion()
 {
+	for (int i = 0; i < minion.size(); i++)
+	{
+		for (int j = 0; j < minion[i].size(); j++)
+		{
+			if (minion[i][j]->UpdateMinion())
+				minion[i][j]->Update();
+		}
+	}
+
+	for (int i = 0; i < minion.size(); i++)
+	{
+		for (int j = 0; j < minion[i].size(); i++)
+		{
+			if (minion[i][j]->minionSpawned)
+			{
+				if (minion[i][j]->minionState == -1)
+				{
+					//delete minion[i][j];
+					//minion[i].erase(minion[i].begin() + j);
+					//continue;
+				}
+
+				if (floor(minion[i][j]->xMinion / 160) != i)
+				{
+					//minion[floor(minion[i][j]->xMinion / 160)].push_back(minion[i][j]);
+					//minion[i].erase(minion[i].begin() + j);
+				}
+			}
+		}
+	}
 }
 
 void Map::UpdateMinionsCollision()
 {
+	for (int i = 0; i < minion.size(); i++)
+	{
+		for (int j = 0; j < minion[i].size(); i++)
+		{
+			for (int k = j + 1; k < minion[i].size(); k++)
+			{
+				if (!minion[i][k]->collisionOnlyWithPlayer && minion[i][k]->deadTime < 0)
+				{
+					if (minion[i][j]->GetX() < minion[i][k]->GetX())
+					{
+						if (minion[i][j]->GetX() + minion[i][i]->width >= minion[i][k]->GetX() && minion[i][j]->GetX() + minion[i][j]->width <= minion[i][k]->GetX() + minion[i][k]->width && (minion[i][j]->GetY() <= minion[i][k]->GetY() + minion[i][k]->height && minion[i][j]->GetY() + minion[i][j]->height >= minion[i][k]->GetY() + minion[i][k]->height) || (minion[i][k]->GetY() <= minion[i][j]->GetY() + minion[i][j]->height && minion[i][k]->GetY() + minion[i][k]->height >= minion[i][j]->GetY() + minion[i][j]->height))
+						{
+
+						}
+					}
+				}
+			}
+		}
+	}
 }
 
 void Map::Draw(sf::RenderWindow & window)
@@ -237,8 +288,20 @@ void Map::Destroy(int x, int y, int id, int direction)
 			{
 				if (tile[x][y]->GetPowerUp())
 				{
-
+					/*if (player->GetLevel() == 0)
+						minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Game::gameHeight - 32 * y, true, x, y));
+					else
+						minion[GetListID(32 * x)].push_back(new Flower(32 * x, Game::gameHeight - 32 * y));*/
 				}
+				else
+				{
+					//minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Game::gameHeight - 32 * y, false, x, y));
+				}
+			}
+			else
+			{
+				player->SetScore(player->GetScore() + 200);
+				player->SetCoin(player->GetCoin() + 1);
 			}
 
 			if (tile[x][y]->getNumberOfCoin() > 1)
@@ -248,28 +311,48 @@ void Map::Destroy(int x, int y, int id, int direction)
 			else
 			{
 				tile[x][y]->SetNumberOfCoin(0);
+				SetTileID(x, y, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh ? 17 : mapType == LongDat ? 19 : 20);
 			}
+			break;
 		case 10: case 11: case 12:
 			if (tile[x][y]->GetStar())
 			{
 				SetTileID(x, y, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh ? 17 : mapType == LongDat ? 19 : 20);
+				//minion[GetListID(32 * x)].push_back(new Star(32 * x, Game::gameHeight - 32 * y, x, y));
 			}
 			else if (tile[x][y]->GetMushroom())
 			{
+				SetTileID(x, y, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh ? 17 : mapType == LongDat ? 19 : 20);
+
 				if (tile[x][y]->GetPowerUp())
 				{
-
+					/*if (player->GetLevel() == 0)
+						minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Game::gameHeight - 32 * y, true, x, y));
+					else
+						minion[GetListID(32 * x)].push_back(new Flower(32 * x, Game::gameHeight - 32 * y));*/
+				}
+				else
+				{
+					//minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Game::gameHeight - 32 * y, true, x, y));
 				}
 			}
 			else if (tile[x][y]->getNumberOfCoin() > 0)
 			{
+				player->SetScore(player->GetScore() + 200);
+				player->SetCoin(player->GetCoin() + 1);
 				tile[x][y]->SetNumberOfCoin(tile[x][y]->getNumberOfCoin() - 1);
 
 				if (tile[x][y]->getNumberOfCoin() == 0)
+					SetTileID(x, y, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh ? 17 : mapType == LongDat ? 19 : 20);
+			}
+			else
+			{
+				if (player->GetLevel() > 0)
 				{
-
+					SetTileID(x, y, 0);
 				}
 			}
+			break;
 		default:
 			break;
 		}

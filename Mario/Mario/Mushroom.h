@@ -8,7 +8,7 @@
 class Mushroom : public Minion
 {
 private:
-	float x, y;
+	int x, y;
 	bool powerUp;
 	bool inSpawnState;
 	int inSpawnY;

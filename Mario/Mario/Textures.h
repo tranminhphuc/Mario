@@ -18,7 +18,7 @@ public:
 	void SetPosition(sf::Vector2f position);
 	void SetRect(sf::Texture* textures);
 	void Draw(sf::RenderWindow& window, sf::Vector2f position);
-	void Draw(sf::RenderWindow& window, sf::Vector2f position, sf::IntRect IMGRect);
+	void Draw(sf::RenderWindow& window, sf::Vector2f position, sf::Vector2f size, sf::IntRect IMGRect);
 };
 
 #endif

@@ -2,6 +2,8 @@
 #include "Game.h"
 
 Map* Window::map;
+bool Window::movePressed = false;
+bool Window::keyMenuPressed = false;
 bool Window::keyA = false;
 bool Window::keyD = false;
 bool Window::keyS = false;
@@ -57,12 +59,14 @@ void Window::Play()
 void Window::Update()
 {
 	map->Update();
+	//Game::GetMenuManager()->Update();
 }
 
 void Window::Draw()
 {
 	map->SetBackGroundColor(*window);
 	map->Draw(*window);
+	map->DrawGameLayout(*window);
 }
 
 Map* Window::GetMap()
@@ -75,84 +79,80 @@ unsigned int Window::GetTime()
 	return time;
 }
 
+void Window::ResetKeys()
+{
+	keyMenuPressed = keyA = keyD = keyW = keyS = Game::keySpace = keyShift = false;
+}
+
 void Window::Input()
 {
-
 }
 
 void Window::InputPlayer()
 {
+}
+
+void Window::InputMenu()
+{
 	if (event.type == sf::Event::KeyPressed)
 	{
-		if (event.key.code == Game::keyD)
+		Game::GetMenuManager()->SetKey(event.key.code);
+		
+		switch (event.key.code)
 		{
-			keyD = true;
-		}
-
-		if (event.key.code == Game::keyS)
-		{
-			keyS = true;
-
-			if (!map->GetUnderWater())
-				map->GetPlayer()->SetSquat(true);
-		}
-
-		if (event.key.code == Game::keyA)
-		{
-			keyA = true;
-		}
-
-		if (event.key.code == Game::keySpace)
-		{
-			if (!Game::keySpace)
+		case sf::Keyboard::S: case sf::Keyboard::Down:
+			if (!keyMenuPressed)
 			{
-				//map->GetPlayer()->j
+				Game::GetMenuManager()->keyPressed(2);
+				keyMenuPressed = true;
 			}
-		}
-
-		if (event.key.code == Game::keyShift)
-		{
-			if (!keyShift)
+			break;
+		case sf::Keyboard::W : case sf::Keyboard::Up:
+			if (!keyMenuPressed)
 			{
-				map->GetPlayer()->StartMove();
-				keyShift = true;
+				Game::GetMenuManager()->keyPressed(0);
+				keyMenuPressed = true;
+			}
+			break;
+		case sf::Keyboard::Return:
+			if (!keyMenuPressed)
+			{
+				Game::GetMenuManager()->Enter();
+				keyMenuPressed = true;
+			}
+			break;
+		case sf::Keyboard::Escape:
+			if (!keyMenuPressed)
+			{
+				Game::GetMenuManager()->Escape();
+				keyMenuPressed = true;
+			}
+			break;
+		case sf::Keyboard::A: case sf::Keyboard::Left:
+			if (!keyMenuPressed)
+			{
+				Game::GetMenuManager()->keyPressed(3);
+				keyMenuPressed = true;
+			}
+			break;
+		case sf::Keyboard::D: case sf::Keyboard::Right:
+			if (!keyMenuPressed)
+			{
+				Game::GetMenuManager()->keyPressed(1);
+				keyMenuPressed = true;
 			}
 		}
 	}
 
 	if (event.type == sf::Event::KeyReleased)
 	{
-		if (event.key.code == Game::keyD)
+		switch (event.key.code)
 		{
-			keyD = false;
-		}
-
-		if (event.key.code == Game::keyS)
-		{
-			keyS = false;
-		}
-
-		if (event.key.code == Game::keyA)
-		{
-			keyA = false;
-		}
-
-		if (event.key.code == Game::keySpace)
-		{
-			Game::keySpace = false;
-		}
-
-		if (event.key.code == Game::keyShift)
-		{
-			if (keyShift)
-			{
-				map->GetPlayer()->ResetMove();
-				keyShift = false;
-			}
+		case sf::Keyboard::A: case sf::Keyboard::D: case sf::Keyboard::W: case sf::Keyboard::S: case sf::Keyboard::Left: case sf::Keyboard::Right: case sf::Keyboard::Up: case sf::Keyboard::Down:
+			keyMenuPressed = false;
+			break;
+		default:
+			break;
 		}
 	}
-}
-
-void Window::InputMenu()
-{
 }

@@ -35,6 +35,7 @@ void MainMenu::UpdateActiveButton(int number)
 {
 	switch (number)
 	{
+	//0 di chuyen len(Up, w), 2 di chuyen xuong(Down, s)
 	case 0 : case 2:
 		if (!selectWorld)
 		{
@@ -59,6 +60,7 @@ void MainMenu::UpdateActiveButton(int number)
 			}
 		}
 		break;
+	//1 di chuyen sang trai(Left, a)
 	case 1:
 		if (selectWorld)
 		{
@@ -68,6 +70,7 @@ void MainMenu::UpdateActiveButton(int number)
 				activeWorldID = 0;
 		}
 		break;
+	//3 di chuyen sang phai(Right, d)
 	case 3:
 		if (selectWorld)
 		{
@@ -94,6 +97,7 @@ void MainMenu::Enter()
 			Game::GetMenuManager()->GetLoadingMenu()->UpdateTime();
 			Window::GetMap()->ResetGameData();
 			Window::GetMap()->SetLevel(activeWorldID * 4 + activeSecondWorldID);
+			Game::GetMenuManager()->SetView(Game::GetMenuManager()->GameLoading);
 			Game::GetMenuManager()->GetLoadingMenu()->loading = true;
 			selectWorld = false;
 		}
@@ -101,6 +105,7 @@ void MainMenu::Enter()
 	case 1:
 		Game::GetMenuManager()->GetOptionMenu()->SetEscapeToMainMenu(true);
 		Game::GetMenuManager()->ResetActiveOption(Game::GetMenuManager()->GameOption);
+		Game::GetMenuManager()->SetView(Game::GetMenuManager()->GameOption);
 		//......
 		break;
 	case 2:
