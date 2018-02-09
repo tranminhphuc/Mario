@@ -150,7 +150,7 @@ void Window::InputMenu()
 	{
 		switch (event.key.code)
 		{
-		case sf::Keyboard::A: case sf::Keyboard::D: case sf::Keyboard::W: case sf::Keyboard::S: case sf::Keyboard::Left: case sf::Keyboard::Right: case sf::Keyboard::Up: case sf::Keyboard::Down:
+		case sf::Keyboard::A: case sf::Keyboard::D: case sf::Keyboard::W: case sf::Keyboard::S: case sf::Keyboard::Left: case sf::Keyboard::Right: case sf::Keyboard::Up: case sf::Keyboard::Down: case sf::Keyboard::Return: case sf::Keyboard::Escape:
 			keyMenuPressed = false;
 			break;
 		default:

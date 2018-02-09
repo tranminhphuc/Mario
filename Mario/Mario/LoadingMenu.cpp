@@ -35,6 +35,7 @@ void LoadingMenu::Update()
 
 void LoadingMenu::Draw(sf::RenderWindow & window)
 {
+	Window::GetMap()->SetBackGroundColor(window);
 	if (loading)
 	{
 		Window::GetMap()->DrawGameLayout(window);
