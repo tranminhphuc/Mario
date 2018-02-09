@@ -44,6 +44,13 @@ void OptionMenu::Update()
 
 void OptionMenu::Draw(sf::RenderWindow & window)
 {
+	rect.setFillColor(sf::Color(4, 4, 4, 255));
+	rect.setSize(sf::Vector2f(rect.getSize().x + 1, rect.getSize().y + 1));
+	rect.move(-2, -2);
+	rect.setFillColor(sf::Color(255, 255, 255, 255));
+	rect.setSize(sf::Vector2f(rect.getSize().x - 1, rect.getSize().y - 1));
+	rect.move(2, 2);
+
 	for (int i = 0; i < menuOption.size(); i++)
 	{
 		if(i == activeMenuOption)
@@ -51,6 +58,35 @@ void OptionMenu::Draw(sf::RenderWindow & window)
 		else
 			Game::GetText()->Draw(window, menuOption[i]->GetText(), menuOption[i]->GetX(), menuOption[i]->GetY(), 90, 90, 90);
 	}
+
+	volume.setFillColor(sf::Color(4, 4, 4, 255));
+	volumeChange.setFillColor(sf::Color(activeMenuOption == 0 ? 150 : 90, activeMenuOption == 0 ? 150 : 90, activeMenuOption == 0 ? 150 : 90, 255));
+
+	if (activeMenuOption == 0)
+		volumeChange.setFillColor(sf::Color(255, 255, 255, 255));
+	else
+		volumeChange.setFillColor(sf::Color(160, 160, 160, 255));
+
+	Game::GetText()->Draw(window, Game::GetKeyString(Game::keyA), 185, 89, activeMenuOption == 1 ? 255 : 90, activeMenuOption == 1 ? 255 : 90, activeMenuOption == 1 ? 255 : 90);
+	Game::GetText()->Draw(window, Game::GetKeyString(Game::keyS), 185, 113, activeMenuOption == 2 ? 255 : 90, activeMenuOption == 2 ? 255 : 90, activeMenuOption == 2 ? 255 : 90);
+	Game::GetText()->Draw(window, Game::GetKeyString(Game::keyD), 185, 137, activeMenuOption == 3 ? 255 : 90, activeMenuOption == 3 ? 255 : 90, activeMenuOption == 3 ? 255 : 90);
+	Game::GetText()->Draw(window, Game::GetKeyString(Game::keySpace), 185, 161, activeMenuOption == 4 ? 255 : 90, activeMenuOption == 4 ? 255 : 90, activeMenuOption == 4 ? 255 : 90);
+	Game::GetText()->Draw(window, Game::GetKeyString(Game::keyShift), 185, 185, activeMenuOption == 5 ? 255 : 90, activeMenuOption == 5 ? 255 : 90, activeMenuOption == 5 ? 255 : 90);
+
+	if (setKey)
+	{
+		setKeyRect.setFillColor(sf::Color(20, 20, 20, 245));
+		setKeyRect.setSize(sf::Vector2f(setKeyRect.getSize().x + 1, setKeyRect.getSize().y + 1));
+		setKeyRect.move(-2, -2);
+		setKeyRect.setFillColor(sf::Color(255, 255, 255, 245));
+		setKeyRect.setSize(sf::Vector2f(setKeyRect.getSize().x - 1, setKeyRect.getSize().y - 1));
+		setKeyRect.move(2, 2);
+
+		Game::GetText()->Draw(window, "PRESS KEY FOR " + menuOption[activeMenuOption]->GetText(), 92, setKeyRect.getPosition().y, 255, 255, 255);
+		Game::GetText()->Draw(window, "PRESS ESC TO CALCEL", 92, setKeyRect.getPosition().y + 40, 255, 255, 255);
+	}
+
+	Window::GetMap()->SetBackGroundColor(window);
 }
 
 void OptionMenu::Enter()
@@ -143,13 +179,13 @@ void OptionMenu::SetKey(int keyID)
 
 void OptionMenu::UpdateActiveButton(int id)
 {
-	if (activeMenuOption == 0 && (id == 1 || id == 3))
+	if (activeMenuOption == 0 && (id == Window::Left || id == Window::Right))
 	{
 		switch (id)
 		{
-		case 1:
+		case Window::Left:
 			break;
-		case 3:
+		case Window::Right:
 			break;
 		}
 

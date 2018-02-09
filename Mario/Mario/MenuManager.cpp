@@ -49,7 +49,7 @@ void MenuManager::Draw(sf::RenderWindow& window)
 	switch (currentGameState)
 	{
 	case MenuGame:
-		Window::GetMap()->Draw(window);
+		Window::GetMap()->DrawMap(window);
 		Window::GetMap()->DrawGameLayout(window);
 		mainMenu->Draw(window);
 		break;

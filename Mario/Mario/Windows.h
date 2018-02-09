@@ -21,6 +21,14 @@ private:
 	void InputPlayer();
 	void InputMenu();
 public:
+	enum Key
+	{
+		Up,
+		Down,
+		Left,
+		Right
+	};
+
 	Window(unsigned int width, unsigned int heigth, string name);
 	~Window();
 

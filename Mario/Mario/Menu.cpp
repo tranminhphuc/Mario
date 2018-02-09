@@ -1,4 +1,5 @@
 #include "Menu.h"
+#include "Windows.h"
 #include "Game.h"
 
 Menu::Menu()
@@ -26,13 +27,13 @@ void Menu::UpdateActiveButton(int number)
 {
 	switch (number)
 	{
-	case 0:
+	case Window::Up:
 		if (activeMenuOption < 1)
 			activeMenuOption = numberOfMenuOption - 1;
 		else
 			activeMenuOption--;
 		break;
-	case 2:
+	case Window::Down:
 		if (activeMenuOption >= numberOfMenuOption - 1)
 			activeMenuOption = 0;
 		else

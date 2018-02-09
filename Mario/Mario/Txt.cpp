@@ -1,4 +1,5 @@
 #include "Txt.h"
+#include "Game.h"
 
 Text::Text()
 {
@@ -58,6 +59,12 @@ void Text::Draw(sf::RenderWindow& window, string text, float x, float y, int r, 
 		nextExtraLeft = 0;
 		rect.setFillColor(sf::Color(255, 255, 255));
 	}
+}
+
+void Text::DrawCenterX(sf::RenderWindow& window, string text, int y, int r, int g, int b, int fontsize)
+{
+	int x = Game::gameWidth / 2 - GetTextWidth(text, fontSize) / 2;
+	Draw(window, text, x, y, r, g, b, fontSize);
 }
 
 void Text::SetFont(string file)

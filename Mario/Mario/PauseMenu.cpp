@@ -25,6 +25,22 @@ void PauseMenu::Update()
 
 void PauseMenu::Draw(sf::RenderWindow & window)
 {
+	pause.setFillColor(sf::Color(4, 4, 4, 255));
+	pause.setSize(sf::Vector2f(pause.getSize().x + 1, pause.getSize().y + 1));
+	pause.move(-2, -2);
+	pause.setFillColor(sf::Color(255, 255, 255, 255));
+	pause.setSize(sf::Vector2f(pause.getSize().x - 1, pause.getSize().y - 1));
+	pause.move(2, 2);
+
+	for (int i = 0; i < menuOption.size(); i++)
+	{
+		if (i == activeMenuOption)
+			Game::GetText()->DrawCenterX(window, menuOption[i]->GetText(), menuOption[i]->GetY(), 255, 255, 255);
+		else
+			Game::GetText()->DrawCenterX(window, menuOption[i]->GetText(), menuOption[i]->GetY(), 90, 90, 90);
+	}
+
+	Window::GetMap()->SetBackGroundColor(window);
 }
 
 void PauseMenu::Enter()

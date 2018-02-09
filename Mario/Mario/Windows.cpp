@@ -40,16 +40,19 @@ void Window::Play()
 			{
 				window->close();
 			}
-			if (event.type == sf::Event::KeyPressed)
-			{
-				if (event.key.code == sf::Keyboard::Right)
-				{
-					map->MoveMap(-50);
-				}
-			}
+			//if (event.type == sf::Event::KeyPressed)
+			//{
+			//	/*if (event.key.code == sf::Keyboard::Right)
+			//	{
+			//		map->MoveMap(-50);
+			//	}*/
+			//}
+
+			InputMenu();
 		}
 
 		Update();
+		//InputMenu();
 		Draw();
 		window->display();
 	}
@@ -65,8 +68,7 @@ void Window::Update()
 void Window::Draw()
 {
 	map->SetBackGroundColor(*window);
-	map->Draw(*window);
-	map->DrawGameLayout(*window);
+	Game::GetMenuManager()->Draw(*window);
 }
 
 Map* Window::GetMap()
@@ -97,20 +99,20 @@ void Window::InputMenu()
 	if (event.type == sf::Event::KeyPressed)
 	{
 		Game::GetMenuManager()->SetKey(event.key.code);
-		
+
 		switch (event.key.code)
 		{
 		case sf::Keyboard::S: case sf::Keyboard::Down:
 			if (!keyMenuPressed)
 			{
-				Game::GetMenuManager()->keyPressed(2);
+				Game::GetMenuManager()->keyPressed(Down);
 				keyMenuPressed = true;
 			}
 			break;
 		case sf::Keyboard::W : case sf::Keyboard::Up:
 			if (!keyMenuPressed)
 			{
-				Game::GetMenuManager()->keyPressed(0);
+				Game::GetMenuManager()->keyPressed(Up);
 				keyMenuPressed = true;
 			}
 			break;
@@ -131,14 +133,14 @@ void Window::InputMenu()
 		case sf::Keyboard::A: case sf::Keyboard::Left:
 			if (!keyMenuPressed)
 			{
-				Game::GetMenuManager()->keyPressed(3);
+				Game::GetMenuManager()->keyPressed(Left);
 				keyMenuPressed = true;
 			}
 			break;
 		case sf::Keyboard::D: case sf::Keyboard::Right:
 			if (!keyMenuPressed)
 			{
-				Game::GetMenuManager()->keyPressed(1);
+				Game::GetMenuManager()->keyPressed(Right);
 				keyMenuPressed = true;
 			}
 		}

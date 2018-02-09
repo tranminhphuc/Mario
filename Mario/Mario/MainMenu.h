@@ -8,12 +8,10 @@
 class MainMenu : public Menu
 {
 private:
-	//chon level
 	bool selectWorld;
-	//thay doi level 
-	int activeWorldID, activeSecondWorldID;
+	int changeLevelFrom1To8, changeLevelFrom1To4;
 
-	sf::IntRect selectWorldLabel;
+	sf::RectangleShape selectWorldLabel;
 public:
 	MainMenu();
 	~MainMenu();

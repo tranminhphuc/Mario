@@ -22,6 +22,7 @@ public:
 
 	static Text* GetText();
 	static MenuManager* GetMenuManager();
+	static string GetKeyString(int keyID);
 };
 
 #endif
