@@ -1,0 +1,6 @@
+1
+pipe1_hor_top_center.bmp
+0
+1
+1
+1

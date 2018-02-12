@@ -1,0 +1,6 @@
+1
+pipe1_hor_bot_right.bmp
+0
+1
+1
+1

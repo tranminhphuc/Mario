@@ -85,8 +85,6 @@ void OptionMenu::Draw(sf::RenderWindow & window)
 		Game::GetText()->Draw(window, "PRESS KEY FOR " + menuOption[activeMenuOption]->GetText(), 92, setKeyRect.getPosition().y, 255, 255, 255);
 		Game::GetText()->Draw(window, "PRESS ESC TO CALCEL", 92, setKeyRect.getPosition().y + 40, 255, 255, 255);
 	}
-
-	Window::GetMap()->SetBackGroundColor(window);
 }
 
 void OptionMenu::Enter()

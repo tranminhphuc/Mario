@@ -94,7 +94,7 @@ void Map::UpdateMinionsCollision()
 	}
 }
 
-void Map::Draw(sf::RenderWindow & window)
+void Map::Draw(sf::RenderWindow& window)
 {
 	DrawMap(window);
 	DrawMinion(window);
@@ -102,6 +102,8 @@ void Map::Draw(sf::RenderWindow & window)
 
 void Map::DrawMap(sf::RenderWindow & window)
 {
+	SetBackGroundColor(window);
+
 	for (int i = GetStartMap(), iEnd = GetEndMap(); i < iEnd && i < mapWidth; i++)
 	{
 		for (int j = 0; j < mapHeight; j++)
@@ -521,246 +523,240 @@ void Map::LoadGameData()
 	// ----- 12 -----
 	LoadImage("brick2.bmp", true, true, true);
 	// ----- 13 -----
-	LoadImage("gnd_red2.bmp", true, true, true);
-	// ----- 14 -----
-	LoadImage("gnd1_2.bmp", true, true, true);
-	// ----- 15 -----
-	LoadImage("gnd2_2.bmp", true, true, true);
-	// ----- 16 -----
 	LoadImage("blockq_0.bmp", "blockq_2.bmp", "blockq_1.bmp", "blockq_2.bmp", true, true, true);
-	// ----- 17 -----
+	// ----- 14 -----
 	LoadImage("blockq_used.bmp", true, true, true);
-	// ----- 18 -----
+	// ----- 15 -----
 	LoadImage("blockq1_0.bmp", "blockq1_2.bmp", "blockq1_1.bmp", "blockq1_2.bmp", true, true, true);
-	// ----- 19 -----
+	// ----- 16 -----
 	LoadImage("blockq1_used.bmp", true, true, true);
-	// ----- 20 -----
+	// ----- 17 -----
 	LoadImage("blockq2_used.bmp", true, true, true);
-	// ----- 21 -----
+	// ----- 18 -----
 	LoadImage("pipe_left_bot.bmp", true, false, true);
-	// ----- 22 -----
+	// ----- 19 -----
 	LoadImage("pipe_right_bot.bmp", true, false, true);
-	// ----- 23 -----
+	// ----- 20 -----
 	LoadImage("pipe_left_top.bmp", true, true, true);
-	// ----- 24 -----
+	// ----- 21 -----
 	LoadImage("pipe_right_top.bmp", true, true, true);
-	// ----- 25 -----
+	// ----- 22 -----
 	LoadImage("pipe_hor_bot_left.bmp", true, true, true);
-	// ----- 26 -----
+	// ----- 23 -----
 	LoadImage("pipe_hor_top_left.bmp", true, true, true);
-	// ----- 27 -----
+	// ----- 24 -----
 	LoadImage("pipe_hor_bot_center.bmp", true, false, true);
-	// ----- 28 -----
+	// ----- 25 -----
 	LoadImage("pipe_hor_top_center.bmp", true, false, true);
-	// ----- 29 -----
+	// ----- 26 -----
 	LoadImage("pipe_hor_bot_right.bmp", true, false, true);
-	// ----- 30 -----
+	// ----- 27 -----
 	LoadImage("pipe_hor_top_right.bmp", true, false, true);
-	// ----- 31 -----
+	// ----- 28 -----
 	LoadImage("pipe1_left_bot.bmp", true, false, true);
-	// ----- 32 -----
+	// ----- 29 -----
 	LoadImage("pipe1_right_bot.bmp", true, false, true);
-	// ----- 33 -----
+	// ----- 30 -----
 	LoadImage("pipe1_left_top.bmp", true, true, true);
-	// ----- 34 -----
+	// ----- 31 -----
 	LoadImage("pipe1_right_top.bmp", true, true, true);
-	// ----- 35 -----
+	// ----- 32 -----
 	LoadImage("pipe1_hor_bot_left.bmp", true, true, true);
-	// ----- 36 -----
+	// ----- 33 -----
 	LoadImage("pipe1_hor_top_left.bmp", true, true, true);
-	// ----- 37 -----
+	// ----- 34 -----
 	LoadImage("pipe1_hor_bot_center.bmp", true, false, true);
-	// ----- 38 -----
+	// ----- 34 -----
 	LoadImage("pipe1_hor_top_center.bmp", true, false, true);
-	// ----- 39 -----
+	// ----- 36 -----
 	LoadImage("pipe1_hor_bot_right.bmp", true, false, true);
-	// ----- 40 -----
+	// ----- 37 -----
 	LoadImage("pipe1_hor_top_right.bmp", true, false, true);
-	// ----- 41 -----
+	// ----- 38 -----
 	LoadImage("pipe2_left_bot.bmp", true, false, true);
-	// ----- 42 -----
+	// ----- 39 -----
 	LoadImage("pipe2_right_bot.bmp", true, false, true);
-	// ----- 43 -----
+	// ----- 40 -----
 	LoadImage("pipe2_left_top.bmp", true, true, true);
-	// ----- 44 -----
+	// ----- 41 -----
 	LoadImage("pipe2_right_top.bmp", true, true, true);
-	// ----- 45 -----
+	// ----- 42 -----
 	LoadImage("pipe2_hor_bot_left.bmp", true, true, true);
-	// ----- 46 -----
+	// ----- 43 -----
 	LoadImage("pipe2_hor_top_left.bmp", true, true, true);
-	// ----- 47 -----
+	// ----- 44 -----
 	LoadImage("pipe2_hor_bot_center.bmp", true, false, true);
-	// ----- 48 -----
+	// ----- 45 -----
 	LoadImage("pipe2_hor_top_center.bmp", true, false, true);
-	// ----- 49 -----
+	// ----- 46 -----
 	LoadImage("pipe2_hor_bot_right.bmp", true, false, true);
-	// ----- 50 -----
+	// ----- 47 -----
 	LoadImage("pipe2_hor_top_right.bmp", true, false, true);
-	// ----- 51 -----
+	// ----- 48 -----
 	LoadImage("pipe3_left_bot.bmp", true, false, true);
-	// ----- 52 -----
+	// ----- 49 -----
 	LoadImage("pipe3_right_bot.bmp", true, false, true);
-	// ----- 53 -----
+	// ----- 50 -----
 	LoadImage("pipe3_left_top.bmp", true, true, true);
-	// ----- 54 -----
+	// ----- 51 -----
 	LoadImage("pipe3_right_top.bmp", true, true, true);
-	// ----- 55 -----
+	// ----- 52 -----
 	LoadImage("pipe3_hor_bot_left.bmp", true, true, true);
-	// ----- 56 -----
+	// ----- 53 -----
 	LoadImage("pipe3_hor_top_left.bmp", true, true, true);
-	// ----- 57 -----
+	// ----- 54 -----
 	LoadImage("pipe3_hor_bot_center.bmp", true, false, true);
-	// ----- 58 -----
+	// ----- 55 -----
 	LoadImage("pipe3_hor_top_center.bmp", true, false, true);
-	// ----- 59 -----
+	// ----- 56 -----
 	LoadImage("pipe3_hor_bot_right.bmp", true, false, true);
-	// ----- 60 -----
+	// ----- 57 -----
 	LoadImage("pipe3_hor_top_right.bmp", true, false, true);
-	// ----- 61 -----
+	// ----- 58 -----
 	LoadImage("pipe4_left_bot.bmp", true, false, true);
-	// ----- 62 -----
+	// ----- 59 -----
 	LoadImage("pipe4_right_bot.bmp", true, false, true);
-	// ----- 63 -----
+	// ----- 60 -----
 	LoadImage("pipe4_left_top.bmp", true, true, true);
-	// ----- 64 -----
+	// ----- 61 -----
 	LoadImage("pipe4_right_top.bmp", true, true, true);
-	// ----- 65 -----
+	// ----- 62 -----
 	LoadImage("pipe5_left_bot.bmp", true, false, true);
-	// ----- 66 -----
+	// ----- 63 -----
 	LoadImage("pipe5_right_bot.bmp", true, false, true);
-	// ----- 67 -----
+	// ----- 64 -----
 	LoadImage("pipe5_left_top.bmp", true, true, true);
-	// ----- 68 -----
+	// ----- 65 -----
 	LoadImage("pipe5_right_top.bmp", true, true, true);
-	// ----- 69 -----
+	// ----- 66 -----
 	LoadImage("pipe6_left_bot.bmp", true, false, true);
-	// ----- 70 -----
+	// ----- 67 -----
 	LoadImage("pipe6_right_bot.bmp", true, false, true);
-	// ----- 71 -----
+	// ----- 68 -----
 	LoadImage("pipe6_left_top.bmp", true, true, true);
-	// ----- 72 -----
+	// ----- 69 -----
 	LoadImage("pipe6_right_top.bmp", true, true, true);
-	// ----- 73 -----
+	// ----- 70 -----
 	LoadImage("coin_use00.bmp", "coin_use02.bmp", "coin_use01.bmp", "coin_use02.bmp", true, true, true);
-	// ----- 74 -----
+	// ----- 71 -----
 	LoadImage("coin_use0.bmp", "coin_use2.bmp", "coin_use1.bmp", "coin_use2.bmp", true, true, true);
-	// ----- 75 -----
+	// ----- 72 -----
 	LoadImage("coin_use30.bmp", "coin_use32.bmp", "coin_use31.bmp", "coin_use32.bmp", true, true, true);
-	// ----- 76 -----
+	// ----- 73 -----
 	LoadImage("end0_l.bmp", false, true, true);
-	// ----- 77 -----
+	// ----- 74 -----
 	LoadImage("end0_dot.bmp", false, true, true);
-	// ----- 78 -----
+	// ----- 75 -----
 	LoadImage("end1_l.bmp", false, true, true);
-	// ----- 79 -----
+	// ----- 76 -----
 	LoadImage("end1_dot.bmp", false, true, true);
-	// ----- 80 -----
+	// ----- 77 -----
 	LoadImage("castle0_brick.bmp", false, false, true);
-	// ----- 81 -----
+	// ----- 78 -----
 	LoadImage("castle0_center_center.bmp", false, false, true);
-	// ----- 82 -----
+	// ----- 79 -----
 	LoadImage("castle0_center_center_top.bmp", false, false, true);
-	// ----- 83 -----
+	// ----- 80 -----
 	LoadImage("castle0_center_left.bmp", false, false, true);
-	// ----- 84 -----
+	// ----- 81 -----
 	LoadImage("castle0_center_right.bmp", false, false, true);
-	// ----- 85 -----
+	// ----- 82 -----
 	LoadImage("castle0_top0.bmp", false, false, true);
-	// ----- 86 -----
+	// ----- 83 -----
 	LoadImage("castle0_top1.bmp", false, false, true);
-	// ----- 87 -----
+	// ----- 84 -----
 	LoadImage("castle1_brick.bmp", false, false, true);
-	// ----- 88 -----
+	// ----- 85 -----
 	LoadImage("castle1_center_center.bmp", false, false, true);
-	// ----- 89 -----
+	// ----- 86 -----
 	LoadImage("castle1_center_center_top.bmp", false, false, true);
-	// ----- 90 -----
+	// ----- 87 -----
 	LoadImage("castle1_center_left.bmp", false, false, true);
-	// ----- 91 -----
+	// ----- 88 -----
 	LoadImage("castle1_center_right.bmp", false, false, true);
-	// ----- 92 -----
+	// ----- 89 -----
 	LoadImage("castle1_top0.bmp", false, false, true);
-	// ----- 93 -----
+	// ----- 90 -----
 	LoadImage("castle1_top1.bmp", false, false, true);
-	// ----- 94 -----
+	// ----- 91 -----
 	LoadImage("t_bot.bmp", true, true, true);
-	// ----- 95 -----
+	// ----- 92 -----
 	LoadImage("t_bot0.bmp", true, true, true);
-	// ----- 96 -----
+	// ----- 93 -----
 	LoadImage("t_bot1.bmp", true, true, true);
-	// ----- 97 -----
+	// ----- 94 -----
 	LoadImage("t_bot2.bmp", true, true, true);
-	// ----- 98 -----
+	// ----- 95 -----
 	LoadImage("t_left.bmp", true, true, true);
-	// ----- 99 -----
+	// ----- 96 -----
 	LoadImage("t_center.bmp", true, true, true);
-	// ----- 100 -----
+	// ----- 97 -----
 	LoadImage("t_right.bmp", true, true, true);
-	// ----- 101 -----
+	// ----- 98 -----
 	LoadImage("t_left1.bmp", true, true, true);
-	// ----- 102 -----
+	// ----- 99 -----
 	LoadImage("t_center1.bmp", true, true, true);
-	// ----- 103 -----
+	// ----- 100 -----
 	LoadImage("t_right1.bmp", true, true, true);
-	// ----- 104 -----
+	// ----- 101 -----
 	LoadImage("t_left2.bmp", true, true, true);
-	// ----- 105 -----
+	// ----- 102 -----
 	LoadImage("t_center2.bmp", true, true, true);
-	// ----- 106 -----
+	// ----- 103 -----
 	LoadImage("t_right2.bmp", true, true, true);
-	// ----- 107 -----
+	// ----- 104 -----
 	LoadImage("water_0.bmp", false, false, true);
-	// ----- 108 -----
+	// ----- 105 -----
 	LoadImage("water_1.bmp", false, false, true);
-	// ----- 109 -----
+	// ----- 106 -----
 	LoadImage("water_2.bmp", false, false, true);
-	// ----- 110 -----
+	// ----- 107 -----
 	LoadImage("water_3.bmp", false, false, true);
-	// ----- 111 -----
+	// ----- 108 -----
 	LoadImage("lava_0.bmp", false, false, true);
-	// ----- 112 -----
+	// ----- 109 -----
 	LoadImage("lava_1.bmp", false, false, true);
-	// ----- 113 -----
+	// ----- 110 -----
 	LoadImage("bridge_0.bmp", true, true, true);
-	// ----- 114 -----
+	// ----- 111 -----
 	LoadImage("bridge_1.bmp", false, false, true);
-	// ----- 115 -----
+	// ----- 112 -----
 	LoadImage("bridge2.bmp", true, false, true);
-	// ----- 116 -----
+	// ----- 113 -----
 	LoadImage("bridge3.bmp", true, false, true);
-	// ----- 117 -----
+	// ----- 114 -----
 	LoadImage("bridge4.bmp", false, false, true);
-	// ----- 118 -----
+	// ----- 115 -----
 	LoadImage("axe_0.bmp", "axe_1.bmp", "axe_2.bmp", true, true, true);
-	// ----- 119 -----
+	// ----- 116 -----
 	LoadImage("bonus.bmp", true, true, true);
-	// ----- 120 -----
+	// ----- 117 -----
 	LoadImage("transp.bmp", true, true, false);
-	// ----- 121 -----
+	// ----- 118 -----
 	LoadImage("transp.bmp", true, true, true);
-	// ----- 122 -----
+	// ----- 119 -----
 	LoadImage("seesaw_0.bmp", false, false, true);
-	// ----- 123 -----
+	// ----- 120 -----
 	LoadImage("seesaw_1.bmp", false, false, true);
-	// ----- 124 -----
+	// ----- 121 -----
 	LoadImage("seesaw_2.bmp", false, false, true);
-	// ----- 125 -----
+	// ----- 122 -----
 	LoadImage("seesaw_3.bmp", false, false, true);
-	// ----- 126 -----
+	// ----- 123 -----
 	LoadImage("seesaw1_0.bmp", false, false, true);
-	// ----- 127 -----
+	// ----- 124 -----
 	LoadImage("seesaw1_1.bmp", false, false, true);
-	// ----- 128 -----
+	// ----- 125 -----
 	LoadImage("seesaw1_2.bmp", false, false, true);
-	// ----- 129 -----
+	// ----- 126 -----
 	LoadImage("seesaw1_3.bmp", false, false, true);
-	// ----- 130 -----
+	// ----- 127 -----
 	LoadImage("b_bot.bmp",  true, false, true);
-	// ----- 131 -----
+	// ----- 128 -----
 	LoadImage("b_top.bmp", true, false, true);
-	// ----- 132 -----
+	// ----- 129 -----
 	LoadImage("b_top1.bmp", true, false, true);
-	// ----- 133 -----
+	// ----- 130 -----
 	LoadImage("platform1.bmp", false, false, true);
 
 	// ----- 0 ----
@@ -4313,7 +4309,7 @@ void Map::DrawGND2(int x, int y, int width, int height)
 	{
 		for (int j = 0; j < height; j++)
 		{
-			SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 13 : mapType == DiaNguc ? 15 : 14);
+			SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 7 : mapType == DiaNguc ? 9 : 8);
 		}
 	}
 }
@@ -4326,7 +4322,7 @@ void Map::DrawGND2(int x, int y, int size, bool direction)
 		{
 			for (int j = 0; j < k; j++)
 			{
-				SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 13 : mapType == NuiLua ? 15 : 14);
+				SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 7 : mapType == NuiLua ? 9 : 8);
 			}
 			k++;
 		}
@@ -4337,7 +4333,7 @@ void Map::DrawGND2(int x, int y, int size, bool direction)
 		{
 			for (int j = k; j > 0; j--)
 			{
-				SetTileID(x + i, y - j + 1, mapType == BanNgay || mapType == BuoiToi ? 13 : mapType == NuiLua ? 15 : 14);
+				SetTileID(x + i, y - j + 1, mapType == BanNgay || mapType == BuoiToi ? 7 : mapType == NuiLua ? 9 : 8);
 			}
 			k--;
 		}
@@ -4359,7 +4355,7 @@ void Map::DrawBlockQ(int x, int y, int width)
 {
 	for (int i = 0; i < width; i++)
 	{
-		SetTileID(x + i, y, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 16 : 18);
+		SetTileID(x + i, y, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 13 : 15);
 	}
 }
 
@@ -4367,7 +4363,7 @@ void Map::DrawBlockQ2(int x, int y, int width)
 {
 	for (int i = 0; i < width; i++)
 	{
-		SetTileID(x + i, y, 120);
+		SetTileID(x + i, y, 117);
 	}
 }
 
@@ -4375,35 +4371,35 @@ void Map::DrawPipe(int x, int y, int height)
 {
 	for (int i = 0; i < height; i++)
 	{
-		SetTileID(x, y - i, mapType == BanNgay || mapType == BinhMinh ? 21 : mapType == Bien ? 41 : mapType == BuoiToi || mapType == HoangHon || mapType == NuiLua ? 51 : mapType == ThienDuong ? 61 : mapType == Ho ? 65 : 31);
-		SetTileID(x + 1, y - i, mapType == BanNgay || mapType == BinhMinh ? 22 : mapType == Bien ? 42 : mapType == BuoiToi || mapType == HoangHon || mapType == NuiLua ? 52 : mapType == ThienDuong ? 62 : mapType == Ho ? 66 : 32);
+		SetTileID(x, y - i, mapType == BanNgay || mapType == BinhMinh ? 18 : mapType == Bien ? 38 : mapType == BuoiToi || mapType == HoangHon || mapType == NuiLua ? 48 : mapType == ThienDuong ? 58 : mapType == Ho ? 62 : 28);
+		SetTileID(x + 1, y - i, mapType == BanNgay || mapType == BinhMinh ? 19 : mapType == Bien ? 39 : mapType == BuoiToi || mapType == HoangHon || mapType == NuiLua ? 49 : mapType == ThienDuong ? 59 : mapType == Ho ? 63 : 29);
 	}
 
-	SetTileID(x, y - height, mapType == BanNgay || mapType == BinhMinh ? 23 : mapType == Bien ? 43 : mapType == BuoiToi || mapType == HoangHon || mapType == NuiLua ? 53 : mapType == ThienDuong ? 63 : mapType == Ho ? 67 : 33);
-	SetTileID(x + 1, y - height, mapType == BanNgay || mapType == BinhMinh ? 24 : mapType == Bien ? 44 : mapType == BuoiToi || mapType == HoangHon || mapType == NuiLua ? 54 : mapType == ThienDuong ? 64 : mapType == Ho ? 68 : 34);
+	SetTileID(x, y - height, mapType == BanNgay || mapType == BinhMinh ? 20 : mapType == Bien ? 40 : mapType == BuoiToi || mapType == HoangHon || mapType == NuiLua ? 50 : mapType == ThienDuong ? 60 : mapType == Ho ? 64 : 30);
+	SetTileID(x + 1, y - height, mapType == BanNgay || mapType == BinhMinh ? 21 : mapType == Bien ? 41 : mapType == BuoiToi || mapType == HoangHon || mapType == NuiLua ? 51 : mapType == ThienDuong ? 61 : mapType == Ho ? 65 : 31);
 }
 
 void Map::DrawPipeHorizontal(int x, int y, int width)
 {
-	SetTileID(x, y, mapType == BanNgay ? 25 : mapType == Bien ? 45 : mapType == BuoiToi ? 55 : 35);
-	SetTileID(x, y - 1, mapType == BanNgay ? 26 : mapType == Bien ? 46 : mapType == BuoiToi ? 56 : 36);
+	SetTileID(x, y, mapType == BanNgay ? 22 : mapType == Bien ? 42 : mapType == BuoiToi ? 52 : 32);
+	SetTileID(x, y - 1, mapType == BanNgay ? 23 : mapType == Bien ? 43 : mapType == BuoiToi ? 53 : 33);
 
 	for (int i = 0; i < width; i++)
 	{
-		SetTileID(x + i + 1, y, mapType == BanNgay ? 27 : mapType == Bien ? 47 : mapType == BuoiToi ? 57 : 37);
-		SetTileID(x + i + 1, y - 1, mapType == BanNgay ? 28 : mapType == Bien ? 48 : mapType == BuoiToi ? 58 : 38);
+		SetTileID(x + i + 1, y, mapType == BanNgay ? 24 : mapType == Bien ? 44 : mapType == BuoiToi ? 54 : 34);
+		SetTileID(x + i + 1, y - 1, mapType == BanNgay ? 25 : mapType == Bien ? 45 : mapType == BuoiToi ? 55 : 35);
 	}
 
-	SetTileID(x + width + 1, y, mapType == BanNgay ? 29 : mapType == Bien ? 49 : mapType == BuoiToi ? 59 : 39);
-	SetTileID(x + width + 1, y - 1, mapType == BanNgay ? 30 : mapType == Bien ? 50 : mapType == BuoiToi ? 60 : 40);
+	SetTileID(x + width + 1, y, mapType == BanNgay ? 26 : mapType == Bien ? 46 : mapType == BuoiToi ? 56 : 36);
+	SetTileID(x + width + 1, y - 1, mapType == BanNgay ? 27 : mapType == Bien ? 47 : mapType == BuoiToi ? 57 : 37);
 }
 
 void Map::DrawPipeVertical(int x, int y, int height)
 {
 	for (int i = 0; i < height; i++)
 	{
-		SetTileID(x, y - i, mapType == BanNgay ? 21 : mapType == Bien ? 41 : mapType == BuoiToi ? 51 : 31);
-		SetTileID(x + 1, y - i, mapType == BanNgay ? 22 : mapType == Bien ? 42 : mapType == BuoiToi ? 52 : 32);
+		SetTileID(x, y - i, mapType == BanNgay ? 18 : mapType == Bien ? 38 : mapType == BuoiToi ? 48 : 28);
+		SetTileID(x + 1, y - i, mapType == BanNgay ? 19 : mapType == Bien ? 39 : mapType == BuoiToi ? 49 : 29);
 	}
 }
 
@@ -4413,7 +4409,7 @@ void Map::DrawCoins(int x, int y, int width, int height)
 	{
 		for (int j = 0; j < height; j++)
 		{
-			SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 73 : mapType == Bien ? 75 : 74);
+			SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 70 : mapType == Bien ? 72 : 71);
 		}
 	}
 }
@@ -4422,36 +4418,36 @@ void Map::DrawEnd(int x, int y, int height)
 {
 	for (int i = 0; i < height; i++)
 	{
-		SetTileID(x, y - i, mapType == BuoiToi || mapType == HoangHon ? 78 : 76);
+		SetTileID(x, y - i, mapType == BuoiToi || mapType == HoangHon ? 75 : 73);
 	}
-	SetTileID(x, y - height, mapType == BuoiToi || mapType == HoangHon ? 79 : 77);
+	SetTileID(x, y - height, mapType == BuoiToi || mapType == HoangHon ? 76 : 74);
 }
 
 void Map::DrawCastleSmall(int x, int y)
 {
 	for (int i = 0; i < 2; i++)
 	{
-		SetTileID(x, y - i, mapType == DiaNguc ? 87 : 80);
-		SetTileID(x + 1, y - i, mapType == DiaNguc ? 87 : 80);
-		SetTileID(x + 2, y - i, mapType == DiaNguc ? 88 : 81);
-		SetTileID(x + 3, y - i, mapType == DiaNguc ? 87 : 80);
-		SetTileID(x + 4, y - i, mapType == DiaNguc ? 87 : 80);
+		SetTileID(x, y - i, mapType == DiaNguc ? 84 : 77);
+		SetTileID(x + 1, y - i, mapType == DiaNguc ? 84 : 77);
+		SetTileID(x + 2, y - i, mapType == DiaNguc ? 85 : 78);
+		SetTileID(x + 3, y - i, mapType == DiaNguc ? 84 : 77);
+		SetTileID(x + 4, y - i, mapType == DiaNguc ? 84 : 77);
 	}
 
-	SetTileID(x + 2, y - 1, mapType == DiaNguc ? 89 : 82);
+	SetTileID(x + 2, y - 1, mapType == DiaNguc ? 86 : 79);
 
 	for (int i = 0; i < 5; i++)
 	{
-		SetTileID(x + i, y - 2, i == 0 || i == 4 ? mapType == DiaNguc ? 93 : 86 : mapType == DiaNguc ? 92 : 85);
+		SetTileID(x + i, y - 2, i == 0 || i == 4 ? mapType == DiaNguc ? 90 : 83 : mapType == DiaNguc ? 89 : 82);
 	}
 
-	SetTileID(x + 1, y - 3, mapType == DiaNguc ? 90 : 83);
-	SetTileID(x + 2, y - 3, mapType == DiaNguc ? 87 : 80);
-	SetTileID(x + 3, y - 3, mapType == DiaNguc ? 91 : 84);
+	SetTileID(x + 1, y - 3, mapType == DiaNguc ? 87 : 80);
+	SetTileID(x + 2, y - 3, mapType == DiaNguc ? 84 : 77);
+	SetTileID(x + 3, y - 3, mapType == DiaNguc ? 88 : 81);
 
 	for (int i = 0; i < 3; i++)
 	{
-		SetTileID(x + i + 1, y - 4, mapType == DiaNguc ? 93 : 86);
+		SetTileID(x + i + 1, y - 4, mapType == DiaNguc ? 90 : 83);
 	}
 }
 
@@ -4461,82 +4457,74 @@ void Map::DrawCastleBig(int x, int y)
 	{
 		for (int j = 0; j < 5; j++)
 		{
-			SetTileID(x + i, y - j, mapType == DiaNguc ? 87 : 80);
-			SetTileID(x + i + 7, y - j, mapType == DiaNguc ? 87 : 80);
+			SetTileID(x + i, y - j, mapType == DiaNguc ? 84 : 77);
+			SetTileID(x + i + 7, y - j, mapType == DiaNguc ? 84 : 77);
 		}
 	}
 
 	for (int i = 0; i < 3; i++)
 	{
-		SetTileID(x + 2 + i * 2, y, mapType == DiaNguc ? 88 : 81);
-		SetTileID(x + 2 + i * 2, y - 1, mapType == DiaNguc ? 89 : 82);
+		SetTileID(x + 2 + i * 2, y, mapType == DiaNguc ? 85 : 78);
+		SetTileID(x + 2 + i * 2, y - 1, mapType == DiaNguc ? 86 : 79);
 	}
 
 	for (int i = 0; i < 9; i++)
 	{
-		SetTileID(x + i, y - 2, mapType == DiaNguc ? 87 : 80);
+		SetTileID(x + i, y - 2, mapType == DiaNguc ? 84 : 77);
 	}
 
 	for (int i = 0; i < 9; i++)
 	{
 		if (i < 2 || i > 6)
-			SetTileID(x + i, y - 5, mapType == DiaNguc ? 93 : 86);
+			SetTileID(x + i, y - 5, mapType == DiaNguc ? 90 : 83);
 		else
-			SetTileID(x + i, y - 5, mapType == DiaNguc ? 92 : 85);
+			SetTileID(x + i, y - 5, mapType == DiaNguc ? 89 : 82);
 	}
 
 	for (int i = 0; i < 2; i++)
 	{
-		SetTileID(x + 3 + i * 2, y, mapType == DiaNguc ? 87 : 80);
-		SetTileID(x + 3 + i * 2, y - 1, mapType == DiaNguc ? 87 : 80);
+		SetTileID(x + 3 + i * 2, y, mapType == DiaNguc ? 84 : 77);
+		SetTileID(x + 3 + i * 2, y - 1, mapType == DiaNguc ? 84 : 77);
 	}
 
 	for (int i = 0; i < 2; i++)
 	{
-		SetTileID(x + 3 + i * 2, y - 3, mapType == DiaNguc ? 88 : 81);
-		SetTileID(x + 3 + i * 2, y - 4, mapType == DiaNguc ? 89 : 82);
+		SetTileID(x + 3 + i * 2, y - 3, mapType == DiaNguc ? 85 : 78);
+		SetTileID(x + 3 + i * 2, y - 4, mapType == DiaNguc ? 86 : 79);
 	}
 
 	for (int i = 0; i < 3; i++)
 	{
-		SetTileID(x + 2 + i * 2, y - 3, mapType == DiaNguc ? 87 : 80);
-		SetTileID(x + 2 + i * 2, y - 4, mapType == DiaNguc ? 87 : 80);
+		SetTileID(x + 2 + i * 2, y - 3, mapType == DiaNguc ? 84 : 77);
+		SetTileID(x + 2 + i * 2, y - 4, mapType == DiaNguc ? 84 : 77);
 	}
 
 	for (int i = 0; i < 2; i++)
 	{
-		SetTileID(x + 2, y - 6 - 1, mapType == DiaNguc ? 87 : 80);
-		SetTileID(x + 3, y - 6 - 1, mapType == DiaNguc ? 87 : 80);
-		SetTileID(x + 5, y - 6 - 1, mapType == DiaNguc ? 87 : 80);
-		SetTileID(x + 6, y - 6 - 1, mapType == DiaNguc ? 87 : 80);
+		SetTileID(x + 2, y - 6 - i, mapType == DiaNguc ? 84 : 77);
+		SetTileID(x + 3, y - 6 - i, mapType == DiaNguc ? 84 : 77);
+		SetTileID(x + 5, y - 6 - i, mapType == DiaNguc ? 84 : 77);
+		SetTileID(x + 6, y - 6 - i, mapType == DiaNguc ? 84 : 77);
 	}
 
-	for (int i = 0; i < 2; i++)
-	{
-		SetTileID(x + 2, y - 6, mapType == DiaNguc ? 87 : 80);
-		SetTileID(x + 3, y - 6, mapType == DiaNguc ? 87 : 80);
-		SetTileID(x + 5, y - 6, mapType == DiaNguc ? 87 : 80);
-		SetTileID(x + 6, y - 6, mapType == DiaNguc ? 87 : 80);
-	}
-
-	SetTileID(x + 4, y - 6, mapType == DiaNguc ? 88 : 81);
-	SetTileID(x + 4, y - 7, mapType == DiaNguc ? 89 : 82);
+	SetTileID(x + 4, y - 6, mapType == DiaNguc ? 85 : 78);
+	SetTileID(x + 4, y - 7, mapType == DiaNguc ? 86 : 79);
 
 	for (int i = 0; i < 3; i++)
 	{
-		SetTileID(x + 3 + i, y - 8, mapType == DiaNguc ? 92 : 85);
+		SetTileID(x + 3 + i, y - 8, mapType == DiaNguc ? 89 : 82);
 	}
 
-	SetTileID(x + 2, y - 8, mapType == DiaNguc ? 93 : 86);
-	SetTileID(x + 6, y - 8, mapType == DiaNguc ? 93 : 86);
+	SetTileID(x + 2, y - 8, mapType == DiaNguc ? 90 : 83);
+	SetTileID(x + 6, y - 8, mapType == DiaNguc ? 90 : 83);
 
-	SetTileID(x + 3, y - 9, mapType == DiaNguc ? 90 : 83);
-	SetTileID(x + 4, y - 9, mapType == DiaNguc ? 87 : 80);
-	SetTileID(x + 5, y - 9, mapType == DiaNguc ? 91 : 84);
+	SetTileID(x + 3, y - 9, mapType == DiaNguc ? 87 : 80);
+	SetTileID(x + 4, y - 9, mapType == DiaNguc ? 84 : 77);
+	SetTileID(x + 5, y - 9, mapType == DiaNguc ? 88 : 81);
 
 	for (int i = 0; i < 3; i++)
 	{
-		SetTileID(x + 3 + i, y - 10, mapType == DiaNguc ? 93 : 86);
+		SetTileID(x + 3 + i, y - 10, mapType == DiaNguc ? 90 : 83);
 	}
 }
 
@@ -4546,13 +4534,13 @@ void Map::DrawCastleWall(int x, int y, int width, int height)
 	{
 		for (int j = 0; j < height - 1; j++)
 		{
-			SetTileID(x + i, y - j, mapType == DiaNguc ? 87 : 80);
+			SetTileID(x + i, y - j, mapType == DiaNguc ? 84 : 77);
 		}
 	}
 
 	for (int i = 0; i < width; i++)
 	{
-		SetTileID(x + i, y - height + 1, mapType == DiaNguc ? 93 : 86);
+		SetTileID(x + i, y - height + 1, mapType == DiaNguc ? 90 : 83);
 	}
 }
 
@@ -4562,35 +4550,35 @@ void Map::DrawT(int x, int y, int width, int height)
 	{
 		for (int j = 1; j < width - 1; j++)
 		{
-			SetTileID(x + j, y - i, mapType == DiaNguc ? 97 : 94);
+			SetTileID(x + j, y - i, mapType == DiaNguc ? 94 : 91);
 		}
 	}
 
 	for (int i = 1; i < width - 1; i++)
 	{
-		SetTileID(x + i, y - height + 1, mapType == DiaNguc ? 105 : 99);
+		SetTileID(x + i, y - height + 1, mapType == DiaNguc ? 102 : 96);
 	}
 
-	SetTileID(x, y - height + 1, mapType == DiaNguc ? 104 : 98);
-	SetTileID(x + width - 1, y - height + 1, mapType == DiaNguc ? 106 : 100);
+	SetTileID(x, y - height + 1, mapType == DiaNguc ? 101 : 95);
+	SetTileID(x + width - 1, y - height + 1, mapType == DiaNguc ? 103 : 97);
 }
 
 void Map::DrawTMush(int x, int y, int width, int height)
 {
 	for (int i = 0; i < height - 1; i++)
 	{
-		SetTileID(x + width / 2, y - i, 96);
+		SetTileID(x + width / 2, y - i, 93);
 	}
 
-	SetTileID(x + width / 2, y - height + 2, 95);
+	SetTileID(x + width / 2, y - height + 2, 92);
 
 	for (int i = 0; i < width - 1; i++)
 	{
-		SetTileID(x + i, y - height + 1, 102);
+		SetTileID(x + i, y - height + 1, 99);
 	}
 
-	SetTileID(x, y - height + 1, 101);
-	SetTileID(x + width - 1, y - height + 1, 103);
+	SetTileID(x, y - height + 1, 98);
+	SetTileID(x + width - 1, y - height + 1, 100);
 }
 
 void Map::DrawWater(int x, int y, int width, int height)
@@ -4599,10 +4587,10 @@ void Map::DrawWater(int x, int y, int width, int height)
 	{
 		for (int j = 0; j < height - 1; j++)
 		{
-			SetTileID(x + i, y - j, mapType == Bien ? 107 : 109);
+			SetTileID(x + i, y - j, mapType == Bien ? 104 : 106);
 		}
 
-		SetTileID(x + i, y - height + 1, mapType == Bien ? 108 : 110);
+		SetTileID(x + i, y - height + 1, mapType == Bien ? 105 : 107);
 	}
 }
 
@@ -4612,10 +4600,10 @@ void Map::DrawLava(int x, int y, int width, int height)
 	{
 		for (int j = 0; j < height - 1; j++)
 		{
-			SetTileID(x + i, y - j, 111);
+			SetTileID(x + i, y - j, 108);
 		}
 
-		SetTileID(x + i, y - height + 1, 112);
+		SetTileID(x + i, y - height + 1, 109);
 	}
 }
 
@@ -4623,18 +4611,18 @@ void Map::DrawBridge(int x, int y, int width)
 {
 	for (int i = 0; i < width; i++)
 	{
-		SetTileID(x + i, y, 113);
+		SetTileID(x + i, y, 110);
 	}
 
-	SetTileID(x + width - 1, y - 1, 114);
+	SetTileID(x + width - 1, y - 1, 111);
 }
 
 void Map::DrawBridge2(int x, int y, int width)
 {
 	for (int i = 0; i < width; i++)
 	{
-		SetTileID(x + i, y, 115);
-		SetTileID(x + i, y - 1, mapType == BuoiToi ? 117 : 116);
+		SetTileID(x + i, y, 112);
+		SetTileID(x + i, y - 1, mapType == BuoiToi ? 114 : 113);
 	}
 }
 
@@ -4642,7 +4630,7 @@ void Map::DrawBonus(int x, int y, int width)
 {
 	for (int i = 0; i < width; i++)
 	{
-		SetTileID(x + i, y, 119);
+		SetTileID(x + i, y, 116);
 	}
 }
 
@@ -4650,29 +4638,29 @@ void Map::DrawBonusEnd(int x)
 {
 	for (int i = 0; i < 20; i++)
 	{
-		SetTileID(x + i, 14, 121);
+		SetTileID(x + i, 14, 118);
 	}
 }
 
 void Map::DrawSeeSaw(int x, int y, int width)
 {
-	SetTileID(x, y, mapType == DiaNguc ? 126 : 122);
-	SetTileID(x + width - 1, y, mapType == DiaNguc ? 127 : 123);
+	SetTileID(x, y, mapType == DiaNguc ? 123 : 119);
+	SetTileID(x + width - 1, y, mapType == DiaNguc ? 124 : 120);
 
 	for (int i = 1; i < width - 1; i++)
 	{
-		SetTileID(x + i, y, mapType == DiaNguc ? 128 : 124);
+		SetTileID(x + i, y, mapType == DiaNguc ? 125 : 121);
 	}
 }
 
 void Map::DrawBulletBill(int x, int y, int height)
 {
-	SetTileID(x, y - height - 1, 131);
-	SetTileID(x, y - height, 132);
+	SetTileID(x, y - height - 1, 128);
+	SetTileID(x, y - height, 129);
 
 	for (int i = 0; i < height; i++)
 	{
-		SetTileID(x, y - i, 130);
+		SetTileID(x, y - i, 127);
 	}
 }
 
@@ -4680,7 +4668,7 @@ void Map::DrawPlatformLine(int x)
 {
 	for (int i = 0; i < mapHeight; i++)
 	{
-		SetTileID(x, i, 133);
+		SetTileID(x, i, 130);
 	}
 }
 

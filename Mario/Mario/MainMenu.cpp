@@ -6,7 +6,6 @@ MainMenu::MainMenu()
 {
 	menuOption.push_back(new MenuOption("1 PLAYER GAME", 178, 276));
 	menuOption.push_back(new MenuOption("OPTIONS", 222, 308));
-	menuOption.push_back(new MenuOption("ABOUT", 237, 340));
 
 	numberOfMenuOption = (int)menuOption.size();
 	selectWorld = false;

@@ -1,0 +1,12 @@
+4
+coin_use30.bmp
+300
+coin_use32.bmp
+30
+coin_use31.bmp
+130
+coin_use32.bmp
+140
+1
+1
+1

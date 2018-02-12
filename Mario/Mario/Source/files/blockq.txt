@@ -1,0 +1,12 @@
+4
+blockq_0.bmp
+300
+blockq_2.bmp
+30
+blockq_1.bmp
+130
+blockq_2.bmp
+140
+1
+1
+1

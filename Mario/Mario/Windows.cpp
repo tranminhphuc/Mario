@@ -40,19 +40,11 @@ void Window::Play()
 			{
 				window->close();
 			}
-			//if (event.type == sf::Event::KeyPressed)
-			//{
-			//	/*if (event.key.code == sf::Keyboard::Right)
-			//	{
-			//		map->MoveMap(-50);
-			//	}*/
-			//}
 
 			InputMenu();
 		}
 
 		Update();
-		//InputMenu();
 		Draw();
 		window->display();
 	}
@@ -61,13 +53,11 @@ void Window::Play()
 
 void Window::Update()
 {
-	map->Update();
-	//Game::GetMenuManager()->Update();
+	Game::GetMenuManager()->Update();
 }
 
 void Window::Draw()
 {
-	map->SetBackGroundColor(*window);
 	Game::GetMenuManager()->Draw(*window);
 }
 
