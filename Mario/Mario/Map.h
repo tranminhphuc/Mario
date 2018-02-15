@@ -3,6 +3,7 @@
 #ifndef _MAP
 #define _MAP
 
+#include <fstream>
 #include "Object.h"
 #include "TileSet.h"
 #include "Player.h"
@@ -96,9 +97,7 @@ private:
 	bool underWater;
 	bool moveMap;
 
-	void LoadImage(string image, bool collision, bool canDestroy, bool visible);
-	void LoadImage(string image1, string image2, string image3, string image4, bool collision, bool canDestroy, bool visible);
-	void LoadImage(string image1, string image2, string image3, bool collision, bool canDestroy, bool visible);
+	void LoadImage(string file);
 
 	void LoadImage(string image, int delay, bool collision, bool canDestroy);
 	void LoadImage(string image1, string image2, string image3, string image4, int delay, bool collision, bool canDestroy);

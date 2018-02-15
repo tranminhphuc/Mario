@@ -2,5 +2,5 @@
 pipe_hor_top_right.bmp
 0
 1
-1
+0
 1

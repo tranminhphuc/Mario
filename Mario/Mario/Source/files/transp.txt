@@ -1,5 +1,5 @@
 1
-Source/images/transp.bmp
+transp.bmp
 0
 0
 0

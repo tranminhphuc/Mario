@@ -2,5 +2,5 @@
 pipe6_left_bot.bmp
 0
 1
-1
+0
 1

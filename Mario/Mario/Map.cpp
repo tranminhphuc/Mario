@@ -397,54 +397,35 @@ void Map::MoveMap(int x)
 	}
 }
 
-void Map::LoadImage(string image, bool collision, bool canDestroy, bool visible)
+void Map::LoadImage(string file)
 {
+	int size;
+	bool collision, canDestroy, visible;
+
 	vector<string> name;
 	vector<unsigned int> time;
 
-	image = "Source/images/" + image;
+	fstream f;
+	f.open(file);
 
-	name.push_back(image);
-	time.push_back(0);
-	listBlock.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
-}
+	f >> size;
 
-void Map::LoadImage(string image1, string image2, string image3, string image4, bool collision, bool canDestroy, bool visible)
-{
-	vector<string> name;
-	vector<unsigned int> time;
+	for (int i = 0; i < size; i++)
+	{
+		string image;
+		unsigned int delay;
 
-	image1 = "Source/images/" + image1;
-	image2 = "Source/images/" + image2;
-	image3 = "Source/images/" + image3;
-	image4 = "Source/images/" + image4;
+		f >> image;
+		f >> delay;
 
-	name.push_back(image1);
-	time.push_back(300);
-	name.push_back(image2);
-	time.push_back(30);
-	name.push_back(image3);
-	time.push_back(130);
-	name.push_back(image4);
-	time.push_back(140);
-	listBlock.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
-}
+		image = "Source/images/" + image;
 
-void Map::LoadImage(string image1, string image2, string image3, bool collision, bool canDestroy, bool visible)
-{
-	vector<string> name;
-	vector<unsigned int> time;
+		name.push_back(image);
+		time.push_back(delay);
+	}
 
-	image1 = "Source/images/" + image1;
-	image2 = "Source/images/" + image2;
-	image3 = "Source/images/" + image3;
+	f >> collision >> canDestroy >> visible;
 
-	name.push_back(image1);
-	time.push_back(225);
-	name.push_back(image2);
-	time.push_back(225);
-	name.push_back(image3);
-	time.push_back(200);
 	listBlock.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
 
@@ -497,267 +478,267 @@ void Map::LoadImage(string image1, string image2, int delay, bool collision, boo
 void Map::LoadGameData()
 {
 	// ----- 0 -----
-	LoadImage("transp.bmp", false, false, false);
+	LoadImage("Source/files/transp.txt");
 	// ----- 1 -----
-	LoadImage("gnd_red_1.bmp", true, true, true);
+	LoadImage("Source/files/gnd_red_1.txt");
 	// ----- 2 -----
-	LoadImage("gnd1.bmp", true, true, true);
+	LoadImage("Source/files/gnd1.txt");
 	// ----- 3 -----
-	LoadImage("uw_0.bmp", true, true, true);
+	LoadImage("Source/files/uw_0.txt");
 	// ----- 4 -----
-	LoadImage("gnd2.bmp", true, true, true);
+	LoadImage("Source/files/gnd2.txt");
 	// ----- 5 -----
-	LoadImage("gnd_4.bmp", true, true, true);
+	LoadImage("Source/files/gnd_4.txt");
 	// ----- 6 -----
-	LoadImage("gnd_5.bmp", true, true, true);
+	LoadImage("Source/files/gnd_5.txt");
 	// ----- 7 -----
-	LoadImage("gnd_red2.bmp", true, true, true);
+	LoadImage("Source/files/gnd_red2.txt");
 	// ----- 8 -----
-	LoadImage("gnd1_2.bmp", true, true, true);
+	LoadImage("Source/files/gnd1_2.txt");
 	// ----- 9 -----
-	LoadImage("gnd2_2.bmp", true, true, true);
+	LoadImage("Source/files/gnd2_2.txt");
 	// ----- 10 -----
-	LoadImage("brickred.bmp", true, true, true);
+	LoadImage("Source/files/brickred.txt");
 	// ----- 11 -----
-	LoadImage("brick1.bmp", true, true, true);
+	LoadImage("Source/files/brick1.txt");
 	// ----- 12 -----
-	LoadImage("brick2.bmp", true, true, true);
+	LoadImage("Source/files/brick2.txt");
 	// ----- 13 -----
-	LoadImage("blockq_0.bmp", "blockq_2.bmp", "blockq_1.bmp", "blockq_2.bmp", true, true, true);
+	LoadImage("Source/files/blockq.txt");
 	// ----- 14 -----
-	LoadImage("blockq_used.bmp", true, true, true);
+	LoadImage("Source/files/blockq_used.txt");
 	// ----- 15 -----
-	LoadImage("blockq1_0.bmp", "blockq1_2.bmp", "blockq1_1.bmp", "blockq1_2.bmp", true, true, true);
+	LoadImage("Source/files/blockq1.txt");
 	// ----- 16 -----
-	LoadImage("blockq1_used.bmp", true, true, true);
+	LoadImage("Source/files/blockq1_used.txt");
 	// ----- 17 -----
-	LoadImage("blockq2_used.bmp", true, true, true);
+	LoadImage("Source/files/blockq2_used.txt");
 	// ----- 18 -----
-	LoadImage("pipe_left_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe_left_bot.txt");
 	// ----- 19 -----
-	LoadImage("pipe_right_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe_right_bot.txt");
 	// ----- 20 -----
-	LoadImage("pipe_left_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe_left_top.txt");
 	// ----- 21 -----
-	LoadImage("pipe_right_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe_right_top.txt");
 	// ----- 22 -----
-	LoadImage("pipe_hor_bot_left.bmp", true, true, true);
+	LoadImage("Source/files/pipe_hor_bot_left.txt");
 	// ----- 23 -----
-	LoadImage("pipe_hor_top_left.bmp", true, true, true);
+	LoadImage("Source/files/pipe_hor_top_left.txt");
 	// ----- 24 -----
-	LoadImage("pipe_hor_bot_center.bmp", true, false, true);
+	LoadImage("Source/files/pipe_hor_bot_center.txt");
 	// ----- 25 -----
-	LoadImage("pipe_hor_top_center.bmp", true, false, true);
+	LoadImage("Source/files/pipe_hor_top_center.txt");
 	// ----- 26 -----
-	LoadImage("pipe_hor_bot_right.bmp", true, false, true);
+	LoadImage("Source/files/pipe_hor_bot_right.txt");
 	// ----- 27 -----
-	LoadImage("pipe_hor_top_right.bmp", true, false, true);
+	LoadImage("Source/files/pipe_hor_top_right.txt");
 	// ----- 28 -----
-	LoadImage("pipe1_left_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe1_left_bot.txt");
 	// ----- 29 -----
-	LoadImage("pipe1_right_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe1_right_bot.txt");
 	// ----- 30 -----
-	LoadImage("pipe1_left_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe1_left_top.txt");
 	// ----- 31 -----
-	LoadImage("pipe1_right_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe1_right_top.txt");
 	// ----- 32 -----
-	LoadImage("pipe1_hor_bot_left.bmp", true, true, true);
+	LoadImage("Source/files/pipe1_hor_bot_left.txt");
 	// ----- 33 -----
-	LoadImage("pipe1_hor_top_left.bmp", true, true, true);
+	LoadImage("Source/files/pipe1_hor_top_left.txt");
 	// ----- 34 -----
-	LoadImage("pipe1_hor_bot_center.bmp", true, false, true);
+	LoadImage("Source/files/pipe1_hor_bot_center.txt");
 	// ----- 34 -----
-	LoadImage("pipe1_hor_top_center.bmp", true, false, true);
+	LoadImage("Source/files/pipe1_hor_top_center.txt");
 	// ----- 36 -----
-	LoadImage("pipe1_hor_bot_right.bmp", true, false, true);
+	LoadImage("Source/files/pipe1_hor_bot_right.txt");
 	// ----- 37 -----
-	LoadImage("pipe1_hor_top_right.bmp", true, false, true);
+	LoadImage("Source/files/pipe1_hor_top_right.txt");
 	// ----- 38 -----
-	LoadImage("pipe2_left_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe2_left_bot.txt");
 	// ----- 39 -----
-	LoadImage("pipe2_right_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe2_right_bot.txt");
 	// ----- 40 -----
-	LoadImage("pipe2_left_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe2_left_top.txt");
 	// ----- 41 -----
-	LoadImage("pipe2_right_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe2_right_top.txt");
 	// ----- 42 -----
-	LoadImage("pipe2_hor_bot_left.bmp", true, true, true);
+	LoadImage("Source/files/pipe2_hor_bot_left.txt");
 	// ----- 43 -----
-	LoadImage("pipe2_hor_top_left.bmp", true, true, true);
+	LoadImage("Source/files/pipe2_hor_top_left.txt");
 	// ----- 44 -----
-	LoadImage("pipe2_hor_bot_center.bmp", true, false, true);
+	LoadImage("Source/files/pipe2_hor_bot_center.txt");
 	// ----- 45 -----
-	LoadImage("pipe2_hor_top_center.bmp", true, false, true);
+	LoadImage("Source/files/pipe2_hor_top_center.txt");
 	// ----- 46 -----
-	LoadImage("pipe2_hor_bot_right.bmp", true, false, true);
+	LoadImage("Source/files/pipe2_hor_bot_right.txt");
 	// ----- 47 -----
-	LoadImage("pipe2_hor_top_right.bmp", true, false, true);
+	LoadImage("Source/files/pipe2_hor_top_right.txt");
 	// ----- 48 -----
-	LoadImage("pipe3_left_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe3_left_bot.txt");
 	// ----- 49 -----
-	LoadImage("pipe3_right_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe3_right_bot.txt");
 	// ----- 50 -----
-	LoadImage("pipe3_left_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe3_left_top.txt");
 	// ----- 51 -----
-	LoadImage("pipe3_right_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe3_right_top.txt");
 	// ----- 52 -----
-	LoadImage("pipe3_hor_bot_left.bmp", true, true, true);
+	LoadImage("Source/files/pipe3_hor_bot_left.txt");
 	// ----- 53 -----
-	LoadImage("pipe3_hor_top_left.bmp", true, true, true);
+	LoadImage("Source/files/pipe3_hor_top_left.txt");
 	// ----- 54 -----
-	LoadImage("pipe3_hor_bot_center.bmp", true, false, true);
+	LoadImage("Source/files/pipe3_hor_bot_center.txt");
 	// ----- 55 -----
-	LoadImage("pipe3_hor_top_center.bmp", true, false, true);
+	LoadImage("Source/files/pipe3_hor_top_center.txt");
 	// ----- 56 -----
-	LoadImage("pipe3_hor_bot_right.bmp", true, false, true);
+	LoadImage("Source/files/pipe3_hor_bot_right.txt");
 	// ----- 57 -----
-	LoadImage("pipe3_hor_top_right.bmp", true, false, true);
+	LoadImage("Source/files/pipe3_hor_top_right.txt");
 	// ----- 58 -----
-	LoadImage("pipe4_left_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe4_left_bot.txt");
 	// ----- 59 -----
-	LoadImage("pipe4_right_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe4_right_bot.txt");
 	// ----- 60 -----
-	LoadImage("pipe4_left_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe4_left_top.txt");
 	// ----- 61 -----
-	LoadImage("pipe4_right_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe4_right_top.txt");
 	// ----- 62 -----
-	LoadImage("pipe5_left_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe5_left_bot.txt");
 	// ----- 63 -----
-	LoadImage("pipe5_right_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe5_right_bot.txt");
 	// ----- 64 -----
-	LoadImage("pipe5_left_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe5_left_top.txt");
 	// ----- 65 -----
-	LoadImage("pipe5_right_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe5_right_top.txt");
 	// ----- 66 -----
-	LoadImage("pipe6_left_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe6_left_bot.txt");
 	// ----- 67 -----
-	LoadImage("pipe6_right_bot.bmp", true, false, true);
+	LoadImage("Source/files/pipe6_right_bot.txt");
 	// ----- 68 -----
-	LoadImage("pipe6_left_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe6_left_top.txt");
 	// ----- 69 -----
-	LoadImage("pipe6_right_top.bmp", true, true, true);
+	LoadImage("Source/files/pipe6_right_top.txt");
 	// ----- 70 -----
-	LoadImage("coin_use00.bmp", "coin_use02.bmp", "coin_use01.bmp", "coin_use02.bmp", true, true, true);
+	LoadImage("Source/files/coin_use00.txt");
 	// ----- 71 -----
-	LoadImage("coin_use0.bmp", "coin_use2.bmp", "coin_use1.bmp", "coin_use2.bmp", true, true, true);
+	LoadImage("Source/files/coin_use0.txt");
 	// ----- 72 -----
-	LoadImage("coin_use30.bmp", "coin_use32.bmp", "coin_use31.bmp", "coin_use32.bmp", true, true, true);
+	LoadImage("Source/files/coin_use30.txt");
 	// ----- 73 -----
-	LoadImage("end0_l.bmp", false, true, true);
+	LoadImage("Source/files/end0_l.txt");
 	// ----- 74 -----
-	LoadImage("end0_dot.bmp", false, true, true);
+	LoadImage("Source/files/end0_dot.txt");
 	// ----- 75 -----
-	LoadImage("end1_l.bmp", false, true, true);
+	LoadImage("Source/files/end1_l.txt");
 	// ----- 76 -----
-	LoadImage("end1_dot.bmp", false, true, true);
+	LoadImage("Source/files/end1_dot.txt");
 	// ----- 77 -----
-	LoadImage("castle0_brick.bmp", false, false, true);
+	LoadImage("Source/files/castle0_brick.txt");
 	// ----- 78 -----
-	LoadImage("castle0_center_center.bmp", false, false, true);
+	LoadImage("Source/files/castle0_center_center.txt");
 	// ----- 79 -----
-	LoadImage("castle0_center_center_top.bmp", false, false, true);
+	LoadImage("Source/files/castle0_center_center_top.txt");
 	// ----- 80 -----
-	LoadImage("castle0_center_left.bmp", false, false, true);
+	LoadImage("Source/files/castle0_center_left.txt");
 	// ----- 81 -----
-	LoadImage("castle0_center_right.bmp", false, false, true);
+	LoadImage("Source/files/castle0_center_right.txt");
 	// ----- 82 -----
-	LoadImage("castle0_top0.bmp", false, false, true);
+	LoadImage("Source/files/castle0_top0.txt");
 	// ----- 83 -----
-	LoadImage("castle0_top1.bmp", false, false, true);
+	LoadImage("Source/files/castle0_top1.txt");
 	// ----- 84 -----
-	LoadImage("castle1_brick.bmp", false, false, true);
+	LoadImage("Source/files/castle1_brick.txt");
 	// ----- 85 -----
-	LoadImage("castle1_center_center.bmp", false, false, true);
+	LoadImage("Source/files/castle1_center_center.txt");
 	// ----- 86 -----
-	LoadImage("castle1_center_center_top.bmp", false, false, true);
+	LoadImage("Source/files/castle1_center_center_top.txt");
 	// ----- 87 -----
-	LoadImage("castle1_center_left.bmp", false, false, true);
+	LoadImage("Source/files/castle1_center_left.txt");
 	// ----- 88 -----
-	LoadImage("castle1_center_right.bmp", false, false, true);
+	LoadImage("Source/files/castle1_center_right.txt");
 	// ----- 89 -----
-	LoadImage("castle1_top0.bmp", false, false, true);
+	LoadImage("Source/files/castle1_top0.txt");
 	// ----- 90 -----
-	LoadImage("castle1_top1.bmp", false, false, true);
+	LoadImage("Source/files/castle1_top1.txt");
 	// ----- 91 -----
-	LoadImage("t_bot.bmp", true, true, true);
+	LoadImage("Source/files/t_bot.txt");
 	// ----- 92 -----
-	LoadImage("t_bot0.bmp", true, true, true);
+	LoadImage("Source/files/t_bot0.txt");
 	// ----- 93 -----
-	LoadImage("t_bot1.bmp", true, true, true);
+	LoadImage("Source/files/t_bot1.txt");
 	// ----- 94 -----
-	LoadImage("t_bot2.bmp", true, true, true);
+	LoadImage("Source/files/t_bot2.txt");
 	// ----- 95 -----
-	LoadImage("t_left.bmp", true, true, true);
+	LoadImage("Source/files/t_left.txt");
 	// ----- 96 -----
-	LoadImage("t_center.bmp", true, true, true);
+	LoadImage("Source/files/t_center.txt");
 	// ----- 97 -----
-	LoadImage("t_right.bmp", true, true, true);
+	LoadImage("Source/files/t_right.txt");
 	// ----- 98 -----
-	LoadImage("t_left1.bmp", true, true, true);
+	LoadImage("Source/files/t_left1.txt");
 	// ----- 99 -----
-	LoadImage("t_center1.bmp", true, true, true);
+	LoadImage("Source/files/t_center1.txt");
 	// ----- 100 -----
-	LoadImage("t_right1.bmp", true, true, true);
+	LoadImage("Source/files/t_right1.txt");
 	// ----- 101 -----
-	LoadImage("t_left2.bmp", true, true, true);
+	LoadImage("Source/files/t_left2.txt");
 	// ----- 102 -----
-	LoadImage("t_center2.bmp", true, true, true);
+	LoadImage("Source/files/t_center2.txt");
 	// ----- 103 -----
-	LoadImage("t_right2.bmp", true, true, true);
+	LoadImage("Source/files/t_right2.txt");
 	// ----- 104 -----
-	LoadImage("water_0.bmp", false, false, true);
+	LoadImage("Source/files/water_0.txt");
 	// ----- 105 -----
-	LoadImage("water_1.bmp", false, false, true);
+	LoadImage("Source/files/water_1.txt");
 	// ----- 106 -----
-	LoadImage("water_2.bmp", false, false, true);
+	LoadImage("Source/files/water_2.txt");
 	// ----- 107 -----
-	LoadImage("water_3.bmp", false, false, true);
+	LoadImage("Source/files/water_3.txt");
 	// ----- 108 -----
-	LoadImage("lava_0.bmp", false, false, true);
+	LoadImage("Source/files/lava_0.txt");
 	// ----- 109 -----
-	LoadImage("lava_1.bmp", false, false, true);
+	LoadImage("Source/files/lava_1.txt");
 	// ----- 110 -----
-	LoadImage("bridge_0.bmp", true, true, true);
+	LoadImage("Source/files/bridge_0.txt");
 	// ----- 111 -----
-	LoadImage("bridge_1.bmp", false, false, true);
+	LoadImage("Source/files/bridge_1.txt");
 	// ----- 112 -----
-	LoadImage("bridge2.bmp", true, false, true);
+	LoadImage("Source/files/bridge2.txt");
 	// ----- 113 -----
-	LoadImage("bridge3.bmp", true, false, true);
+	LoadImage("Source/files/bridge3.txt");
 	// ----- 114 -----
-	LoadImage("bridge4.bmp", false, false, true);
+	LoadImage("Source/files/bridge4.txt");
 	// ----- 115 -----
-	LoadImage("axe_0.bmp", "axe_1.bmp", "axe_2.bmp", true, true, true);
+	LoadImage("Source/files/axe_0.txt");
 	// ----- 116 -----
-	LoadImage("bonus.bmp", true, true, true);
+	LoadImage("Source/files/bonus.txt");
 	// ----- 117 -----
-	LoadImage("transp.bmp", true, true, false);
+	LoadImage("Source/files/transp1.txt");
 	// ----- 118 -----
-	LoadImage("transp.bmp", true, true, true);
+	LoadImage("Source/files/transp2.txt");
 	// ----- 119 -----
-	LoadImage("seesaw_0.bmp", false, false, true);
+	LoadImage("Source/files/seesaw_0.txt");
 	// ----- 120 -----
-	LoadImage("seesaw_1.bmp", false, false, true);
+	LoadImage("Source/files/seesaw_1.txt");
 	// ----- 121 -----
-	LoadImage("seesaw_2.bmp", false, false, true);
+	LoadImage("Source/files/seesaw_2.txt");
 	// ----- 122 -----
-	LoadImage("seesaw_3.bmp", false, false, true);
+	LoadImage("Source/files/seesaw_3.txt");
 	// ----- 123 -----
-	LoadImage("seesaw1_0.bmp", false, false, true);
+	LoadImage("Source/files/seesaw1_0.txt");
 	// ----- 124 -----
-	LoadImage("seesaw1_1.bmp", false, false, true);
+	LoadImage("Source/files/seesaw1_1.txt");
 	// ----- 125 -----
-	LoadImage("seesaw1_2.bmp", false, false, true);
+	LoadImage("Source/files/seesaw1_2.txt");
 	// ----- 126 -----
-	LoadImage("seesaw1_3.bmp", false, false, true);
+	LoadImage("Source/files/seesaw1_3.txt");
 	// ----- 127 -----
-	LoadImage("b_bot.bmp",  true, false, true);
+	LoadImage("Source/files/b_bot.txt");
 	// ----- 128 -----
-	LoadImage("b_top.bmp", true, false, true);
+	LoadImage("Source/files/b_top.txt");
 	// ----- 129 -----
-	LoadImage("b_top1.bmp", true, false, true);
+	LoadImage("Source/files/b_top1.txt");
 	// ----- 130 -----
-	LoadImage("platform1.bmp", false, false, true);
+	LoadImage("Source/files/platform1.txt");
 
 	// ----- 0 ----
 	LoadImage("mushroom.bmp", 0, true, true);

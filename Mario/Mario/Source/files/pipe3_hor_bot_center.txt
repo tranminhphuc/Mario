@@ -2,5 +2,5 @@
 pipe3_hor_bot_center.bmp
 0
 1
-1
+0
 1
