@@ -1330,11 +1330,6 @@ void Map::LoadLevel_1_4()
 
 	LoadMinionLevel_1_4();
 
-	DrawLava(13, 14, 2, 3);
-	DrawLava(26, 14, 3, 2);
-	DrawLava(32, 14, 3, 2);
-	DrawLava(128, 14, 13, 2);
-
 	DrawGND(0, 14, 3, 8);
 	DrawGND(0, 4, 24, 3);
 	DrawGND(3, 14, 1, 7);
@@ -1359,21 +1354,26 @@ void Map::LoadLevel_1_4()
 	DrawGND(142, 5, 2, 3);
 	DrawGND(144, 14, 19, 2);
 
+	DrawLava(13, 14, 2, 3);
+	DrawLava(26, 14, 3, 2);
+	DrawLava(32, 14, 3, 2);
+	DrawLava(128, 14, 13, 2);
+
 	DrawBlockQ(30, 6, 1);
 
 	DrawBridge(128, 10, 13);
 
-	tile[23][6]->SetID(19);
-	tile[30][10]->SetID(19);
-	tile[37][6]->SetID(19);
-	tile[49][6]->SetID(19);
-	tile[60][6]->SetID(19);
-	tile[67][6]->SetID(19);
-	tile[76][9]->SetID(19);
-	tile[80][4]->SetID(19);
-	tile[84][9]->SetID(19);
-	tile[88][4]->SetID(19);
-	tile[92][9]->SetID(19);
+	tile[23][6]->SetID(16);
+	tile[30][10]->SetID(16);
+	tile[37][6]->SetID(16);
+	tile[49][6]->SetID(16);
+	tile[60][6]->SetID(16);
+	tile[67][6]->SetID(16);
+	tile[76][9]->SetID(16);
+	tile[80][4]->SetID(16);
+	tile[84][9]->SetID(16);
+	tile[88][4]->SetID(16);
+	tile[92][9]->SetID(16);
 
 	mapType = NuiLua;
 }
@@ -1662,11 +1662,6 @@ void Map::LoadLevel_2_4()
 
 	LoadMinionLevel_2_4();
 
-	DrawLava(16, 14, 16, 2);
-	DrawLava(109, 14, 2, 2);
-	DrawLava(113, 14, 2, 2);
-	DrawLava(128, 14, 13, 2);
-
 	DrawGND(0, 14, 16, 5);
 	DrawGND(0, 4, 16, 3);
 	DrawGND(0, 9, 5, 1);
@@ -1695,6 +1690,11 @@ void Map::LoadLevel_2_4()
 	DrawGND(141, 12, 3, 4);
 	DrawGND(142, 5, 2, 3);
 
+	DrawLava(16, 14, 16, 2);
+	DrawLava(109, 14, 2, 2);
+	DrawLava(113, 14, 2, 2);
+	DrawLava(128, 14, 13, 2);
+
 	DrawBrick(128, 5, 6, 1);
 
 	DrawBlockQ(23, 3, 1);
@@ -1704,17 +1704,17 @@ void Map::LoadLevel_2_4()
 
 	DrawBridge(128, 10, 13);
 
-	tile[23][7]->SetID(19);
-	tile[43][13]->SetID(19);
-	tile[49][9]->SetID(19);
-	tile[55][5]->SetID(19);
-	tile[55][13]->SetID(19);
-	tile[61][9]->SetID(19);
-	tile[67][13]->SetID(19);
-	tile[73][9]->SetID(19);
-	tile[82][6]->SetID(19);
-	tile[92][10]->SetID(19);
-	tile[103][11]->SetID(19);
+	tile[23][7]->SetID(16);
+	tile[43][13]->SetID(16);
+	tile[49][9]->SetID(16);
+	tile[55][5]->SetID(16);
+	tile[55][13]->SetID(16);
+	tile[61][9]->SetID(16);
+	tile[67][13]->SetID(16);
+	tile[73][9]->SetID(16);
+	tile[82][6]->SetID(16);
+	tile[92][10]->SetID(16);
+	tile[103][11]->SetID(16);
 
 	tile[23][3]->SetMustroom(true);
 
@@ -1989,14 +1989,6 @@ void Map::LoadLevel_3_4()
 
 	LoadMinionLevel_3_4();
 
-	DrawLava(46, 14, 2, 2);
-	DrawLava(48, 14, 40, 2);
-	DrawLava(88, 14, 2, 2);
-	DrawLava(96, 14, 3, 2);
-	DrawLava(102, 14, 3, 2);
-	DrawLava(108, 14, 3, 2);
-	DrawLava(128, 14, 13, 2);
-
 	DrawGND(0, 14, 16, 5);
 	DrawGND(0, 4, 16, 3);
 	DrawGND(0, 9, 5, 1);
@@ -2028,6 +2020,14 @@ void Map::LoadLevel_3_4()
 	DrawGND(142, 5, 2, 3);
 	DrawGND(144, 14, 21, 2);
 
+	DrawLava(46, 14, 2, 2);
+	DrawLava(48, 14, 40, 2);
+	DrawLava(88, 14, 2, 2);
+	DrawLava(96, 14, 3, 2);
+	DrawLava(102, 14, 3, 2);
+	DrawLava(108, 14, 3, 2);
+	DrawLava(128, 14, 13, 2);
+
 	DrawBrick(132, 5, 2, 3);
 
 	DrawBlockQ(42, 9, 3);
@@ -2036,15 +2036,15 @@ void Map::LoadLevel_3_4()
 
 	DrawBridge(128, 10, 13);
 
-	tile[19][11]->SetID(19);
-	tile[24][11]->SetID(19);
-	tile[29][11]->SetID(19);
-	tile[54][5]->SetID(19);
-	tile[54][11]->SetID(19);
-	tile[64][11]->SetID(19);
-	tile[64][5]->SetID(19);
-	tile[80][11]->SetID(19);
-	tile[80][5]->SetID(19);
+	tile[19][11]->SetID(16);
+	tile[24][11]->SetID(16);
+	tile[29][11]->SetID(16);
+	tile[54][5]->SetID(16);
+	tile[54][11]->SetID(16);
+	tile[64][11]->SetID(16);
+	tile[64][5]->SetID(16);
+	tile[80][11]->SetID(16);
+	tile[80][5]->SetID(16);
 
 	tile[43][9]->SetMustroom(true);
 
@@ -2377,12 +2377,6 @@ void Map::LoadLevel_4_4()
 
 	LoadMinionLevel_4_4();
 
-	DrawLava(7, 14, 2, 2);
-	DrawLava(11, 14, 2, 2);
-	DrawLava(88, 14, 2, 2);
-	DrawLava(91, 14, 4, 2);
-	DrawLava(160, 14, 13, 2);
-
 	DrawGND(0, 2, 147, 1);
 	DrawGND(0, 4, 6, 2);
 	DrawGND(0, 14, 7, 5);
@@ -2427,6 +2421,12 @@ void Map::LoadLevel_4_4()
 	DrawGND(173, 14, 20, 2);
 	DrawGND(173, 12, 3, 4);
 	DrawGND(174, 5, 2, 3);
+
+	DrawLava(7, 14, 2, 2);
+	DrawLava(11, 14, 2, 2);
+	DrawLava(88, 14, 2, 2);
+	DrawLava(91, 14, 4, 2);
+	DrawLava(160, 14, 13, 2);
 
 	DrawPipe(40, 12, 2);
 
@@ -2701,11 +2701,6 @@ void Map::LoadLevel_5_4()
 
 	LoadMinionLevel_5_4();
 
-	DrawLava(16, 14, 16, 2);
-	DrawLava(109, 14, 2, 2);
-	DrawLava(113, 14, 2, 2);
-	DrawLava(128, 14, 13, 2);
-
 	DrawGND(0, 14, 16, 5);
 	DrawGND(0, 9, 5, 1);
 	DrawGND(0, 8, 4, 1);
@@ -2734,6 +2729,11 @@ void Map::LoadLevel_5_4()
 	DrawGND(141, 12, 3, 4);
 	DrawGND(142, 5, 2, 3);
 
+	DrawLava(16, 14, 16, 2);
+	DrawLava(109, 14, 2, 2);
+	DrawLava(113, 14, 2, 2);
+	DrawLava(128, 14, 13, 2);
+
 	DrawBrick(128, 5, 6, 1);
 
 	DrawBlockQ(23, 3, 1);
@@ -2746,17 +2746,17 @@ void Map::LoadLevel_5_4()
 	DrawPlatformLine(86);
 	DrawPlatformLine(89);
 
-	tile[23][7]->SetID(19);
-	tile[43][13]->SetID(19);
-	tile[49][9]->SetID(19);
-	tile[55][5]->SetID(19);
-	tile[55][13]->SetID(19);
-	tile[61][9]->SetID(19);
-	tile[67][13]->SetID(19);
-	tile[73][9]->SetID(19);
-	tile[82][6]->SetID(19);
-	tile[92][10]->SetID(19);
-	tile[103][11]->SetID(19);
+	tile[23][7]->SetID(16);
+	tile[43][13]->SetID(16);
+	tile[49][9]->SetID(16);
+	tile[55][5]->SetID(16);
+	tile[55][13]->SetID(16);
+	tile[61][9]->SetID(16);
+	tile[67][13]->SetID(16);
+	tile[73][9]->SetID(16);
+	tile[82][6]->SetID(16);
+	tile[92][10]->SetID(16);
+	tile[103][11]->SetID(16);
 
 	tile[23][3]->SetMustroom(true);
 
@@ -3093,11 +3093,6 @@ void Map::LoadLevel_6_4()
 
 	LoadMinionLevel_6_4();
 
-	DrawLava(13, 14, 2, 3);
-	DrawLava(26, 14, 3, 2);
-	DrawLava(32, 14, 3, 2);
-	DrawLava(128, 14, 13, 2);
-
 	DrawGND(0, 14, 3, 8);
 	DrawGND(0, 4, 24, 3);
 	DrawGND(3, 14, 1, 7);
@@ -3122,21 +3117,26 @@ void Map::LoadLevel_6_4()
 	DrawGND(142, 5, 2, 3);
 	DrawGND(144, 14, 19, 2);
 
+	DrawLava(13, 14, 2, 3);
+	DrawLava(26, 14, 3, 2);
+	DrawLava(32, 14, 3, 2);
+	DrawLava(128, 14, 13, 2);
+
 	DrawBlockQ(30, 6, 1);
 
 	DrawBridge(128, 10, 13);
 
-	tile[23][6]->SetID(19);
-	tile[37][6]->SetID(19);
-	tile[80][4]->SetID(19);
-	tile[92][9]->SetID(19);
-	tile[30][10]->SetID(19);
-	tile[49][6]->SetID(19);
-	tile[60][6]->SetID(19);
-	tile[67][6]->SetID(19);
-	tile[76][9]->SetID(19);
-	tile[84][9]->SetID(19);
-	tile[88][4]->SetID(19);
+	tile[23][6]->SetID(16);
+	tile[37][6]->SetID(16);
+	tile[80][4]->SetID(16);
+	tile[92][9]->SetID(16);
+	tile[30][10]->SetID(16);
+	tile[49][6]->SetID(16);
+	tile[60][6]->SetID(16);
+	tile[67][6]->SetID(16);
+	tile[76][9]->SetID(16);
+	tile[84][9]->SetID(16);
+	tile[88][4]->SetID(16);
 
 	tile[30][6]->SetMustroom(true);
 
@@ -3413,11 +3413,6 @@ void Map::LoadLevel_7_4()
 
 	LoadMinionLevel_7_4();
 
-	DrawLava(16, 14, 11, 2);
-	DrawLava(164, 14, 3, 2);
-	DrawLava(168, 14, 3, 2);
-	DrawLava(256, 14, 13, 2);
-
 	DrawGND(0, 14, 16, 5);
 	DrawGND(0, 9, 5, 1);
 	DrawGND(0, 8, 4, 1);
@@ -3480,9 +3475,14 @@ void Map::LoadLevel_7_4()
 	DrawGND(270, 5, 2, 3);
 	DrawGND(272, 14, 18, 2);
 
+	DrawLava(16, 14, 11, 2);
+	DrawLava(164, 14, 3, 2);
+	DrawLava(168, 14, 3, 2);
+	DrawLava(256, 14, 13, 2);
+
 	DrawBridge(256, 10, 13);
 
-	tile[167][7]->SetID(19);
+	tile[167][7]->SetID(16);
 
 	mapType = NuiLua;
 }
@@ -3771,13 +3771,6 @@ void Map::LoadLevel_8_4()
 
 	LoadMinionLevel_8_4();
 
-	DrawLava(6, 14, 5, 2);
-	DrawLava(66, 14, 9, 2);
-	DrawLava(155, 14, 3, 2);
-	DrawLava(240, 14, 4, 2);
-	DrawLava(320, 14, 5, 2);
-	DrawLava(331, 14, 13, 2);
-
 	DrawGND(0, 14, 369, 2);
 	DrawGND(0, 2, 369, 1);
 	DrawGND(0, 14, 6, 5);
@@ -3795,6 +3788,13 @@ void Map::LoadLevel_8_4()
 	DrawGND(325, 4, 6, 2);
 	DrawGND(344, 12, 3, 4);
 	DrawGND(345, 5, 2, 3);
+
+	DrawLava(6, 14, 5, 2);
+	DrawLava(66, 14, 9, 2);
+	DrawLava(155, 14, 3, 2);
+	DrawLava(240, 14, 4, 2);
+	DrawLava(320, 14, 5, 2);
+	DrawLava(331, 14, 13, 2);
 
 	DrawPipe(19, 14, 3);
 	DrawPipe(51, 14, 3);

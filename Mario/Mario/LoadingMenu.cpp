@@ -42,7 +42,7 @@ void LoadingMenu::Draw(sf::RenderWindow & window)
 		Game::GetText()->Draw(window, "WORLD", 320, 144);
 		Game::GetText()->Draw(window, Window::GetMap()->GetLevelName(), 416, 144);
 		Game::GetText()->Draw(window, "y", 384, 208);
-		Game::GetText()->DrawCenterX(window, "REMEMBER THAT YOU CAN RUN WITH" + Game::GetKeyString(Game::keyShift), 400);
+		Game::GetText()->DrawCenterX(window, "REMEMBER THAT YOU CAN RUN WITH " + Game::GetKeyString(Game::keyShift), 400);
 	}
 	else
 	{

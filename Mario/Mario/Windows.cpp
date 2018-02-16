@@ -41,10 +41,10 @@ void Window::Play()
 				window->close();
 			}
 
-			//InputMenu();
+			InputMenu();
 		}
 
-		//Update();
+		Update();
 		Draw();
 		window->display();
 	}

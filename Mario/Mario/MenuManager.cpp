@@ -50,8 +50,8 @@ void MenuManager::Draw(sf::RenderWindow& window)
 	{
 	case MenuGame:
 		Window::GetMap()->DrawMap(window);
-		//Window::GetMap()->DrawGameLayout(window);
-		//mainMenu->Draw(window);
+		Window::GetMap()->DrawGameLayout(window);
+		mainMenu->Draw(window);
 		break;
 	case GameLoading:
 		loadingMenu->Draw(window);
