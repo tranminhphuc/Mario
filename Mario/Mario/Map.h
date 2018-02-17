@@ -99,6 +99,8 @@ private:
 
 	void LoadImage(string file);
 
+	void LoadImage1(string file);
+
 	void LoadImage(string image, int delay, bool collision, bool canDestroy);
 	void LoadImage(string image1, string image2, string image3, string image4, int delay, bool collision, bool canDestroy);
 	void LoadImage(string image1, string image2, int delay, bool collision, bool canDestroy);
