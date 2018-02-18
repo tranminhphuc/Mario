@@ -1,0 +1,12 @@
+4
+flower0.bmp
+50
+flower1.bmp
+50
+flower2.bmp
+50
+flower3.bmp
+50
+1
+1
+1

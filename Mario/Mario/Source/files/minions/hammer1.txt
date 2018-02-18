@@ -1,0 +1,12 @@
+4
+hammer1_0.bmp
+95
+hammer1_1.bmp
+95
+hammer1_2.bmp
+95
+hammer1_3.bmp
+95
+1
+1
+1

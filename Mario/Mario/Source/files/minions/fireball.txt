@@ -1,0 +1,12 @@
+4
+fireball_0.bmp
+75
+fireball_1.bmp
+75
+fireball_2.bmp
+75
+fireball_3.bmp
+75
+1
+1
+1

@@ -1,0 +1,8 @@
+2
+bowser2.bmp
+285
+bowser3.bmp
+285
+1
+1
+1

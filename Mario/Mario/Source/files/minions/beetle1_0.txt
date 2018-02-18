@@ -1,0 +1,8 @@
+2
+beetle1_0.bmp
+155
+beetle1_1.bmp
+155
+1
+1
+1
