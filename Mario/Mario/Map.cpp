@@ -97,7 +97,7 @@ void Map::UpdateMinionsCollision()
 void Map::Draw(sf::RenderWindow& window)
 {
 	DrawMap(window);
-	DrawMinion(window);
+	//DrawMinion(window);
 }
 
 void Map::DrawMap(sf::RenderWindow & window)
@@ -461,52 +461,6 @@ void Map::LoadImage1(string file)
 	listMinion.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
 
-void Map::LoadImage(string image, int delay, bool collision, bool canDestroy)
-{
-	vector<string> name;
-	vector<unsigned int> time;
-
-	image = "Source/images/" + image;
-
-	name.push_back(image);
-	time.push_back(delay);
-	listMinion.push_back(new Object(new Animation(name, time), collision, canDestroy, true));
-}
-
-void Map::LoadImage(string image1, string image2, string image3, string image4, int delay, bool collision, bool canDestroy)
-{
-	vector<string> name;
-	vector<unsigned int> time;
-
-	image1 = "Source/images/" + image1;
-	image2 = "Source/images/" + image2;
-	image3 = "Source/images/" + image3;
-	image4 = "Source/images/" + image4;
-
-	name.push_back(image1);
-	time.push_back(delay);
-	name.push_back(image2);
-	time.push_back(delay);
-	name.push_back(image3);
-	time.push_back(delay);
-	listMinion.push_back(new Object(new Animation(name, time), collision, canDestroy, true));
-}
-
-void Map::LoadImage(string image1, string image2, int delay, bool collision, bool canDestroy)
-{
-	vector<string> name;
-	vector<unsigned int> time;
-
-	image1 = "Source/images/" + image1;
-	image2 = "Source/images/" + image2;
-
-	name.push_back(image1);
-	time.push_back(delay);
-	name.push_back(image2);
-	time.push_back(delay);
-	listMinion.push_back(new Object(new Animation(name, time), collision, canDestroy, true));
-}
-
 void Map::LoadGameData()
 {
 	// ----- 0 -----
@@ -773,133 +727,133 @@ void Map::LoadGameData()
 	LoadImage("Source/files/blocks/platform1.txt");
 
 	// ----- 0 ----
-	LoadImage("mushroom.bmp", 0, true, true);
+	LoadImage1("mushroom.bmp");
 	// ----- 1 ----
-	LoadImage("mushroom_1up.bmp", 0, true, true);
+	LoadImage1("mushroom_1up.bmp");
 	// ----- 2 ----
-	LoadImage("mushroom1_1up.bmp", 0, true, true);
+	LoadImage1("mushroom1_1up.bmp");
 	// ----- 3 ----
-	LoadImage("flower0.bmp", "flower1.bmp", "flower2.bmp", "flower3.bmp", 50, true, true);
+	LoadImage1("flower0.bmp");
 	// ----- 4 ----
-	LoadImage("star_0.bmp", "star_1.bmp", "star_2.bmp", "star_3.bmp", 75, true, true);
+	LoadImage1("star_0.bmp");
 	// ----- 5 ----
-	LoadImage("goombas_0.bmp", "goombas_1.bmp", 200, true, true);
+	LoadImage1("goombas_0.bmp");
 	// ----- 6 ----
-	LoadImage("goombas_ded.bmp", 0, true, true);
+	LoadImage1("goombas_ded.bmp");
 	// ----- 7 ----
-	LoadImage("goombas1_0.bmp", "goombas1_1.bmp", 200, true, true);
+	LoadImage1("goombas1_0.bmp");
 	// ----- 8 ----
-	LoadImage("goombas1_ded.bmp", 0, true, true);
+	LoadImage1("goombas1_ded.bmp");
 	// ----- 9 ----
-	LoadImage("goombas2_0.bmp", "goombas2_1.bmp", 200, true, true);
+	LoadImage1("goombas2_0.bmp");
 	// ----- 10 ----
-	LoadImage("goombas2_ded.bmp", 0, true, true);
+	LoadImage1("goombas2_ded.bmp");
 	// ----- 11 ----
-	LoadImage("koopa_0.bmp", "koopa_1.bmp", 200, true, true);
+	LoadImage1("koopa_0.bmp");
 	// ----- 12 ----
-	LoadImage("koopa_2.bmp", "koopa_3.bmp", 200, true, true);
+	LoadImage1("koopa_2.bmp");
 	// ----- 13 ----
-	LoadImage("koopa_ded.bmp", 0, true, true);
+	LoadImage1("koopa_ded.bmp");
 	// ----- 14 ----
-	LoadImage("koopa1_0.bmp", "koopa1_1.bmp", 200, true, true);
+	LoadImage1("koopa1_0.bmp");
 	// ----- 15 ----
-	LoadImage("koopa1_2.bmp", "koopa1_3.bmp", 200, true, true);
+	LoadImage1("koopa1_2.bmp");
 	// ----- 16 ----
-	LoadImage("koopa1_ded.bmp", 0, true, true);
+	LoadImage1("koopa1_ded.bmp");
 	// ----- 17 ----
-	LoadImage("koopa2_0.bmp", "koopa2_1.bmp", 200, true, true);
+	LoadImage1("koopa2_0.bmp");
 	// ----- 18 ----
-	LoadImage("koopa2_2.bmp", "koopa2_3.bmp", 200, true, true);
+	LoadImage1("koopa2_2.bmp");
 	// ----- 19 ----
-	LoadImage("koopa2_ded.bmp", 0, true, true);
+	LoadImage1("koopa2_ded.bmp");
 	// ----- 20 ----
-	LoadImage("plant_0.bmp", "plant_1.bmp", 125, true, true);
+	LoadImage1("plant_0.bmp");
 	// ----- 21 ----
-	LoadImage("plant1_0.bmp", "plant1_1.bmp", 125, true, true);
+	LoadImage1("plant1_0.bmp");
 	// ----- 22 ----
-	LoadImage("bowser0.bmp", "bowser1.bmp", 285, true, true);
+	LoadImage1("bowser0.bmp");
 	// ----- 23 ----
-	LoadImage("bowser2.bmp", "bowser3.bmp", 285, true, true);
+	LoadImage1("bowser2.bmp");
 	// ----- 24 ----
-	LoadImage("fire_0.bmp", "fire_1.bmp", 35, true, true);
+	LoadImage1("fire_0.bmp");
 	// ----- 25 ----
-	LoadImage("fireball_0.bmp", "fireball_1.bmp", "fireball_2.bmp", "fireball_3.bmp", 75, true, true);
+	LoadImage1("fireball_0.bmp");
 	// ----- 26 ----
-	LoadImage("toad.bmp", 0, true, true);
+	LoadImage1("toad.bmp");
 	// ----- 27 ----
-	LoadImage("peach.bmp", 0, true, true);
+	LoadImage1("peach.bmp");
 	// ----- 28 ----
-	LoadImage("squid0.bmp", 0, true, true);
+	LoadImage1("squid0.bmp");
 	// ----- 29 ----
-	LoadImage("squid1.bmp", 0, true, true);
+	LoadImage1("squid1.bmp");
 	// ----- 30 ----
-	LoadImage("cheep0.bmp", "cheep1.bmp", 110, true, true);
+	LoadImage1("cheep0.bmp");
 	// ----- 31 ----
-	LoadImage("cheep2.bmp", "cheep3.bmp", 110, true, true);
+	LoadImage1("cheep2.bmp");
 	// ----- 32 ----
-	LoadImage("upfire.bmp", 0, true, true);
+	LoadImage1("upfire.bmp");
 	// ----- 33 ----
-	LoadImage("vine.bmp", 0, true, true);
+	LoadImage1("vine.bmp");
 	// ----- 34 ----
-	LoadImage("vine_top.bmp", 0, true, true);
+	LoadImage1("vine_top.bmp");
 	// ----- 35 ----
-	LoadImage("vine1.bmp", 0, true, true);
+	LoadImage1("vine1.bmp");
 	// ----- 36 ----
-	LoadImage("vine1_top.bmp", 0, true, true);
+	LoadImage1("vine1_top.bmp");
 	// ----- 37 ----
-	LoadImage("spring_0.bmp", 0, true, true);
+	LoadImage1("spring_0.bmp");
 	// ----- 38 ----
-	LoadImage("spring_1.bmp", 0, true, true);
+	LoadImage1("spring_1.bmp");
 	// ----- 39 ----
-	LoadImage("spring_2.bmp", 0, true, true);
+	LoadImage1("spring_2.bmp");
 	// ----- 40 ----
-	LoadImage("spring1_0.bmp", 0, true, true);
+	LoadImage1("spring1_0.bmp");
 	// ----- 41 ----
-	LoadImage("spring1_1.bmp", 0, true, true);
+	LoadImage1("spring1_1.bmp");
 	// ----- 42 ----
-	LoadImage("spring1_2.bmp", 0, true, true);
+	LoadImage1("spring1_2.bmp");
 	// ----- 43 ----
-	LoadImage("hammer_0.bmp", "hammer_1.bmp", "hammer_2.bmp", "hammer_3.bmp", 95, true, true);
+	LoadImage1("hammer_0.bmp");
 	// ----- 44 ----
-	LoadImage("hammer1_0.bmp", "hammer1_1.bmp", "hammer1_2.bmp", "hammer1_3.bmp", 95, true, true);
+	LoadImage1("hammer1_0.bmp");
 	// ----- 45 ----
-	LoadImage("hammerbro_0.bmp", "hammerbro_1.bmp", 175, true, true);
+	LoadImage1("hammerbro_0.bmp");
 	// ----- 46 ----
-	LoadImage("hammerbro_2.bmp", "hammerbro_3.bmp", 155, true, true);
+	LoadImage1("hammerbro_2.bmp");
 	// ----- 47 ----
-	LoadImage("hammerbro1_0.bmp", "hammerbro1_1.bmp", 175, true, true);
+	LoadImage1("hammerbro1_0.bmp");
 	// ----- 48 ----
-	LoadImage("hammerbro1_2.bmp", "hammerbro1_3.bmp", 155, true, true);
+	LoadImage1("hammerbro1_2.bmp");
 	// ----- 49 ----
-	LoadImage("lakito_0.bmp", 0, true, true);
+	LoadImage1("lakito_0.bmp");
 	// ----- 50 ----
-	LoadImage("lakito_1.bmp", 0, true, true);
+	LoadImage1("lakito_1.bmp");
 	// ----- 51 ----
-	LoadImage("spikey0_0.bmp", "spikey0_1.bmp", 135, true, true);
+	LoadImage1("spikey0_0.bmp");
 	// ----- 52 ----
-	LoadImage("spikey1_0.bmp", "spikey1_1.bmp", 75, true, true);
+	LoadImage1("spikey1_0.bmp");
 	// ----- 53 ----
-	LoadImage("beetle_0.bmp", "beetle_1.bmp", 155, true, true);
+	LoadImage1("beetle_0.bmp");
 	// ----- 54 ----
-	LoadImage("beetle_2.bmp", 0, true, true);
+	LoadImage1("beetle_2.bmp");
 	// ----- 55 ----
-	LoadImage("beetle1_0.bmp", "beetle1_1.bmp", 155, true, true);
+	LoadImage1("beetle1_0.bmp");
 	// ----- 56 ----
-	LoadImage("beetle1_2.bmp", 0, true, true);
+	LoadImage1("beetle1_2.bmp");
 	// ----- 57 ----
-	LoadImage("beetle2_0.bmp", "beetle2_1.bmp", 155, true, true);
+	LoadImage1("beetle2_0.bmp");
 	// ----- 58 ----
-	LoadImage("beetle2_2.bmp", 0, true, true);
+	LoadImage1("beetle2_2.bmp");
 	// ----- 59 ----
-	LoadImage("bulletbill.bmp", 0, true, true);
+	LoadImage1("bulletbill.bmp");
 	// ----- 60 ----
-	LoadImage("bulletbill1.bmp", 0, true, true);
+	LoadImage1("bulletbill1.bmp");
 	// ----- 61 ----
-	LoadImage("fireball_0.bmp", "fireball_1.bmp", "fireball_2.bmp", "fireball_3.bmp", 155, true, true);
+	LoadImage1("fireball_0.bmp");
 	// ----- 62 ----
-	LoadImage("firework0.bmp", 0, true, true);
+	LoadImage1("firework0.bmp");
 	// ----- 63 ----
-	LoadImage("firework1.bmp", 0, true, true);
+	LoadImage1("firework1.bmp");
 }
 
 void Map::LoadLevel()
@@ -1026,6 +980,8 @@ void Map::CreateMap()
 
 		tile.push_back(object);
 	}
+
+	
 }
 
 void Map::ClearMap()
@@ -1072,14 +1028,14 @@ void Map::LoadLevel_1_1()
 
 	CreateMap();
 
-	LoadMinionLevel_1_1();
+	//LoadMinionLevel_1_1();
 
 	DrawGND(0, 14, 69, 2);
 	DrawGND(71, 14, 15, 2);
 	DrawGND(89, 14, 64, 2);
 	DrawGND(155, 14, 85, 2);
 
-	DrawGND2(134, 12, 4, true);
+	/*DrawGND2(134, 12, 4, true);
 	DrawGND2(140, 12, 4, false);
 	DrawGND2(148, 12, 4, true);
 	DrawGND2(152, 12, 1, 4);
@@ -1150,7 +1106,7 @@ void Map::LoadLevel_1_1()
 	DrawCoins(244, 5, 7, 1);
 
 	DrawPipeVertical(255, 12, 11);
-	DrawPipeHorizontal(253, 12, 1);
+	DrawPipeHorizontal(253, 12, 1);*/
 
 	mapType = BanNgay;
 }

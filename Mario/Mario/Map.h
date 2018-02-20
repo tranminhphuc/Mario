@@ -94,6 +94,8 @@ private:
 	int xMap;
 	int yMap;
 
+	int a;
+
 	bool underWater;
 	bool moveMap;
 
@@ -101,9 +103,6 @@ private:
 
 	void LoadImage1(string file);
 
-	void LoadImage(string image, int delay, bool collision, bool canDestroy);
-	void LoadImage(string image1, string image2, string image3, string image4, int delay, bool collision, bool canDestroy);
-	void LoadImage(string image1, string image2, int delay, bool collision, bool canDestroy);
 	void LoadGameData();
 	void LoadLevel();
 	void CreateMap();
