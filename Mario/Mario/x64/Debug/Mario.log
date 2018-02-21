@@ -1,2 +1,30 @@
 ﻿  Map.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  Windows.cpp
+  Star.cpp
+  Squid.cpp
+  Spikey.cpp
+  Player.cpp
+  Plant.cpp
+  PauseMenu.cpp
+  OptionMenu.cpp
+  Mushroom.cpp
+  Minion.cpp
+  MenuManager.cpp
+  Menu.cpp
+  MainMenu.cpp
+  LoadingMenu.cpp
+  Lakito.cpp
+  Koopa.cpp
+  HammerBro.cpp
+  Hammer.cpp
+  Goombas.cpp
+  Flower.cpp
+  EventGame.cpp
+  BulletBill.cpp
+  Bowser.cpp
+  Beetle.cpp
+  Animation.cpp
   Mario.vcxproj -> E:\Mario\Mario\x64\Debug\Mario.exe

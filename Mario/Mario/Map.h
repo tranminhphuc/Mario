@@ -87,6 +87,8 @@ private:
 
 	Player* player;
 
+	vector<string> source;
+
 	int mapWidth;
 	int mapHeight;
 	int mapTime;
@@ -94,15 +96,14 @@ private:
 	int xMap;
 	int yMap;
 
-	int a;
-
 	bool underWater;
 	bool moveMap;
 
+	void LoadImage(string file, vector<Object*>& object);
 	void LoadImage(string file);
+	void LoadFile(vector<string> source, vector<Object*>& object);
 
-	void LoadImage1(string file);
-
+	void LoadSource();
 	void LoadGameData();
 	void LoadLevel();
 	void CreateMap();

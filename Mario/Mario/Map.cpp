@@ -12,6 +12,7 @@ Map::Map()
 
 	Game::GetText()->SetFont("Source/images/font.bmp");
 
+	LoadSource();
 	LoadGameData();
 	LoadLevel();
 }
@@ -397,7 +398,7 @@ void Map::MoveMap(int x)
 	}
 }
 
-void Map::LoadImage(string file)
+void Map::LoadImage(string file, vector<Object*>& object)
 {
 	int size;
 	bool collision, canDestroy, visible;
@@ -426,10 +427,10 @@ void Map::LoadImage(string file)
 
 	f >> collision >> canDestroy >> visible;
 
-	listBlock.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
+	object.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
 
-void Map::LoadImage1(string file)
+void Map::LoadImage(string file)
 {
 	int size;
 	bool collision, canDestroy, visible;
@@ -461,399 +462,412 @@ void Map::LoadImage1(string file)
 	listMinion.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
 
-void Map::LoadGameData()
+void Map::LoadFile(vector<string> source, vector<Object*>& object)
+{
+	for (int i = 0; i < source.size(); i++)
+	{
+		LoadImage(source[i], object);
+	}
+}
+
+void Map::LoadSource()
 {
 	// ----- 0 -----
-	LoadImage("Source/files/blocks/transp.txt");
+	source.push_back(string("Source/files/blocks/transp.txt"));
 	// ----- 1 -----
-	LoadImage("Source/files/blocks/gnd_red_1.txt");
+	source.push_back(string("Source/files/blocks/gnd_red_1.txt"));
 	// ----- 2 -----
-	LoadImage("Source/files/blocks/gnd1.txt");
+	source.push_back(string("Source/files/blocks/gnd1.txt"));
 	// ----- 3 -----
-	LoadImage("Source/files/blocks/uw_0.txt");
+	source.push_back(string("Source/files/blocks/uw_0.txt"));
 	// ----- 4 -----
-	LoadImage("Source/files/blocks/gnd2.txt");
+	source.push_back(string("Source/files/blocks/gnd2.txt"));
 	// ----- 5 -----
-	LoadImage("Source/files/blocks/gnd_4.txt");
+	source.push_back(string("Source/files/blocks/gnd_4.txt"));
 	// ----- 6 -----
-	LoadImage("Source/files/blocks/gnd_5.txt");
+	source.push_back(string("Source/files/blocks/gnd_5.txt"));
 	// ----- 7 -----
-	LoadImage("Source/files/blocks/gnd_red2.txt");
+	source.push_back(string("Source/files/blocks/gnd_red2.txt"));
 	// ----- 8 -----
-	LoadImage("Source/files/blocks/gnd1_2.txt");
+	source.push_back(string("Source/files/blocks/gnd1_2.txt"));
 	// ----- 9 -----
-	LoadImage("Source/files/blocks/gnd2_2.txt");
+	source.push_back(string("Source/files/blocks/gnd2_2.txt"));
 	// ----- 10 -----
-	LoadImage("Source/files/blocks/brickred.txt");
+	source.push_back(string("Source/files/blocks/brickred.txt"));
 	// ----- 11 -----
-	LoadImage("Source/files/blocks/brick1.txt");
+	source.push_back(string("Source/files/blocks/brick1.txt"));
 	// ----- 12 -----
-	LoadImage("Source/files/blocks/brick2.txt");
+	source.push_back(string("Source/files/blocks/brick2.txt"));
 	// ----- 13 -----
-	LoadImage("Source/files/blocks/blockq.txt");
+	source.push_back(string("Source/files/blocks/blockq.txt"));
 	// ----- 14 -----
-	LoadImage("Source/files/blocks/blockq_used.txt");
+	source.push_back(string("Source/files/blocks/blockq_used.txt"));
 	// ----- 15 -----
-	LoadImage("Source/files/blocks/blockq1.txt");
+	source.push_back(string("Source/files/blocks/blockq1.txt"));
 	// ----- 16 -----
-	LoadImage("Source/files/blocks/blockq1_used.txt");
+	source.push_back(string("Source/files/blocks/blockq1_used.txt"));
 	// ----- 17 -----
-	LoadImage("Source/files/blocks/blockq2_used.txt");
+	source.push_back(string("Source/files/blocks/blockq2_used.txt"));
 	// ----- 18 -----
-	LoadImage("Source/files/blocks/pipe_left_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe_left_bot.txt"));
 	// ----- 19 -----
-	LoadImage("Source/files/blocks/pipe_right_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe_right_bot.txt"));
 	// ----- 20 -----
-	LoadImage("Source/files/blocks/pipe_left_top.txt");
+	source.push_back(string("Source/files/blocks/pipe_left_top.txt"));
 	// ----- 21 -----
-	LoadImage("Source/files/blocks/pipe_right_top.txt");
+	source.push_back(string("Source/files/blocks/pipe_right_top.txt"));
 	// ----- 22 -----
-	LoadImage("Source/files/blocks/pipe_hor_bot_left.txt");
+	source.push_back(string("Source/files/blocks/pipe_hor_bot_left.txt"));
 	// ----- 23 -----
-	LoadImage("Source/files/blocks/pipe_hor_top_left.txt");
+	source.push_back(string("Source/files/blocks/pipe_hor_top_left.txt"));
 	// ----- 24 -----
-	LoadImage("Source/files/blocks/pipe_hor_bot_center.txt");
+	source.push_back(string("Source/files/blocks/pipe_hor_bot_center.txt"));
 	// ----- 25 -----
-	LoadImage("Source/files/blocks/pipe_hor_top_center.txt");
+	source.push_back(string("Source/files/blocks/pipe_hor_top_center.txt"));
 	// ----- 26 -----
-	LoadImage("Source/files/blocks/pipe_hor_bot_right.txt");
+	source.push_back(string("Source/files/blocks/pipe_hor_bot_right.txt"));
 	// ----- 27 -----
-	LoadImage("Source/files/blocks/pipe_hor_top_right.txt");
+	source.push_back(string("Source/files/blocks/pipe_hor_top_right.txt"));
 	// ----- 28 -----
-	LoadImage("Source/files/blocks/pipe1_left_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe1_left_bot.txt"));
 	// ----- 29 -----
-	LoadImage("Source/files/blocks/pipe1_right_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe1_right_bot.txt"));
 	// ----- 30 -----
-	LoadImage("Source/files/blocks/pipe1_left_top.txt");
+	source.push_back(string("Source/files/blocks/pipe1_left_top.txt"));
 	// ----- 31 -----
-	LoadImage("Source/files/blocks/pipe1_right_top.txt");
+	source.push_back(string("Source/files/blocks/pipe1_right_top.txt"));
 	// ----- 32 -----
-	LoadImage("Source/files/pipe1_hor_bot_left.txt");
+	source.push_back(string("Source/files/pipe1_hor_bot_left.txt"));
 	// ----- 33 -----
-	LoadImage("Source/files/blocks/pipe1_hor_top_left.txt");
+	source.push_back(string("Source/files/blocks/pipe1_hor_top_left.txt"));
 	// ----- 34 -----
-	LoadImage("Source/files/blocks/pipe1_hor_bot_center.txt");
+	source.push_back(string("Source/files/blocks/pipe1_hor_bot_center.txt"));
 	// ----- 34 -----
-	LoadImage("Source/files/blocks/pipe1_hor_top_center.txt");
+	source.push_back(string("Source/files/blocks/pipe1_hor_top_center.txt"));
 	// ----- 36 -----
-	LoadImage("Source/files/blocks/pipe1_hor_bot_right.txt");
+	source.push_back(string("Source/files/blocks/pipe1_hor_bot_right.txt"));
 	// ----- 37 -----
-	LoadImage("Source/files/blocks/pipe1_hor_top_right.txt");
+	source.push_back(string("Source/files/blocks/pipe1_hor_top_right.txt"));
 	// ----- 38 -----
-	LoadImage("Source/files/blocks/pipe2_left_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe2_left_bot.txt"));
 	// ----- 39 -----
-	LoadImage("Source/files/blocks/pipe2_right_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe2_right_bot.txt"));
 	// ----- 40 -----
-	LoadImage("Source/files/blocks/pipe2_left_top.txt");
+	source.push_back(string("Source/files/blocks/pipe2_left_top.txt"));
 	// ----- 41 -----
-	LoadImage("Source/files/pipe2_right_top.txt");
+	source.push_back(string("Source/files/pipe2_right_top.txt"));
 	// ----- 42 -----
-	LoadImage("Source/files/blocks/pipe2_hor_bot_left.txt");
+	source.push_back(string("Source/files/blocks/pipe2_hor_bot_left.txt"));
 	// ----- 43 -----
-	LoadImage("Source/files/blocks/pipe2_hor_top_left.txt");
+	source.push_back(string("Source/files/blocks/pipe2_hor_top_left.txt"));
 	// ----- 44 -----
-	LoadImage("Source/files/blocks/pipe2_hor_bot_center.txt");
+	source.push_back(string("Source/files/blocks/pipe2_hor_bot_center.txt"));
 	// ----- 45 -----
-	LoadImage("Source/files/blocks/pipe2_hor_top_center.txt");
+	source.push_back(string("Source/files/blocks/pipe2_hor_top_center.txt"));
 	// ----- 46 -----
-	LoadImage("Source/files/blocks/pipe2_hor_bot_right.txt");
+	source.push_back(string("Source/files/blocks/pipe2_hor_bot_right.txt"));
 	// ----- 47 -----
-	LoadImage("Source/files/blocks/pipe2_hor_top_right.txt");
+	source.push_back(string("Source/files/blocks/pipe2_hor_top_right.txt"));
 	// ----- 48 -----
-	LoadImage("Source/files/blocks/pipe3_left_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe3_left_bot.txt"));
 	// ----- 49 -----
-	LoadImage("Source/files/blocks/pipe3_right_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe3_right_bot.txt"));
 	// ----- 50 -----
-	LoadImage("Source/files/blocks/pipe3_left_top.txt");
+	source.push_back(string("Source/files/blocks/pipe3_left_top.txt"));
 	// ----- 51 -----
-	LoadImage("Source/files/blocks/pipe3_right_top.txt");
+	source.push_back(string("Source/files/blocks/pipe3_right_top.txt"));
 	// ----- 52 -----
-	LoadImage("Source/files/blocks/pipe3_hor_bot_left.txt");
+	source.push_back(string("Source/files/blocks/pipe3_hor_bot_left.txt"));
 	// ----- 53 -----
-	LoadImage("Source/files/blocks/pipe3_hor_top_left.txt");
+	source.push_back(string("Source/files/blocks/pipe3_hor_top_left.txt"));
 	// ----- 54 -----
-	LoadImage("Source/files/blocks/pipe3_hor_bot_center.txt");
+	source.push_back(string("Source/files/blocks/pipe3_hor_bot_center.txt"));
 	// ----- 55 -----
-	LoadImage("Source/files/blocks/pipe3_hor_top_center.txt");
+	source.push_back(string("Source/files/blocks/pipe3_hor_top_center.txt"));
 	// ----- 56 -----
-	LoadImage("Source/files/blocks/pipe3_hor_bot_right.txt");
+	source.push_back(string("Source/files/blocks/pipe3_hor_bot_right.txt"));
 	// ----- 57 -----
-	LoadImage("Source/files/blocks/pipe3_hor_top_right.txt");
+	source.push_back(string("Source/files/blocks/pipe3_hor_top_right.txt"));
 	// ----- 58 -----
-	LoadImage("Source/files/blocks/pipe4_left_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe4_left_bot.txt"));
 	// ----- 59 -----
-	LoadImage("Source/files/blocks/pipe4_right_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe4_right_bot.txt"));
 	// ----- 60 -----
-	LoadImage("Source/files/blocks/pipe4_left_top.txt");
+	source.push_back(string("Source/files/blocks/pipe4_left_top.txt"));
 	// ----- 61 -----
-	LoadImage("Source/files/blocks/pipe4_right_top.txt");
+	source.push_back(string("Source/files/blocks/pipe4_right_top.txt"));
 	// ----- 62 -----
-	LoadImage("Source/files/blocks/pipe5_left_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe5_left_bot.txt"));
 	// ----- 63 -----
-	LoadImage("Source/files/blocks/pipe5_right_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe5_right_bot.txt"));
 	// ----- 64 -----
-	LoadImage("Source/files/blocks/pipe5_left_top.txt");
+	source.push_back(string("Source/files/blocks/pipe5_left_top.txt"));
 	// ----- 65 -----
-	LoadImage("Source/files/blocks/pipe5_right_top.txt");
+	source.push_back(string("Source/files/blocks/pipe5_right_top.txt"));
 	// ----- 66 -----
-	LoadImage("Source/files/blocks/pipe6_left_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe6_left_bot.txt"));
 	// ----- 67 -----
-	LoadImage("Source/files/blocks/pipe6_right_bot.txt");
+	source.push_back(string("Source/files/blocks/pipe6_right_bot.txt"));
 	// ----- 68 -----
-	LoadImage("Source/files/blocks/pipe6_left_top.txt");
+	source.push_back(string("Source/files/blocks/pipe6_left_top.txt"));
 	// ----- 69 -----
-	LoadImage("Source/files/blocks/pipe6_right_top.txt");
+	source.push_back(string("Source/files/blocks/pipe6_right_top.txt"));
 	// ----- 70 -----
-	LoadImage("Source/files/blocks/coin_use00.txt");
+	source.push_back(string("Source/files/blocks/coin_use00.txt"));
 	// ----- 71 -----
-	LoadImage("Source/files/blocks/coin_use0.txt");
+	source.push_back(string("Source/files/blocks/coin_use0.txt"));
 	// ----- 72 -----
-	LoadImage("Source/files/blocks/coin_use30.txt");
+	source.push_back(string("Source/files/blocks/coin_use30.txt"));
 	// ----- 73 -----
-	LoadImage("Source/files/blocks/end0_l.txt");
+	source.push_back(string("Source/files/blocks/end0_l.txt"));
 	// ----- 74 -----
-	LoadImage("Source/files/blocks/end0_dot.txt");
+	source.push_back(string("Source/files/blocks/end0_dot.txt"));
 	// ----- 75 -----
-	LoadImage("Source/files/blocks/end1_l.txt");
+	source.push_back(string("Source/files/blocks/end1_l.txt"));
 	// ----- 76 -----
-	LoadImage("Source/files/blocks/end1_dot.txt");
+	source.push_back(string("Source/files/blocks/end1_dot.txt"));
 	// ----- 77 -----
-	LoadImage("Source/files/blocks/castle0_brick.txt");
+	source.push_back(string("Source/files/blocks/castle0_brick.txt"));
 	// ----- 78 -----
-	LoadImage("Source/files/blocks/castle0_center_center.txt");
+	source.push_back(string("Source/files/blocks/castle0_center_center.txt"));
 	// ----- 79 -----
-	LoadImage("Source/files/blocks/castle0_center_center_top.txt");
+	source.push_back(string("Source/files/blocks/castle0_center_center_top.txt"));
 	// ----- 80 -----
-	LoadImage("Source/files/blocks/castle0_center_left.txt");
+	source.push_back(string("Source/files/blocks/castle0_center_left.txt"));
 	// ----- 81 -----
-	LoadImage("Source/files/blocks/castle0_center_right.txt");
+	source.push_back(string("Source/files/blocks/castle0_center_right.txt"));
 	// ----- 82 -----
-	LoadImage("Source/files/blocks/castle0_top0.txt");
+	source.push_back(string("Source/files/blocks/castle0_top0.txt"));
 	// ----- 83 -----
-	LoadImage("Source/files/blocks/castle0_top1.txt");
+	source.push_back(string("Source/files/blocks/castle0_top1.txt"));
 	// ----- 84 -----
-	LoadImage("Source/files/blocks/castle1_brick.txt");
+	source.push_back(string("Source/files/blocks/castle1_brick.txt"));
 	// ----- 85 -----
-	LoadImage("Source/files/blocks/castle1_center_center.txt");
+	source.push_back(string("Source/files/blocks/castle1_center_center.txt"));
 	// ----- 86 -----
-	LoadImage("Source/files/blocks/castle1_center_center_top.txt");
+	source.push_back(string("Source/files/blocks/castle1_center_center_top.txt"));
 	// ----- 87 -----
-	LoadImage("Source/files/blocks/castle1_center_left.txt");
+	source.push_back(string("Source/files/blocks/castle1_center_left.txt"));
 	// ----- 88 -----
-	LoadImage("Source/files/blocks/castle1_center_right.txt");
+	source.push_back(string("Source/files/blocks/castle1_center_right.txt"));
 	// ----- 89 -----
-	LoadImage("Source/files/blocks/castle1_top0.txt");
+	source.push_back(string("Source/files/blocks/castle1_top0.txt"));
 	// ----- 90 -----
-	LoadImage("Source/files/blocks/castle1_top1.txt");
+	source.push_back(string("Source/files/blocks/castle1_top1.txt"));
 	// ----- 91 -----
-	LoadImage("Source/files/blocks/t_bot.txt");
+	source.push_back(string("Source/files/blocks/t_bot.txt"));
 	// ----- 92 -----
-	LoadImage("Source/files/blocks/t_bot0.txt");
+	source.push_back(string("Source/files/blocks/t_bot0.txt"));
 	// ----- 93 -----
-	LoadImage("Source/files/blocks/t_bot1.txt");
+	source.push_back(string("Source/files/blocks/t_bot1.txt"));
 	// ----- 94 -----
-	LoadImage("Source/files/blocks/t_bot2.txt");
+	source.push_back(string("Source/files/blocks/t_bot2.txt"));
 	// ----- 95 -----
-	LoadImage("Source/files/blocks/t_left.txt");
+	source.push_back(string("Source/files/blocks/t_left.txt"));
 	// ----- 96 -----
-	LoadImage("Source/files/blocks/t_center.txt");
+	source.push_back(string("Source/files/blocks/t_center.txt"));
 	// ----- 97 -----
-	LoadImage("Source/files/blocks/t_right.txt");
+	source.push_back(string("Source/files/blocks/t_right.txt"));
 	// ----- 98 -----
-	LoadImage("Source/files/blocks/t_left1.txt");
+	source.push_back(string("Source/files/blocks/t_left1.txt"));
 	// ----- 99 -----
-	LoadImage("Source/files/blocks/t_center1.txt");
+	source.push_back(string("Source/files/blocks/t_center1.txt"));
 	// ----- 100 -----
-	LoadImage("Source/files/blocks/t_right1.txt");
+	source.push_back(string("Source/files/blocks/t_right1.txt"));
 	// ----- 101 -----
-	LoadImage("Source/files/blocks/t_left2.txt");
+	source.push_back(string("Source/files/blocks/t_left2.txt"));
 	// ----- 102 -----
-	LoadImage("Source/files/blocks/t_center2.txt");
+	source.push_back(string("Source/files/blocks/t_center2.txt"));
 	// ----- 103 -----
-	LoadImage("Source/files/blocks/t_right2.txt");
+	source.push_back(string("Source/files/blocks/t_right2.txt"));
 	// ----- 104 -----
-	LoadImage("Source/files/blocks/water_0.txt");
+	source.push_back(string("Source/files/blocks/water_0.txt"));
 	// ----- 105 -----
-	LoadImage("Source/files/blocks/water_1.txt");
+	source.push_back(string("Source/files/blocks/water_1.txt"));
 	// ----- 106 -----
-	LoadImage("Source/files/blocks/water_2.txt");
+	source.push_back(string("Source/files/blocks/water_2.txt"));
 	// ----- 107 -----
-	LoadImage("Source/files/blocks/water_3.txt");
+	source.push_back(string("Source/files/blocks/water_3.txt"));
 	// ----- 108 -----
-	LoadImage("Source/files/blocks/lava_0.txt");
+	source.push_back(string("Source/files/blocks/lava_0.txt"));
 	// ----- 109 -----
-	LoadImage("Source/files/blocks/lava_1.txt");
+	source.push_back(string("Source/files/blocks/lava_1.txt"));
 	// ----- 110 -----
-	LoadImage("Source/files/blocks/bridge_0.txt");
+	source.push_back(string("Source/files/blocks/bridge_0.txt"));
 	// ----- 111 -----
-	LoadImage("Source/files/blocks/bridge_1.txt");
+	source.push_back(string("Source/files/blocks/bridge_1.txt"));
 	// ----- 112 -----
-	LoadImage("Source/files/blocks/bridge2.txt");
+	source.push_back(string("Source/files/blocks/bridge2.txt"));
 	// ----- 113 -----
-	LoadImage("Source/files/blocks/bridge3.txt");
+	source.push_back(string("Source/files/blocks/bridge3.txt"));
 	// ----- 114 -----
-	LoadImage("Source/files/blocks/bridge4.txt");
+	source.push_back(string("Source/files/blocks/bridge4.txt"));
 	// ----- 115 -----
-	LoadImage("Source/files/blocks/axe_0.txt");
+	source.push_back(string("Source/files/blocks/axe_0.txt"));
 	// ----- 116 -----
-	LoadImage("Source/files/blocks/bonus.txt");
+	source.push_back(string("Source/files/blocks/bonus.txt"));
 	// ----- 117 -----
-	LoadImage("Source/files/blocks/transp1.txt");
+	source.push_back(string("Source/files/blocks/transp1.txt"));
 	// ----- 118 -----
-	LoadImage("Source/files/blocks/transp2.txt");
+	source.push_back(string("Source/files/blocks/transp2.txt"));
 	// ----- 119 -----
-	LoadImage("Source/files/blocks/seesaw_0.txt");
+	source.push_back(string("Source/files/blocks/seesaw_0.txt"));
 	// ----- 120 -----
-	LoadImage("Source/files/blocks/seesaw_1.txt");
+	source.push_back(string("Source/files/blocks/seesaw_1.txt"));
 	// ----- 121 -----
-	LoadImage("Source/files/blocks/seesaw_2.txt");
+	source.push_back(string("Source/files/blocks/seesaw_2.txt"));
 	// ----- 122 -----
-	LoadImage("Source/files/blocks/seesaw_3.txt");
+	source.push_back(string("Source/files/blocks/seesaw_3.txt"));
 	// ----- 123 -----
-	LoadImage("Source/files/blocks/seesaw1_0.txt");
+	source.push_back(string("Source/files/blocks/seesaw1_0.txt"));
 	// ----- 124 -----
-	LoadImage("Source/files/blocks/seesaw1_1.txt");
+	source.push_back(string("Source/files/blocks/seesaw1_1.txt"));
 	// ----- 125 -----
-	LoadImage("Source/files/blocks/seesaw1_2.txt");
+	source.push_back(string("Source/files/blocks/seesaw1_2.txt"));
 	// ----- 126 -----
-	LoadImage("Source/files/blocks/seesaw1_3.txt");
+	source.push_back(string("Source/files/blocks/seesaw1_3.txt"));
 	// ----- 127 -----
-	LoadImage("Source/files/blocks/b_bot.txt");
+	source.push_back(string("Source/files/blocks/b_bot.txt"));
 	// ----- 128 -----
-	LoadImage("Source/files/blocks/b_top.txt");
+	source.push_back(string("Source/files/blocks/b_top.txt"));
 	// ----- 129 -----
-	LoadImage("Source/files/blocks/b_top1.txt");
+	source.push_back(string("Source/files/blocks/b_top1.txt"));
 	// ----- 130 -----
-	LoadImage("Source/files/blocks/platform1.txt");
+	source.push_back(string("Source/files/blocks/platform1.txt"));
+}
 
+void Map::LoadGameData()
+{
+	LoadFile(source, listBlock);
+	
 	// ----- 0 ----
-	LoadImage1("mushroom.bmp");
+	LoadImage("mushroom.bmp");
 	// ----- 1 ----
-	LoadImage1("mushroom_1up.bmp");
+	LoadImage("mushroom_1up.bmp");
 	// ----- 2 ----
-	LoadImage1("mushroom1_1up.bmp");
+	LoadImage("mushroom1_1up.bmp");
 	// ----- 3 ----
-	LoadImage1("flower0.bmp");
+	LoadImage("flower0.bmp");
 	// ----- 4 ----
-	LoadImage1("star_0.bmp");
+	LoadImage("star_0.bmp");
 	// ----- 5 ----
-	LoadImage1("goombas_0.bmp");
+	LoadImage("goombas_0.bmp");
 	// ----- 6 ----
-	LoadImage1("goombas_ded.bmp");
+	LoadImage("goombas_ded.bmp");
 	// ----- 7 ----
-	LoadImage1("goombas1_0.bmp");
+	LoadImage("goombas1_0.bmp");
 	// ----- 8 ----
-	LoadImage1("goombas1_ded.bmp");
+	LoadImage("goombas1_ded.bmp");
 	// ----- 9 ----
-	LoadImage1("goombas2_0.bmp");
+	LoadImage("goombas2_0.bmp");
 	// ----- 10 ----
-	LoadImage1("goombas2_ded.bmp");
+	LoadImage("goombas2_ded.bmp");
 	// ----- 11 ----
-	LoadImage1("koopa_0.bmp");
+	LoadImage("koopa_0.bmp");
 	// ----- 12 ----
-	LoadImage1("koopa_2.bmp");
+	LoadImage("koopa_2.bmp");
 	// ----- 13 ----
-	LoadImage1("koopa_ded.bmp");
+	LoadImage("koopa_ded.bmp");
 	// ----- 14 ----
-	LoadImage1("koopa1_0.bmp");
+	LoadImage("koopa1_0.bmp");
 	// ----- 15 ----
-	LoadImage1("koopa1_2.bmp");
+	LoadImage("koopa1_2.bmp");
 	// ----- 16 ----
-	LoadImage1("koopa1_ded.bmp");
+	LoadImage("koopa1_ded.bmp");
 	// ----- 17 ----
-	LoadImage1("koopa2_0.bmp");
+	LoadImage("koopa2_0.bmp");
 	// ----- 18 ----
-	LoadImage1("koopa2_2.bmp");
+	LoadImage("koopa2_2.bmp");
 	// ----- 19 ----
-	LoadImage1("koopa2_ded.bmp");
+	LoadImage("koopa2_ded.bmp");
 	// ----- 20 ----
-	LoadImage1("plant_0.bmp");
+	LoadImage("plant_0.bmp");
 	// ----- 21 ----
-	LoadImage1("plant1_0.bmp");
+	LoadImage("plant1_0.bmp");
 	// ----- 22 ----
-	LoadImage1("bowser0.bmp");
+	LoadImage("bowser0.bmp");
 	// ----- 23 ----
-	LoadImage1("bowser2.bmp");
+	LoadImage("bowser2.bmp");
 	// ----- 24 ----
-	LoadImage1("fire_0.bmp");
+	LoadImage("fire_0.bmp");
 	// ----- 25 ----
-	LoadImage1("fireball_0.bmp");
+	LoadImage("fireball_0.bmp");
 	// ----- 26 ----
-	LoadImage1("toad.bmp");
+	LoadImage("toad.bmp");
 	// ----- 27 ----
-	LoadImage1("peach.bmp");
+	LoadImage("peach.bmp");
 	// ----- 28 ----
-	LoadImage1("squid0.bmp");
+	LoadImage("squid0.bmp");
 	// ----- 29 ----
-	LoadImage1("squid1.bmp");
+	LoadImage("squid1.bmp");
 	// ----- 30 ----
-	LoadImage1("cheep0.bmp");
+	LoadImage("cheep0.bmp");
 	// ----- 31 ----
-	LoadImage1("cheep2.bmp");
+	LoadImage("cheep2.bmp");
 	// ----- 32 ----
-	LoadImage1("upfire.bmp");
+	LoadImage("upfire.bmp");
 	// ----- 33 ----
-	LoadImage1("vine.bmp");
+	LoadImage("vine.bmp");
 	// ----- 34 ----
-	LoadImage1("vine_top.bmp");
+	LoadImage("vine_top.bmp");
 	// ----- 35 ----
-	LoadImage1("vine1.bmp");
+	LoadImage("vine1.bmp");
 	// ----- 36 ----
-	LoadImage1("vine1_top.bmp");
+	LoadImage("vine1_top.bmp");
 	// ----- 37 ----
-	LoadImage1("spring_0.bmp");
+	LoadImage("spring_0.bmp");
 	// ----- 38 ----
-	LoadImage1("spring_1.bmp");
+	LoadImage("spring_1.bmp");
 	// ----- 39 ----
-	LoadImage1("spring_2.bmp");
+	LoadImage("spring_2.bmp");
 	// ----- 40 ----
-	LoadImage1("spring1_0.bmp");
+	LoadImage("spring1_0.bmp");
 	// ----- 41 ----
-	LoadImage1("spring1_1.bmp");
+	LoadImage("spring1_1.bmp");
 	// ----- 42 ----
-	LoadImage1("spring1_2.bmp");
+	LoadImage("spring1_2.bmp");
 	// ----- 43 ----
-	LoadImage1("hammer_0.bmp");
+	LoadImage("hammer_0.bmp");
 	// ----- 44 ----
-	LoadImage1("hammer1_0.bmp");
+	LoadImage("hammer1_0.bmp");
 	// ----- 45 ----
-	LoadImage1("hammerbro_0.bmp");
+	LoadImage("hammerbro_0.bmp");
 	// ----- 46 ----
-	LoadImage1("hammerbro_2.bmp");
+	LoadImage("hammerbro_2.bmp");
 	// ----- 47 ----
-	LoadImage1("hammerbro1_0.bmp");
+	LoadImage("hammerbro1_0.bmp");
 	// ----- 48 ----
-	LoadImage1("hammerbro1_2.bmp");
+	LoadImage("hammerbro1_2.bmp");
 	// ----- 49 ----
-	LoadImage1("lakito_0.bmp");
+	LoadImage("lakito_0.bmp");
 	// ----- 50 ----
-	LoadImage1("lakito_1.bmp");
+	LoadImage("lakito_1.bmp");
 	// ----- 51 ----
-	LoadImage1("spikey0_0.bmp");
+	LoadImage("spikey0_0.bmp");
 	// ----- 52 ----
-	LoadImage1("spikey1_0.bmp");
+	LoadImage("spikey1_0.bmp");
 	// ----- 53 ----
-	LoadImage1("beetle_0.bmp");
+	LoadImage("beetle_0.bmp");
 	// ----- 54 ----
-	LoadImage1("beetle_2.bmp");
+	LoadImage("beetle_2.bmp");
 	// ----- 55 ----
-	LoadImage1("beetle1_0.bmp");
+	LoadImage("beetle1_0.bmp");
 	// ----- 56 ----
-	LoadImage1("beetle1_2.bmp");
+	LoadImage("beetle1_2.bmp");
 	// ----- 57 ----
-	LoadImage1("beetle2_0.bmp");
+	LoadImage("beetle2_0.bmp");
 	// ----- 58 ----
-	LoadImage1("beetle2_2.bmp");
+	LoadImage("beetle2_2.bmp");
 	// ----- 59 ----
-	LoadImage1("bulletbill.bmp");
+	LoadImage("bulletbill.bmp");
 	// ----- 60 ----
-	LoadImage1("bulletbill1.bmp");
+	LoadImage("bulletbill1.bmp");
 	// ----- 61 ----
-	LoadImage1("fireball_0.bmp");
+	LoadImage("fireball_0.bmp");
 	// ----- 62 ----
-	LoadImage1("firework0.bmp");
+	LoadImage("firework0.bmp");
 	// ----- 63 ----
-	LoadImage1("firework1.bmp");
+	LoadImage("firework1.bmp");
 }
 
 void Map::LoadLevel()
