@@ -87,7 +87,9 @@ private:
 
 	Player* player;
 
-	vector<string> source;
+	vector<string> sourceMinion;
+
+	vector<string*> source;
 
 	int mapWidth;
 	int mapHeight;
@@ -102,6 +104,7 @@ private:
 	void LoadImage(string file, vector<Object*>& object);
 	void LoadImage(string file);
 	void LoadFile(vector<string> source, vector<Object*>& object);
+	void LoadFiles(vector<string*> source, vector<Object*>& object);
 
 	void LoadSource();
 	void LoadGameData();

@@ -408,7 +408,6 @@ void Map::LoadImage(string file, vector<Object*>& object)
 
 	fstream f;
 	f.open(file);
-
 	f >> size;
 
 	for (int i = 0; i < size; i++)
@@ -426,6 +425,7 @@ void Map::LoadImage(string file, vector<Object*>& object)
 	}
 
 	f >> collision >> canDestroy >> visible;
+	f.close();
 
 	object.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
@@ -470,404 +470,166 @@ void Map::LoadFile(vector<string> source, vector<Object*>& object)
 	}
 }
 
+void Map::LoadFiles(vector<string*> source, vector<Object*>& object)
+{
+	for (int i = 0; i < source.size(); i++)
+	{
+		LoadImage(*source[i], object);
+	}
+}
+
 void Map::LoadSource()
 {
-	// ----- 0 -----
-	source.push_back(string("Source/files/blocks/transp.txt"));
-	// ----- 1 -----
-	source.push_back(string("Source/files/blocks/gnd_red_1.txt"));
-	// ----- 2 -----
-	source.push_back(string("Source/files/blocks/gnd1.txt"));
-	// ----- 3 -----
-	source.push_back(string("Source/files/blocks/uw_0.txt"));
-	// ----- 4 -----
-	source.push_back(string("Source/files/blocks/gnd2.txt"));
-	// ----- 5 -----
-	source.push_back(string("Source/files/blocks/gnd_4.txt"));
-	// ----- 6 -----
-	source.push_back(string("Source/files/blocks/gnd_5.txt"));
-	// ----- 7 -----
-	source.push_back(string("Source/files/blocks/gnd_red2.txt"));
-	// ----- 8 -----
-	source.push_back(string("Source/files/blocks/gnd1_2.txt"));
-	// ----- 9 -----
-	source.push_back(string("Source/files/blocks/gnd2_2.txt"));
-	// ----- 10 -----
-	source.push_back(string("Source/files/blocks/brickred.txt"));
-	// ----- 11 -----
-	source.push_back(string("Source/files/blocks/brick1.txt"));
-	// ----- 12 -----
-	source.push_back(string("Source/files/blocks/brick2.txt"));
-	// ----- 13 -----
-	source.push_back(string("Source/files/blocks/blockq.txt"));
-	// ----- 14 -----
-	source.push_back(string("Source/files/blocks/blockq_used.txt"));
-	// ----- 15 -----
-	source.push_back(string("Source/files/blocks/blockq1.txt"));
-	// ----- 16 -----
-	source.push_back(string("Source/files/blocks/blockq1_used.txt"));
-	// ----- 17 -----
-	source.push_back(string("Source/files/blocks/blockq2_used.txt"));
-	// ----- 18 -----
-	source.push_back(string("Source/files/blocks/pipe_left_bot.txt"));
-	// ----- 19 -----
-	source.push_back(string("Source/files/blocks/pipe_right_bot.txt"));
-	// ----- 20 -----
-	source.push_back(string("Source/files/blocks/pipe_left_top.txt"));
-	// ----- 21 -----
-	source.push_back(string("Source/files/blocks/pipe_right_top.txt"));
-	// ----- 22 -----
-	source.push_back(string("Source/files/blocks/pipe_hor_bot_left.txt"));
-	// ----- 23 -----
-	source.push_back(string("Source/files/blocks/pipe_hor_top_left.txt"));
-	// ----- 24 -----
-	source.push_back(string("Source/files/blocks/pipe_hor_bot_center.txt"));
-	// ----- 25 -----
-	source.push_back(string("Source/files/blocks/pipe_hor_top_center.txt"));
-	// ----- 26 -----
-	source.push_back(string("Source/files/blocks/pipe_hor_bot_right.txt"));
-	// ----- 27 -----
-	source.push_back(string("Source/files/blocks/pipe_hor_top_right.txt"));
-	// ----- 28 -----
-	source.push_back(string("Source/files/blocks/pipe1_left_bot.txt"));
-	// ----- 29 -----
-	source.push_back(string("Source/files/blocks/pipe1_right_bot.txt"));
-	// ----- 30 -----
-	source.push_back(string("Source/files/blocks/pipe1_left_top.txt"));
-	// ----- 31 -----
-	source.push_back(string("Source/files/blocks/pipe1_right_top.txt"));
-	// ----- 32 -----
-	source.push_back(string("Source/files/pipe1_hor_bot_left.txt"));
-	// ----- 33 -----
-	source.push_back(string("Source/files/blocks/pipe1_hor_top_left.txt"));
-	// ----- 34 -----
-	source.push_back(string("Source/files/blocks/pipe1_hor_bot_center.txt"));
-	// ----- 34 -----
-	source.push_back(string("Source/files/blocks/pipe1_hor_top_center.txt"));
-	// ----- 36 -----
-	source.push_back(string("Source/files/blocks/pipe1_hor_bot_right.txt"));
-	// ----- 37 -----
-	source.push_back(string("Source/files/blocks/pipe1_hor_top_right.txt"));
-	// ----- 38 -----
-	source.push_back(string("Source/files/blocks/pipe2_left_bot.txt"));
-	// ----- 39 -----
-	source.push_back(string("Source/files/blocks/pipe2_right_bot.txt"));
-	// ----- 40 -----
-	source.push_back(string("Source/files/blocks/pipe2_left_top.txt"));
-	// ----- 41 -----
-	source.push_back(string("Source/files/pipe2_right_top.txt"));
-	// ----- 42 -----
-	source.push_back(string("Source/files/blocks/pipe2_hor_bot_left.txt"));
-	// ----- 43 -----
-	source.push_back(string("Source/files/blocks/pipe2_hor_top_left.txt"));
-	// ----- 44 -----
-	source.push_back(string("Source/files/blocks/pipe2_hor_bot_center.txt"));
-	// ----- 45 -----
-	source.push_back(string("Source/files/blocks/pipe2_hor_top_center.txt"));
-	// ----- 46 -----
-	source.push_back(string("Source/files/blocks/pipe2_hor_bot_right.txt"));
-	// ----- 47 -----
-	source.push_back(string("Source/files/blocks/pipe2_hor_top_right.txt"));
-	// ----- 48 -----
-	source.push_back(string("Source/files/blocks/pipe3_left_bot.txt"));
-	// ----- 49 -----
-	source.push_back(string("Source/files/blocks/pipe3_right_bot.txt"));
-	// ----- 50 -----
-	source.push_back(string("Source/files/blocks/pipe3_left_top.txt"));
-	// ----- 51 -----
-	source.push_back(string("Source/files/blocks/pipe3_right_top.txt"));
-	// ----- 52 -----
-	source.push_back(string("Source/files/blocks/pipe3_hor_bot_left.txt"));
-	// ----- 53 -----
-	source.push_back(string("Source/files/blocks/pipe3_hor_top_left.txt"));
-	// ----- 54 -----
-	source.push_back(string("Source/files/blocks/pipe3_hor_bot_center.txt"));
-	// ----- 55 -----
-	source.push_back(string("Source/files/blocks/pipe3_hor_top_center.txt"));
-	// ----- 56 -----
-	source.push_back(string("Source/files/blocks/pipe3_hor_bot_right.txt"));
-	// ----- 57 -----
-	source.push_back(string("Source/files/blocks/pipe3_hor_top_right.txt"));
-	// ----- 58 -----
-	source.push_back(string("Source/files/blocks/pipe4_left_bot.txt"));
-	// ----- 59 -----
-	source.push_back(string("Source/files/blocks/pipe4_right_bot.txt"));
-	// ----- 60 -----
-	source.push_back(string("Source/files/blocks/pipe4_left_top.txt"));
-	// ----- 61 -----
-	source.push_back(string("Source/files/blocks/pipe4_right_top.txt"));
-	// ----- 62 -----
-	source.push_back(string("Source/files/blocks/pipe5_left_bot.txt"));
-	// ----- 63 -----
-	source.push_back(string("Source/files/blocks/pipe5_right_bot.txt"));
-	// ----- 64 -----
-	source.push_back(string("Source/files/blocks/pipe5_left_top.txt"));
-	// ----- 65 -----
-	source.push_back(string("Source/files/blocks/pipe5_right_top.txt"));
-	// ----- 66 -----
-	source.push_back(string("Source/files/blocks/pipe6_left_bot.txt"));
-	// ----- 67 -----
-	source.push_back(string("Source/files/blocks/pipe6_right_bot.txt"));
-	// ----- 68 -----
-	source.push_back(string("Source/files/blocks/pipe6_left_top.txt"));
-	// ----- 69 -----
-	source.push_back(string("Source/files/blocks/pipe6_right_top.txt"));
-	// ----- 70 -----
-	source.push_back(string("Source/files/blocks/coin_use00.txt"));
-	// ----- 71 -----
-	source.push_back(string("Source/files/blocks/coin_use0.txt"));
-	// ----- 72 -----
-	source.push_back(string("Source/files/blocks/coin_use30.txt"));
-	// ----- 73 -----
-	source.push_back(string("Source/files/blocks/end0_l.txt"));
-	// ----- 74 -----
-	source.push_back(string("Source/files/blocks/end0_dot.txt"));
-	// ----- 75 -----
-	source.push_back(string("Source/files/blocks/end1_l.txt"));
-	// ----- 76 -----
-	source.push_back(string("Source/files/blocks/end1_dot.txt"));
-	// ----- 77 -----
-	source.push_back(string("Source/files/blocks/castle0_brick.txt"));
-	// ----- 78 -----
-	source.push_back(string("Source/files/blocks/castle0_center_center.txt"));
-	// ----- 79 -----
-	source.push_back(string("Source/files/blocks/castle0_center_center_top.txt"));
-	// ----- 80 -----
-	source.push_back(string("Source/files/blocks/castle0_center_left.txt"));
-	// ----- 81 -----
-	source.push_back(string("Source/files/blocks/castle0_center_right.txt"));
-	// ----- 82 -----
-	source.push_back(string("Source/files/blocks/castle0_top0.txt"));
-	// ----- 83 -----
-	source.push_back(string("Source/files/blocks/castle0_top1.txt"));
-	// ----- 84 -----
-	source.push_back(string("Source/files/blocks/castle1_brick.txt"));
-	// ----- 85 -----
-	source.push_back(string("Source/files/blocks/castle1_center_center.txt"));
-	// ----- 86 -----
-	source.push_back(string("Source/files/blocks/castle1_center_center_top.txt"));
-	// ----- 87 -----
-	source.push_back(string("Source/files/blocks/castle1_center_left.txt"));
-	// ----- 88 -----
-	source.push_back(string("Source/files/blocks/castle1_center_right.txt"));
-	// ----- 89 -----
-	source.push_back(string("Source/files/blocks/castle1_top0.txt"));
-	// ----- 90 -----
-	source.push_back(string("Source/files/blocks/castle1_top1.txt"));
-	// ----- 91 -----
-	source.push_back(string("Source/files/blocks/t_bot.txt"));
-	// ----- 92 -----
-	source.push_back(string("Source/files/blocks/t_bot0.txt"));
-	// ----- 93 -----
-	source.push_back(string("Source/files/blocks/t_bot1.txt"));
-	// ----- 94 -----
-	source.push_back(string("Source/files/blocks/t_bot2.txt"));
-	// ----- 95 -----
-	source.push_back(string("Source/files/blocks/t_left.txt"));
-	// ----- 96 -----
-	source.push_back(string("Source/files/blocks/t_center.txt"));
-	// ----- 97 -----
-	source.push_back(string("Source/files/blocks/t_right.txt"));
-	// ----- 98 -----
-	source.push_back(string("Source/files/blocks/t_left1.txt"));
-	// ----- 99 -----
-	source.push_back(string("Source/files/blocks/t_center1.txt"));
-	// ----- 100 -----
-	source.push_back(string("Source/files/blocks/t_right1.txt"));
-	// ----- 101 -----
-	source.push_back(string("Source/files/blocks/t_left2.txt"));
-	// ----- 102 -----
-	source.push_back(string("Source/files/blocks/t_center2.txt"));
-	// ----- 103 -----
-	source.push_back(string("Source/files/blocks/t_right2.txt"));
-	// ----- 104 -----
-	source.push_back(string("Source/files/blocks/water_0.txt"));
-	// ----- 105 -----
-	source.push_back(string("Source/files/blocks/water_1.txt"));
-	// ----- 106 -----
-	source.push_back(string("Source/files/blocks/water_2.txt"));
-	// ----- 107 -----
-	source.push_back(string("Source/files/blocks/water_3.txt"));
-	// ----- 108 -----
-	source.push_back(string("Source/files/blocks/lava_0.txt"));
-	// ----- 109 -----
-	source.push_back(string("Source/files/blocks/lava_1.txt"));
-	// ----- 110 -----
-	source.push_back(string("Source/files/blocks/bridge_0.txt"));
-	// ----- 111 -----
-	source.push_back(string("Source/files/blocks/bridge_1.txt"));
-	// ----- 112 -----
-	source.push_back(string("Source/files/blocks/bridge2.txt"));
-	// ----- 113 -----
-	source.push_back(string("Source/files/blocks/bridge3.txt"));
-	// ----- 114 -----
-	source.push_back(string("Source/files/blocks/bridge4.txt"));
-	// ----- 115 -----
-	source.push_back(string("Source/files/blocks/axe_0.txt"));
-	// ----- 116 -----
-	source.push_back(string("Source/files/blocks/bonus.txt"));
-	// ----- 117 -----
-	source.push_back(string("Source/files/blocks/transp1.txt"));
-	// ----- 118 -----
-	source.push_back(string("Source/files/blocks/transp2.txt"));
-	// ----- 119 -----
-	source.push_back(string("Source/files/blocks/seesaw_0.txt"));
-	// ----- 120 -----
-	source.push_back(string("Source/files/blocks/seesaw_1.txt"));
-	// ----- 121 -----
-	source.push_back(string("Source/files/blocks/seesaw_2.txt"));
-	// ----- 122 -----
-	source.push_back(string("Source/files/blocks/seesaw_3.txt"));
-	// ----- 123 -----
-	source.push_back(string("Source/files/blocks/seesaw1_0.txt"));
-	// ----- 124 -----
-	source.push_back(string("Source/files/blocks/seesaw1_1.txt"));
-	// ----- 125 -----
-	source.push_back(string("Source/files/blocks/seesaw1_2.txt"));
-	// ----- 126 -----
-	source.push_back(string("Source/files/blocks/seesaw1_3.txt"));
-	// ----- 127 -----
-	source.push_back(string("Source/files/blocks/b_bot.txt"));
-	// ----- 128 -----
-	source.push_back(string("Source/files/blocks/b_top.txt"));
-	// ----- 129 -----
-	source.push_back(string("Source/files/blocks/b_top1.txt"));
-	// ----- 130 -----
-	source.push_back(string("Source/files/blocks/platform1.txt"));
+	fstream file;
+	file.open("Source/files/filess.txt");
+
+	string name;
+
+	while (!file.eof())
+	{
+		file >> name;
+		name = "Source/files/blocks/" + name;
+
+		source.push_back(new string(name));
+	}
+
+	file.close();
+
+	// ----- 0 ----
+	sourceMinion.push_back(string("mushroom.txt"));
+	// ----- 1 ----
+	sourceMinion.push_back(string("mushroom_1up.txt"));
+	// ----- 2 ----
+	sourceMinion.push_back(string("mushroom1_1up.txt"));
+	// ----- 3 ----
+	sourceMinion.push_back(string("flower0.txt"));
+	// ----- 4 ----
+	sourceMinion.push_back(string("star_0.txt"));
+	// ----- 5 ----
+	sourceMinion.push_back(string("goombas_0.txt"));
+	// ----- 6 ----
+	sourceMinion.push_back(string("goombas_ded.txt"));
+	// ----- 7 ----
+	sourceMinion.push_back(string("goombas1_0.txt"));
+	// ----- 8 ----
+	sourceMinion.push_back(string("goombas1_ded.txt"));
+	// ----- 9 ----
+	sourceMinion.push_back(string("goombas2_0.txt"));
+	// ----- 10 ----
+	sourceMinion.push_back(string("goombas2_ded.txt"));
+	// ----- 11 ----
+	sourceMinion.push_back(string("koopa_0.txt"));
+	// ----- 12 ----
+	sourceMinion.push_back(string("koopa_2.txt"));
+	// ----- 13 ----
+	sourceMinion.push_back(string("koopa_ded.txt"));
+	// ----- 14 ----
+	sourceMinion.push_back(string("koopa1_0.txt"));
+	// ----- 15 ----
+	sourceMinion.push_back(string("koopa1_2.txt"));
+	// ----- 16 ----
+	sourceMinion.push_back(string("koopa1_ded.txt"));
+	// ----- 17 ----
+	sourceMinion.push_back(string("koopa2_0.txt"));
+	// ----- 18 ----
+	sourceMinion.push_back(string("koopa2_2.txt"));
+	// ----- 19 ----
+	sourceMinion.push_back(string("koopa2_ded.txt"));
+	// ----- 20 ----
+	sourceMinion.push_back(string("plant_0.txt"));
+	// ----- 21 ----
+	sourceMinion.push_back(string("plant1_0.txt"));
+	// ----- 22 ----
+	sourceMinion.push_back(string("bowser0.txt"));
+	// ----- 23 ----
+	sourceMinion.push_back(string("bowser2.txt"));
+	// ----- 24 ----
+	sourceMinion.push_back(string("fire_0.txt"));
+	// ----- 25 ----
+	sourceMinion.push_back(string("fireball_0.txt"));
+	// ----- 26 ----
+	sourceMinion.push_back(string("toad.txt"));
+	// ----- 27 ----
+	sourceMinion.push_back(string("peach.txt"));
+	// ----- 28 ----
+	sourceMinion.push_back(string("squid0.txt"));
+	// ----- 29 ----
+	sourceMinion.push_back(string("squid1.txt"));
+	// ----- 30 ----
+	sourceMinion.push_back(string("cheep0.txt"));
+	// ----- 31 ----
+	sourceMinion.push_back(string("cheep2.txt"));
+	// ----- 32 ----
+	sourceMinion.push_back(string("upfire.txt"));
+	// ----- 33 ----
+	sourceMinion.push_back(string("vine.txt"));
+	// ----- 34 ----
+	sourceMinion.push_back(string("vine_top.txt"));
+	// ----- 35 ----
+	sourceMinion.push_back(string("vine1.txt"));
+	// ----- 36 ----
+	sourceMinion.push_back(string("vine1_top.txt"));
+	// ----- 37 ----
+	sourceMinion.push_back(string("spring_0.txt"));
+	// ----- 38 ----
+	sourceMinion.push_back(string("spring_1.txt"));
+	// ----- 39 ----
+	sourceMinion.push_back(string("spring_2.txt"));
+	// ----- 40 ----
+	sourceMinion.push_back(string("spring1_0.txt"));
+	// ----- 41 ----
+	sourceMinion.push_back(string("spring1_1.txt"));
+	// ----- 42 ----
+	sourceMinion.push_back(string("spring1_2.txt"));
+	// ----- 43 ----
+	sourceMinion.push_back(string("hammer_0.txt"));
+	// ----- 44 ----
+	sourceMinion.push_back(string("hammer1_0.txt"));
+	// ----- 45 ----
+	sourceMinion.push_back(string("hammerbro_0.txt"));
+	// ----- 46 ----
+	sourceMinion.push_back(string("hammerbro_2.txt"));
+	// ----- 47 ----
+	sourceMinion.push_back(string("hammerbro1_0.txt"));
+	// ----- 48 ----
+	sourceMinion.push_back(string("hammerbro1_2.txt"));
+	// ----- 49 ----
+	sourceMinion.push_back(string("lakito_0.txt"));
+	// ----- 50 ----
+	sourceMinion.push_back(string("lakito_1.txt"));
+	// ----- 51 ----
+	sourceMinion.push_back(string("spikey0_0.txt"));
+	// ----- 52 ----
+	sourceMinion.push_back(string("spikey1_0.txt"));
+	// ----- 53 ----
+	sourceMinion.push_back(string("beetle_0.txt"));
+	// ----- 54 ----
+	sourceMinion.push_back(string("beetle_2.txt"));
+	// ----- 55 ----
+	sourceMinion.push_back(string("beetle1_0.txt"));
+	// ----- 56 ----
+	sourceMinion.push_back(string("beetle1_2.txt"));
+	// ----- 57 ----
+	sourceMinion.push_back(string("beetle2_0.txt"));
+	// ----- 58 ----
+	sourceMinion.push_back(string("beetle2_2.txt"));
+	// ----- 59 ----
+	sourceMinion.push_back(string("bulletbill.txt"));
+	// ----- 60 ----
+	sourceMinion.push_back(string("bulletbill1.txt"));
+	// ----- 61 ----
+	sourceMinion.push_back(string("fireball_0.txt"));
+	// ----- 62 ----
+	sourceMinion.push_back(string("firework0.txt"));
+	// ----- 63 ----
+	sourceMinion.push_back(string("firework1.txt"));
 }
 
 void Map::LoadGameData()
 {
-	LoadFile(source, listBlock);
-	
-	// ----- 0 ----
-	LoadImage("mushroom.bmp");
-	// ----- 1 ----
-	LoadImage("mushroom_1up.bmp");
-	// ----- 2 ----
-	LoadImage("mushroom1_1up.bmp");
-	// ----- 3 ----
-	LoadImage("flower0.bmp");
-	// ----- 4 ----
-	LoadImage("star_0.bmp");
-	// ----- 5 ----
-	LoadImage("goombas_0.bmp");
-	// ----- 6 ----
-	LoadImage("goombas_ded.bmp");
-	// ----- 7 ----
-	LoadImage("goombas1_0.bmp");
-	// ----- 8 ----
-	LoadImage("goombas1_ded.bmp");
-	// ----- 9 ----
-	LoadImage("goombas2_0.bmp");
-	// ----- 10 ----
-	LoadImage("goombas2_ded.bmp");
-	// ----- 11 ----
-	LoadImage("koopa_0.bmp");
-	// ----- 12 ----
-	LoadImage("koopa_2.bmp");
-	// ----- 13 ----
-	LoadImage("koopa_ded.bmp");
-	// ----- 14 ----
-	LoadImage("koopa1_0.bmp");
-	// ----- 15 ----
-	LoadImage("koopa1_2.bmp");
-	// ----- 16 ----
-	LoadImage("koopa1_ded.bmp");
-	// ----- 17 ----
-	LoadImage("koopa2_0.bmp");
-	// ----- 18 ----
-	LoadImage("koopa2_2.bmp");
-	// ----- 19 ----
-	LoadImage("koopa2_ded.bmp");
-	// ----- 20 ----
-	LoadImage("plant_0.bmp");
-	// ----- 21 ----
-	LoadImage("plant1_0.bmp");
-	// ----- 22 ----
-	LoadImage("bowser0.bmp");
-	// ----- 23 ----
-	LoadImage("bowser2.bmp");
-	// ----- 24 ----
-	LoadImage("fire_0.bmp");
-	// ----- 25 ----
-	LoadImage("fireball_0.bmp");
-	// ----- 26 ----
-	LoadImage("toad.bmp");
-	// ----- 27 ----
-	LoadImage("peach.bmp");
-	// ----- 28 ----
-	LoadImage("squid0.bmp");
-	// ----- 29 ----
-	LoadImage("squid1.bmp");
-	// ----- 30 ----
-	LoadImage("cheep0.bmp");
-	// ----- 31 ----
-	LoadImage("cheep2.bmp");
-	// ----- 32 ----
-	LoadImage("upfire.bmp");
-	// ----- 33 ----
-	LoadImage("vine.bmp");
-	// ----- 34 ----
-	LoadImage("vine_top.bmp");
-	// ----- 35 ----
-	LoadImage("vine1.bmp");
-	// ----- 36 ----
-	LoadImage("vine1_top.bmp");
-	// ----- 37 ----
-	LoadImage("spring_0.bmp");
-	// ----- 38 ----
-	LoadImage("spring_1.bmp");
-	// ----- 39 ----
-	LoadImage("spring_2.bmp");
-	// ----- 40 ----
-	LoadImage("spring1_0.bmp");
-	// ----- 41 ----
-	LoadImage("spring1_1.bmp");
-	// ----- 42 ----
-	LoadImage("spring1_2.bmp");
-	// ----- 43 ----
-	LoadImage("hammer_0.bmp");
-	// ----- 44 ----
-	LoadImage("hammer1_0.bmp");
-	// ----- 45 ----
-	LoadImage("hammerbro_0.bmp");
-	// ----- 46 ----
-	LoadImage("hammerbro_2.bmp");
-	// ----- 47 ----
-	LoadImage("hammerbro1_0.bmp");
-	// ----- 48 ----
-	LoadImage("hammerbro1_2.bmp");
-	// ----- 49 ----
-	LoadImage("lakito_0.bmp");
-	// ----- 50 ----
-	LoadImage("lakito_1.bmp");
-	// ----- 51 ----
-	LoadImage("spikey0_0.bmp");
-	// ----- 52 ----
-	LoadImage("spikey1_0.bmp");
-	// ----- 53 ----
-	LoadImage("beetle_0.bmp");
-	// ----- 54 ----
-	LoadImage("beetle_2.bmp");
-	// ----- 55 ----
-	LoadImage("beetle1_0.bmp");
-	// ----- 56 ----
-	LoadImage("beetle1_2.bmp");
-	// ----- 57 ----
-	LoadImage("beetle2_0.bmp");
-	// ----- 58 ----
-	LoadImage("beetle2_2.bmp");
-	// ----- 59 ----
-	LoadImage("bulletbill.bmp");
-	// ----- 60 ----
-	LoadImage("bulletbill1.bmp");
-	// ----- 61 ----
-	LoadImage("fireball_0.bmp");
-	// ----- 62 ----
-	LoadImage("firework0.bmp");
-	// ----- 63 ----
-	LoadImage("firework1.bmp");
+	LoadFiles(source, listBlock);
+	//LoadFile(sourceBlock, listBlock);
+	LoadFile(sourceMinion, listMinion);
 }
 
 void Map::LoadLevel()
@@ -1049,7 +811,7 @@ void Map::LoadLevel_1_1()
 	DrawGND(89, 14, 64, 2);
 	DrawGND(155, 14, 85, 2);
 
-	/*DrawGND2(134, 12, 4, true);
+	DrawGND2(134, 12, 4, true);
 	DrawGND2(140, 12, 4, false);
 	DrawGND2(148, 12, 4, true);
 	DrawGND2(152, 12, 1, 4);
@@ -1120,7 +882,7 @@ void Map::LoadLevel_1_1()
 	DrawCoins(244, 5, 7, 1);
 
 	DrawPipeVertical(255, 12, 11);
-	DrawPipeHorizontal(253, 12, 1);*/
+	DrawPipeHorizontal(253, 12, 1);
 
 	mapType = BanNgay;
 }
@@ -1135,7 +897,7 @@ void Map::LoadLevel_1_2()
 	mapType = LongDat;
 
 	CreateMap();
-
+	
 	LoadMinionLevel_1_2();
 
 	DrawGND(0, 14, 80, 2);
@@ -1146,7 +908,7 @@ void Map::LoadLevel_1_2()
 	DrawGND(160, 14, 43, 2);
 
 	DrawGND2(17, 12, 1, 1);
-	DrawGND2(19, 12, 1, 2);
+	/*DrawGND2(19, 12, 1, 2);
 	DrawGND2(21, 12, 1, 3);
 	DrawGND2(23, 12, 1, 4);
 	DrawGND2(25, 12, 1, 4);
@@ -1154,7 +916,7 @@ void Map::LoadLevel_1_2()
 	DrawGND2(31, 12, 1, 3);
 	DrawGND2(33, 12, 1, 2);
 	DrawGND2(133, 12, 4, true);
-	DrawGND2(137, 12, 1, 4);
+	DrawGND2(137, 12, 1, 4);*/
 
 	DrawBrick(0, 12, 1, 11);
 	DrawBrick(6, 2, 132, 1);
@@ -1245,9 +1007,9 @@ void Map::LoadLevel_1_2()
 	mapType = BanNgay;
 	DrawGND(281, 14, 42, 2);
 
-	DrawGND2(286, 12, 8, true);
-	DrawGND2(294, 12, 1, 8);
-	DrawGND2(303, 12, 1, 1);
+	//DrawGND2(286, 12, 8, true);
+	//DrawGND2(294, 12, 1, 8);
+	//DrawGND2(303, 12, 1, 1);
 
 	DrawPipe(284, 12, 1);
 
@@ -4292,7 +4054,8 @@ void Map::DrawGND2(int x, int y, int width, int height)
 	{
 		for (int j = 0; j < height; j++)
 		{
-			SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 7 : mapType == DiaNguc ? 9 : 8);
+			//SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 7 : mapType == DiaNguc ? 9 : 8);
+			SetTileID(x + i, y - j, 8);
 		}
 	}
 }
