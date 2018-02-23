@@ -1,7 +1,7 @@
 2
-bettle_0.bmp
+beetle_0.bmp
 155
-bettle_1.bmp
+beetle_1.bmp
 155
 1
 1

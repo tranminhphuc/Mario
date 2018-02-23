@@ -430,38 +430,6 @@ void Map::LoadImage(string file, vector<Object*>& object)
 	object.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
 
-void Map::LoadImage(string file)
-{
-	int size;
-	bool collision, canDestroy, visible;
-
-	vector<string> name;
-	vector<unsigned int> time;
-
-	fstream f;
-	f.open(file);
-
-	f >> size;
-
-	for (int i = 0; i < size; i++)
-	{
-		string image;
-		unsigned int delay;
-
-		f >> image;
-		f >> delay;
-
-		image = "Source/images/Minion/" + image;
-
-		name.push_back(image);
-		time.push_back(delay);
-	}
-
-	f >> collision >> canDestroy >> visible;
-
-	listMinion.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
-}
-
 void Map::LoadFile(vector<string> source, vector<Object*>& object)
 {
 	for (int i = 0; i < source.size(); i++)
@@ -478,151 +446,28 @@ void Map::LoadFiles(vector<string*> source, vector<Object*>& object)
 	}
 }
 
-void Map::LoadSource()
+void Map::Load(string file, string link)
 {
-	fstream file;
-	file.open("Source/files/filess.txt");
+	fstream f;
+	f.open(file);
 
 	string name;
 
-	while (!file.eof())
+	while (!f.eof())
 	{
-		file >> name;
-		name = "Source/files/blocks/" + name;
+		f >> name;
+		name = link + name;
 
 		source.push_back(new string(name));
 	}
 
-	file.close();
+	f.close();
+}
 
-	// ----- 0 ----
-	sourceMinion.push_back(string("mushroom.txt"));
-	// ----- 1 ----
-	sourceMinion.push_back(string("mushroom_1up.txt"));
-	// ----- 2 ----
-	sourceMinion.push_back(string("mushroom1_1up.txt"));
-	// ----- 3 ----
-	sourceMinion.push_back(string("flower0.txt"));
-	// ----- 4 ----
-	sourceMinion.push_back(string("star_0.txt"));
-	// ----- 5 ----
-	sourceMinion.push_back(string("goombas_0.txt"));
-	// ----- 6 ----
-	sourceMinion.push_back(string("goombas_ded.txt"));
-	// ----- 7 ----
-	sourceMinion.push_back(string("goombas1_0.txt"));
-	// ----- 8 ----
-	sourceMinion.push_back(string("goombas1_ded.txt"));
-	// ----- 9 ----
-	sourceMinion.push_back(string("goombas2_0.txt"));
-	// ----- 10 ----
-	sourceMinion.push_back(string("goombas2_ded.txt"));
-	// ----- 11 ----
-	sourceMinion.push_back(string("koopa_0.txt"));
-	// ----- 12 ----
-	sourceMinion.push_back(string("koopa_2.txt"));
-	// ----- 13 ----
-	sourceMinion.push_back(string("koopa_ded.txt"));
-	// ----- 14 ----
-	sourceMinion.push_back(string("koopa1_0.txt"));
-	// ----- 15 ----
-	sourceMinion.push_back(string("koopa1_2.txt"));
-	// ----- 16 ----
-	sourceMinion.push_back(string("koopa1_ded.txt"));
-	// ----- 17 ----
-	sourceMinion.push_back(string("koopa2_0.txt"));
-	// ----- 18 ----
-	sourceMinion.push_back(string("koopa2_2.txt"));
-	// ----- 19 ----
-	sourceMinion.push_back(string("koopa2_ded.txt"));
-	// ----- 20 ----
-	sourceMinion.push_back(string("plant_0.txt"));
-	// ----- 21 ----
-	sourceMinion.push_back(string("plant1_0.txt"));
-	// ----- 22 ----
-	sourceMinion.push_back(string("bowser0.txt"));
-	// ----- 23 ----
-	sourceMinion.push_back(string("bowser2.txt"));
-	// ----- 24 ----
-	sourceMinion.push_back(string("fire_0.txt"));
-	// ----- 25 ----
-	sourceMinion.push_back(string("fireball_0.txt"));
-	// ----- 26 ----
-	sourceMinion.push_back(string("toad.txt"));
-	// ----- 27 ----
-	sourceMinion.push_back(string("peach.txt"));
-	// ----- 28 ----
-	sourceMinion.push_back(string("squid0.txt"));
-	// ----- 29 ----
-	sourceMinion.push_back(string("squid1.txt"));
-	// ----- 30 ----
-	sourceMinion.push_back(string("cheep0.txt"));
-	// ----- 31 ----
-	sourceMinion.push_back(string("cheep2.txt"));
-	// ----- 32 ----
-	sourceMinion.push_back(string("upfire.txt"));
-	// ----- 33 ----
-	sourceMinion.push_back(string("vine.txt"));
-	// ----- 34 ----
-	sourceMinion.push_back(string("vine_top.txt"));
-	// ----- 35 ----
-	sourceMinion.push_back(string("vine1.txt"));
-	// ----- 36 ----
-	sourceMinion.push_back(string("vine1_top.txt"));
-	// ----- 37 ----
-	sourceMinion.push_back(string("spring_0.txt"));
-	// ----- 38 ----
-	sourceMinion.push_back(string("spring_1.txt"));
-	// ----- 39 ----
-	sourceMinion.push_back(string("spring_2.txt"));
-	// ----- 40 ----
-	sourceMinion.push_back(string("spring1_0.txt"));
-	// ----- 41 ----
-	sourceMinion.push_back(string("spring1_1.txt"));
-	// ----- 42 ----
-	sourceMinion.push_back(string("spring1_2.txt"));
-	// ----- 43 ----
-	sourceMinion.push_back(string("hammer_0.txt"));
-	// ----- 44 ----
-	sourceMinion.push_back(string("hammer1_0.txt"));
-	// ----- 45 ----
-	sourceMinion.push_back(string("hammerbro_0.txt"));
-	// ----- 46 ----
-	sourceMinion.push_back(string("hammerbro_2.txt"));
-	// ----- 47 ----
-	sourceMinion.push_back(string("hammerbro1_0.txt"));
-	// ----- 48 ----
-	sourceMinion.push_back(string("hammerbro1_2.txt"));
-	// ----- 49 ----
-	sourceMinion.push_back(string("lakito_0.txt"));
-	// ----- 50 ----
-	sourceMinion.push_back(string("lakito_1.txt"));
-	// ----- 51 ----
-	sourceMinion.push_back(string("spikey0_0.txt"));
-	// ----- 52 ----
-	sourceMinion.push_back(string("spikey1_0.txt"));
-	// ----- 53 ----
-	sourceMinion.push_back(string("beetle_0.txt"));
-	// ----- 54 ----
-	sourceMinion.push_back(string("beetle_2.txt"));
-	// ----- 55 ----
-	sourceMinion.push_back(string("beetle1_0.txt"));
-	// ----- 56 ----
-	sourceMinion.push_back(string("beetle1_2.txt"));
-	// ----- 57 ----
-	sourceMinion.push_back(string("beetle2_0.txt"));
-	// ----- 58 ----
-	sourceMinion.push_back(string("beetle2_2.txt"));
-	// ----- 59 ----
-	sourceMinion.push_back(string("bulletbill.txt"));
-	// ----- 60 ----
-	sourceMinion.push_back(string("bulletbill1.txt"));
-	// ----- 61 ----
-	sourceMinion.push_back(string("fireball_0.txt"));
-	// ----- 62 ----
-	sourceMinion.push_back(string("firework0.txt"));
-	// ----- 63 ----
-	sourceMinion.push_back(string("firework1.txt"));
+void Map::LoadSource()
+{
+	Load("Source/files/fileBlock.txt", "Source/files/blocks/");
+	Load("Source/files/fileMinion.txt", "Source/files/minions/");
 }
 
 void Map::LoadGameData()
@@ -2610,7 +2455,7 @@ void Map::LoadLevel_6_2()
 	mapWidth = 495;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = BinhMinh;
+	mapType = BanNgay;
 
 	CreateMap();
 
@@ -2752,7 +2597,7 @@ void Map::LoadLevel_6_2()
 
 	tile[373][9]->SetMustroom(true);
 
-	mapType = BinhMinh;
+	mapType = BanNgay;
 	DrawBonus(390, 13, 4);
 	DrawBonus(395, 13, 78);
 	DrawBonus(421, 8, 1);
@@ -2774,7 +2619,7 @@ void Map::LoadLevel_6_2()
 	DrawCoins(461, 5, 10, 1);
 	DrawCoins(475, 11, 3, 1);
 
-	mapType = BinhMinh;
+	mapType = BanNgay;
 }
 
 void Map::LoadLevel_6_3()
@@ -4054,8 +3899,7 @@ void Map::DrawGND2(int x, int y, int width, int height)
 	{
 		for (int j = 0; j < height; j++)
 		{
-			//SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 7 : mapType == DiaNguc ? 9 : 8);
-			SetTileID(x + i, y - j, 8);
+			SetTileID(x + i, y - j, mapType == BanNgay || mapType == HoangHon || mapType == BuoiToi || mapType == BinhMinh || mapType == ThienDuong ? 7 : mapType == DiaNguc ? 9 : 8);
 		}
 	}
 }

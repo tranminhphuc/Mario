@@ -102,9 +102,10 @@ private:
 	bool moveMap;
 
 	void LoadImage(string file, vector<Object*>& object);
-	void LoadImage(string file);
 	void LoadFile(vector<string> source, vector<Object*>& object);
 	void LoadFiles(vector<string*> source, vector<Object*>& object);
+
+	void Load(string file, string link);
 
 	void LoadSource();
 	void LoadGameData();
