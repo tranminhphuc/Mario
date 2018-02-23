@@ -87,9 +87,9 @@ private:
 
 	Player* player;
 
-	vector<string> sourceMinion;
+	vector<string*> sourceMinion;
 
-	vector<string*> source;
+	vector<string*> sourceBlock;
 
 	int mapWidth;
 	int mapHeight;
@@ -102,10 +102,9 @@ private:
 	bool moveMap;
 
 	void LoadImage(string file, vector<Object*>& object);
-	void LoadFile(vector<string> source, vector<Object*>& object);
-	void LoadFiles(vector<string*> source, vector<Object*>& object);
+	void LoadFile(vector<string*> source, vector<Object*>& object);
 
-	void Load(string file, string link);
+	void Load(vector<string*>& source, string file, string link);
 
 	void LoadSource();
 	void LoadGameData();

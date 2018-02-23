@@ -408,37 +408,40 @@ void Map::LoadImage(string file, vector<Object*>& object)
 
 	fstream f;
 	f.open(file);
-	f >> size;
 
-	for (int i = 0; i < size; i++)
+	if (!f.bad())
 	{
-		string image;
-		unsigned int delay;
+		f >> size;
 
-		f >> image;
-		f >> delay;
+		for (int i = 0; i < size; i++)
+		{
+			string image;
+			unsigned int delay;
 
-		image = "Source/images/" + image;
+			f >> image;
+			f >> delay;
 
-		name.push_back(image);
-		time.push_back(delay);
+			image = "Source/images/" + image;
+
+			name.push_back(image);
+			time.push_back(delay);
+		}
+
+		f >> collision >> canDestroy >> visible;
+		f.close();
 	}
+	else
+	{
+		name.push_back("Source/images/transp.bmp");
+		time.push_back(0);
 
-	f >> collision >> canDestroy >> visible;
-	f.close();
+		collision = canDestroy = visible = false;
+	}
 
 	object.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
 
-void Map::LoadFile(vector<string> source, vector<Object*>& object)
-{
-	for (int i = 0; i < source.size(); i++)
-	{
-		LoadImage(source[i], object);
-	}
-}
-
-void Map::LoadFiles(vector<string*> source, vector<Object*>& object)
+void Map::LoadFile(vector<string*> source, vector<Object*>& object)
 {
 	for (int i = 0; i < source.size(); i++)
 	{
@@ -446,7 +449,7 @@ void Map::LoadFiles(vector<string*> source, vector<Object*>& object)
 	}
 }
 
-void Map::Load(string file, string link)
+void Map::Load(vector<string*>& source, string file, string link)
 {
 	fstream f;
 	f.open(file);
@@ -466,14 +469,13 @@ void Map::Load(string file, string link)
 
 void Map::LoadSource()
 {
-	Load("Source/files/fileBlock.txt", "Source/files/blocks/");
-	Load("Source/files/fileMinion.txt", "Source/files/minions/");
+	Load(sourceBlock, "Source/files/fileBlock.txt", "Source/files/blocks/");
+	Load(sourceMinion, "Source/files/fileMinion.txt", "Source/files/minions/");
 }
 
 void Map::LoadGameData()
 {
-	LoadFiles(source, listBlock);
-	//LoadFile(sourceBlock, listBlock);
+	LoadFile(sourceBlock, listBlock);
 	LoadFile(sourceMinion, listMinion);
 }
 
