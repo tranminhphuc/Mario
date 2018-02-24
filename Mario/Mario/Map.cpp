@@ -31,11 +31,11 @@ void Map::UpdatePlayer()
 
 void Map::UpdateBlock()
 {
-	listBlock[16]->GetAnimation()->Update();
-	listBlock[18]->GetAnimation()->Update();
-	listBlock[73]->GetAnimation()->Update();
-	listBlock[74]->GetAnimation()->Update();
-	listBlock[75]->GetAnimation()->Update();
+	listBlock[13]->GetAnimation()->Update();
+	listBlock[15]->GetAnimation()->Update();
+	listBlock[70]->GetAnimation()->Update();
+	listBlock[71]->GetAnimation()->Update();
+	listBlock[72]->GetAnimation()->Update();
 }
 
 void Map::UpdateMinion()
@@ -421,9 +421,7 @@ void Map::LoadImage(string file, vector<Object*>& object)
 			f >> image;
 			f >> delay;
 
-			image = "Source/images/" + image;
-
-			name.push_back(image);
+			name.push_back("Source/images/" + image);
 			time.push_back(delay);
 		}
 
@@ -449,7 +447,7 @@ void Map::LoadFile(vector<string*> source, vector<Object*>& object)
 	}
 }
 
-void Map::Load(vector<string*>& source, string file, string link)
+void Map::Load(vector<string*>& source, string file, string folder)
 {
 	fstream f;
 	f.open(file);
@@ -459,7 +457,7 @@ void Map::Load(vector<string*>& source, string file, string link)
 	while (!f.eof())
 	{
 		f >> name;
-		name = link + name;
+		name = folder + name;
 
 		source.push_back(new string(name));
 	}

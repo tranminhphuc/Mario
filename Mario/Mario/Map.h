@@ -104,7 +104,7 @@ private:
 	void LoadImage(string file, vector<Object*>& object);
 	void LoadFile(vector<string*> source, vector<Object*>& object);
 
-	void Load(vector<string*>& source, string file, string link);
+	void Load(vector<string*>& source, string file, string folder);
 
 	void LoadSource();
 	void LoadGameData();

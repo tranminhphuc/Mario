@@ -25,7 +25,6 @@ void MenuManager::Update()
 	switch (currentGameState)
 	{
 	case MenuGame:
-		mainMenu->Update();
 		Window::GetMap()->UpdateBlock();
 		break;
 	case GameLoading:
