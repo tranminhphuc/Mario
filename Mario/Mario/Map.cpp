@@ -649,7 +649,7 @@ void Map::LoadLevel_1_1()
 
 	CreateMap();
 
-	//LoadMinionLevel_1_1();
+	LoadMinionLevel_1_1();
 
 	DrawGND(0, 14, 69, 2);
 	DrawGND(71, 14, 15, 2);
