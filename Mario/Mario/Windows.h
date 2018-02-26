@@ -15,7 +15,7 @@ private:
 	static unsigned int time;
 
 	static Map* map;
-	static bool movePressed, keyMenuPressed, keyA, keyD, keyS, keyW, keyShift;
+	static bool movePressed, keyMenuPressed, left, right, down, up, keyShift;
 
 	void Input();
 	void InputPlayer();

@@ -4,10 +4,10 @@
 Map* Window::map;
 bool Window::movePressed = false;
 bool Window::keyMenuPressed = false;
-bool Window::keyA = false;
-bool Window::keyD = false;
-bool Window::keyS = false;
-bool Window::keyW = false;
+bool Window::left = false;
+bool Window::right = false;
+bool Window::down = false;
+bool Window::up = false;
 bool Window::keyShift = false;
 unsigned int Window::time = 0;
 
@@ -73,7 +73,7 @@ unsigned int Window::GetTime()
 
 void Window::ResetKeys()
 {
-	keyMenuPressed = keyA = keyD = keyW = keyS = Game::keySpace = keyShift = false;
+	keyMenuPressed = left = right = up = down = Game::keySpace = keyShift = false;
 }
 
 void Window::Input()
@@ -82,6 +82,41 @@ void Window::Input()
 
 void Window::InputPlayer()
 {
+	if (event.type == sf::Event::KeyPressed)
+	{
+		if (event.key.code == Game::keyD)
+		{
+			right = true;
+		}
+
+		if (event.key.code == Game::keyA)
+		{
+			left = true;
+		}
+	}
+
+	if (event.type == sf::Event::KeyReleased)
+	{
+		if (event.key.code == Game::keyD)
+		{
+			right = false;
+		}
+
+		if (event.key.code == Game::keyA)
+		{
+			left = false;
+		}
+	}
+
+	if (left)
+	{
+		map->MoveMap(10);
+	}
+
+	if (right)
+	{
+		map->MoveMap(10);
+	}
 }
 
 void Window::InputMenu()
