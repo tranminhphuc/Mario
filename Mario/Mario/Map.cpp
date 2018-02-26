@@ -753,7 +753,7 @@ void Map::LoadLevel_1_2()
 	DrawGND(160, 14, 43, 2);
 
 	DrawGND2(17, 12, 1, 1);
-	/*DrawGND2(19, 12, 1, 2);
+	DrawGND2(19, 12, 1, 2);
 	DrawGND2(21, 12, 1, 3);
 	DrawGND2(23, 12, 1, 4);
 	DrawGND2(25, 12, 1, 4);
@@ -761,7 +761,7 @@ void Map::LoadLevel_1_2()
 	DrawGND2(31, 12, 1, 3);
 	DrawGND2(33, 12, 1, 2);
 	DrawGND2(133, 12, 4, true);
-	DrawGND2(137, 12, 1, 4);*/
+	DrawGND2(137, 12, 1, 4);
 
 	DrawBrick(0, 12, 1, 11);
 	DrawBrick(6, 2, 132, 1);
@@ -852,9 +852,9 @@ void Map::LoadLevel_1_2()
 	mapType = BanNgay;
 	DrawGND(281, 14, 42, 2);
 
-	//DrawGND2(286, 12, 8, true);
-	//DrawGND2(294, 12, 1, 8);
-	//DrawGND2(303, 12, 1, 1);
+	DrawGND2(286, 12, 8, true);
+	DrawGND2(294, 12, 1, 8);
+	DrawGND2(303, 12, 1, 1);
 
 	DrawPipe(284, 12, 1);
 
