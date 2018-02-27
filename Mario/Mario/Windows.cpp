@@ -41,7 +41,7 @@ void Window::Play()
 				window->close();
 			}
 
-			InputMenu();
+			Input();
 		}
 
 		Update();
@@ -78,6 +78,15 @@ void Window::ResetKeys()
 
 void Window::Input()
 {
+	switch (Game::GetMenuManager()->GetView())
+	{
+	case 1:
+		InputPlayer();
+		break;
+	default:
+		InputMenu();
+		break;
+	}
 }
 
 void Window::InputPlayer()
@@ -110,12 +119,12 @@ void Window::InputPlayer()
 
 	if (left)
 	{
-		map->MoveMap(10);
+		map->MoveMap(-10);
 	}
 
 	if (right)
 	{
-		map->MoveMap(10);
+		map->MoveMap(-10);
 	}
 }
 

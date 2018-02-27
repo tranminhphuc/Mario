@@ -409,32 +409,22 @@ void Map::LoadImage(string file, vector<Object*>& object)
 	fstream f;
 	f.open(file);
 
-	if (!f.bad())
+	f >> size;
+
+	for (int i = 0; i < size; i++)
 	{
-		f >> size;
+		string image;
+		unsigned int delay;
 
-		for (int i = 0; i < size; i++)
-		{
-			string image;
-			unsigned int delay;
+		f >> image;
+		f >> delay;
 
-			f >> image;
-			f >> delay;
-
-			name.push_back("Source/images/" + image);
-			time.push_back(delay);
-		}
-
-		f >> collision >> canDestroy >> visible;
-		f.close();
+		name.push_back("Source/images/" + image);
+		time.push_back(delay);
 	}
-	else
-	{
-		name.push_back("Source/images/transp.bmp");
-		time.push_back(0);
 
-		collision = canDestroy = visible = false;
-	}
+	f >> collision >> canDestroy >> visible;
+	f.close();
 
 	object.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
