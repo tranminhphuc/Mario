@@ -98,7 +98,7 @@ void Map::UpdateMinionsCollision()
 void Map::Draw(sf::RenderWindow& window)
 {
 	DrawMap(window);
-	//DrawMinion(window);
+	DrawMinion(window);
 }
 
 void Map::DrawMap(sf::RenderWindow & window)

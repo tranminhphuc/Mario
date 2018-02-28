@@ -1,4 +1,4 @@
-1
+2
 koopa_2.bmp
 200
 koopa_3.bmp

@@ -119,7 +119,7 @@ void Window::InputPlayer()
 
 	if (left)
 	{
-		map->MoveMap(-10);
+		map->MoveMap(10);
 	}
 
 	if (right)
