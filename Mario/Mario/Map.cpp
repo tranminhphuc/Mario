@@ -22,6 +22,7 @@ Map::~Map() { }
 void Map::Update()
 {
 	UpdateBlock();
+	UpdateMinion();
 }
 
 void Map::UpdatePlayer()
@@ -210,7 +211,7 @@ int Map::GetHeight()
 
 bool Map::CheckObject(int x, int y)
 {
-	if (x <= 0 || x >= Game::gameWidth || y <= 0 || y >= Game::gameHeight)
+	if (x < 0 || x >= Game::gameWidth || y <= 0 || y >= Game::gameHeight / 32)
 	{
 		return false;
 	}

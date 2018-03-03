@@ -179,7 +179,7 @@ void Minion::PhysicsState2()
 
 	MoveY((int)currentFallingSpeed);
 
-	if (yMinion > Game::gameHeight)
+	if (yMinion >= Game::gameHeight - 32)
 		minionState = -1;
 }
 
@@ -199,7 +199,7 @@ void Minion::ResetJump()
 
 void Minion::Spawn()
 {
-	if (xMinion >= -Window::GetMap()->GetX() && -Window::GetMap()->GetX() + Game::gameWidth || xMinion + width >= -Window::GetMap()->GetX() && xMinion + width <= -Window::GetMap()->GetX() + Game::gameWidth)
+	if (xMinion >= -Window::GetMap()->GetX() && xMinion <= -Window::GetMap()->GetX() + Game::gameWidth || xMinion + width >= -Window::GetMap()->GetX() && xMinion + width <= -Window::GetMap()->GetX() + Game::gameWidth)
 		minionSpawned = true;
 }
 
@@ -235,31 +235,30 @@ int Minion::GetMinionState()
 
 bool Minion::CheckCollisionLB(int distanceX, int distanceY)
 {
-	return Window::GetMap()->CheckObject((int)(xMinion + distanceX), (int)(yMinion + height + distanceY));
+	return Window::GetMap()->CheckObject((xMinion + distanceX) / 32, (yMinion + height + distanceY) / 32);
 }
 
 bool Minion::CheckCollisionLT(int distanceX, int distanceY)
 {
-	return Window::GetMap()->CheckObject((int)(xMinion + distanceX), (int)(yMinion + distanceY));
+	return Window::GetMap()->CheckObject((xMinion + distanceX) / 32, (yMinion + distanceY) / 32);
 }
 
 bool Minion::CheckCollisionRB(int distanceX, int distanceY)
 {
-	return Window::GetMap()->CheckObject((int)(xMinion + width + distanceX), (int)(yMinion + height + distanceY));
+	return Window::GetMap()->CheckObject((xMinion + width + distanceX) / 32, (yMinion + height + distanceY) / 32);
 }
 
 bool Minion::CheckCollisionRT(int distanceX, int distanceY)
 {
-	return Window::GetMap()->CheckObject((int)(xMinion + width + distanceX), (int)(yMinion + distanceY));
+	return Window::GetMap()->CheckObject((xMinion + width + distanceX) / 32, (yMinion + distanceY) / 32);
 }
 
 bool Minion::CheckCollisionLC(int distance)
 {
-	return Window::GetMap()->CheckObject((int)(xMinion + width + distance), (int)(yMinion + (width / 2)));
+	return Window::GetMap()->CheckObject((xMinion + width + distance) / 32, (yMinion + (width / 2)) / 32);
 }
 
 bool Minion::CheckCollisionRC(int distance)
 {
-	return Window::GetMap()->CheckObject((int)(xMinion + distance), (int)(yMinion + (width / 2)));
+	return Window::GetMap()->CheckObject((xMinion + distance) / 32, (yMinion + (width / 2)) / 32);
 }
-

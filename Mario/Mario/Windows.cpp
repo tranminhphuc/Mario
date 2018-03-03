@@ -16,6 +16,8 @@ Window::Window(unsigned int width, unsigned int heigth, string name)
 	window = new sf::RenderWindow(sf::VideoMode(width, heigth), name);
 	map = new Map();
 
+	window->setFramerateLimit(30);
+
 	Game::keyA = sf::Keyboard::A;
 	Game::keyD = sf::Keyboard::D;
 	Game::keyS = sf::Keyboard::S;
@@ -91,29 +93,29 @@ void Window::Input()
 
 void Window::InputPlayer()
 {
-	if (event.type == sf::Event::KeyPressed)
+	if(event.type == sf::Event::KeyPressed)
 	{
-		if (event.key.code == Game::keyD)
-		{
-			right = true;
-		}
-
 		if (event.key.code == Game::keyA)
 		{
 			left = true;
 		}
-	}
 
-	if (event.type == sf::Event::KeyReleased)
-	{
 		if (event.key.code == Game::keyD)
 		{
-			right = false;
+			right = true;
 		}
+	}
 
+	if(event.type == sf::Event::KeyReleased)
+	{
 		if (event.key.code == Game::keyA)
 		{
 			left = false;
+		}
+
+		if (event.key.code == Game::keyD)
+		{
+			right = false;
 		}
 	}
 
