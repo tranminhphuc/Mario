@@ -211,7 +211,7 @@ int Map::GetHeight()
 
 bool Map::CheckObject(int x, int y)
 {
-	if (x < 0 || x >= Game::gameWidth || y <= 0 || y >= Game::gameHeight / 32)
+	if (x < 0 || x >= Game::gameWidth || y < 0 || y >= Game::gameHeight / 32)
 	{
 		return false;
 	}
@@ -447,6 +447,9 @@ void Map::Load(vector<string*>& source, string file, string folder)
 
 	while (!f.eof())
 	{
+		string text;
+		f >> text;
+
 		f >> name;
 		name = folder + name;
 

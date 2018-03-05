@@ -18,9 +18,9 @@ Window::Window(unsigned int width, unsigned int heigth, string name)
 
 	window->setFramerateLimit(30);
 
-	Game::keyA = sf::Keyboard::A;
-	Game::keyD = sf::Keyboard::D;
-	Game::keyS = sf::Keyboard::S;
+	Game::keyA = sf::Keyboard::Left;
+	Game::keyD = sf::Keyboard::Right;
+	Game::keyS = sf::Keyboard::Down;
 	Game::keySpace = sf::Keyboard::Space;
 	Game::keyShift = sf::Keyboard::LShift;
 }
