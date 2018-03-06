@@ -13,6 +13,10 @@ Spikey::~Spikey()
 
 void Spikey::Update()
 {
+	if (minionState == 0)
+		MoveX();
+	else if (minionState == -2)
+		MinionDeathAnimation();
 }
 
 void Spikey::Draw(sf::RenderWindow & window, Texture * texture)

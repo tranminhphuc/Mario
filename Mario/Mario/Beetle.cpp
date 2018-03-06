@@ -17,8 +17,14 @@ Beetle::~Beetle()
 
 void Beetle::Update()
 {
+	if (minionState == -2)
+		MinionDeathAnimation();
+	else
+		MoveX();
 }
 
 void Beetle::Draw(sf::RenderWindow & window, Texture * texture)
 {
+	if (minionState != -2)
+		texture->Draw(window, sf::Vector2f((float)xMinion + Window::GetMap()->GetX(), (float)yMinion));
 }

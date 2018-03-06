@@ -13,6 +13,10 @@ HammerBro::~HammerBro()
 
 void HammerBro::Update()
 {
+	if (minionState != -2)
+	{
+		moveDirection = !(Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth() / 2 > xMinion + width / 2);
+	}
 }
 
 void HammerBro::Draw(sf::RenderWindow & window, Texture * texture)

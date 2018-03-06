@@ -6,6 +6,6 @@ coin_use2.bmp
 coin_use1.bmp
 130
 coin_use2.bmp
-1
+0
 1
 1

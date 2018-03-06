@@ -13,6 +13,68 @@ Lakito::~Lakito()
 
 void Lakito::Update()
 {
+	if (minionState == -2)
+	{
+		MinionDeathAnimation();
+	}
+	else
+	{
+		if (xMinion > maxX)
+			end = true;
+
+		if (end)
+		{
+			xMinion = -1;
+
+			if (xMinion < -width)
+				minionState = -1;
+
+			return;
+		}
+
+		if (xMinion < -Window::GetMap()->GetX() - 64)
+			xMinion = -Window::GetMap()->GetX() - 32;
+
+		if (xMinion <= Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth() / 2 + 32 * Window::GetMap()->GetPlayer()->GetMoveSpeed() && Window::GetMap()->GetPlayer()->getMove())
+		{
+			moveSpeed = Window::GetMap()->GetPlayer()->GetMoveSpeed() + (xMinion < Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth() / 2 + 32 * Window::GetMap()->GetPlayer()->GetMoveSpeed());
+			xMinion += moveSpeed;
+			followPlayer = true;
+			moveDirection = true;
+		}
+		else
+		{
+			if (followPlayer)
+			{
+				if (moveSpeed > 0)
+				{
+					xMinion += moveSpeed;
+					moveSpeed--;
+				}
+				else
+				{
+					followPlayer = false;
+				}
+			}
+			else
+			{
+				if (!moveDirection)
+				{
+					xMinion = -1;
+
+					if (xMinion < Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth() / 2 - 128)
+						moveDirection = true;
+				}
+				else
+				{
+					xMinion += 1;
+
+					if (xMinion > Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth() / 2 + 128)
+						moveDirection = false;
+				}
+			}
+		}
+	}
 }
 
 void Lakito::Draw(sf::RenderWindow & window, Texture * texture)

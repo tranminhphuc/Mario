@@ -13,6 +13,7 @@ Bowser::~Bowser()
 
 void Bowser::Update()
 {
+	moveDirection = Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() < xMinion + width;
 }
 
 void Bowser::Draw(sf::RenderWindow & window, Texture * texture)
