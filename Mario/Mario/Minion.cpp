@@ -187,7 +187,7 @@ void Minion::StartJump(int distance)
 {
 	jumpState = NhayLen;
 	currentJumpSpeed = startJumpSpeed;
-	jumpDistance *= 32 * distance + 16.0f;
+	jumpDistance = 32 * distance + 16.0f;
 	currentJumpDistance = 0;
 }
 

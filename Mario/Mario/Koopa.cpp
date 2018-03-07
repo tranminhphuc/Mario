@@ -45,7 +45,10 @@ void Koopa::Update()
 		MoveX();
 
 		if (jumpState == TrenMatDat)
+		{
 			StartJump(1);
+		}
+			
 	}
 	else if (minionState == 1 || minionState == 2)
 	{
