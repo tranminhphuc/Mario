@@ -7,8 +7,10 @@
 
 class Fire : public Minion
 {
+private:
+	int toYMinion;
 public:
-	Fire(int xMinon, int yMinion);
+	Fire(int xMiinon, int yMinion, int toYMinion);
 	~Fire();
 
 	void Update();

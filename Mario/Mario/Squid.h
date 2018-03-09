@@ -7,6 +7,8 @@
 
 class Squid : public Minion
 {
+private:
+	int moveXDistance, moveYDistance;
 public:
 	Squid(int xMinion, int yMinion);
 	~Squid();

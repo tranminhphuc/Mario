@@ -7,8 +7,10 @@
 
 class Cheep : public Minion
 {
+private:
+	bool moveY, moveYDir;
 public:
-	Cheep(int xMinion, int yMinion);
+	Cheep(int xMinion, int yMinion, int minionType, int moveSpeed, bool moveDirection = false);
 	~Cheep();
 
 	void Update(unsigned int time);
