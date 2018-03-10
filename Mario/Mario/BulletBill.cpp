@@ -3,8 +3,8 @@
 
 BulletBill::BulletBill(int xMinion, int yMinion)
 {
-	this->xMinion = xMinion;
-	this->yMinion = yMinion;
+	this->xMinion = (float)xMinion;
+	this->yMinion = (float)yMinion;
 }
 
 BulletBill::~BulletBill()

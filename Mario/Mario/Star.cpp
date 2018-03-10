@@ -1,7 +1,7 @@
 #include "Star.h"
 #include "Windows.h"
 
-Star::Star(int xMinion, int yMinion, float x, float y)
+Star::Star(float xMinion, float yMinion, float x, float y)
 {
 	this->xMinion = xMinion;
 	this->yMinion = yMinion;

@@ -12,7 +12,7 @@ private:
 	int inSpawnY;
 	float x, y;
 public:
-	Star(int xMinion, int yMinion, float x, float y);
+	Star(float xMinion, float yMinion, float x, float y);
 	~Star();
 
 	void Update();

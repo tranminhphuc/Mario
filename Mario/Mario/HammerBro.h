@@ -7,6 +7,15 @@
 
 class HammerBro : public Minion
 {
+private:
+	bool moveDir;
+	float moveDistance;
+
+	int nextJumpFrameID;
+	bool newY;
+
+	int hammerID;
+	int nextHammerFrameID;
 public:
 	HammerBro(int xMinion, int yMinion);
 	~HammerBro();

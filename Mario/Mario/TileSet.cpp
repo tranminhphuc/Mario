@@ -7,6 +7,10 @@ TileSet::TileSet(int tileID)
 	mushroom = false;
 	star = false;
 	powerUp = true;
+
+	blockAnimation = false;
+	y = 0;
+	yDirection = true;
 }
 
 TileSet::~TileSet()
@@ -21,6 +25,11 @@ void TileSet::SetID(int tileID)
 int TileSet::GetID()
 {
 	return id;
+}
+
+int TileSet::GetY()
+{
+	return y;
 }
 
 int TileSet::getNumberOfCoin()
@@ -61,4 +70,48 @@ bool TileSet::GetPowerUp()
 void TileSet::SetPowerUp(bool powerUp)
 {
 	this->powerUp = powerUp;
+}
+
+void TileSet::StartBlockAnimation()
+{
+	blockAnimation = true;
+	y = 0;
+	yDirection = true;
+}
+
+int TileSet::MoveY()
+{
+	if (blockAnimation)
+	{
+		if (yDirection)
+		{
+			if (y < 10)
+			{
+				if (y < 5)
+					y += 2;
+				else
+					y += 1;
+			}
+			else
+			{
+				yDirection = false;
+			}
+		}
+		else
+		{
+			if (y > 0)
+			{
+				if (y > 5)
+					y -= 2;
+				else
+					y -= 1;
+			}
+			else
+			{
+				blockAnimation = false;
+			}
+		}
+	}
+
+	return y;
 }

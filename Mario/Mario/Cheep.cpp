@@ -1,10 +1,11 @@
 #include "Cheep.h"
+#include "Windows.h"
 #include "Game.h"
 
-Cheep::Cheep(int xMinion, int yMinion, int minionType, int moveSpeed, bool moveDirection = false)
+Cheep::Cheep(int xMinion, int yMinion, int minionType, int moveSpeed, bool moveDirection)
 {
-	this->xMinion = xMinion;
-	this->yMinion = yMinion;
+	this->xMinion = (float)xMinion;
+	this->yMinion = (float)yMinion;
 
 	this->moveY = false;
 	this->moveDirection = false;
@@ -16,16 +17,19 @@ Cheep::Cheep(int xMinion, int yMinion, int minionType, int moveSpeed, bool moveD
 	{
 		this->minionState = 1;
 		this->moveSpeed = 2;
+		this->id = 31;
 	}
 	else if(minionType == 0)
 	{
 		this->minionState = 0;
 		this->moveSpeed = 1;
+		this->id = 30;
 	}
 	else
 	{
-		this->minionState = minionState;
+		this->minionState = minionType;
 		this->moveSpeed = moveSpeed;
+		this->id = 31;
 
 		this->moveDirection = moveDirection;
 
@@ -194,6 +198,8 @@ void Cheep::Update(unsigned int time)
 
 void Cheep::Draw(sf::RenderWindow & window, Texture * texture)
 {
+	if (minionState != -2)
+		texture->Draw(window, sf::Vector2f(xMinion + Window::GetMap()->GetX(), yMinion + 2));
 }
 
 void Cheep::CollisionWithPlayer(bool top)

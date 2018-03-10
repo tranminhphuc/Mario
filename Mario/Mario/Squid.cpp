@@ -4,8 +4,8 @@
 
 Squid::Squid(int xMinion, int yMinion)
 {
-	this->xMinion = xMinion;
-	this->yMinion = yMinion;
+	this->xMinion = (float)xMinion;
+	this->yMinion = (float)yMinion;
 
 	width = 32;
 	minionState = 0;

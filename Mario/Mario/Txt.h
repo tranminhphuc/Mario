@@ -25,7 +25,7 @@ public:
 	
 	void Draw(sf::RenderWindow& window, string text, float x, float y, int fontSize = 16);
 	void Draw(sf::RenderWindow& window, string text, float x, float y, int r, int g, int b, int fontSize = 16);
-	void DrawCenterX(sf::RenderWindow& window, string text, int y, int r = 255, int g = 255, int b = 255, int fontsize = 16);
+	void DrawCenterX(sf::RenderWindow& window, string text, float y, int r = 255, int g = 255, int b = 255, int fontsize = 16);
 
 	void SetFont(string file);
 	int GetTextWidth(std::string text, int fontSize = 16);

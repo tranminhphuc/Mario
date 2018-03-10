@@ -20,7 +20,7 @@ public:
 	int minionState;
 	int id;
 
-	int xMinion, yMinion;
+	float xMinion, yMinion;
 	int width, height;
 
 	bool moveDirection;
@@ -70,9 +70,9 @@ public:
 
 	void Spawn();
 
-	int GetX();
-	int GetY();
-	void SetY(int y);
+	float GetX();
+	float GetY();
+	void SetY(float y);
 
 	int GetID();
 	void SetID(int id);

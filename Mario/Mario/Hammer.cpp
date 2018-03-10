@@ -4,8 +4,21 @@
 
 Hammer::Hammer(int xMinion, int yMinion)
 {
-	this->xMinion = xMinion;
-	this->yMinion = yMinion;
+	this->xMinion = (float)xMinion;
+	this->yMinion = (float)yMinion;
+
+	width = 24;
+	height = 24;
+
+	this->moveDirection = moveDirection;
+
+	jumpState = NhayLen;
+	jumpDistance = 48;
+	currentJumpDistance = 0;
+	moveSpeed = 0;
+
+	minionState = 0;
+	minionSpawned = false;
 }
 
 Hammer::~Hammer()
@@ -14,6 +27,21 @@ Hammer::~Hammer()
 
 void Hammer::Update()
 {
+	if (minionState != -2)
+	{
+		moveSpeed++;
+
+		if (moveSpeed > 35)
+			xMinion += moveDirection ? 3 : -3;
+		else if (moveSpeed > 15)
+			xMinion += moveDirection ? 2.5f : -2.5f;
+		else
+			xMinion += moveDirection ? 2 : -2;
+	}
+	else
+	{
+		MinionDeathAnimation();
+	}
 }
 
 void Hammer::Draw(sf::RenderWindow & window, Texture * texture)

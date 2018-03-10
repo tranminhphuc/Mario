@@ -179,22 +179,22 @@ void Map::ResetGameData()
 	LoadLevel();
 }
 
-int Map::GetX()
+float Map::GetX()
 {
 	return xMap;
 }
 
-void Map::SetX(int x)
+void Map::SetX(float x)
 {
 	this->xMap = x;
 }
 
-int Map::GetY()
+float Map::GetY()
 {
 	return yMap;
 }
 
-void Map::SetY(int y)
+void Map::SetY(float y)
 {
 	this->yMap = y;
 }
@@ -1127,8 +1127,7 @@ void Map::LoadLevel_2_2()
 	DrawGND(186, 11, 16, 1);
 	DrawGND(187, 10, 15, 1);
 	DrawGND(188, 9, 14, 1);
-	DrawGND(188, 5, 14, 1);
-	DrawGND(189, 5, 4, 1);
+	DrawGND(188, 5, 14, 4);
 	DrawGND(190, 8, 12, 3);
 
 	DrawCoins(14, 12, 2, 1);
@@ -3556,6 +3555,24 @@ void Map::LoadMinionLevel_2_1()
 void Map::LoadMinionLevel_2_2()
 {
 	ClearMinion();
+
+	AddCheep(75 * 32 + 28, Game::gameHeight - 5 * 32, 0, 1);
+	AddCheep(78 * 32 + 28, Game::gameHeight - 8 * 32, 0, 1);
+	AddCheep(81 * 32, +28, Game::gameHeight - 3 * 32 - 28, 0, 1);
+	AddCheep(94 * 32 + 14, Game::gameHeight - 9 * 32, 0, 1);
+	AddCheep(101 * 32 + 28, Game::gameHeight - 5 * 32, 0, 1);
+	AddCheep(97 * 32 + 8, Game::gameHeight - 12 * 32, 1, 1);
+	AddCheep(117 * 32 + 8, Game::gameHeight - 11 * 32, 0, 1);
+	AddCheep(127 * 32 + 24, Game::gameHeight - 5 * 32, 1, 1);
+	AddCheep(131 * 32 + 8, Game::gameHeight - 4 * 32 - 4, 0, 1);
+	AddCheep(136 * 32 + 16, Game::gameHeight - 7 * 32, 0, 1);
+	AddCheep(145 * 32 + 8, Game::gameHeight - 5 * 32, 0, 1);
+	AddCheep(149 * 32 + 28, Game::gameHeight - 9 * 32 - 4, 1, 1);
+	AddCheep(164 * 32, Game::gameHeight - 12 * 32, 0, 1);
+	AddCheep(167 * 32, Game::gameHeight - 4 * 32, 1, 1);
+	AddCheep(175 * 32, Game::gameHeight - 7 * 32 - 4, 0, 1);
+	AddCheep(183 * 32, Game::gameHeight - 11 * 32, 1, 1);
+	AddCheep(186 * 32 + 16, Game::gameHeight - 8 * 32, 1, 1);
 }
 
 void Map::LoadMinionLevel_2_3()
@@ -3958,7 +3975,7 @@ void Map::AddBowser(int x, int y, bool spawnHammer)
 
 void Map::AddToad(int x, int y, bool peach)
 {
-	minion[GetListID(x)].push_back(new Toad());
+	minion[GetListID(x)].push_back(new Toad(x, y, peach));
 }
 
 void Map::AddSquid(int x, int y)
@@ -3968,7 +3985,7 @@ void Map::AddSquid(int x, int y)
 
 void Map::AddCheep(int x, int y, int minionType, int moveSpeed, bool moveDirection)
 {
-	minion[GetListID(x)].push_back(new Cheep(x, y));
+	minion[GetListID(x)].push_back(new Cheep(x, y, minionType, moveSpeed, moveDirection));
 }
 
 void Map::AddCheepSpawner(int x, int xEnd)
@@ -4000,16 +4017,16 @@ void Map::AddVine(int x, int y, int id, int minionState)
 	minion[GetListID(x)].push_back(new Vine());
 }
 
-void Map::AddFire(float x, float y, int toY)
+void Map::AddFire(int x, int y, int toY)
 {
-	//minion[GetListID(x)].push_back(new Fire(x, y));
+	minion[GetListID(x)].push_back(new Fire(x, y, toY));
 }
 
 void Map::AddFireBall(int x, int y, int width, int id, bool left)
 {
 	for (int i = 9; i < width; i++)
 	{
-		minion[GetListID(x)].push_back(new FireBall());
+		//minion[GetListID(x)].push_back(new FireBall());
 	}
 }
 

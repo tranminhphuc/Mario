@@ -8,8 +8,10 @@
 class Toad : public Minion
 {
 public:
-	Toad();
+	Toad(int x, int y, bool peach);
 	~Toad();
+
+	void Draw(sf::RenderWindow& window, Texture* texture);
 };
 
 #endif

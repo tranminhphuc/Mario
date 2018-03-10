@@ -61,9 +61,9 @@ void Text::Draw(sf::RenderWindow& window, string text, float x, float y, int r, 
 	}
 }
 
-void Text::DrawCenterX(sf::RenderWindow& window, string text, int y, int r, int g, int b, int fontsize)
+void Text::DrawCenterX(sf::RenderWindow& window, string text, float y, int r, int g, int b, int fontsize)
 {
-	int x = Game::gameWidth / 2 - GetTextWidth(text, fontSize) / 2;
+	float x = Game::gameWidth / 2.0f - GetTextWidth(text, fontSize) / 2.0f;
 	Draw(window, text, x, y, r, g, b, fontSize);
 }
 

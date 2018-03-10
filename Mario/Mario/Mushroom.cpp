@@ -3,11 +3,12 @@
 
 Mushroom::Mushroom(int xMinion, int yMinion, bool powerUp, float x, float y)
 {
-	this->xMinion = xMinion;
-	this->yMinion = yMinion;
+	this->xMinion = (float)xMinion;
+	this->yMinion = (float)yMinion;
+
 	this->powerUp = powerUp;
-	//this->x = x;
-	//this->y = y;
+	this->x = x;
+	this->y = y;
 
 	this->moveSpeed = 2;
 	this->inSpawnY = 30;
@@ -39,7 +40,7 @@ void Mushroom::Update()
 			}
 			else
 			{
-				inSpawnY -= 11;
+				inSpawnY -= 1;
 				yMinion -= 1;
 			}
 		}
@@ -63,6 +64,9 @@ void Mushroom::Draw(sf::RenderWindow& window, Texture* texture)
 	if (minionState >= 0)
 	{
 		texture->Draw(window, sf::Vector2f((float)xMinion + Window::GetMap()->GetX(), (float)yMinion + 2));
+
+		if (inSpawnState)
+			Window::GetMap()->GetObject(Window::GetMap()->GetMapType() == 0 || Window::GetMap()->GetMapType() == 4 ? 9 : 56)->GetAnimation()->getTexture()->Draw(window, sf::Vector2f(xMinion + Window::GetMap()->GetX(), yMinion + (32 - inSpawnY) - Window::GetMap()->GetTile(x, y)->GetY() + 2));
 	}
 }
 

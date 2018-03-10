@@ -95,8 +95,8 @@ private:
 	int mapHeight;
 	int mapTime;
 
-	int xMap;
-	int yMap;
+	float xMap;
+	float yMap;
 
 	bool underWater;
 	bool moveMap;
@@ -194,7 +194,7 @@ private:
 
 	void AddVine(int x, int y, int id, int minionState);
 
-	void AddFire(float x, float y, int toY);
+	void AddFire(int x, int y, int toY);
 	void AddFireBall(int x, int y, int width, int id, bool left);
 
 	void AddBubble(int x, int y);
@@ -252,10 +252,10 @@ public:
 
 	void ResetGameData();
 
-	int GetX();
-	void SetX(int x);
-	int GetY();
-	void SetY(int y);
+	float GetX();
+	void SetX(float x);
+	float GetY();
+	void SetY(float y);
 
 	int GetWidth();
 	int GetHeight();

@@ -8,7 +8,7 @@
 class Plant : public Minion
 {
 public:
-	Plant(int xMinion, int yMinion);
+	Plant(float xMinion, float yMinion);
 	~Plant();
 
 	void Update(unsigned int time);

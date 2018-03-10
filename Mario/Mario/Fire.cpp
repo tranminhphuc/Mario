@@ -3,8 +3,8 @@
 
 Fire::Fire(int xMinion, int yMinion, int toYMinion)
 {
-	this->xMinion = xMinion;
-	this->yMinion = yMinion;
+	this->xMinion = (float)xMinion;
+	this->yMinion = (float)yMinion;
 	this->toYMinion = toYMinion;
 
 	moveDirection = true;

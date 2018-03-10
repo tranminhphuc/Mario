@@ -1,10 +1,20 @@
 #include "Flower.h"
 #include "Windows.h"
 
-Flower::Flower(int xMinion, int yMinion)
+Flower::Flower(int xMinion, int yMinion, int x, int y)
 {
-	this->xMinion = xMinion;
-	this->yMinion = yMinion;
+	this->xMinion = (float)xMinion;
+	this->yMinion = (float)yMinion;
+
+	moveSpeed = 2;
+	inSpawnState = true;
+	minionSpawned = true;
+	inSpawnY = 32;
+	moveDirection = false;
+	collisionOnlyWithPlayer = true;
+
+	this->x = x;
+	this->y = y;
 }
 
 Flower::~Flower()
@@ -13,6 +23,26 @@ Flower::~Flower()
 
 void Flower::Update()
 {
+	if (inSpawnState)
+	{
+		if (inSpawnY <= 0)
+		{
+			inSpawnState = false;
+		}
+		else
+		{
+			if (yMinion > -5)
+			{
+				inSpawnY -= 2;
+				yMinion -= 2;
+			}
+			else
+			{
+				inSpawnY -= 1;
+				yMinion -= 1;
+			}
+		}
+	}
 }
 
 void Flower::Draw(sf::RenderWindow & window, Texture * texture)
@@ -21,4 +51,9 @@ void Flower::Draw(sf::RenderWindow & window, Texture * texture)
 	{
 		texture->Draw(window, sf::Vector2f((float)xMinion + Window::GetMap()->GetX(), (float)yMinion + 2));
 	}
+}
+
+bool Flower::UpdateMinion()
+{
+	return minionSpawned;
 }

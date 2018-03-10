@@ -3,8 +3,8 @@
 
 Goombas::Goombas(int xMinion, int yMinion, int id, bool moveDirection)
 {
-	this->xMinion = xMinion;
-	this->yMinion = yMinion;
+	this->xMinion = (float)xMinion;
+	this->yMinion = (float)yMinion;
 	this->id = id;
 	this->moveDirection = moveDirection;
 }

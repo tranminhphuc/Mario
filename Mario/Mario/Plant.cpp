@@ -1,7 +1,7 @@
 #include "Plant.h"
 #include "Windows.h"
 
-Plant::Plant(int xMinion, int yMinion)
+Plant::Plant(float xMinion, float yMinion)
 {
 	this->xMinion = xMinion;
 	this->yMinion = yMinion;
