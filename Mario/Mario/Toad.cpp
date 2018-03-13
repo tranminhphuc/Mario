@@ -10,7 +10,7 @@ Toad::Toad(int x, int y, bool peach)
 	collisionOnlyWithPlayer = true;
 
 	minionSpawned = true;
-	id = peach ? 24 : 23;
+	id = peach ? 27 : 26;
 
 	width = 32;
 	height = 48;

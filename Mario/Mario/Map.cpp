@@ -2448,7 +2448,7 @@ void Map::LoadLevel_6_2()
 	mapWidth = 495;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = BanNgay;
+	mapType = BinhMinh;
 
 	CreateMap();
 
@@ -2573,13 +2573,13 @@ void Map::LoadLevel_6_2()
 	tile[344][7]->SetNumberOfCoin(8);
 
 	mapType = LongDat;
-	DrawGND(360, 13, 17, 2);
+	DrawGND(360, 14, 17, 2);
 
 	DrawBrick(360, 12, 1, 11);
 	DrawBrick(363, 11, 1, 3);
 	DrawBrick(370, 11, 1, 3);
 	DrawBrick(364, 9, 6, 1);
-	DrawBrick(363, 12, 12, 1);
+	DrawBrick(363, 2, 12, 1);
 	DrawBrick(373, 9, 1, 1);
 
 	DrawCoins(363, 12, 10, 1);
@@ -2612,7 +2612,7 @@ void Map::LoadLevel_6_2()
 	DrawCoins(461, 5, 10, 1);
 	DrawCoins(475, 11, 3, 1);
 
-	mapType = BanNgay;
+	mapType = BinhMinh;
 }
 
 void Map::LoadLevel_6_3()
@@ -3518,6 +3518,7 @@ void Map::LoadMinionLevel_1_4()
 	ClearMinion();
 
 	//AddBowser(135 * 32, Game::gameHeight - 6 * 32);
+	AddToad(153 * 32, Game::gameHeight - 4 * 32, false);
 }
 
 void Map::LoadMinionLevel_2_1()
@@ -3583,6 +3584,8 @@ void Map::LoadMinionLevel_2_3()
 void Map::LoadMinionLevel_2_4()
 {
 	ClearMinion();
+
+	AddToad(153 * 32, Game::gameHeight - 4 * 32, false);
 }
 
 void Map::LoadMinionLevel_3_1()
@@ -3616,6 +3619,9 @@ void Map::LoadMinionLevel_3_1()
 	AddKoppa(171 * 32, Game::gameHeight - 3 * 32, 0, true);
 	AddKoppa(188 * 32, Game::gameHeight - 9 * 32, 1, true);
 	AddKoppa(191 * 32, Game::gameHeight - 11 * 32, 1, true);
+
+	AddHammerBro(113 * 32, Game::gameHeight - 8 * 32);
+	AddHammerBro(116 * 32, Game::gameHeight - 4 * 32);
 }
 
 void Map::LoadMinionLevel_3_2()
@@ -3677,6 +3683,8 @@ void Map::LoadMinionLevel_3_3()
 void Map::LoadMinionLevel_3_4()
 {
 	ClearMinion();
+
+	AddToad(153 * 32, Game::gameHeight - 4 * 32, false);
 }
 
 void Map::LoadMinionLevel_4_1()
@@ -3698,6 +3706,11 @@ void Map::LoadMinionLevel_4_2()
 	AddKoppa(137 * 32, Game::gameHeight - 3 * 32, 1, true);
 	AddKoppa(168 * 32, Game::gameHeight - 3 * 32, 1, true);
 	AddKoppa(169 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
+
+	AddBeetle(83 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(88 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(154 * 32, Game::gameHeight - 6 * 32, true);
+	AddBeetle(179 * 32, Game::gameHeight - 3 * 32, true);
 }
 
 void Map::LoadMinionLevel_4_3()
@@ -3716,6 +3729,8 @@ void Map::LoadMinionLevel_4_3()
 void Map::LoadMinionLevel_4_4()
 {
 	ClearMinion();
+
+	AddToad(186 * 32, Game::gameHeight - 4 * 32, false);
 }
 
 void Map::LoadMinionLevel_5_1()
@@ -3770,6 +3785,15 @@ void Map::LoadMinionLevel_5_2()
 	AddKoppa(243 * 32, Game::gameHeight - 4 * 32, 0, true);
 	AddKoppa(246 * 32, Game::gameHeight - 3 * 32, 0, true);
 	AddKoppa(266 * 32, Game::gameHeight - 8 * 32, 0, true);
+
+	AddBeetle(216 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(217 * 32 + 4, Game::gameHeight - 3 * 32, true);
+	AddBeetle(218 * 32 + 8, Game::gameHeight - 3 * 32, true);
+
+	AddHammerBro(126 * 32, Game::gameHeight - 7 * 32);
+	AddHammerBro(161 * 32, Game::gameHeight - 8 * 32);
+	AddHammerBro(200 * 32, Game::gameHeight - 8 * 32);
+	AddHammerBro(204 * 32, Game::gameHeight - 12 * 32);
 }
 
 void Map::LoadMinionLevel_5_3()
@@ -3792,6 +3816,8 @@ void Map::LoadMinionLevel_5_3()
 void Map::LoadMinionLevel_5_4()
 {
 	ClearMinion();
+
+	AddToad(153 * 32, Game::gameHeight - 4 * 32, false);
 }
 
 void Map::LoadMinionLevel_6_1()
@@ -3803,9 +3829,22 @@ void Map::LoadMinionLevel_6_2()
 {
 	ClearMinion();
 
+	AddGoombas(152 * 32, Game::gameHeight - 11 * 32, true);
+	AddGoombas(254 * 32, Game::gameHeight - 3 * 32, true);
+
 	AddKoppa(111 * 32, Game::gameHeight - 3 * 32, 1, true);
 	AddKoppa(128 * 32, Game::gameHeight - 4 * 32, 0, true);
 	AddKoppa(291 * 32, Game::gameHeight - 12 * 32, 0, true);
+
+	AddBeetle(139 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(177 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(205 * 32, Game::gameHeight - 11 * 32, true);
+	AddBeetle(248 * 32, Game::gameHeight - 3 * 32, true);
+
+	AddCheep(27 * 32 + 16, Game::gameHeight - 10 * 32, 0, 1);
+	AddCheep(38 * 32 + 28, Game::gameHeight - 5 * 32, 0, 1);
+	AddCheep(48 * 32 + 16, Game::gameHeight - 7 * 32, 1, 1);
+	AddCheep(53 * 32 + 16, Game::gameHeight - 12 * 32, 0, 1);
 }
 
 void Map::LoadMinionLevel_6_3()
@@ -3816,6 +3855,8 @@ void Map::LoadMinionLevel_6_3()
 void Map::LoadMinionLevel_6_4()
 {
 	ClearMinion();
+
+	AddToad(153 * 32, Game::gameHeight - 7 * 32, true);
 }
 
 void Map::LoadMinionLevel_7_1()
@@ -3827,11 +3868,36 @@ void Map::LoadMinionLevel_7_1()
 	AddKoppa(53 * 32, Game::gameHeight - 3 * 32, 0, true);
 	AddKoppa(65 * 32, Game::gameHeight - 4 * 32, 0, true);
 	AddKoppa(114 * 32, Game::gameHeight - 3 * 32, 1, true);
+
+	AddBeetle(169 * 32, Game::gameHeight - 11 * 32, true);
+
+	AddHammerBro(85 * 32, Game::gameHeight - 8 * 32);
+	AddHammerBro(87 * 32, Game::gameHeight - 12 * 32);
+	AddHammerBro(137 * 32, Game::gameHeight - 8 * 32);
+	AddHammerBro(135 * 32, Game::gameHeight - 4 * 32);
 }
 
 void Map::LoadMinionLevel_7_2()
 {
 	ClearMinion();
+
+	AddCheep(75 * 32 + 28, Game::gameHeight - 5 * 32, 0, 1);
+	AddCheep(78 * 32 + 28, Game::gameHeight - 8 * 32, 0, 1);
+	AddCheep(81 * 32 + 28, Game::gameHeight - 3 * 32 - 28, 0, 1);
+	AddCheep(94 * 32 + 14, Game::gameHeight - 9 * 32, 0, 1);
+	AddCheep(101 * 32 + 28, Game::gameHeight - 5 * 32, 0, 1);
+	AddCheep(97 * 32 + 8, Game::gameHeight - 12 * 32, 1, 1);
+	AddCheep(117 * 32 + 8, Game::gameHeight - 11 * 32, 0, 1);
+	AddCheep(127 * 32 + 24, Game::gameHeight - 5 * 32, 1, 1);
+	AddCheep(131 * 32 + 8, Game::gameHeight - 4 * 32 - 4, 0, 1);
+	AddCheep(136 * 32 + 16, Game::gameHeight - 7 * 32, 0, 1);
+	AddCheep(145 * 32 + 8, Game::gameHeight - 5 * 32, 0, 1);
+	AddCheep(149 * 32 + 28, Game::gameHeight - 9 * 32 - 4, 1, 1);
+	AddCheep(164 * 32, Game::gameHeight - 12 * 32, 0, 1);
+	AddCheep(167 * 32, Game::gameHeight - 4 * 32, 1, 1);
+	AddCheep(175 * 32, Game::gameHeight - 7 * 32 - 4, 0, 1);
+	AddCheep(183 * 32, Game::gameHeight - 11 * 32, 1, 1);
+	AddCheep(186 * 32 + 16, Game::gameHeight - 8 * 32, 1, 1);
 }
 
 void Map::LoadMinionLevel_7_3()
@@ -3850,6 +3916,8 @@ void Map::LoadMinionLevel_7_3()
 void Map::LoadMinionLevel_7_4()
 {
 	ClearMinion();
+
+	AddToad(281 * 32, Game::gameHeight - 4 * 32, false);
 }
 
 void Map::LoadMinionLevel_8_1()
@@ -3903,6 +3971,11 @@ void Map::LoadMinionLevel_8_1()
 	AddKoppa(339 * 32, Game::gameHeight - 3 * 32, 1, true);
 	AddKoppa(340 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
 	AddKoppa(342 * 32, Game::gameHeight - 3 * 32, 1, true);
+
+	AddBeetle(18 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(81 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(254 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(283 * 32, Game::gameHeight - 3 * 32, true);
 }
 
 void Map::LoadMinionLevel_8_2()
@@ -3924,6 +3997,11 @@ void Map::LoadMinionLevel_8_2()
 	AddKoppa(172 * 32, Game::gameHeight - 4 * 32, 0, true);
 	AddKoppa(175 * 32, Game::gameHeight - 7 * 32, 0, true);
 	AddKoppa(203 * 32, Game::gameHeight - 9 * 32, 0, true);
+
+	AddBeetle(111 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(121 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(123 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(189 * 32, Game::gameHeight - 3 * 32, true);
 }
 
 void Map::LoadMinionLevel_8_3()
@@ -3933,6 +4011,15 @@ void Map::LoadMinionLevel_8_3()
 	AddKoppa(30 * 32, Game::gameHeight - 5 * 32, 0, true);
 	AddKoppa(93 * 32, Game::gameHeight - 4 * 32, 0, true);
 	AddKoppa(137 * 32, Game::gameHeight - 3 * 32, 1, true);
+
+	AddHammerBro(63 * 32, Game::gameHeight - 4 * 32);
+	AddHammerBro(65 * 32, Game::gameHeight - 8 * 32);
+	AddHammerBro(117 * 32, Game::gameHeight - 8 * 32);
+	AddHammerBro(119 * 32, Game::gameHeight - 4 * 32);
+	AddHammerBro(146 * 32, Game::gameHeight - 4 * 32);
+	AddHammerBro(159 * 32, Game::gameHeight - 4 * 32);
+	AddHammerBro(177 * 32, Game::gameHeight - 4 * 32);
+	AddHammerBro(185 * 32, Game::gameHeight - 4 * 32);
 }
 
 void Map::LoadMinionLevel_8_4()
@@ -3942,6 +4029,20 @@ void Map::LoadMinionLevel_8_4()
 	AddGoombas(56 * 32, Game::gameHeight - 3 * 32, true);
 	AddGoombas(57 * 32 + 16, Game::gameHeight - 3 * 32, true);
 	AddGoombas(59 * 32, Game::gameHeight - 3 * 32, true);
+
+	AddBeetle(139 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(141 * 32, Game::gameHeight - 3 * 32, true);
+
+	AddHammerBro(316 * 32, Game::gameHeight - 4 * 32);
+
+	mapType = LongDat;
+	AddKoppa(150 * 32 - 8, Game::gameHeight - 5 * 32, 0, true);
+	AddKoppa(152 * 32 - 8, Game::gameHeight - 4 * 32, 0, true);
+	AddKoppa(165 * 32 - 8, Game::gameHeight - 4 * 32, 0, true);
+	AddKoppa(167 * 32 - 8, Game::gameHeight - 5 * 32, 0, true);
+
+	mapType = NuiLua;
+	AddToad(356 * 32, Game::gameHeight - 4 * 32, true);
 }
 
 void Map::AddGoombas(int x, int y, bool moveDirection)
@@ -4010,6 +4111,11 @@ void Map::AddLakito(int x, int y, int maxX)
 void Map::AddSpikey(int x, int y)
 {
 	minion[GetListID(x)].push_back(new Spikey(x, y));
+}
+
+void Map::AddBeetle(int x, int y, bool moveDirection)
+{
+	minion[GetListID(x)].push_back(new Beetle(x, y, moveDirection));
 }
 
 void Map::AddVine(int x, int y, int id, int minionState)

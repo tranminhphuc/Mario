@@ -63,7 +63,7 @@ void Hammer::MinionPhysics()
 		if (currentFallingSpeed > startJumpSpeed)
 			currentFallingSpeed = startJumpSpeed;
 
-		yMinion += (int)currentFallingSpeed;
+		yMinion += currentFallingSpeed;
 
 		if (yMinion > Game::gameHeight)
 			minionState = -1;

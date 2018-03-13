@@ -12,6 +12,8 @@ HammerBro::HammerBro(int xMinion, int yMinion)
 	moveSpeed = 1;
 	minionState = 0;
 
+	id = Window::GetMap()->GetMapType() == 0 || Window::GetMap()->GetMapType() == 4 ? 45 : 47;
+
 	width = 32;
 	height = 48;
 

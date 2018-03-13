@@ -20,6 +20,7 @@
 #include "HammerBro.h"
 #include "Lakito.h"
 #include "Spikey.h"
+#include "Beetle.h"
 #include "Vine.h"
 #include "Fire.h"
 #include "FireBall.h"
@@ -191,6 +192,7 @@ private:
 	void AddHammer(int x, int y, bool moveDirection);
 	void AddLakito(int x, int y, int maxX);
 	void AddSpikey(int x, int y);
+	void AddBeetle(int x, int y, bool moveDirection);
 
 	void AddVine(int x, int y, int id, int minionState);
 
