@@ -1,6 +1,6 @@
 #include "Squid.h"
 #include "Windows.h"
-#include "Game.h"
+//#include "Game.h"
 
 Squid::Squid(int xMinion, int yMinion)
 {
@@ -52,7 +52,7 @@ void Squid::Update()
 
 			xMinion += moveDirection ? 2 : -2;
 
-			if (yMinion > Game::gameHeight - 12 * 32 - 4)
+			if (yMinion > Window::gameHeight - 12 * 32 - 4)
 				yMinion -= 2;
 
 			moveXDistance -= 2;

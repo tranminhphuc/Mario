@@ -59,7 +59,7 @@ void Cheep::Update(unsigned int time)
 			{
 				if (jumpDistance > 0)
 				{
-					if (yMinion > Game::gameHeight - 12 * 32 + 8)
+					if (yMinion > Window::gameHeight - 12 * 32 + 8)
 					{
 						yMinion -= 0.25f;
 					}
@@ -190,7 +190,7 @@ void Cheep::Update(unsigned int time)
 				jumpDistance -= 8;
 			}
 
-			if (yMinion > Game::gameHeight)
+			if (yMinion > Window::gameHeight)
 				minionState = -1;
 		}
 	}

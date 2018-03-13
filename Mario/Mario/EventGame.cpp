@@ -58,7 +58,7 @@ void Event::Normal()
 					NewLevel();
 					//Window::GetMap()->GetPlayer()->StopMove();
 					//......
-					Game::keySpace = false;
+					Window::keySpace = false;
 				}
 			}
 			else

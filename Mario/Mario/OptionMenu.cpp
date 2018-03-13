@@ -54,9 +54,9 @@ void OptionMenu::Draw(sf::RenderWindow & window)
 	for (int i = 0; i < menuOption.size(); i++)
 	{
 		if(i == activeMenuOption)
-			Game::GetText()->Draw(window, menuOption[i]->GetText(), menuOption[i]->GetX(), menuOption[i]->GetY(), 255, 255, 255);
+			Window::GetText()->Draw(window, menuOption[i]->GetText(), menuOption[i]->GetX(), menuOption[i]->GetY(), 255, 255, 255);
 		else
-			Game::GetText()->Draw(window, menuOption[i]->GetText(), menuOption[i]->GetX(), menuOption[i]->GetY(), 90, 90, 90);
+			Window::GetText()->Draw(window, menuOption[i]->GetText(), menuOption[i]->GetX(), menuOption[i]->GetY(), 90, 90, 90);
 	}
 
 	volume.setFillColor(sf::Color(4, 4, 4, 255));
@@ -67,11 +67,10 @@ void OptionMenu::Draw(sf::RenderWindow & window)
 	else
 		volumeChange.setFillColor(sf::Color(160, 160, 160, 255));
 
-	Game::GetText()->Draw(window, Game::GetKeyString(Game::keyA), 185, 89, activeMenuOption == 1 ? 255 : 90, activeMenuOption == 1 ? 255 : 90, activeMenuOption == 1 ? 255 : 90);
-	Game::GetText()->Draw(window, Game::GetKeyString(Game::keyS), 185, 113, activeMenuOption == 2 ? 255 : 90, activeMenuOption == 2 ? 255 : 90, activeMenuOption == 2 ? 255 : 90);
-	Game::GetText()->Draw(window, Game::GetKeyString(Game::keyD), 185, 137, activeMenuOption == 3 ? 255 : 90, activeMenuOption == 3 ? 255 : 90, activeMenuOption == 3 ? 255 : 90);
-	Game::GetText()->Draw(window, Game::GetKeyString(Game::keySpace), 185, 161, activeMenuOption == 4 ? 255 : 90, activeMenuOption == 4 ? 255 : 90, activeMenuOption == 4 ? 255 : 90);
-	Game::GetText()->Draw(window, Game::GetKeyString(Game::keyShift), 185, 185, activeMenuOption == 5 ? 255 : 90, activeMenuOption == 5 ? 255 : 90, activeMenuOption == 5 ? 255 : 90);
+	Window::GetText()->Draw(window, Window::GetKeyString(Window::keyA), 185, 89, activeMenuOption == 1 ? 255 : 90, activeMenuOption == 1 ? 255 : 90, activeMenuOption == 1 ? 255 : 90);
+	Window::GetText()->Draw(window, Window::GetKeyString(Window::keyS), 185, 113, activeMenuOption == 2 ? 255 : 90, activeMenuOption == 2 ? 255 : 90, activeMenuOption == 2 ? 255 : 90);
+	Window::GetText()->Draw(window, Window::GetKeyString(Window::keyD), 185, 137, activeMenuOption == 3 ? 255 : 90, activeMenuOption == 3 ? 255 : 90, activeMenuOption == 3 ? 255 : 90);
+	Window::GetText()->Draw(window, Window::GetKeyString(Window::keySpace), 185, 161, activeMenuOption == 4 ? 255 : 90, activeMenuOption == 4 ? 255 : 90, activeMenuOption == 4 ? 255 : 90);
 
 	if (setKey)
 	{
@@ -82,8 +81,8 @@ void OptionMenu::Draw(sf::RenderWindow & window)
 		setKeyRect.setSize(sf::Vector2f(setKeyRect.getSize().x - 1, setKeyRect.getSize().y - 1));
 		setKeyRect.move(2, 2);
 
-		Game::GetText()->Draw(window, "PRESS KEY FOR " + menuOption[activeMenuOption]->GetText(), 92, setKeyRect.getPosition().y, 255, 255, 255);
-		Game::GetText()->Draw(window, "PRESS ESC TO CALCEL", 92, setKeyRect.getPosition().y + 40, 255, 255, 255);
+		Window::GetText()->Draw(window, "PRESS KEY FOR " + menuOption[activeMenuOption]->GetText(), 92, setKeyRect.getPosition().y, 255, 255, 255);
+		Window::GetText()->Draw(window, "PRESS ESC TO CALCEL", 92, setKeyRect.getPosition().y + 40, 255, 255, 255);
 	}
 }
 
@@ -98,7 +97,7 @@ void OptionMenu::Enter()
 		break;
 	case 6:
 		Window::GetMap()->ResetGameData();
-		Game::GetMenuManager()->SetView(Game::GetMenuManager()->MenuGame);
+		Window::GetMenuManager()->SetView(Window::GetMenuManager()->MenuGame);
 		break;
 	default:
 		break;
@@ -116,11 +115,11 @@ void OptionMenu::Escape()
 		if (escapeToMainMenu)
 		{
 			Window::GetMap()->ResetGameData();
-			Game::GetMenuManager()->SetView(Game::GetMenuManager()->MenuGame);
+			Window::GetMenuManager()->SetView(Window::GetMenuManager()->MenuGame);
 		}
 		else
 		{
-			Game::GetMenuManager()->SetView(Game::GetMenuManager()->Pause);
+			Window::GetMenuManager()->SetView(Window::GetMenuManager()->Pause);
 		}
 	}
 }
@@ -132,39 +131,28 @@ void OptionMenu::SetKey(int keyID)
 		switch (activeMenuOption)
 		{
 		case 1:
-			Game::keyA = keyID;
-			if (Game::keyD == keyID) Game::keyD = 0;
-			if (Game::keyS == keyID) Game::keyS = 0;
-			if (Game::keySpace == keyID) Game::keySpace = 0;
-			if (Game::keyShift == keyID) Game::keyShift = 0;
+			Window::keyA = keyID;
+			if (Window::keyD == keyID) Window::keyD = 0;
+			if (Window::keyS == keyID) Window::keyS = 0;
+			if (Window::keySpace == keyID) Window::keySpace = 0;
 			break;
 		case 2:
-			Game::keyD = keyID;
-			if (Game::keyA == keyID) Game::keyA = 0;
-			if (Game::keyS == keyID) Game::keyS = 0;
-			if (Game::keySpace == keyID) Game::keySpace = 0;
-			if (Game::keyShift == keyID) Game::keyShift = 0;
+			Window::keyD = keyID;
+			if (Window::keyA == keyID) Window::keyA = 0;
+			if (Window::keyS == keyID) Window::keyS = 0;
+			if (Window::keySpace == keyID) Window::keySpace = 0;
 			break;
 		case 3:
-			Game::keyS = keyID;
-			if (Game::keyA == keyID) Game::keyA = 0;
-			if (Game::keyD == keyID) Game::keyD = 0;
-			if (Game::keySpace == keyID) Game::keySpace = 0;
-			if (Game::keyShift == keyID) Game::keyShift = 0;
+			Window::keyS = keyID;
+			if (Window::keyA == keyID) Window::keyA = 0;
+			if (Window::keyD == keyID) Window::keyD = 0;
+			if (Window::keySpace == keyID) Window::keySpace = 0;
 			break;
 		case 4:
-			Game::keySpace = keyID;
-			if (Game::keyA == keyID) Game::keyA = 0;
-			if (Game::keyD == keyID) Game::keyD = 0;
-			if (Game::keyS == keyID) Game::keyS = 0;
-			if (Game::keyShift == keyID) Game::keyShift = 0;
-			break;
-		case 5:
-			Game::keyShift = keyID;
-			if (Game::keyA == keyID) Game::keyA = 0;
-			if (Game::keyD == keyID) Game::keyD = 0;
-			if (Game::keyS == keyID) Game::keyS = 0;
-			if (Game::keySpace == keyID) Game::keySpace = 0;
+			Window::keySpace = keyID;
+			if (Window::keyA == keyID) Window::keyA = 0;
+			if (Window::keyD == keyID) Window::keyD = 0;
+			if (Window::keyS == keyID) Window::keyS = 0;
 			break;
 		}
 		resetKey = true;

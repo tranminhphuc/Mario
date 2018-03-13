@@ -18,18 +18,19 @@ void LoadingMenu::Update()
 	{
 		if (loading)
 		{
-			Game::GetMenuManager()->SetView(Game::GetMenuManager()->GamePlay);
+			Window::GetMenuManager()->SetView(Window::GetMenuManager()->GamePlay);
 		}
 		else
 		{
 			Window::GetMap()->ResetGameData();
-			Game::GetMenuManager()->SetView(Game::GetMenuManager()->MenuGame);
+			Window::GetMenuManager()->SetView(Window::GetMenuManager()->MenuGame);
 		}
 	}
 	else
 	{
 
 	}
+
 	Window::GetMap()->UpdateBlock();
 }
 
@@ -39,15 +40,14 @@ void LoadingMenu::Draw(sf::RenderWindow & window)
 	if (loading)
 	{
 		Window::GetMap()->DrawGameLayout(window);
-		Game::GetText()->Draw(window, "WORLD", 320, 144);
-		Game::GetText()->Draw(window, Window::GetMap()->GetLevelName(), 416, 144);
-		Game::GetText()->Draw(window, "y", 384, 208);
-		Game::GetText()->DrawCenterX(window, "REMEMBER THAT YOU CAN RUN WITH " + Game::GetKeyString(Game::keyShift), 400);
+		Window::GetText()->Draw(window, "WORLD", 320, 144);
+		Window::GetText()->Draw(window, Window::GetMap()->GetLevelName(), 416, 144);
+		Window::GetText()->Draw(window, "y", 384, 208);
 	}
 	else
 	{
 		Window::GetMap()->DrawGameLayout(window);
-		Game::GetText()->DrawCenterX(window, "GAME OVER", 240);
+		Window::GetText()->DrawCenterX(window, "GAME OVER", 240);
 	}
 }
 

@@ -166,7 +166,7 @@ void Koopa::MinionPhysics()
 				MoveY(2);
 				jumpState = NhayXuong;
 
-				if (yMinion >= Game::gameHeight)
+				if (yMinion >= Window::gameHeight)
 					minionState = -1;
 			}
 			else

@@ -1,7 +1,7 @@
 #include "Mushroom.h"
 #include "Windows.h"
 
-Mushroom::Mushroom(int xMinion, int yMinion, bool powerUp, float x, float y)
+Mushroom::Mushroom(int xMinion, int yMinion, bool powerUp, int x, int y)
 {
 	this->xMinion = (float)xMinion;
 	this->yMinion = (float)yMinion;

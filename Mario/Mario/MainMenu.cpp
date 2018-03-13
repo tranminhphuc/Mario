@@ -37,18 +37,18 @@ void MainMenu::Draw(sf::RenderWindow& window)
 		//selectWorldLabel.setSize(sf::Vector2f(selectWorldLabel.getSize().x - 1, selectWorldLabel.getSize().y - 1));
 		//selectWorldLabel.move(2, 2);*/
 
-		Game::GetText()->Draw(window, "SELECT WORLD", selectWorldLabel.getPosition().x + selectWorldLabel.getSize().x / 2 - Game::GetText()->GetTextWidth("SELECT WORLD)") / 2, selectWorldLabel.getPosition().y, 255, 255, 255);
+		Window::GetText()->Draw(window, "SELECT WORLD", selectWorldLabel.getPosition().x + selectWorldLabel.getSize().x / 2 - Window::GetText()->GetTextWidth("SELECT WORLD)") / 2, selectWorldLabel.getPosition().y, 255, 255, 255);
 
 		for (int i = 0, extraX = 0; i < 8; i++)
 		{
 			if (i == changeLevelFrom1To8)
 			{
-				Game::GetText()->Draw(window, std::to_string(i + 1) + "-" + std::to_string(changeLevelFrom1To4 + 1), selectWorldLabel.getPosition().x + 16 * (i + 1) + 16 * i + extraX, selectWorldLabel.getPosition().y + 16 + 24, 255, 255, 255);
+				Window::GetText()->Draw(window, std::to_string(i + 1) + "-" + std::to_string(changeLevelFrom1To4 + 1), selectWorldLabel.getPosition().x + 16 * (i + 1) + 16 * i + extraX, selectWorldLabel.getPosition().y + 16 + 24, 255, 255, 255);
 				extraX = 32;
 			}
 			else
 			{
-				Game::GetText()->Draw(window, std::to_string(i + 1), selectWorldLabel.getPosition().x + 16 * (i + 1) + 16 * i + extraX, selectWorldLabel.getPosition().y + 16 + 24, 90, 90, 90);
+				Window::GetText()->Draw(window, std::to_string(i + 1), selectWorldLabel.getPosition().x + 16 * (i + 1) + 16 * i + extraX, selectWorldLabel.getPosition().y + 16 + 24, 90, 90, 90);
 			}
 		}
 	}
@@ -114,18 +114,18 @@ void MainMenu::Enter()
 		}
 		else
 		{
-			Game::GetMenuManager()->GetLoadingMenu()->UpdateTime();
+			Window::GetMenuManager()->GetLoadingMenu()->UpdateTime();
 			Window::GetMap()->ResetGameData();
 			Window::GetMap()->SetLevel(changeLevelFrom1To8 * 4 + changeLevelFrom1To4);
-			Game::GetMenuManager()->SetView(Game::GetMenuManager()->GameLoading);
-			Game::GetMenuManager()->GetLoadingMenu()->loading = true;
+			Window::GetMenuManager()->SetView(Window::GetMenuManager()->GameLoading);
+			Window::GetMenuManager()->GetLoadingMenu()->loading = true;
 			selectWorld = false;
 		}
 		break;
 	case 1:
-		Game::GetMenuManager()->GetOptionMenu()->SetEscapeToMainMenu(true);
-		Game::GetMenuManager()->ResetActiveOption(Game::GetMenuManager()->GameOption);
-		Game::GetMenuManager()->SetView(Game::GetMenuManager()->GameOption);
+		Window::GetMenuManager()->GetOptionMenu()->SetEscapeToMainMenu(true);
+		Window::GetMenuManager()->ResetActiveOption(Window::GetMenuManager()->GameOption);
+		Window::GetMenuManager()->SetView(Window::GetMenuManager()->GameOption);
 		//......
 		break;
 	case 2:

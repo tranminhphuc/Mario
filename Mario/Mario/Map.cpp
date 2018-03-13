@@ -1,4 +1,5 @@
 #include "Map.h"
+#include "Windows.h"
 #include "Game.h"
 
 Map::Map()
@@ -10,7 +11,7 @@ Map::Map()
 	mapType = BanNgay;
 	level = Level_1_1;
 
-	Game::GetText()->SetFont("Source/images/font.bmp");
+	Window::GetText()->SetFont("Source/images/font.bmp");
 
 	LoadSource();
 	LoadGameData();
@@ -131,20 +132,20 @@ void Map::DrawMinion(sf::RenderWindow& window)
 
 void Map::DrawGameLayout(sf::RenderWindow & window)
 {
-	Game::GetText()->Draw(window, "MARIO", 54, 16);
+	Window::GetText()->Draw(window, "MARIO", 54, 16);
 
 	if (player->GetScore() < 100)
-		Game::GetText()->Draw(window, "0000" + to_string(player->GetScore()), 54, 32);
+		Window::GetText()->Draw(window, "0000" + to_string(player->GetScore()), 54, 32);
 	else if(player->GetScore() < 1000)
-		Game::GetText()->Draw(window, "000" + to_string(player->GetScore()), 54, 32);
+		Window::GetText()->Draw(window, "000" + to_string(player->GetScore()), 54, 32);
 	else if (player->GetScore() < 10000)
-		Game::GetText()->Draw(window, "00" + to_string(player->GetScore()), 54, 32);
+		Window::GetText()->Draw(window, "00" + to_string(player->GetScore()), 54, 32);
 	else if (player->GetScore() < 100000)
-		Game::GetText()->Draw(window, "0" + to_string(player->GetScore()), 54, 32);
+		Window::GetText()->Draw(window, "0" + to_string(player->GetScore()), 54, 32);
 	else
-		Game::GetText()->Draw(window, to_string(player->GetScore()), 54, 32);
+		Window::GetText()->Draw(window, to_string(player->GetScore()), 54, 32);
 
-	Game::GetText()->Draw(window, "WORLD", 462, 16);
+	Window::GetText()->Draw(window, "WORLD", 462, 16);
 }
 
 void Map::SetBackGroundColor(sf::RenderWindow & window)
@@ -211,7 +212,7 @@ int Map::GetHeight()
 
 bool Map::CheckObject(int x, int y)
 {
-	if (x < 0 || x >= Game::gameWidth || y < 0 || y >= Game::gameHeight / 32)
+	if (x < 0 || x >= Window::gameWidth || y < 0 || y >= Window::gameHeight / 32)
 	{
 		return false;
 	}
@@ -293,13 +294,13 @@ void Map::Destroy(int x, int y, int id, int direction)
 				if (tile[x][y]->GetPowerUp())
 				{
 					/*if (player->GetLevel() == 0)
-						minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Game::gameHeight - 32 * y, true, x, y));
+						minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Window::gameHeight - 32 * y, true, x, y));
 					else
-						minion[GetListID(32 * x)].push_back(new Flower(32 * x, Game::gameHeight - 32 * y));*/
+						minion[GetListID(32 * x)].push_back(new Flower(32 * x, Window::gameHeight - 32 * y));*/
 				}
 				else
 				{
-					//minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Game::gameHeight - 32 * y, false, x, y));
+					//minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Window::gameHeight - 32 * y, false, x, y));
 				}
 			}
 			else
@@ -3496,19 +3497,19 @@ void Map::LoadMinionLevel_1_3()
 {
 	ClearMinion();
 
-	AddGoombas(44 * 32, Game::gameHeight - 32 - 11 * 32, true);
-	AddGoombas(46 * 32, Game::gameHeight - 32 - 11 * 32, true);
-	AddGoombas(80 * 32, Game::gameHeight - 32 - 9 * 32, true);
+	AddGoombas(44 * 32, Window::gameHeight - 32 - 11 * 32, true);
+	AddGoombas(46 * 32, Window::gameHeight - 32 - 11 * 32, true);
+	AddGoombas(80 * 32, Window::gameHeight - 32 - 9 * 32, true);
 
 	mapType = NuiLua;
 
-	AddKoppa(30 * 32 - 8, Game::gameHeight - 32 - 10 * 32, 1, true);
-	AddKoppa(110 * 32 - 8, Game::gameHeight - 32 - 8 * 32, 1, true);
+	AddKoppa(30 * 32 - 8, Window::gameHeight - 32 - 10 * 32, 1, true);
+	AddKoppa(110 * 32 - 8, Window::gameHeight - 32 - 8 * 32, 1, true);
 
-	AddKoppa(74 * 32 - 8, Game::gameHeight - 32 - 10 * 32, 3, false);
-	AddKoppa(114 * 32 - 8, Game::gameHeight - 32 - 9 * 32, 3, false);
+	AddKoppa(74 * 32 - 8, Window::gameHeight - 32 - 10 * 32, 3, false);
+	AddKoppa(114 * 32 - 8, Window::gameHeight - 32 - 9 * 32, 3, false);
 
-	AddKoppa(133 * 32 - 8, Game::gameHeight - 32 - 2 * 32, 1, true);
+	AddKoppa(133 * 32 - 8, Window::gameHeight - 32 - 2 * 32, 1, true);
 
 	mapType = BanNgay;
 }
@@ -3517,63 +3518,63 @@ void Map::LoadMinionLevel_1_4()
 {
 	ClearMinion();
 
-	//AddBowser(135 * 32, Game::gameHeight - 6 * 32);
-	AddToad(153 * 32, Game::gameHeight - 4 * 32, false);
+	//AddBowser(135 * 32, Window::gameHeight - 6 * 32);
+	AddToad(153 * 32, Window::gameHeight - 4 * 32, false);
 }
 
 void Map::LoadMinionLevel_2_1()
 {
 	ClearMinion();
 
-	AddGoombas(24 * 32, Game::gameHeight - 8 * 32, true);
-	AddGoombas(42 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(43 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(59 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(60 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(68 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(69 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(71 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(87 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(88 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(90 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(102 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(114 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(120 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(162 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(163 * 32 + 16, Game::gameHeight - 3 * 32, true);
+	AddGoombas(24 * 32, Window::gameHeight - 8 * 32, true);
+	AddGoombas(42 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(43 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(59 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(60 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(68 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(69 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(71 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(87 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(88 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(90 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(102 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(114 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(120 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(162 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(163 * 32 + 16, Window::gameHeight - 3 * 32, true);
 
-	AddKoppa(32 * 32 - 2, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(33 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(55 * 32, Game::gameHeight - 7 * 32, 1, true);
-	AddKoppa(66 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(137 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(151 * 32, Game::gameHeight - 5 * 32, 0, true);
-	AddKoppa(169 * 32, Game::gameHeight - 3 * 32, 0, true);
-	AddKoppa(171 * 32, Game::gameHeight - 3 * 32, 0, true);
-	AddKoppa(185 * 32, Game::gameHeight - 3 * 32, 1, true);
+	AddKoppa(32 * 32 - 2, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(33 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(55 * 32, Window::gameHeight - 7 * 32, 1, true);
+	AddKoppa(66 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(137 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(151 * 32, Window::gameHeight - 5 * 32, 0, true);
+	AddKoppa(169 * 32, Window::gameHeight - 3 * 32, 0, true);
+	AddKoppa(171 * 32, Window::gameHeight - 3 * 32, 0, true);
+	AddKoppa(185 * 32, Window::gameHeight - 3 * 32, 1, true);
 }
 
 void Map::LoadMinionLevel_2_2()
 {
 	ClearMinion();
 
-	AddCheep(75 * 32 + 28, Game::gameHeight - 5 * 32, 0, 1);
-	AddCheep(78 * 32 + 28, Game::gameHeight - 8 * 32, 0, 1);
-	AddCheep(81 * 32, +28, Game::gameHeight - 3 * 32 - 28, 0, 1);
-	AddCheep(94 * 32 + 14, Game::gameHeight - 9 * 32, 0, 1);
-	AddCheep(101 * 32 + 28, Game::gameHeight - 5 * 32, 0, 1);
-	AddCheep(97 * 32 + 8, Game::gameHeight - 12 * 32, 1, 1);
-	AddCheep(117 * 32 + 8, Game::gameHeight - 11 * 32, 0, 1);
-	AddCheep(127 * 32 + 24, Game::gameHeight - 5 * 32, 1, 1);
-	AddCheep(131 * 32 + 8, Game::gameHeight - 4 * 32 - 4, 0, 1);
-	AddCheep(136 * 32 + 16, Game::gameHeight - 7 * 32, 0, 1);
-	AddCheep(145 * 32 + 8, Game::gameHeight - 5 * 32, 0, 1);
-	AddCheep(149 * 32 + 28, Game::gameHeight - 9 * 32 - 4, 1, 1);
-	AddCheep(164 * 32, Game::gameHeight - 12 * 32, 0, 1);
-	AddCheep(167 * 32, Game::gameHeight - 4 * 32, 1, 1);
-	AddCheep(175 * 32, Game::gameHeight - 7 * 32 - 4, 0, 1);
-	AddCheep(183 * 32, Game::gameHeight - 11 * 32, 1, 1);
-	AddCheep(186 * 32 + 16, Game::gameHeight - 8 * 32, 1, 1);
+	AddCheep(75 * 32 + 28, Window::gameHeight - 5 * 32, 0, 1);
+	AddCheep(78 * 32 + 28, Window::gameHeight - 8 * 32, 0, 1);
+	AddCheep(81 * 32, +28, Window::gameHeight - 3 * 32 - 28, 0, 1);
+	AddCheep(94 * 32 + 14, Window::gameHeight - 9 * 32, 0, 1);
+	AddCheep(101 * 32 + 28, Window::gameHeight - 5 * 32, 0, 1);
+	AddCheep(97 * 32 + 8, Window::gameHeight - 12 * 32, 1, 1);
+	AddCheep(117 * 32 + 8, Window::gameHeight - 11 * 32, 0, 1);
+	AddCheep(127 * 32 + 24, Window::gameHeight - 5 * 32, 1, 1);
+	AddCheep(131 * 32 + 8, Window::gameHeight - 4 * 32 - 4, 0, 1);
+	AddCheep(136 * 32 + 16, Window::gameHeight - 7 * 32, 0, 1);
+	AddCheep(145 * 32 + 8, Window::gameHeight - 5 * 32, 0, 1);
+	AddCheep(149 * 32 + 28, Window::gameHeight - 9 * 32 - 4, 1, 1);
+	AddCheep(164 * 32, Window::gameHeight - 12 * 32, 0, 1);
+	AddCheep(167 * 32, Window::gameHeight - 4 * 32, 1, 1);
+	AddCheep(175 * 32, Window::gameHeight - 7 * 32 - 4, 0, 1);
+	AddCheep(183 * 32, Window::gameHeight - 11 * 32, 1, 1);
+	AddCheep(186 * 32 + 16, Window::gameHeight - 8 * 32, 1, 1);
 }
 
 void Map::LoadMinionLevel_2_3()
@@ -3585,106 +3586,106 @@ void Map::LoadMinionLevel_2_4()
 {
 	ClearMinion();
 
-	AddToad(153 * 32, Game::gameHeight - 4 * 32, false);
+	AddToad(153 * 32, Window::gameHeight - 4 * 32, false);
 }
 
 void Map::LoadMinionLevel_3_1()
 {
 	ClearMinion();
 
-	AddGoombas(37 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(53 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(54 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(56 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(82 * 32, Game::gameHeight - 7 * 32, true);
-	AddGoombas(83 * 32 + 16, Game::gameHeight - 7 * 32, true);
-	AddGoombas(85 * 32, Game::gameHeight - 7 * 32, true);
-	AddGoombas(94 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(95 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(139 * 32 - 4, Game::gameHeight - 7 * 32, true);
-	AddGoombas(140 * 32, Game::gameHeight - 8 * 32, true);
-	AddGoombas(154 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(155 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(157 * 32, Game::gameHeight - 3 * 32, true);
+	AddGoombas(37 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(53 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(54 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(56 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(82 * 32, Window::gameHeight - 7 * 32, true);
+	AddGoombas(83 * 32 + 16, Window::gameHeight - 7 * 32, true);
+	AddGoombas(85 * 32, Window::gameHeight - 7 * 32, true);
+	AddGoombas(94 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(95 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(139 * 32 - 4, Window::gameHeight - 7 * 32, true);
+	AddGoombas(140 * 32, Window::gameHeight - 8 * 32, true);
+	AddGoombas(154 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(155 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(157 * 32, Window::gameHeight - 3 * 32, true);
 
-	AddKoppa(25 * 32, Game::gameHeight - 3 * 32, 0, true);
-	AddKoppa(28 * 32, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(65 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(101 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(149 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(152 * 32, Game::gameHeight - 11 * 32, 1, true);
-	AddKoppa(165 * 32, Game::gameHeight - 3 * 32, 0, true);
-	AddKoppa(168 * 32, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(170 * 32, Game::gameHeight - 7 * 32, 1, true);
-	AddKoppa(171 * 32, Game::gameHeight - 3 * 32, 0, true);
-	AddKoppa(188 * 32, Game::gameHeight - 9 * 32, 1, true);
-	AddKoppa(191 * 32, Game::gameHeight - 11 * 32, 1, true);
+	AddKoppa(25 * 32, Window::gameHeight - 3 * 32, 0, true);
+	AddKoppa(28 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(65 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(101 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(149 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(152 * 32, Window::gameHeight - 11 * 32, 1, true);
+	AddKoppa(165 * 32, Window::gameHeight - 3 * 32, 0, true);
+	AddKoppa(168 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(170 * 32, Window::gameHeight - 7 * 32, 1, true);
+	AddKoppa(171 * 32, Window::gameHeight - 3 * 32, 0, true);
+	AddKoppa(188 * 32, Window::gameHeight - 9 * 32, 1, true);
+	AddKoppa(191 * 32, Window::gameHeight - 11 * 32, 1, true);
 
-	AddHammerBro(113 * 32, Game::gameHeight - 8 * 32);
-	AddHammerBro(116 * 32, Game::gameHeight - 4 * 32);
+	AddHammerBro(113 * 32, Window::gameHeight - 8 * 32);
+	AddHammerBro(116 * 32, Window::gameHeight - 4 * 32);
 }
 
 void Map::LoadMinionLevel_3_2()
 {
 	ClearMinion();
 
-	AddGoombas(24 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(25 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(27 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(71 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(72 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(74 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(119 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(120 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(122 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(179 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(180 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(182 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(188 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(189 * 32 + 16, Game::gameHeight  - 3 * 32, true);
-	AddGoombas(191 * 32, Game::gameHeight - 3 * 32, true);
+	AddGoombas(24 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(25 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(27 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(71 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(72 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(74 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(119 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(120 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(122 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(179 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(180 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(182 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(188 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(189 * 32 + 16, Window::gameHeight  - 3 * 32, true);
+	AddGoombas(191 * 32, Window::gameHeight - 3 * 32, true);
 
-	AddKoppa(17 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(33 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(34 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(36 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(43 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(44 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(66 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(78 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(98 * 32, Game::gameHeight - 3 * 32, 0, true);
-	AddKoppa(111 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(134 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(140 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(141 * 32 + 16, Game::gameHeight - 2 * 32, 1, true);
-	AddKoppa(143 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(150 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(151 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(162 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(163 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(165 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(175 * 32, Game::gameHeight - 3 * 32, 1, true);
+	AddKoppa(17 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(33 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(34 * 32 + 16, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(36 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(43 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(44 * 32 + 16, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(66 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(78 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(98 * 32, Window::gameHeight - 3 * 32, 0, true);
+	AddKoppa(111 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(134 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(140 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(141 * 32 + 16, Window::gameHeight - 2 * 32, 1, true);
+	AddKoppa(143 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(150 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(151 * 32 + 16, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(162 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(163 * 32 + 16, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(165 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(175 * 32, Window::gameHeight - 3 * 32, 1, true);
 }
 
 void Map::LoadMinionLevel_3_3()
 {
 	ClearMinion();
 
-	AddGoombas(26 * 32, Game::gameHeight - 9 * 32, true);
+	AddGoombas(26 * 32, Window::gameHeight - 9 * 32, true);
 
-	AddKoppa(52 * 32, Game::gameHeight - 9 * 32, 1, true);
-	AddKoppa(54 * 32, Game::gameHeight - 5 * 32, 1, true);
-	AddKoppa(73 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(114 * 32 - 8, Game::gameHeight - 10 * 32, 3, false);
-	AddKoppa(124 * 32, Game::gameHeight - 6 * 32, 1, true);
-	AddKoppa(126 * 32, Game::gameHeight - 6 * 32, 1, true);
+	AddKoppa(52 * 32, Window::gameHeight - 9 * 32, 1, true);
+	AddKoppa(54 * 32, Window::gameHeight - 5 * 32, 1, true);
+	AddKoppa(73 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(114 * 32 - 8, Window::gameHeight - 10 * 32, 3, false);
+	AddKoppa(124 * 32, Window::gameHeight - 6 * 32, 1, true);
+	AddKoppa(126 * 32, Window::gameHeight - 6 * 32, 1, true);
 }
 
 void Map::LoadMinionLevel_3_4()
 {
 	ClearMinion();
 
-	AddToad(153 * 32, Game::gameHeight - 4 * 32, false);
+	AddToad(153 * 32, Window::gameHeight - 4 * 32, false);
 }
 
 void Map::LoadMinionLevel_4_1()
@@ -3696,128 +3697,128 @@ void Map::LoadMinionLevel_4_2()
 {
 	ClearMinion();
 
-	AddGoombas(43 * 32, Game::gameHeight - 7 * 32, true);
-	AddGoombas(44 * 32 + 16, Game::gameHeight - 7 * 32, true);
-	AddGoombas(46 * 32, Game::gameHeight - 7 * 32, true);
+	AddGoombas(43 * 32, Window::gameHeight - 7 * 32, true);
+	AddGoombas(44 * 32 + 16, Window::gameHeight - 7 * 32, true);
+	AddGoombas(46 * 32, Window::gameHeight - 7 * 32, true);
 
-	AddKoppa(77 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(100 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(101 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(137 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(168 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(169 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
+	AddKoppa(77 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(100 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(101 * 32 + 16, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(137 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(168 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(169 * 32 + 16, Window::gameHeight - 3 * 32, 1, true);
 
-	AddBeetle(83 * 32, Game::gameHeight - 3 * 32, true);
-	AddBeetle(88 * 32, Game::gameHeight - 3 * 32, true);
-	AddBeetle(154 * 32, Game::gameHeight - 6 * 32, true);
-	AddBeetle(179 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(83 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(88 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(154 * 32, Window::gameHeight - 6 * 32, true);
+	AddBeetle(179 * 32, Window::gameHeight - 3 * 32, true);
 }
 
 void Map::LoadMinionLevel_4_3()
 {
 	ClearMinion();
 
-	AddKoppa(28 * 32 - 2, Game::gameHeight - 7 * 32, 1, true);
-	AddKoppa(29 * 32, Game::gameHeight - 7 * 32, 1, true);
-	AddKoppa(39 * 32, Game::gameHeight - 4 * 32, 1, true);
-	AddKoppa(68 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(78 * 32, Game::gameHeight - 11 * 32, 1, true);
+	AddKoppa(28 * 32 - 2, Window::gameHeight - 7 * 32, 1, true);
+	AddKoppa(29 * 32, Window::gameHeight - 7 * 32, 1, true);
+	AddKoppa(39 * 32, Window::gameHeight - 4 * 32, 1, true);
+	AddKoppa(68 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(78 * 32, Window::gameHeight - 11 * 32, 1, true);
 
-	AddKoppa(35 * 32, Game::gameHeight - 12 * 32, 3, false);
+	AddKoppa(35 * 32, Window::gameHeight - 12 * 32, 3, false);
 }
 
 void Map::LoadMinionLevel_4_4()
 {
 	ClearMinion();
 
-	AddToad(186 * 32, Game::gameHeight - 4 * 32, false);
+	AddToad(186 * 32, Window::gameHeight - 4 * 32, false);
 }
 
 void Map::LoadMinionLevel_5_1()
 {
 	ClearMinion();
 
-	AddGoombas(19 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(20 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(22 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(30 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(31 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(33 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(65 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(66 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(68 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(76 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(77 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(103 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(104 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(106 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(121 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(122 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(124 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(135 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(136 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(138 * 32, Game::gameHeight - 3 * 32, true);
+	AddGoombas(19 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(20 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(22 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(30 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(31 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(33 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(65 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(66 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(68 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(76 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(77 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(103 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(104 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(106 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(121 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(122 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(124 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(135 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(136 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(138 * 32, Window::gameHeight - 3 * 32, true);
 
-	AddKoppa(16 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(41 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(42 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(61 * 32, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(87 * 32, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(127 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(144 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(145 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(178 * 32, Game::gameHeight - 3 * 32, 0, true);
-	AddKoppa(182 * 32, Game::gameHeight - 7 * 32, 1, true);
+	AddKoppa(16 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(41 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(42 * 32 + 16, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(61 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(87 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(127 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(144 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(145 * 32 + 16, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(178 * 32, Window::gameHeight - 3 * 32, 0, true);
+	AddKoppa(182 * 32, Window::gameHeight - 7 * 32, 1, true);
 }
 
 void Map::LoadMinionLevel_5_2()
 {
 	ClearMinion();
 
-	AddGoombas(143 * 32, Game::gameHeight - 5 * 32, true);
-	AddGoombas(145 * 32, Game::gameHeight - 7 * 32, true);
-	AddGoombas(235 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(236 * 32 + 16, Game::gameHeight - 3 * 32, true);
+	AddGoombas(143 * 32, Window::gameHeight - 5 * 32, true);
+	AddGoombas(145 * 32, Window::gameHeight - 7 * 32, true);
+	AddGoombas(235 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(236 * 32 + 16, Window::gameHeight - 3 * 32, true);
 
-	AddKoppa(103 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(120 * 32, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(186 * 32, Game::gameHeight - 5 * 32, 0, true);
-	AddKoppa(243 * 32, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(246 * 32, Game::gameHeight - 3 * 32, 0, true);
-	AddKoppa(266 * 32, Game::gameHeight - 8 * 32, 0, true);
+	AddKoppa(103 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(120 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(186 * 32, Window::gameHeight - 5 * 32, 0, true);
+	AddKoppa(243 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(246 * 32, Window::gameHeight - 3 * 32, 0, true);
+	AddKoppa(266 * 32, Window::gameHeight - 8 * 32, 0, true);
 
-	AddBeetle(216 * 32, Game::gameHeight - 3 * 32, true);
-	AddBeetle(217 * 32 + 4, Game::gameHeight - 3 * 32, true);
-	AddBeetle(218 * 32 + 8, Game::gameHeight - 3 * 32, true);
+	AddBeetle(216 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(217 * 32 + 4, Window::gameHeight - 3 * 32, true);
+	AddBeetle(218 * 32 + 8, Window::gameHeight - 3 * 32, true);
 
-	AddHammerBro(126 * 32, Game::gameHeight - 7 * 32);
-	AddHammerBro(161 * 32, Game::gameHeight - 8 * 32);
-	AddHammerBro(200 * 32, Game::gameHeight - 8 * 32);
-	AddHammerBro(204 * 32, Game::gameHeight - 12 * 32);
+	AddHammerBro(126 * 32, Window::gameHeight - 7 * 32);
+	AddHammerBro(161 * 32, Window::gameHeight - 8 * 32);
+	AddHammerBro(200 * 32, Window::gameHeight - 8 * 32);
+	AddHammerBro(204 * 32, Window::gameHeight - 12 * 32);
 }
 
 void Map::LoadMinionLevel_5_3()
 {
 	ClearMinion();
 
-	AddGoombas(44 * 32, Game::gameHeight - 12 * 32, true);
-	AddGoombas(46 * 32, Game::gameHeight - 12 * 32, true);
-	AddGoombas(80 * 32, Game::gameHeight - 10 * 32, true);
+	AddGoombas(44 * 32, Window::gameHeight - 12 * 32, true);
+	AddGoombas(46 * 32, Window::gameHeight - 12 * 32, true);
+	AddGoombas(80 * 32, Window::gameHeight - 10 * 32, true);
 
-	AddKoppa(30 * 32 - 8, Game::gameHeight - 11 * 32, 1, true);
-	AddKoppa(110 * 32 - 8, Game::gameHeight - 9 * 32, 1, true);
+	AddKoppa(30 * 32 - 8, Window::gameHeight - 11 * 32, 1, true);
+	AddKoppa(110 * 32 - 8, Window::gameHeight - 9 * 32, 1, true);
 
-	AddKoppa(74 * 32 - 8, Game::gameHeight - 11 * 32, 3, false);
-	AddKoppa(114 * 32 - 8, Game::gameHeight - 10 * 32, 3, false);
+	AddKoppa(74 * 32 - 8, Window::gameHeight - 11 * 32, 3, false);
+	AddKoppa(114 * 32 - 8, Window::gameHeight - 10 * 32, 3, false);
 
-	AddKoppa(133 * 32 - 8, Game::gameHeight - 3 * 32, 1, true);
+	AddKoppa(133 * 32 - 8, Window::gameHeight - 3 * 32, 1, true);
 }
 
 void Map::LoadMinionLevel_5_4()
 {
 	ClearMinion();
 
-	AddToad(153 * 32, Game::gameHeight - 4 * 32, false);
+	AddToad(153 * 32, Window::gameHeight - 4 * 32, false);
 }
 
 void Map::LoadMinionLevel_6_1()
@@ -3829,22 +3830,22 @@ void Map::LoadMinionLevel_6_2()
 {
 	ClearMinion();
 
-	AddGoombas(152 * 32, Game::gameHeight - 11 * 32, true);
-	AddGoombas(254 * 32, Game::gameHeight - 3 * 32, true);
+	AddGoombas(152 * 32, Window::gameHeight - 11 * 32, true);
+	AddGoombas(254 * 32, Window::gameHeight - 3 * 32, true);
 
-	AddKoppa(111 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(128 * 32, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(291 * 32, Game::gameHeight - 12 * 32, 0, true);
+	AddKoppa(111 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(128 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(291 * 32, Window::gameHeight - 12 * 32, 0, true);
 
-	AddBeetle(139 * 32, Game::gameHeight - 3 * 32, true);
-	AddBeetle(177 * 32, Game::gameHeight - 3 * 32, true);
-	AddBeetle(205 * 32, Game::gameHeight - 11 * 32, true);
-	AddBeetle(248 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(139 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(177 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(205 * 32, Window::gameHeight - 11 * 32, true);
+	AddBeetle(248 * 32, Window::gameHeight - 3 * 32, true);
 
-	AddCheep(27 * 32 + 16, Game::gameHeight - 10 * 32, 0, 1);
-	AddCheep(38 * 32 + 28, Game::gameHeight - 5 * 32, 0, 1);
-	AddCheep(48 * 32 + 16, Game::gameHeight - 7 * 32, 1, 1);
-	AddCheep(53 * 32 + 16, Game::gameHeight - 12 * 32, 0, 1);
+	AddCheep(27 * 32 + 16, Window::gameHeight - 10 * 32, 0, 1);
+	AddCheep(38 * 32 + 28, Window::gameHeight - 5 * 32, 0, 1);
+	AddCheep(48 * 32 + 16, Window::gameHeight - 7 * 32, 1, 1);
+	AddCheep(53 * 32 + 16, Window::gameHeight - 12 * 32, 0, 1);
 }
 
 void Map::LoadMinionLevel_6_3()
@@ -3856,193 +3857,193 @@ void Map::LoadMinionLevel_6_4()
 {
 	ClearMinion();
 
-	AddToad(153 * 32, Game::gameHeight - 7 * 32, true);
+	AddToad(153 * 32, Window::gameHeight - 7 * 32, true);
 }
 
 void Map::LoadMinionLevel_7_1()
 {
 	ClearMinion();
 
-	AddKoppa(26 * 32, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(44 * 32, Game::gameHeight - 5 * 32, 0, true);
-	AddKoppa(53 * 32, Game::gameHeight - 3 * 32, 0, true);
-	AddKoppa(65 * 32, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(114 * 32, Game::gameHeight - 3 * 32, 1, true);
+	AddKoppa(26 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(44 * 32, Window::gameHeight - 5 * 32, 0, true);
+	AddKoppa(53 * 32, Window::gameHeight - 3 * 32, 0, true);
+	AddKoppa(65 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(114 * 32, Window::gameHeight - 3 * 32, 1, true);
 
-	AddBeetle(169 * 32, Game::gameHeight - 11 * 32, true);
+	AddBeetle(169 * 32, Window::gameHeight - 11 * 32, true);
 
-	AddHammerBro(85 * 32, Game::gameHeight - 8 * 32);
-	AddHammerBro(87 * 32, Game::gameHeight - 12 * 32);
-	AddHammerBro(137 * 32, Game::gameHeight - 8 * 32);
-	AddHammerBro(135 * 32, Game::gameHeight - 4 * 32);
+	AddHammerBro(85 * 32, Window::gameHeight - 8 * 32);
+	AddHammerBro(87 * 32, Window::gameHeight - 12 * 32);
+	AddHammerBro(137 * 32, Window::gameHeight - 8 * 32);
+	AddHammerBro(135 * 32, Window::gameHeight - 4 * 32);
 }
 
 void Map::LoadMinionLevel_7_2()
 {
 	ClearMinion();
 
-	AddCheep(75 * 32 + 28, Game::gameHeight - 5 * 32, 0, 1);
-	AddCheep(78 * 32 + 28, Game::gameHeight - 8 * 32, 0, 1);
-	AddCheep(81 * 32 + 28, Game::gameHeight - 3 * 32 - 28, 0, 1);
-	AddCheep(94 * 32 + 14, Game::gameHeight - 9 * 32, 0, 1);
-	AddCheep(101 * 32 + 28, Game::gameHeight - 5 * 32, 0, 1);
-	AddCheep(97 * 32 + 8, Game::gameHeight - 12 * 32, 1, 1);
-	AddCheep(117 * 32 + 8, Game::gameHeight - 11 * 32, 0, 1);
-	AddCheep(127 * 32 + 24, Game::gameHeight - 5 * 32, 1, 1);
-	AddCheep(131 * 32 + 8, Game::gameHeight - 4 * 32 - 4, 0, 1);
-	AddCheep(136 * 32 + 16, Game::gameHeight - 7 * 32, 0, 1);
-	AddCheep(145 * 32 + 8, Game::gameHeight - 5 * 32, 0, 1);
-	AddCheep(149 * 32 + 28, Game::gameHeight - 9 * 32 - 4, 1, 1);
-	AddCheep(164 * 32, Game::gameHeight - 12 * 32, 0, 1);
-	AddCheep(167 * 32, Game::gameHeight - 4 * 32, 1, 1);
-	AddCheep(175 * 32, Game::gameHeight - 7 * 32 - 4, 0, 1);
-	AddCheep(183 * 32, Game::gameHeight - 11 * 32, 1, 1);
-	AddCheep(186 * 32 + 16, Game::gameHeight - 8 * 32, 1, 1);
+	AddCheep(75 * 32 + 28, Window::gameHeight - 5 * 32, 0, 1);
+	AddCheep(78 * 32 + 28, Window::gameHeight - 8 * 32, 0, 1);
+	AddCheep(81 * 32 + 28, Window::gameHeight - 3 * 32 - 28, 0, 1);
+	AddCheep(94 * 32 + 14, Window::gameHeight - 9 * 32, 0, 1);
+	AddCheep(101 * 32 + 28, Window::gameHeight - 5 * 32, 0, 1);
+	AddCheep(97 * 32 + 8, Window::gameHeight - 12 * 32, 1, 1);
+	AddCheep(117 * 32 + 8, Window::gameHeight - 11 * 32, 0, 1);
+	AddCheep(127 * 32 + 24, Window::gameHeight - 5 * 32, 1, 1);
+	AddCheep(131 * 32 + 8, Window::gameHeight - 4 * 32 - 4, 0, 1);
+	AddCheep(136 * 32 + 16, Window::gameHeight - 7 * 32, 0, 1);
+	AddCheep(145 * 32 + 8, Window::gameHeight - 5 * 32, 0, 1);
+	AddCheep(149 * 32 + 28, Window::gameHeight - 9 * 32 - 4, 1, 1);
+	AddCheep(164 * 32, Window::gameHeight - 12 * 32, 0, 1);
+	AddCheep(167 * 32, Window::gameHeight - 4 * 32, 1, 1);
+	AddCheep(175 * 32, Window::gameHeight - 7 * 32 - 4, 0, 1);
+	AddCheep(183 * 32, Window::gameHeight - 11 * 32, 1, 1);
+	AddCheep(186 * 32 + 16, Window::gameHeight - 8 * 32, 1, 1);
 }
 
 void Map::LoadMinionLevel_7_3()
 {
 	ClearMinion();
 
-	AddKoppa(52 * 32, Game::gameHeight - 7 * 32, 0, true);
-	AddKoppa(140 * 32, Game::gameHeight - 8 * 32, 0, true);
-	AddKoppa(156 * 32, Game::gameHeight - 6 * 32, 0, true);
+	AddKoppa(52 * 32, Window::gameHeight - 7 * 32, 0, true);
+	AddKoppa(140 * 32, Window::gameHeight - 8 * 32, 0, true);
+	AddKoppa(156 * 32, Window::gameHeight - 6 * 32, 0, true);
 
-	AddKoppa(79 * 32, Game::gameHeight - 6 * 32, 1, true);
-	AddKoppa(95 * 32, Game::gameHeight - 6 * 32, 1, true);
-	AddKoppa(119 * 32, Game::gameHeight - 3 * 32, 1, true);
+	AddKoppa(79 * 32, Window::gameHeight - 6 * 32, 1, true);
+	AddKoppa(95 * 32, Window::gameHeight - 6 * 32, 1, true);
+	AddKoppa(119 * 32, Window::gameHeight - 3 * 32, 1, true);
 }
 
 void Map::LoadMinionLevel_7_4()
 {
 	ClearMinion();
 
-	AddToad(281 * 32, Game::gameHeight - 4 * 32, false);
+	AddToad(281 * 32, Window::gameHeight - 4 * 32, false);
 }
 
 void Map::LoadMinionLevel_8_1()
 {
 	ClearMinion();
 
-	AddGoombas(23 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(24 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(26 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(30 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(31 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(33 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(69 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(70 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(72 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(108 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(109 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(111 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(148 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(149 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(151 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(232 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(233 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(235 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(257 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(258 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(260 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(264 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(265 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(267 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(272 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(273 * 32 + 16, Game::gameHeight - 3 * 32, true);
+	AddGoombas(23 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(24 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(26 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(30 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(31 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(33 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(69 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(70 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(72 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(108 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(109 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(111 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(148 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(149 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(151 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(232 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(233 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(235 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(257 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(258 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(260 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(264 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(265 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(267 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(272 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(273 * 32 + 16, Window::gameHeight - 3 * 32, true);
 
-	AddKoppa(43 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(44 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(61 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(119 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(124 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(125 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(127 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(130 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(131 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(133 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(161 * 32, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(172 * 32, Game::gameHeight - 5 * 32, 0, true);
-	AddKoppa(177 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(207 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(208 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(305 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(332 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(339 * 32, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(340 * 32 + 16, Game::gameHeight - 3 * 32, 1, true);
-	AddKoppa(342 * 32, Game::gameHeight - 3 * 32, 1, true);
+	AddKoppa(43 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(44 * 32 + 16, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(61 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(119 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(124 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(125 * 32 + 16, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(127 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(130 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(131 * 32 + 16, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(133 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(161 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(172 * 32, Window::gameHeight - 5 * 32, 0, true);
+	AddKoppa(177 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(207 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(208 * 32 + 16, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(305 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(332 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(339 * 32, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(340 * 32 + 16, Window::gameHeight - 3 * 32, 1, true);
+	AddKoppa(342 * 32, Window::gameHeight - 3 * 32, 1, true);
 
-	AddBeetle(18 * 32, Game::gameHeight - 3 * 32, true);
-	AddBeetle(81 * 32, Game::gameHeight - 3 * 32, true);
-	AddBeetle(254 * 32, Game::gameHeight - 3 * 32, true);
-	AddBeetle(283 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(18 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(81 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(254 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(283 * 32, Window::gameHeight - 3 * 32, true);
 }
 
 void Map::LoadMinionLevel_8_2()
 {
 	ClearMinion();
 
-	AddGoombas(184 * 32, Game::gameHeight - 6 * 32, true);
-	AddGoombas(186 * 32, Game::gameHeight - 8 * 32, true);
+	AddGoombas(184 * 32, Window::gameHeight - 6 * 32, true);
+	AddGoombas(186 * 32, Window::gameHeight - 8 * 32, true);
 
-	AddKoppa(18 * 32 - 8, Game::gameHeight - 6 * 32, 0, true);
-	AddKoppa(24 * 32,Game::gameHeight - 11 * 32, 0, true);
-	AddKoppa(57 * 32,Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(66 * 32,Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(69 * 32,Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(92 * 32,Game::gameHeight - 5 * 32, 0, true);
-	AddKoppa(95 * 32,Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(139 * 32, Game::gameHeight - 3 * 32, 0, true);
-	AddKoppa(170 * 32, Game::gameHeight - 5 * 32, 0, true);
-	AddKoppa(172 * 32, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(175 * 32, Game::gameHeight - 7 * 32, 0, true);
-	AddKoppa(203 * 32, Game::gameHeight - 9 * 32, 0, true);
+	AddKoppa(18 * 32 - 8, Window::gameHeight - 6 * 32, 0, true);
+	AddKoppa(24 * 32, Window::gameHeight - 11 * 32, 0, true);
+	AddKoppa(57 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(66 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(69 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(92 * 32, Window::gameHeight - 5 * 32, 0, true);
+	AddKoppa(95 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(139 * 32, Window::gameHeight - 3 * 32, 0, true);
+	AddKoppa(170 * 32, Window::gameHeight - 5 * 32, 0, true);
+	AddKoppa(172 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(175 * 32, Window::gameHeight - 7 * 32, 0, true);
+	AddKoppa(203 * 32, Window::gameHeight - 9 * 32, 0, true);
 
-	AddBeetle(111 * 32, Game::gameHeight - 3 * 32, true);
-	AddBeetle(121 * 32, Game::gameHeight - 3 * 32, true);
-	AddBeetle(123 * 32, Game::gameHeight - 3 * 32, true);
-	AddBeetle(189 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(111 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(121 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(123 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(189 * 32, Window::gameHeight - 3 * 32, true);
 }
 
 void Map::LoadMinionLevel_8_3()
 {
 	ClearMinion();
 
-	AddKoppa(30 * 32, Game::gameHeight - 5 * 32, 0, true);
-	AddKoppa(93 * 32, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(137 * 32, Game::gameHeight - 3 * 32, 1, true);
+	AddKoppa(30 * 32, Window::gameHeight - 5 * 32, 0, true);
+	AddKoppa(93 * 32, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(137 * 32, Window::gameHeight - 3 * 32, 1, true);
 
-	AddHammerBro(63 * 32, Game::gameHeight - 4 * 32);
-	AddHammerBro(65 * 32, Game::gameHeight - 8 * 32);
-	AddHammerBro(117 * 32, Game::gameHeight - 8 * 32);
-	AddHammerBro(119 * 32, Game::gameHeight - 4 * 32);
-	AddHammerBro(146 * 32, Game::gameHeight - 4 * 32);
-	AddHammerBro(159 * 32, Game::gameHeight - 4 * 32);
-	AddHammerBro(177 * 32, Game::gameHeight - 4 * 32);
-	AddHammerBro(185 * 32, Game::gameHeight - 4 * 32);
+	AddHammerBro(63 * 32, Window::gameHeight - 4 * 32);
+	AddHammerBro(65 * 32, Window::gameHeight - 8 * 32);
+	AddHammerBro(117 * 32, Window::gameHeight - 8 * 32);
+	AddHammerBro(119 * 32, Window::gameHeight - 4 * 32);
+	AddHammerBro(146 * 32, Window::gameHeight - 4 * 32);
+	AddHammerBro(159 * 32, Window::gameHeight - 4 * 32);
+	AddHammerBro(177 * 32, Window::gameHeight - 4 * 32);
+	AddHammerBro(185 * 32, Window::gameHeight - 4 * 32);
 }
 
 void Map::LoadMinionLevel_8_4()
 {
 	ClearMinion();
 
-	AddGoombas(56 * 32, Game::gameHeight - 3 * 32, true);
-	AddGoombas(57 * 32 + 16, Game::gameHeight - 3 * 32, true);
-	AddGoombas(59 * 32, Game::gameHeight - 3 * 32, true);
+	AddGoombas(56 * 32, Window::gameHeight - 3 * 32, true);
+	AddGoombas(57 * 32 + 16, Window::gameHeight - 3 * 32, true);
+	AddGoombas(59 * 32, Window::gameHeight - 3 * 32, true);
 
-	AddBeetle(139 * 32, Game::gameHeight - 3 * 32, true);
-	AddBeetle(141 * 32, Game::gameHeight - 3 * 32, true);
+	AddBeetle(139 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(141 * 32, Window::gameHeight - 3 * 32, true);
 
-	AddHammerBro(316 * 32, Game::gameHeight - 4 * 32);
+	AddHammerBro(316 * 32, Window::gameHeight - 4 * 32);
 
 	mapType = LongDat;
-	AddKoppa(150 * 32 - 8, Game::gameHeight - 5 * 32, 0, true);
-	AddKoppa(152 * 32 - 8, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(165 * 32 - 8, Game::gameHeight - 4 * 32, 0, true);
-	AddKoppa(167 * 32 - 8, Game::gameHeight - 5 * 32, 0, true);
+	AddKoppa(150 * 32 - 8, Window::gameHeight - 5 * 32, 0, true);
+	AddKoppa(152 * 32 - 8, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(165 * 32 - 8, Window::gameHeight - 4 * 32, 0, true);
+	AddKoppa(167 * 32 - 8, Window::gameHeight - 5 * 32, 0, true);
 
 	mapType = NuiLua;
-	AddToad(356 * 32, Game::gameHeight - 4 * 32, true);
+	AddToad(356 * 32, Window::gameHeight - 4 * 32, true);
 }
 
 void Map::AddGoombas(int x, int y, bool moveDirection)

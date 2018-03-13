@@ -4,6 +4,8 @@
 #define _WINDOW
 
 #include "Map.h"
+#include "MenuManager.h"
+#include "Txt.h"
 
 class Window
 {
@@ -17,6 +19,9 @@ private:
 	static Map* map;
 	static bool movePressed, keyMenuPressed, left, right, down, up, keyShift;
 
+	static MenuManager* menuManager;
+	static Text* text;
+
 	void Input();
 	void InputPlayer();
 	void InputMenu();
@@ -29,6 +34,10 @@ public:
 		Right
 	};
 
+	static int gameWidth, gameHeight;
+	static int keyA, keyD, keyS, keySpace;
+	static bool space;
+
 	Window(unsigned int width, unsigned int heigth, string name);
 	~Window();
 
@@ -40,6 +49,10 @@ public:
 
 	static unsigned int GetTime();
 	static void ResetKeys();
+
+	static Text* GetText();
+	static MenuManager* GetMenuManager();
+	static string GetKeyString(int keyID);
 };
 
 #endif

@@ -36,7 +36,7 @@ void HammerBro::Update()
 {
 	if (minionState != -2)
 	{
-		moveDirection = !(Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth() / 2 > xMinion + width / 2);
+		/*moveDirection = !(Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth() / 2 > xMinion + width / 2);
 
 		if (moveDistance > 0)
 		{
@@ -90,7 +90,7 @@ void HammerBro::Update()
 			nextJumpFrameID = rand() % 295 + 215;
 			jumpState = NhayLen;
 
-			if (yMinion + height < Game::gameHeight - 4 * 32)
+			if (yMinion + height < Window::gameHeight - 4 * 32)
 				newY = rand() % 3 == 0;
 			else
 				newY = true;
@@ -118,7 +118,7 @@ void HammerBro::Update()
 		else
 		{
 			MinionDeathAnimation();
-		}
+		}*/
 	}
 }
 

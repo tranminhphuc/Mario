@@ -19,7 +19,7 @@ void Menu::Draw(sf::RenderWindow& window)
 {
 	for (int i = 0; i < menuOption.size(); i++)
 	{
-		Game::GetText()->Draw(window, menuOption[i]->GetText(), menuOption[i]->GetX(), menuOption[i]->GetY());
+		Window::GetText()->Draw(window, menuOption[i]->GetText(), menuOption[i]->GetX(), menuOption[i]->GetY());
 	}
 }
 

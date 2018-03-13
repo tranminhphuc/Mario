@@ -1,6 +1,6 @@
 #include "PauseMenu.h"
 #include "Windows.h"
-#include "Game.h"
+//#include "Game.h"
 
 PauseMenu::PauseMenu()
 {
@@ -35,9 +35,9 @@ void PauseMenu::Draw(sf::RenderWindow & window)
 	for (int i = 0; i < menuOption.size(); i++)
 	{
 		if (i == activeMenuOption)
-			Game::GetText()->DrawCenterX(window, menuOption[i]->GetText(), menuOption[i]->GetY(), 255, 255, 255);
+			Window::GetText()->DrawCenterX(window, menuOption[i]->GetText(), menuOption[i]->GetY(), 255, 255, 255);
 		else
-			Game::GetText()->DrawCenterX(window, menuOption[i]->GetText(), menuOption[i]->GetY(), 90, 90, 90);
+			Window::GetText()->DrawCenterX(window, menuOption[i]->GetText(), menuOption[i]->GetY(), 90, 90, 90);
 	}
 
 	Window::GetMap()->SetBackGroundColor(window);
@@ -48,16 +48,16 @@ void PauseMenu::Enter()
 	switch (activeMenuOption)
 	{
 	case 0:
-		Game::GetMenuManager()->SetView(Game::GetMenuManager()->GamePlay);
+		Window::GetMenuManager()->SetView(Window::GetMenuManager()->GamePlay);
 		break;
 	case 1:
-		Game::GetMenuManager()->GetOptionMenu()->SetEscapeToMainMenu(false);
-		Game::GetMenuManager()->ResetActiveOption(Game::GetMenuManager()->GameOption);
-		Game::GetMenuManager()->SetView(Game::GetMenuManager()->GameOption);
+		Window::GetMenuManager()->GetOptionMenu()->SetEscapeToMainMenu(false);
+		Window::GetMenuManager()->ResetActiveOption(Window::GetMenuManager()->GameOption);
+		Window::GetMenuManager()->SetView(Window::GetMenuManager()->GameOption);
 		break;
 	case 2:
 		Window::GetMap()->ResetGameData();
-		Game::GetMenuManager()->SetView(Game::GetMenuManager()->MenuGame);
+		Window::GetMenuManager()->SetView(Window::GetMenuManager()->MenuGame);
 		break;
 	case 3:
 		//......

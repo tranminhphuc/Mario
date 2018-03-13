@@ -128,7 +128,7 @@ void Minion::MinionDeathAnimation()
 	if (deadTime > 0)
 		deadTime--;
 
-	if (yMinion > Game::gameHeight)
+	if (yMinion > Window::gameHeight)
 		minionState = -1;
 }
 
@@ -179,7 +179,7 @@ void Minion::PhysicsState2()
 
 	MoveY((int)currentFallingSpeed);
 
-	if (yMinion >= Game::gameHeight - 32)
+	if (yMinion >= Window::gameHeight - 32)
 		minionState = -1;
 }
 
@@ -199,7 +199,7 @@ void Minion::ResetJump()
 
 void Minion::Spawn()
 {
-	if (xMinion >= -Window::GetMap()->GetX() && xMinion <= -Window::GetMap()->GetX() + Game::gameWidth || xMinion + width >= -Window::GetMap()->GetX() && xMinion + width <= -Window::GetMap()->GetX() + Game::gameWidth)
+	if (xMinion >= -Window::GetMap()->GetX() && xMinion <= -Window::GetMap()->GetX() + Window::gameWidth || xMinion + width >= -Window::GetMap()->GetX() && xMinion + width <= -Window::GetMap()->GetX() + Window::gameWidth)
 		minionSpawned = true;
 }
 
