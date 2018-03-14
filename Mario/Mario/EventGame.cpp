@@ -57,14 +57,26 @@ void Event::Normal()
 					step = 0;
 					NewLevel();
 					//Window::GetMap()->GetPlayer()->StopMove();
-					//......
+
+					if (inEvent)
+					{
+						Window::GetMenuManager()->GetLoadingMenu()->UpdateTime();
+						Window::GetMenuManager()->GetLoadingMenu()->loading = true;
+						Window::GetMenuManager()->SetView(Window::GetMenuManager()->GameLoading);
+					}
+
 					Window::keySpace = false;
 				}
 			}
 			else
 			{
 				Window::GetMap()->ResetGameData();
-				//......
+				Window::GetMenuManager()->SetView(Window::GetMenuManager()->MenuGame);
+				Window::GetMap()->GetPlayer()->StopMove();
+				inEvent = false;
+				Window::keySpace = false;
+				endGame = false;
+				step = 0;
 			}
 		}
 	}
@@ -101,7 +113,10 @@ void Event::Normal()
 		}
 		else
 		{
-			//......
+			Window::GetMap()->GetPlayer()->StopMove();
+			inEvent = false;
+			Window::keySpace = false;
+			Window::ResetKeys();
 		}
 	}
 }
@@ -117,11 +132,19 @@ void Event::NewLevel()
 	Window::GetMap()->GetPlayer()->SetX(newPlayerX);
 	Window::GetMap()->GetPlayer()->SetY(newPlayerY);
 	Window::GetMap()->SetMoveMap(newMoveMap);
-	//......
-	if (newUnderWater)
+
+	if (true)
 	{
-		Window::GetMap()->GetPlayer()->ResetMove();
+		Window::GetMenuManager()->GetLoadingMenu()->UpdateTime();
+		Window::GetMenuManager()->GetLoadingMenu()->loading = true;
+		Window::GetMenuManager()->SetView(Window::GetMenuManager()->GameLoading);
+		Window::GetMap()->GetPlayer()->SetCoin(0);
 	}
+
+	Window::GetMap()->SetLevel(newLevel);
+
+	if (newUnderWater)
+		Window::GetMap()->GetPlayer()->ResetMove();
 
 	Window::GetMap()->SetUnderWater(newUnderWater);
 }
@@ -132,6 +155,8 @@ void Event::ResetData()
 	newLenght.clear();
 	oldDir.clear();
 	oldLength.clear();
+
+	eventType = normal;
 
 	step = 0;
 	state = true;

@@ -26,9 +26,9 @@ public:
 
 	enum EventType
 	{
-		eNormal,
-		eEnd,
-		eBonusEnd
+		normal,
+		end,
+		bonusEnd
 	};
 	EventType eventType;
 
