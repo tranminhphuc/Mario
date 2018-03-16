@@ -1,6 +1,5 @@
 #include "Squid.h"
 #include "Windows.h"
-//#include "Game.h"
 
 Squid::Squid(int xMinion, int yMinion)
 {

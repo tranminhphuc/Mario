@@ -21,6 +21,8 @@ private:
 	int xPlayer, yPlayer;
 	float width, height;
 
+	int id;
+
 	unsigned int score;
 	unsigned int coin;
 
@@ -32,6 +34,8 @@ private:
 	int live;
 	int level;
 
+	unsigned int timePassed;
+
 	float jumpSpeed;
 	float currentJumpSpeed;
 	float jumpDistance;
@@ -41,11 +45,14 @@ private:
 	bool move;
 	bool squat;
 
+	bool moveDirection;
+	bool changeMoveDirection;
+	bool newMoveDiretion;
+
 	bool starEffect;
 
 	void LoadData();
 	void MovePlayer();
-	void Playerphysics();
 
 	bool CheckCollisionLB(int distanceX, int distanceY);
 	bool CheckCollisionLT(int distanceX, int distanceY);
@@ -59,6 +66,8 @@ public:
 
 	void MoveX(int distance);
 	void MoveY(int distance);
+
+	void PlayerPhysics();
 
 	void Update();
 

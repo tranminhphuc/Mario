@@ -1,6 +1,5 @@
 #include "Hammer.h"
 #include "Windows.h"
-#include "Game.h"
 
 Hammer::Hammer(int xMinion, int yMinion)
 {

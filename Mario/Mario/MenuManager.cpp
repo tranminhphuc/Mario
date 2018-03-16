@@ -1,6 +1,5 @@
 #include "MenuManager.h"
 #include "Windows.h"
-#include "Game.h"
 
 MenuManager::MenuManager()
 {

@@ -1,6 +1,5 @@
 #include "EventGame.h"
 #include "Windows.h"
-#include "Game.h"
 
 Event::Event()
 {
@@ -39,6 +38,100 @@ void Event::Normal()
 					Window::GetMap()->GetPlayer()->SetX(Window::GetMap()->GetPlayer()->GetX() + speed);
 					oldLength[step] -= speed;
 					break;
+				case ScoreEnd:
+					if (Window::GetMap()->GetMapTime() > 0)
+					{
+						Window::GetMap()->SetMapTime(Window::GetMap()->GetMapTime() - 1);
+						Window::GetMap()->GetPlayer()->SetScore(Window::GetMap()->GetPlayer()->GetScore() + 50);
+					}
+					else
+					{
+						oldLength[step] = 0;
+					}
+
+					break;
+				case LoadingMenu:
+					oldLength[step] -= 1;
+
+					if (oldLength[step] < 2)
+					{
+						inEvent = false;
+						Window::GetMap()->GetPlayer()->StopMove();
+
+						Window::GetMenuManager()->GetLoadingMenu()->loading = true;
+						Window::GetMenuManager()->GetLoadingMenu()->UpdateTime();
+						Window::GetMenuManager()->SetView(Window::GetMenuManager()->GameLoading);
+					}
+
+					break;
+				case GameOver:
+					oldLength[step] -= 1;
+
+					if (oldLength[step] < 2)
+					{
+						inEvent = false;
+						Window::GetMap()->GetPlayer()->StopMove();
+
+						Window::GetMenuManager()->GetLoadingMenu()->loading = false;
+						Window::GetMenuManager()->GetLoadingMenu()->UpdateTime();
+						Window::GetMenuManager()->SetView(Window::GetMenuManager()->GameLoading);
+					}
+
+					break;
+				case BossEnd1:
+					for (int i = Window::GetMap()->GetWidth() - 1; i > 0; i--)
+					{
+						if (Window::GetMap()->GetTile(i, 6)->GetID() == 115)
+						{
+							Window::GetMap()->GetTile(i, 6)->SetID(0);
+							break;
+						}
+					}
+
+					oldLength[step] = 0;
+					break;
+				case BossEnd2:
+					for (int i = Window::GetMap()->GetWidth() - 1; i > 0; i--)
+					{
+						if (Window::GetMap()->GetTile(i, 5)->GetID() == 111)
+						{
+							Window::GetMap()->GetTile(i, 5)->SetID(0);
+							break;
+						}
+					}
+
+					for (int i = Window::GetMap()->GetWidth() - 1; i > 0; i--)
+					{
+						if (Window::GetMap()->GetTile(i, 4)->GetID() == 110)
+						{
+							Window::GetMap()->GetTile(i, 4)->SetID(0);
+							break;
+						}
+					}
+
+					oldLength[step] = 0;
+					break;
+				case BossEnd3:
+					for (int i = Window::GetMap()->GetWidth() - 1; i > 0; i--)
+					{
+						if (Window::GetMap()->GetTile(i, 4)->GetID() == 110)
+						{
+							Window::GetMap()->GetTile(i, 4)->SetID(0);
+							break;
+						}
+					}
+
+					oldLength[step] = 0;
+					break;
+				case BossEnd4:
+					oldLength[step] = 0;
+					break;
+				case BossEndText1:
+					oldLength[step] = 0;
+					break;
+				case BossEndText2:
+					oldLength[step] = 0;
+					break;
 				}
 			}
 			else
@@ -56,7 +149,7 @@ void Event::Normal()
 					state = false;
 					step = 0;
 					NewLevel();
-					//Window::GetMap()->GetPlayer()->StopMove();
+					Window::GetMap()->GetPlayer()->StopMove();
 
 					if (inEvent)
 					{
@@ -73,8 +166,8 @@ void Event::Normal()
 				Window::GetMap()->ResetGameData();
 				Window::GetMenuManager()->SetView(Window::GetMenuManager()->MenuGame);
 				Window::GetMap()->GetPlayer()->StopMove();
-				inEvent = false;
 				Window::keySpace = false;
+				inEvent = false;
 				endGame = false;
 				step = 0;
 			}
@@ -114,9 +207,9 @@ void Event::Normal()
 		else
 		{
 			Window::GetMap()->GetPlayer()->StopMove();
-			inEvent = false;
-			Window::keySpace = false;
+			Window::space = false;
 			Window::ResetKeys();
+			inEvent = false;
 		}
 	}
 }

@@ -1,6 +1,5 @@
 #include "PauseMenu.h"
 #include "Windows.h"
-//#include "Game.h"
 
 PauseMenu::PauseMenu()
 {

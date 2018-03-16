@@ -1,6 +1,5 @@
 #include "LoadingMenu.h"
 #include "Windows.h"
-#include "Game.h"
 
 LoadingMenu::LoadingMenu()
 {

@@ -1,6 +1,5 @@
 #include "Minion.h"
 #include "Windows.h"
-#include "Game.h"
 
 Minion::Minion()
 {

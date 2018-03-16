@@ -1,6 +1,5 @@
 #include "Menu.h"
 #include "Windows.h"
-#include "Game.h"
 
 Menu::Menu()
 {

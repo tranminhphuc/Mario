@@ -1,6 +1,5 @@
 #include "OptionMenu.h"
 #include "Windows.h"
-#include "Game.h"
 
 OptionMenu::OptionMenu()
 {

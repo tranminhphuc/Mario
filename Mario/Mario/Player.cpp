@@ -10,6 +10,8 @@ Player::Player(int xPlayer, int yPlayer)
 	this->score = 0;
 	this->coin = 0;
 
+	this->id = 1;
+
 	LoadData();
 }
 
@@ -122,6 +124,68 @@ void Player::MoveY(int y)
 				{
 
 				}
+			}
+		}
+	}
+}
+
+void Player::PlayerPhysics()
+{
+	if (!Window::GetMap()->GetUnderWater())
+	{
+		if (jumpState == NhayLen)
+		{
+			MoveY(-(int)currentJumpSpeed);
+			currentJumpDistance += currentJumpSpeed;
+			currentJumpSpeed *= (currentJumpSpeed / jumpDistance > 0.75f ? 0.972f : 0.986f);
+
+			if (currentJumpSpeed < 2.5f)
+				currentJumpSpeed = 2.5f;
+
+			if (!Window::space && currentJumpDistance > 64)
+			{
+				jumpDistance = 16;
+				currentJumpDistance = 0;
+				currentJumpSpeed = 2.5f;
+			}
+
+			if (jumpDistance <= currentJumpDistance)
+				jumpState = NhayXuong;
+		}
+		else
+		{
+
+		}
+	}
+	else
+	{
+		if (jumpState == NhayLen)
+		{
+			if (yPlayer > Window::gameHeight - 12 * 32)
+			{
+				MoveY(-2);
+				currentJumpDistance += 2;
+
+				if (jumpDistance <= currentJumpDistance)
+				{
+					jumpState = NhayXuong;
+					currentJumpDistance = 0;
+				}
+			}
+			else
+			{
+				jumpState = NhayXuong;
+			}
+		}
+		else
+		{
+			if (!CheckCollisionLB(2, 2) && !CheckCollisionRB(-2, 2))
+			{
+
+			}
+			else if (jumpState == NhayXuong)
+			{
+				ResetJump();
 			}
 		}
 	}
@@ -512,24 +576,48 @@ void Player::LoadData()
 
 void Player::MovePlayer()
 {
-}
-
-void Player::Playerphysics()
-{
-	if (!Window::GetMap()->GetUnderWater())
+	if (move && !changeMoveDirection && (!squat || level == 0))
 	{
-		if (jumpState == NhayLen)
+		if (moveSpeed > maxSpeed)
 		{
-			MoveY(-(int)currentJumpSpeed);
-			currentJumpDistance += currentJumpSpeed;
-
-			currentJumpSpeed *= (currentJumpDistance / jumpDistance > 0.75f ? 0.972f : 0.986f);
-
-			if (currentJumpSpeed < 2.5f)
-			{
-				currentJumpSpeed = 2.5f;
-			}
+			moveSpeed--;
 		}
+		else if (Window::GetTime() - (100 + 35 * moveSpeed) >= timePassed && moveSpeed < maxSpeed)
+		{
+			moveSpeed++;
+			timePassed = Window::GetTime();
+		}
+	}
+	else
+	{
+		if (Window::GetTime() - (50 + 15 * (maxSpeed - moveSpeed) * (squat &&level > 0 ? 6 : 1)) > timePassed && moveSpeed != 0)
+		{
+			moveSpeed--;
+			timePassed = Window::GetTime();
+		}
+
+		if (changeMoveDirection && moveSpeed <= 1)
+		{
+			moveDirection = newMoveDiretion;
+			changeMoveDirection = false;
+			move = true;
+		}
+	}
+
+	if (moveSpeed > 0)
+	{
+		if (moveDirection)
+			MoveX(moveSpeed);
+		else
+			MoveX(-moveSpeed);
+	}
+	else if (jumpState = TrenMatDat)
+	{
+		MoveX(0);
+	}
+	else
+	{
+		MoveX(0);
 	}
 }
 

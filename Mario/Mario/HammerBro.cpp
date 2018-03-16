@@ -1,6 +1,5 @@
 #include "HammerBro.h"
 #include "Windows.h"
-#include "Game.h"
 
 HammerBro::HammerBro(int xMinion, int yMinion)
 {

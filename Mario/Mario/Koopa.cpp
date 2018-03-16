@@ -1,6 +1,5 @@
 #include "Koopa.h"
 #include "Windows.h"
-#include "Game.h"
 
 Koopa::Koopa(int xMinion, int yMinion, int id, int minionState, bool moveDirection)
 {

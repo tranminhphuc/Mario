@@ -1,5 +1,4 @@
 #include "Windows.h"
-//#include "Game.h"
 
 Map* Window::map;
 bool Window::movePressed = false;
@@ -9,6 +8,7 @@ bool Window::right = false;
 bool Window::down = false;
 bool Window::up = false;
 bool Window::keyShift = false;
+bool Window::space = false;
 unsigned int Window::time = 0;
 
 int Window::gameWidth = 800;

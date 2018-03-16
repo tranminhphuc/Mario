@@ -1,6 +1,5 @@
 #include "Map.h"
 #include "Windows.h"
-#include "Game.h"
 
 Map::Map()
 {

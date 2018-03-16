@@ -1,6 +1,5 @@
 #include "Cheep.h"
 #include "Windows.h"
-#include "Game.h"
 
 Cheep::Cheep(int xMinion, int yMinion, int minionType, int moveSpeed, bool moveDirection)
 {

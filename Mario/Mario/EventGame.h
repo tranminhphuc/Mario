@@ -16,7 +16,16 @@ public:
 		Top,
 		Bot,
 		Left,
-		Right
+		Right,
+		LoadingMenu,
+		GameOver,
+		ScoreEnd,
+		BossEnd1,
+		BossEnd2,
+		BossEnd3,
+		BossEnd4,
+		BossEndText1,
+		BossEndText2
 	};
 	std::vector<AnimationType> oldDir;
 	std::vector<int> oldLength;

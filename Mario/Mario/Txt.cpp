@@ -1,6 +1,5 @@
 #include "Txt.h"
 #include "Windows.h"
-//#include "Game.h"
 
 Text::Text()
 {
