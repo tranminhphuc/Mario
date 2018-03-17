@@ -22,6 +22,7 @@ private:
 	float width, height;
 
 	int id;
+	unsigned int moveAnimationTime;
 
 	unsigned int score;
 	unsigned int coin;
@@ -49,6 +50,10 @@ private:
 	bool changeMoveDirection;
 	bool newMoveDiretion;
 
+	bool inLevelAnimation;
+	bool inLevelDownAnimation;
+	int inLevelAnimationID;
+
 	bool starEffect;
 
 	void LoadData();
@@ -72,6 +77,10 @@ public:
 	void Update();
 
 	void UpdateAnimation(float time);
+	void PowerUpAnimation();
+
+	void MoveAnimation();
+	void SwimingAnimation();
 
 	void StartMove();
 	void ResetMove();
@@ -109,6 +118,8 @@ public:
 
 	int GetScore();
 	void SetScore(int score);
+
+	void SetMarioID(int id);
 
 	int GetCoin();
 	void SetCoin(int coin);

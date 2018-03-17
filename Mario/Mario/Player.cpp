@@ -200,10 +200,155 @@ void Player::UpdateAnimation(float time)
 	//mario->Update(time - 0.65f + moveSpeed * 0.04f);
 }
 
+void Player::PowerUpAnimation()
+{
+	if (inLevelDownAnimation)
+	{
+		if (inLevelAnimationID % 15 < 5)
+		{
+			id = 12;
+
+			if (inLevelAnimationID != 0 && inLevelAnimationID % 15 == 0)
+			{
+				yPlayer += 16;
+				xPlayer -= 4;
+			}
+		}
+		else if (inLevelAnimationID % 15 < 10)
+		{
+			id = 67;
+
+			if (inLevelAnimationID % 15 == 5)
+			{
+				yPlayer += 16;
+				xPlayer += 1;
+			}
+		}
+		else
+		{
+			id = 1;
+
+			if (inLevelAnimationID % 15 == 10)
+			{
+				yPlayer -= 32;
+				xPlayer += 3;
+			}
+		}
+
+		inLevelAnimationID++;
+
+		if (inLevelAnimationID > 59)
+		{
+			inLevelAnimation = false;
+			yPlayer += 32;
+
+			if (jumpState != TrenMatDat)
+				SetMarioID(5);
+		}
+	}
+	else if (level == 1)
+	{
+		if (inLevelAnimationID % 15 < 5)
+		{
+			id = 1;
+
+			if (inLevelAnimationID != 0 && inLevelAnimationID % 15 == 0)
+			{
+				yPlayer += 32;
+				xPlayer += 4;
+			}
+		}
+		else if (inLevelAnimationID % 15 < 10)
+		{
+			id = 67;
+
+			if (inLevelAnimationID % 15 == 5)
+			{
+				yPlayer -= 16;
+				xPlayer -= 3;
+			}
+		}
+		else
+		{
+			id = 12;
+
+			if (inLevelAnimationID % 15 == 10)
+			{
+				yPlayer -= 16;
+				xPlayer -= 1;
+			}
+		}
+
+		inLevelAnimationID++;
+
+		if (inLevelAnimationID > 59)
+		{
+			inLevelAnimation = false;
+
+			if (jumpState != TrenMatDat)
+				SetMarioID(5);
+		}
+	}
+	else if (level == 2)
+	{
+		if (inLevelAnimationID % 10 < 5)
+			id = id % 11 + 22;
+		else
+			id = id % 11 + 33;
+
+		inLevelAnimationID++;
+
+		if (inLevelAnimationID > 59)
+		{
+			inLevelAnimation = false;
+
+			if (jumpState != TrenMatDat)
+				SetMarioID(5);
+
+			id = id % 11 + 22;
+		}
+	}
+	else
+	{
+		inLevelAnimation = false;
+	}
+}
+
+void Player::MoveAnimation()
+{
+	if (Window::GetTime() - 65 + moveSpeed * 4 > moveAnimationTime)
+	{
+		moveAnimationTime = Window::GetTime();
+
+		if (id >= 4 + 11 * level)
+			SetMarioID(2);
+		else
+			id++;
+	}
+}
+
+void Player::SwimingAnimation()
+{
+	if (Window::GetTime() - 105 > moveAnimationTime)
+	{
+		moveAnimationTime = Window::GetTime();
+
+		if (id % 11 == 8)
+			SetMarioID(9);
+		else
+			SetMarioID(8);
+	}
+}
+
 void Player::StartMove()
 {
+	moveAnimationTime = Window::GetTime();
+	timePassed = Window::GetTime();
 	moveSpeed = 1;
 	move = true;
+
+	if (Window::GetMap()->GetUnderWater())
+		SetMarioID(8);
 }
 
 void Player::ResetMove()
@@ -217,6 +362,8 @@ void Player::StopMove()
 	moveSpeed = 0;
 	move = false;
 	squat = false;
+	changeMoveDirection = false;
+	SetMarioID(1);
 }
 
 void Player::Jump()
@@ -237,6 +384,20 @@ void Player::StartJump(int distance)
 	jumpDistance = 32.0f * distance + 24;
 	currentJumpDistance = 0;
 	jumpState = NhayLen;
+
+	if (!Window::GetMap()->GetUnderWater())
+	{
+		SetMarioID(5);
+	}
+	else
+	{
+		if (jumpState == TrenMatDat)
+		{
+			moveAnimationTime = Window::GetTime();
+			SetMarioID(8);
+			SwimingAnimation();
+		}
+	}
 }
 
 void Player::ResetJump()
@@ -250,6 +411,7 @@ void Player::ResetJump()
 void Player::ResetLevel()
 {
 	level = 0;
+	id = 1;
 }
 
 int Player::GetWidth()
@@ -319,7 +481,20 @@ bool Player::GetSquat()
 
 void Player::SetSquat(bool squat)
 {
-	this->squat = squat;
+	if (squat && this->squat != squat)
+	{
+		if (level > 0)
+			yPlayer += 20;
+
+		this->squat = squat;
+	}
+	else if (this->squat != squat && Window::GetMap()->GetUnderWater())
+	{
+		if (level > 0)
+			yPlayer -= 20;
+
+		this->squat = squat;
+	}
 }
 
 bool Player::GetStarEffect()
@@ -340,6 +515,11 @@ int Player::GetScore()
 void Player::SetScore(int score)
 {
 	this->score = score;
+}
+
+void Player::SetMarioID(int id)
+{
+	this->id = id + 11 * level;
 }
 
 int Player::GetCoin()
@@ -397,178 +577,198 @@ void Player::LoadData()
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 7 ----
-	name.push_back("Source/images/mario/mario_underwater0.bmp");
+	name.push_back("Source/images/mario/mario.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 8 ----
-	name.push_back("Source/images/mario/mario_underwater1.bmp");
+	name.push_back("Source/images/mario/mario_underwater0.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 9 ----
-	name.push_back("Source/images/mario/mario_end.bmp");
+	name.push_back("Source/images/mario/mario_underwater1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 10 ----
-	name.push_back("Source/images/mario/mario_end1.bmp");
+	name.push_back("Source/images/mario/mario_end.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 11 ----
-	name.push_back("Source/images/mario/mario1.bmp");
+	name.push_back("Source/images/mario/mario_end1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 12 ----
-	name.push_back("Source/images/mario/mario1_move0.bmp");
+	name.push_back("Source/images/mario/mario1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 13 ----
-	name.push_back("Source/images/mario/mario1_move1.bmp");
+	name.push_back("Source/images/mario/mario1_move0.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 14 ----
-	name.push_back("Source/images/mario/mario1_move2.bmp");
+	name.push_back("Source/images/mario/mario1_move1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 15 ----
-	name.push_back("Source/images/mario/mario1_jump.bmp");
+	name.push_back("Source/images/mario/mario1_move2.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 16 ----
-	name.push_back("Source/images/mario/mario1_st.bmp");
+	name.push_back("Source/images/mario/mario1_jump.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 17 ----
-	name.push_back("Source/images/mario/mario1_underwater0.bmp");
+	name.push_back("Source/images/mario/mario1_st.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 18 ----
-	name.push_back("Source/images/mario/mario1_underwater1.bmp");
+	name.push_back("Source/images/mario/mario1_squat.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 19 ----
-	name.push_back("Source/images/mario/mario1_end.bmp");
+	name.push_back("Source/images/mario/mario1_underwater0.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 20 ----
-	name.push_back("Source/images/mario/mario1_end1.bmp");
+	name.push_back("Source/images/mario/mario1_underwater1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 21 ----
-	name.push_back("Source/images/mario/mario2.bmp");
+	name.push_back("Source/images/mario/mario1_end.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 22 ----
-	name.push_back("Source/images/mario/mario2_move0.bmp");
+	name.push_back("Source/images/mario/mario1_end1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 23 ----
-	name.push_back("Source/images/mario/mario2_move1.bmp");
+	name.push_back("Source/images/mario/mario2.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 24 ----
-	name.push_back("Source/images/mario/mario2_move2.bmp");
+	name.push_back("Source/images/mario/mario2_move0.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 25 ----
-	name.push_back("Source/images/mario/mario2_jump.bmp");
+	name.push_back("Source/images/mario/mario2_move1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 26 ----
-	name.push_back("Source/images/mario/mario2_st.bmp");
+	name.push_back("Source/images/mario/mario2_move2.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 27 ----
-	name.push_back("Source/images/mario/mario2_underwater0.bmp");
+	name.push_back("Source/images/mario/mario2_jump.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 28 ----
-	name.push_back("Source/images/mario/mario2_underwater1.bmp");
+	name.push_back("Source/images/mario/mario2_st.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 29 ----
-	name.push_back("Source/images/mario/mario2_end.bmp");
+	name.push_back("Source/images/mario/mario2_squat.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 30 ----
-	name.push_back("Source/images/mario/mario2_end1.bmp");
+	name.push_back("Source/images/mario/mario2_underwater0.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 31 ----
-	name.push_back("Source/images/mario/mario2s.bmp");
+	name.push_back("Source/images/mario/mario2_underwater1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 32 ----
-	name.push_back("Source/images/mario/mario2s_move0.bmp");
+	name.push_back("Source/images/mario/mario2_end.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 33 ----
-	name.push_back("Source/images/mario/mario2s_move1.bmp");
+	name.push_back("Source/images/mario/mario2_end1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 34 ----
-	name.push_back("Source/images/mario/mario2s_move2.bmp");
+	name.push_back("Source/images/mario/mario2s.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 35 ----
-	name.push_back("Source/images/mario/mario2s_jump.bmp");
+	name.push_back("Source/images/mario/mario2s_move0.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 36 ----
-	name.push_back("Source/images/mario/mario2s_st.bmp");
+	name.push_back("Source/images/mario/mario2s_move1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 37 ----
-	name.push_back("Source/images/mario/mario2s_underwater0.bmp");
+	name.push_back("Source/images/mario/mario2s_move2.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 38 ----
-	name.push_back("Source/images/mario/mario2s_underwater1.bmp");
+	name.push_back("Source/images/mario/mario2s_jump.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 39 ----
-	name.push_back("Source/images/mario/mario2s_end.bmp");
+	name.push_back("Source/images/mario/mario2s_st.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 40 ----
-	name.push_back("Source/images/mario/mario2s_end1.bmp");
+	name.push_back("Source/images/mario/mario2s_squat.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 41 ----
-	name.push_back("Source/images/mario/mario_s0.bmp");
+	name.push_back("Source/images/mario/mario2s_underwater0.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 42 ----
-	name.push_back("Source/images/mario/mario_s0_move0.bmp");
+	name.push_back("Source/images/mario/mario2s_underwater1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 43 ----
-	name.push_back("Source/images/mario/mario_s0_move1.bmp");
+	name.push_back("Source/images/mario/mario2s_end.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 44 ----
-	name.push_back("Source/images/mario/mario_s0_move2.bmp");
+	name.push_back("Source/images/mario/mario2s_end1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
-	// ---- 45 ----
-	name.push_back("Source/images/mario/mario_s0_jump.bmp");
+	// ---- 445 ----
+	name.push_back("Source/images/mario/mario_s0.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 46 ----
-	name.push_back("Source/images/mario/mario_s0_st.bmp");
+	name.push_back("Source/images/mario/mario_s0_move0.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 47 ----
-	name.push_back("Source/images/mario/mario_s0_underwater0.bmp");
+	name.push_back("Source/images/mario/mario_s0_move1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 48 ----
-	name.push_back("Source/images/mario/mario_s0_underwater1.bmp");
+	name.push_back("Source/images/mario/mario_s0_move2.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 49 ----
-	name.push_back("Source/images/mario/mario_s0_end.bmp");
+	name.push_back("Source/images/mario/mario_s0_jump.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
 	// ---- 50 ----
+	name.push_back("Source/images/mario/mario_s0_st.bmp");
+	mario.push_back(new Animation(name, time));
+	name.clear();
+	// ---- 51 ----
+	name.push_back("Source/images/mario/mario_s0.bmp");
+	mario.push_back(new Animation(name, time));
+	name.clear();
+	// ---- 52 ----
+	name.push_back("Source/images/mario/mario_s0_underwater0.bmp");
+	mario.push_back(new Animation(name, time));
+	name.clear();
+	// ---- 53 ----
+	name.push_back("Source/images/mario/mario_s0_underwater1.bmp");
+	mario.push_back(new Animation(name, time));
+	name.clear();
+	// ---- 54 ----
+	name.push_back("Source/images/mario/mario_s0_end.bmp");
+	mario.push_back(new Animation(name, time));
+	name.clear();
+	// ---- 55 ----
 	name.push_back("Source/images/mario/mario_s0_end1.bmp");
 	mario.push_back(new Animation(name, time));
 	name.clear();
