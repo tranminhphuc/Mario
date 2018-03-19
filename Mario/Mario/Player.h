@@ -75,6 +75,7 @@ public:
 	void PlayerPhysics();
 
 	void Update();
+	void Draw(sf::RenderWindow& window);
 
 	void UpdateAnimation(float time);
 	void PowerUpAnimation();
@@ -119,6 +120,7 @@ public:
 	int GetScore();
 	void SetScore(int score);
 
+	int GetMarioID();
 	void SetMarioID(int id);
 
 	int GetCoin();

@@ -100,6 +100,8 @@ void Map::Draw(sf::RenderWindow& window)
 {
 	DrawMap(window);
 	DrawMinion(window);
+
+	player->Draw(window);
 }
 
 void Map::DrawMap(sf::RenderWindow & window)

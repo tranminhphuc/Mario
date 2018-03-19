@@ -1,5 +1,7 @@
 #include "Windows.h"
 #include "Txt.h"
+#include <fstream>
+#include <conio.h>
 
 int main()
 {

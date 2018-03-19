@@ -33,6 +33,7 @@ void Player::MoveX(int x)
 		else
 		{
 			MoveX(x - 1);
+
 			if (moveSpeed > 1 && jumpState == TrenMatDat)
 				moveSpeed--;
 		}
@@ -53,6 +54,7 @@ void Player::MoveX(int x)
 		else
 		{
 			MoveX(x + 1);
+
 			if (moveSpeed > 1 && jumpSpeed == TrenMatDat)
 				moveSpeed--;
 		}
@@ -74,9 +76,8 @@ void Player::MoveY(int y)
 		else
 		{
 			if (jumpState == NhayXuong)
-			{
 				jumpState = TrenMatDat;
-			}
+
 			MoveY(y - 1);
 		}
 	}
@@ -137,7 +138,7 @@ void Player::PlayerPhysics()
 		{
 			MoveY(-(int)currentJumpSpeed);
 			currentJumpDistance += currentJumpSpeed;
-			currentJumpSpeed *= (currentJumpSpeed / jumpDistance > 0.75f ? 0.972f : 0.986f);
+			currentJumpSpeed *= (currentJumpDistance / jumpDistance > 0.75f ? 0.972f : 0.986f);
 
 			if (currentJumpSpeed < 2.5f)
 				currentJumpSpeed = 2.5f;
@@ -193,6 +194,21 @@ void Player::PlayerPhysics()
 
 void Player::Update()
 {
+}
+
+void Player::Draw(sf::RenderWindow & window)
+{
+	if (!inLevelDownAnimation)
+	{
+		mario[GetMarioID()]->getTexture()->Draw(window, sf::Vector2f(xPlayer, yPlayer));
+	}
+	else
+	{
+		if (inLevelAnimationID % 15 < (inLevelAnimationID > 120 ? 7 : inLevelAnimationID > 90 ? 9 : inLevelAnimationID > 60 ? 11 : inLevelAnimationID > 30 ? 13 : 14))
+		{
+			mario[GetMarioID()]->getTexture()->Draw(window, sf::Vector2f(xPlayer, yPlayer));
+		}
+	}
 }
 
 void Player::UpdateAnimation(float time)
@@ -515,6 +531,11 @@ int Player::GetScore()
 void Player::SetScore(int score)
 {
 	this->score = score;
+}
+
+int Player::GetMarioID()
+{
+	return id;
 }
 
 void Player::SetMarioID(int id)

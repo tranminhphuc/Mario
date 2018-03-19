@@ -1,7 +1,10 @@
-﻿  Player.cpp
+﻿  main.cpp
+  Player.cpp
+e:\mario\mario\mario\player.cpp(203): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+e:\mario\mario\mario\player.cpp(209): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Map.cpp
   Generating Code...
   Skipping... (no relevant changes detected)
-  main.cpp
   Windows.cpp
   Txt.cpp
   Toad.cpp
@@ -15,7 +18,6 @@
   Minion.cpp
   MenuManager.cpp
   Menu.cpp
-  Map.cpp
   MainMenu.cpp
   LoadingMenu.cpp
   Lakito.cpp
