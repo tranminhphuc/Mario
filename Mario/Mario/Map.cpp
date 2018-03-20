@@ -4117,7 +4117,7 @@ void Map::AddSpikey(int x, int y)
 
 void Map::AddBeetle(int x, int y, bool moveDirection)
 {
-	minion[GetListID(x)].push_back(new Beetle(x, y, moveDirection));
+	minion[GetListID((int)x)].push_back(new Beetle(x, y, moveDirection));
 }
 
 void Map::AddVine(int x, int y, int id, int minionState)

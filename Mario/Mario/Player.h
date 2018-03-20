@@ -18,7 +18,7 @@ private:
 	};
 	State jumpState;
 
-	int xPlayer, yPlayer;
+	float xPlayer, yPlayer;
 	float width, height;
 
 	int id;
@@ -52,11 +52,11 @@ private:
 
 	bool inLevelAnimation;
 	bool inLevelDownAnimation;
-	int inLevelAnimationID;
+	int inLevelDownAnimationID;
 
 	bool starEffect;
 
-	void LoadData();
+	void LoadData(string file);
 	void MovePlayer();
 
 	bool CheckCollisionLB(int distanceX, int distanceY);
@@ -66,7 +66,7 @@ private:
 	bool CheckCollisionLC(int distance);
 	bool CheckCollisionRC(int distance);
 public:
-	Player(int xPlayer, int yPlayer);
+	Player(float xPlayer, float yPlayer);
 	~Player();
 
 	void MoveX(int distance);
@@ -96,11 +96,11 @@ public:
 	int GetWidth();
 	int GetHeight();
 
-	int GetX();
-	void SetX(int xPlayer);
+	float GetX();
+	void SetX(float xPlayer);
 	
-	int GetY();
-	void SetY(int yPlayer);
+	float GetY();
+	void SetY(float yPlayer);
 
 	int GetLevel();
 	void SetLevel(int level);

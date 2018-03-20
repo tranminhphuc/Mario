@@ -221,7 +221,7 @@ void Event::End()
 
 void Event::NewLevel()
 {
-	Window::GetMap()->SetX((float)newMapX);
+	Window::GetMap()->SetX(newMapX);
 	Window::GetMap()->GetPlayer()->SetX(newPlayerX);
 	Window::GetMap()->GetPlayer()->SetY(newPlayerY);
 	Window::GetMap()->SetMoveMap(newMoveMap);

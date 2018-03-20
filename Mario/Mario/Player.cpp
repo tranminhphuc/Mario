@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Windows.h"
 
-Player::Player(int xPlayer, int yPlayer)
+Player::Player(float xPlayer, float yPlayer)
 {
 	this->xPlayer = xPlayer;
 	this->yPlayer = yPlayer;
@@ -12,7 +12,7 @@ Player::Player(int xPlayer, int yPlayer)
 
 	this->id = 1;
 
-	LoadData();
+	LoadData("Source/files/Player.txt");
 }
 
 Player::~Player()
@@ -204,7 +204,7 @@ void Player::Draw(sf::RenderWindow & window)
 	}
 	else
 	{
-		if (inLevelAnimationID % 15 < (inLevelAnimationID > 120 ? 7 : inLevelAnimationID > 90 ? 9 : inLevelAnimationID > 60 ? 11 : inLevelAnimationID > 30 ? 13 : 14))
+		if (inLevelDownAnimationID % 15 < (inLevelDownAnimationID > 120 ? 7 : inLevelDownAnimationID > 90 ? 9 : inLevelDownAnimationID > 60 ? 11 : inLevelDownAnimationID > 30 ? 13 : 14))
 		{
 			mario[GetMarioID()]->getTexture()->Draw(window, sf::Vector2f(xPlayer, yPlayer));
 		}
@@ -220,21 +220,21 @@ void Player::PowerUpAnimation()
 {
 	if (inLevelDownAnimation)
 	{
-		if (inLevelAnimationID % 15 < 5)
+		if (inLevelDownAnimationID % 15 < 5)
 		{
 			id = 12;
 
-			if (inLevelAnimationID != 0 && inLevelAnimationID % 15 == 0)
+			if (inLevelDownAnimationID != 0 && inLevelDownAnimationID % 15 == 0)
 			{
 				yPlayer += 16;
 				xPlayer -= 4;
 			}
 		}
-		else if (inLevelAnimationID % 15 < 10)
+		else if (inLevelDownAnimationID % 15 < 10)
 		{
 			id = 67;
 
-			if (inLevelAnimationID % 15 == 5)
+			if (inLevelDownAnimationID % 15 == 5)
 			{
 				yPlayer += 16;
 				xPlayer += 1;
@@ -244,16 +244,16 @@ void Player::PowerUpAnimation()
 		{
 			id = 1;
 
-			if (inLevelAnimationID % 15 == 10)
+			if (inLevelDownAnimationID % 15 == 10)
 			{
 				yPlayer -= 32;
 				xPlayer += 3;
 			}
 		}
 
-		inLevelAnimationID++;
+		inLevelDownAnimationID++;
 
-		if (inLevelAnimationID > 59)
+		if (inLevelDownAnimationID > 59)
 		{
 			inLevelAnimation = false;
 			yPlayer += 32;
@@ -264,21 +264,21 @@ void Player::PowerUpAnimation()
 	}
 	else if (level == 1)
 	{
-		if (inLevelAnimationID % 15 < 5)
+		if (inLevelDownAnimationID % 15 < 5)
 		{
 			id = 1;
 
-			if (inLevelAnimationID != 0 && inLevelAnimationID % 15 == 0)
+			if (inLevelDownAnimationID != 0 && inLevelDownAnimationID % 15 == 0)
 			{
 				yPlayer += 32;
 				xPlayer += 4;
 			}
 		}
-		else if (inLevelAnimationID % 15 < 10)
+		else if (inLevelDownAnimationID % 15 < 10)
 		{
 			id = 67;
 
-			if (inLevelAnimationID % 15 == 5)
+			if (inLevelDownAnimationID % 15 == 5)
 			{
 				yPlayer -= 16;
 				xPlayer -= 3;
@@ -288,16 +288,16 @@ void Player::PowerUpAnimation()
 		{
 			id = 12;
 
-			if (inLevelAnimationID % 15 == 10)
+			if (inLevelDownAnimationID % 15 == 10)
 			{
 				yPlayer -= 16;
 				xPlayer -= 1;
 			}
 		}
 
-		inLevelAnimationID++;
+		inLevelDownAnimationID++;
 
-		if (inLevelAnimationID > 59)
+		if (inLevelDownAnimationID > 59)
 		{
 			inLevelAnimation = false;
 
@@ -307,14 +307,14 @@ void Player::PowerUpAnimation()
 	}
 	else if (level == 2)
 	{
-		if (inLevelAnimationID % 10 < 5)
+		if (inLevelDownAnimationID % 10 < 5)
 			id = id % 11 + 22;
 		else
 			id = id % 11 + 33;
 
-		inLevelAnimationID++;
+		inLevelDownAnimationID++;
 
-		if (inLevelAnimationID > 59)
+		if (inLevelDownAnimationID > 59)
 		{
 			inLevelAnimation = false;
 
@@ -440,22 +440,22 @@ int Player::GetHeight()
 	return level == 0 ? smallHeight : squat ? 44 : bigHeight;
 }
 
-int Player::GetX()
+float Player::GetX()
 {
 	return xPlayer;
 }
 
-void Player::SetX(int xPlayer)
+void Player::SetX(float xPlayer)
 {
 	this->xPlayer = xPlayer;
 }
 
-int Player::GetY()
+float Player::GetY()
 {
 	return yPlayer;
 }
 
-void Player::SetY(int yPlayer)
+void Player::SetY(float yPlayer)
 {
 	this->yPlayer = yPlayer;
 }
@@ -563,236 +563,34 @@ bool Player::getMove()
 	return move;
 }
 
-void Player::LoadData()
+void Player::LoadData(string file)
 {
-	vector<string> name;
+	vector<vector<string>> name;
 	vector<unsigned int> time;
 	time.push_back(0);
 
-	// ---- 0 ----
-	name.push_back("Source/images/mario/mario_death.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 1 ----
-	name.push_back("Source/images/mario/mario.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 2 ----
-	name.push_back("Source/images/mario/mario_move0.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 3 ----
-	name.push_back("Source/images/mario/mario_move1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 4 ----
-	name.push_back("Source/images/mario/mario_move2.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 5 ----
-	name.push_back("Source/images/mario/mario_jump.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 6 ----
-	name.push_back("Source/images/mario/mario_st.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 7 ----
-	name.push_back("Source/images/mario/mario.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 8 ----
-	name.push_back("Source/images/mario/mario_underwater0.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 9 ----
-	name.push_back("Source/images/mario/mario_underwater1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 10 ----
-	name.push_back("Source/images/mario/mario_end.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 11 ----
-	name.push_back("Source/images/mario/mario_end1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 12 ----
-	name.push_back("Source/images/mario/mario1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 13 ----
-	name.push_back("Source/images/mario/mario1_move0.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 14 ----
-	name.push_back("Source/images/mario/mario1_move1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 15 ----
-	name.push_back("Source/images/mario/mario1_move2.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 16 ----
-	name.push_back("Source/images/mario/mario1_jump.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 17 ----
-	name.push_back("Source/images/mario/mario1_st.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 18 ----
-	name.push_back("Source/images/mario/mario1_squat.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 19 ----
-	name.push_back("Source/images/mario/mario1_underwater0.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 20 ----
-	name.push_back("Source/images/mario/mario1_underwater1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 21 ----
-	name.push_back("Source/images/mario/mario1_end.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 22 ----
-	name.push_back("Source/images/mario/mario1_end1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 23 ----
-	name.push_back("Source/images/mario/mario2.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 24 ----
-	name.push_back("Source/images/mario/mario2_move0.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 25 ----
-	name.push_back("Source/images/mario/mario2_move1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 26 ----
-	name.push_back("Source/images/mario/mario2_move2.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 27 ----
-	name.push_back("Source/images/mario/mario2_jump.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 28 ----
-	name.push_back("Source/images/mario/mario2_st.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 29 ----
-	name.push_back("Source/images/mario/mario2_squat.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 30 ----
-	name.push_back("Source/images/mario/mario2_underwater0.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 31 ----
-	name.push_back("Source/images/mario/mario2_underwater1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 32 ----
-	name.push_back("Source/images/mario/mario2_end.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 33 ----
-	name.push_back("Source/images/mario/mario2_end1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 34 ----
-	name.push_back("Source/images/mario/mario2s.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 35 ----
-	name.push_back("Source/images/mario/mario2s_move0.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 36 ----
-	name.push_back("Source/images/mario/mario2s_move1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 37 ----
-	name.push_back("Source/images/mario/mario2s_move2.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 38 ----
-	name.push_back("Source/images/mario/mario2s_jump.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 39 ----
-	name.push_back("Source/images/mario/mario2s_st.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 40 ----
-	name.push_back("Source/images/mario/mario2s_squat.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 41 ----
-	name.push_back("Source/images/mario/mario2s_underwater0.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 42 ----
-	name.push_back("Source/images/mario/mario2s_underwater1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 43 ----
-	name.push_back("Source/images/mario/mario2s_end.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 44 ----
-	name.push_back("Source/images/mario/mario2s_end1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 445 ----
-	name.push_back("Source/images/mario/mario_s0.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 46 ----
-	name.push_back("Source/images/mario/mario_s0_move0.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 47 ----
-	name.push_back("Source/images/mario/mario_s0_move1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 48 ----
-	name.push_back("Source/images/mario/mario_s0_move2.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 49 ----
-	name.push_back("Source/images/mario/mario_s0_jump.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 50 ----
-	name.push_back("Source/images/mario/mario_s0_st.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 51 ----
-	name.push_back("Source/images/mario/mario_s0.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 52 ----
-	name.push_back("Source/images/mario/mario_s0_underwater0.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 53 ----
-	name.push_back("Source/images/mario/mario_s0_underwater1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 54 ----
-	name.push_back("Source/images/mario/mario_s0_end.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
-	// ---- 55 ----
-	name.push_back("Source/images/mario/mario_s0_end1.bmp");
-	mario.push_back(new Animation(name, time));
-	name.clear();
+	fstream f;
+	f.open(file);
+
+	while (!f.eof())
+	{
+		string count;
+		string text;
+
+		f >> count;
+		f >> text;
+		text = "Source/images/mario/" + text;
+
+		vector<string> img;
+		img.push_back(text);
+
+		name.push_back(img);
+	}
+
+	for (int i = 0; i < name.size(); i++)
+	{
+		mario.push_back(new Animation(name[i], time));
+	}
 }
 
 void Player::MovePlayer()
