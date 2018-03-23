@@ -8,15 +8,20 @@
 class Bowser : public Minion
 {
 private:
+	int nextJumpID;
+
 	bool spawnHammer;
+	int nextHammerID, numOfHammer;
 
 	int minBlockID, maxBlockID;
 	bool moveDirection;
 
 	int fireStart;
 	int fireID;
+
+	int nextFireID;
 public:
-	Bowser(int xMinion, int yMinion);
+	Bowser(int xMinion, int yMinion, bool spawHammer);
 	~Bowser();
 
 	void Update();

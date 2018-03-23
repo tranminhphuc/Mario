@@ -8,7 +8,7 @@ Star::Star(float xMinion, float yMinion, float x, float y)
 	this->x = x;
 	this->y = y;
 
-	this->collisionOnlyWithPlayer = true;
+	this->id = 4;
 
 	this->moveDirection = false;
 	this->moveSpeed = 3;
@@ -23,6 +23,8 @@ Star::Star(float xMinion, float yMinion, float x, float y)
 
 	this->width = 28;
 	this->height = 32;
+
+	this->collisionOnlyWithPlayer = true;
 }
 
 Star::~Star()
@@ -102,11 +104,7 @@ void Star::CollisionWithPlayer()
 {
 	if (!inSpawnState)
 	{
-		//Window::getMap()->GetPlayer()->
+		Window::GetMap()->GetPlayer()->SetStarEffect(true);
 		minionState = -1;
 	}
-}
-
-void Star::SetMinionState(int minionState)
-{
 }

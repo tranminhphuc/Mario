@@ -1,10 +1,34 @@
 #include "Bowser.h"
 #include "Windows.h"
 
-Bowser::Bowser(int xMinion, int yMinion)
+Bowser::Bowser(int xMinion, int yMinion, bool spawHammer)
 {
+	srand((unsigned int)time(NULL));
+
 	this->xMinion = (float)xMinion;
 	this->yMinion = (float)yMinion;
+
+	this->width = this->height = 64;
+
+	this->id = 22;
+	this->moveDirection = true;
+
+	this->nextFireID = 1;
+	this->nextJumpID = 128;
+
+	this->minionSpawned = true;
+
+	this->minBlockID = xMinion / 32 - 4;
+	this->maxBlockID = yMinion / 32 + 4;
+
+	this->collisionOnlyWithPlayer = true;
+
+	this->fireStart = yMinion - 32;
+	this->fireID = 0;
+
+	this->nextHammerID = 128;
+	this->numOfHammer = 3 + rand() % 6;
+	this->spawnHammer = spawnHammer;
 }
 
 Bowser::~Bowser()
@@ -19,6 +43,12 @@ void Bowser::Update()
 void Bowser::Draw(sf::RenderWindow & window, Texture * texture)
 {
 	texture->Draw(window, sf::Vector2f((float)xMinion + Window::GetMap()->GetX(), (float)yMinion));
+
+	if (spawnHammer)
+	{
+		if (nextHammerID <= 24 && moveDirection)
+			Window::GetMap()->GetObject(61)->GetAnimation()->getTexture()->Draw(window, sf::Vector2f(xMinion + Window::GetMap()->GetX() + 4, yMinion - 20));
+	}
 }
 
 void Bowser::MinionPhysics()
@@ -70,4 +100,12 @@ void Bowser::CollisionWithPlayer(bool top)
 
 void Bowser::CreateFire()
 {
+	Window::GetMap()->AddFire((int)xMinion - 40, (int)yMinion + 16, fireStart + 16 * (rand() % 4 + 1) + 6);
+	fireID++;
+
+	if (fireID > 2)
+	{
+		nextFireID += 88 + rand() % 110;
+		fireID = 0;
+	}
 }

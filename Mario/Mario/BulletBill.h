@@ -8,7 +8,9 @@
 class BulletBill : public Minion
 {
 public:
-	BulletBill(int xMinion, int yMinion);
+	int minX, maxX;
+
+	BulletBill(int xMinion, int yMinion, int minionState, bool moveDirection);
 	~BulletBill();
 
 	void Update();

@@ -15,6 +15,8 @@ public:
 
 	void Update();
 	void Draw(sf::RenderWindow& window, Texture* texture);
+
+	void CollisionWithPlayer(bool top);
 };
 
 #endif

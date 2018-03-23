@@ -17,6 +17,8 @@ FireBall::FireBall(int x, int y, int radius, int sliceID, bool moveDirection)
 
 	xMinion = (float)(x + radius * cos(angle));
 	yMinion = (float)(y + radius * sin(angle));
+
+	this->collisionOnlyWithPlayer = true;
 }
 
 FireBall::~FireBall()
@@ -54,4 +56,9 @@ void FireBall::Update(unsigned int time)
 void FireBall::Draw(sf::RenderWindow & window, Texture * texture)
 {
 	texture->Draw(window, sf::Vector2f(xMinion + Window::GetMap()->GetX(), yMinion));
+}
+
+void FireBall::CollisionWithPlayer(bool top)
+{
+	Window::GetMap()->PlayerDeath();
 }

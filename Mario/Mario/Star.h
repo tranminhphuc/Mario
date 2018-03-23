@@ -23,7 +23,6 @@ public:
 	void MinionPhysics();
 
 	void CollisionWithPlayer();
-	void SetMinionState(int minionState);
 };
 
 #endif

@@ -3,13 +3,22 @@
 
 Squid::Squid(int xMinion, int yMinion)
 {
+	srand((unsigned int)time(NULL));
+
 	this->xMinion = (float)xMinion;
 	this->yMinion = (float)yMinion;
 
-	width = 32;
-	minionState = 0;
-	moveDirection = false;
-	moveSpeed = 2;
+	this->id = 29;
+	this->width = 32;
+	this->minionState = 0;
+
+	this->moveDirection = false;
+	this->moveSpeed = 2;
+
+	this->moveXDistance = 96;
+	this->moveYDistance = 32;
+
+	this->collisionOnlyWithPlayer = true;
 }
 
 Squid::~Squid()

@@ -19,6 +19,8 @@ public:
 	void Draw(sf::RenderWindow& window, Texture* texture);
 
 	bool UpdateMinion();
+
+	void CollisionWithPlayer(bool top);
 };
 
 #endif

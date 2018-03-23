@@ -12,7 +12,7 @@ private:
 	bool end;
 	bool followPlayer;
 public:
-	Lakito(int xMinion, int yMinion);
+	Lakito(int xMinion, int yMinion, int maxX);
 	~Lakito();
 
 	void Update();

@@ -86,8 +86,3 @@ void Mushroom::CollisionWithPlayer()
 		minionState = -1;
 	}
 }
-
-void Mushroom::SetMinionState(int minionState)
-{
-	
-}

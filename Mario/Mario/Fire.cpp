@@ -7,12 +7,13 @@ Fire::Fire(int xMinion, int yMinion, int toYMinion)
 	this->yMinion = (float)yMinion;
 	this->toYMinion = toYMinion;
 
-	moveDirection = true;
+	this->moveDirection = true;
 
-	width = 48;
-	height = 10;
+	this->id = 24;
+	this->width = 48;
+	this->height = 10;
 
-	minionSpawned = false;
+	this->minionSpawned = false;
 }
 
 Fire::~Fire()
@@ -35,4 +36,9 @@ void Fire::Update()
 void Fire::Draw(sf::RenderWindow & window, Texture * texture)
 {
 	texture->Draw(window, sf::Vector2f(xMinion + Window::GetMap()->GetX(), yMinion - 4));
+}
+
+void Fire::CollisionWithPlayer(bool top)
+{
+	Window::GetMap()->PlayerDeath();
 }

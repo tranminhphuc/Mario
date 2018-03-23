@@ -181,28 +181,6 @@ private:
 	void LoadMinionLevel_8_3();
 	void LoadMinionLevel_8_4();
 
-	void AddGoombas(int x, int y, bool moveDirection);
-	void AddKoppa(int x, int y, int minionState, bool moveDirection);
-	void AddBowser(int x, int y, bool spawnHammer = false);
-	void AddToad(int x, int y, bool peach);
-	void AddSquid(int x, int y);
-	void AddCheep(int x, int y, int minionType, int moveSpeed, bool moveDirection = false);
-	void AddCheepSpawner(int x, int xEnd);
-	void AddHammerBro(int x, int y);
-	void AddHammer(int x, int y, bool moveDirection);
-	void AddLakito(int x, int y, int maxX);
-	void AddSpikey(int x, int y);
-	void AddBeetle(int x, int y, bool moveDirection);
-
-	void AddVine(int x, int y, int id, int minionState);
-
-	void AddFire(int x, int y, int toY);
-	void AddFireBall(int x, int y, int width, int id, bool left);
-
-	void AddBubble(int x, int y);
-	void AddBulletBillSpawner(int x, int y, int minionState);
-	void AddBulletBill(int x, int y, int minionState, bool moveDirection);
-
 	void DrawGND(int x, int y, int width, int height);
 	void DrawGND2(int x, int y, int width, int height);
 	void DrawGND2(int x, int y, int size, bool direction);
@@ -254,6 +232,25 @@ public:
 
 	void ResetGameData();
 
+	void AddGoombas(int x, int y, bool moveDirection);
+	void AddKoppa(int x, int y, int minionState, bool moveDirection);
+	void AddBowser(int x, int y, bool spawnHammer = false);
+	void AddToad(int x, int y, bool peach);
+	void AddSquid(int x, int y);
+	void AddCheep(int x, int y, int minionType, int moveSpeed, bool moveDirection = false);
+	void AddCheepSpawner(int x, int xEnd);
+	void AddHammerBro(int x, int y);
+	void AddHammer(int x, int y, bool moveDirection);
+	void AddLakito(int x, int y, int maxX);
+	void AddSpikey(int x, int y);
+	void AddBeetle(int x, int y, bool moveDirection);
+	void AddVine(int x, int y, int id, int minionState);
+	void AddFire(int x, int y, int toY);
+	void AddFireBall(int x, int y, int width, int id, bool left);
+	void AddBubble(int x, int y);
+	void AddBulletBillSpawner(int x, int y, int minionState);
+	void AddBulletBill(int x, int y, int minionState, bool moveDirection);
+
 	float GetX();
 	void SetX(float x);
 	float GetY();
@@ -276,18 +273,25 @@ public:
 	bool GetUnderWater();
 	void SetUnderWater(bool underWater);
 
+	sf::Vector2f GetObjectID(int x, int y);
+	int GetObjectX(int x);
+	int GetObjectY(int y);
+
+	int GetLevel();
 	void SetLevel(int level);
 
 	string GetLevelName();
 
 	Player* GetPlayer();
 
-	void Destroy(int x, int y, int id, int direction);
+	bool Destroy(int x, int y, int id, int direction);
 	void PlayerDeath();
 
 	Object* GetObject(int id);
 	TileSet* GetTile(int x, int y);
-	sf::Vector2i getTilePosition(int x, int y);
+	sf::Vector2i GetTilePosition(int x, int y);
+
+	
 };
 
 #endif

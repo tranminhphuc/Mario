@@ -57,3 +57,12 @@ bool Flower::UpdateMinion()
 {
 	return minionSpawned;
 }
+
+void Flower::CollisionWithPlayer(bool top)
+{
+	if (!inSpawnState && minionState >= 0)
+	{
+		Window::GetMap()->GetPlayer()->SetLevel(Window::GetMap()->GetPlayer()->GetLevel() + 1);
+		minionState = -1;
+	}
+}

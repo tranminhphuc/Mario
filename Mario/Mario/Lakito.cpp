@@ -1,10 +1,25 @@
 #include "Lakito.h"
 #include "Windows.h"
 
-Lakito::Lakito(int xMinion, int yMinion)
+Lakito::Lakito(int xMinion, int yMinion, int maxX)
 {
+	srand((unsigned int)time(NULL));
+
 	this->xMinion = (float)xMinion;
 	this->yMinion = (float)yMinion;
+	this->maxX = maxX;
+
+	this->followPlayer = false;
+	this->end = false;
+
+	this->id = 50;
+	this->width = 32;
+	this->height = 26;
+
+	this->collisionOnlyWithPlayer = true;
+
+	this->moveDirection = true;
+	this->minionSpawned = true;
 }
 
 Lakito::~Lakito()

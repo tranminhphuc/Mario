@@ -22,6 +22,7 @@ private:
 	float width, height;
 
 	int id;
+	int comboPoint, frameID;
 	unsigned int moveAnimationTime;
 
 	unsigned int score;
@@ -77,7 +78,6 @@ public:
 	void Update();
 	void Draw(sf::RenderWindow& window);
 
-	void UpdateAnimation(float time);
 	void PowerUpAnimation();
 
 	void MoveAnimation();

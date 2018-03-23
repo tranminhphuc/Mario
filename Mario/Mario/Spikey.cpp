@@ -5,6 +5,14 @@ Spikey::Spikey(int xMinion, int yMinion)
 {
 	this->xMinion = (float)xMinion;
 	this->yMinion = (float)yMinion;
+
+	this->id = 52;
+	this->moveSpeed = 0;
+
+	this->width = 32;
+	this->height = 26;
+
+	StartJump(1);
 }
 
 Spikey::~Spikey()

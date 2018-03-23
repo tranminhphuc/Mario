@@ -22,8 +22,6 @@ public:
 	void Draw(sf::RenderWindow& window, Texture* texture);
 
 	void CollisionWithPlayer();
-
-	void SetMinionState(int minionState);
 };
 
 #endif

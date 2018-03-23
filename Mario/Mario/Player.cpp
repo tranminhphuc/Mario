@@ -43,13 +43,9 @@ void Player::MoveX(int x)
 		if (!CheckCollisionLB(x, -2) && !CheckCollisionLT(x, 2) && (level == 0 ? true : (!CheckCollisionLC(x))))
 		{
 			if (xPlayer <= 192)
-			{
 				Window::GetMap()->MoveMap(-x);
-			}
 			else
-			{
 				xPlayer += x;
-			}
 		}
 		else
 		{
@@ -94,15 +90,21 @@ void Player::MoveY(int y)
 		{
 			if (!left && right)
 			{
-				sf::Vector2i RT = Window::GetMap()->getTilePosition((int)(xPlayer - Window::GetMap()->GetX() + width - 1), (int)(yPlayer + y));
+				sf::Vector2i RT = Window::GetMap()->GetTilePosition((int)(xPlayer - Window::GetMap()->GetX() + width - 1), (int)(yPlayer + y));
 
 				if (!Window::GetMap()->GetObject(Window::GetMap()->GetTile(RT.x, RT.y)->GetID())->GetVisible())
 				{
-
+					if (Window::GetMap()->Destroy(RT.x, RT.y, Window::GetMap()->GetTile(RT.x, RT.y)->GetID(), 0))
+						jumpState = NhayXuong;
+					else
+						yPlayer += y;
 				}
 				else if(Window::GetMap()->GetObject(Window::GetMap()->GetTile(RT.x, RT.y)->GetID())->GetCanDestroy())
 				{
-					jumpState = NhayXuong;
+					if (Window::GetMap()->Destroy(RT.x, RT.y, Window::GetMap()->GetTile(RT.x, RT.y)->GetID(), 0))
+						jumpState = NhayXuong;
+					else
+						yPlayer += y;
 				}
 				else
 				{
@@ -111,22 +113,30 @@ void Player::MoveY(int y)
 			}
 			else if (left && !right)
 			{
-				sf::Vector2i LT = Window::GetMap()->getTilePosition((int)(xPlayer - Window::GetMap()->GetX() + 1), (int)(yPlayer + y));
+				sf::Vector2i LT = Window::GetMap()->GetTilePosition((int)(xPlayer - Window::GetMap()->GetX() + 1), (int)(yPlayer + y));
 
 				if (!Window::GetMap()->GetObject(Window::GetMap()->GetTile(LT.x, LT.y)->GetID())->GetVisible())
 				{
-
+					if (Window::GetMap()->Destroy(LT.x, LT.y, Window::GetMap()->GetTile(LT.x, LT.y)->GetID(), 0))
+						jumpState = NhayXuong;
+					else
+						yPlayer += y;
 				}
 				else if (Window::GetMap()->GetObject(Window::GetMap()->GetTile(LT.x, LT.y)->GetID())->GetCanDestroy())
 				{
-
+					if (Window::GetMap()->Destroy(LT.x, LT.y, Window::GetMap()->GetTile(LT.x, LT.y)->GetID(), 0))
+						jumpState = NhayXuong;
+					else
+						yPlayer += y;
 				}
 				else
 				{
-
+					jumpState = NhayXuong;
 				}
 			}
 		}
+
+		MoveY(y + 1);
 	}
 }
 
@@ -152,10 +162,6 @@ void Player::PlayerPhysics()
 
 			if (jumpDistance <= currentJumpDistance)
 				jumpState = NhayXuong;
-		}
-		else
-		{
-
 		}
 	}
 	else
@@ -194,6 +200,19 @@ void Player::PlayerPhysics()
 
 void Player::Update()
 {
+	PlayerPhysics();
+	MovePlayer();
+
+	if (frameID > 0)
+		frameID--;
+	else if (comboPoint > 1)
+		comboPoint--;
+
+	if (inLevelDownAnimation)
+	{
+		if (inLevelDownAnimationID > 0)
+			inLevelDownAnimationID--;
+	}
 }
 
 void Player::Draw(sf::RenderWindow & window)
@@ -209,11 +228,6 @@ void Player::Draw(sf::RenderWindow & window)
 			mario[GetMarioID()]->getTexture()->Draw(window, sf::Vector2f(xPlayer, yPlayer));
 		}
 	}
-}
-
-void Player::UpdateAnimation(float time)
-{
-	//mario->Update(time - 0.65f + moveSpeed * 0.04f);
 }
 
 void Player::PowerUpAnimation()

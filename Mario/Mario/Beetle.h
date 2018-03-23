@@ -13,6 +13,11 @@ public:
 
 	void Update();
 	void Draw(sf::RenderWindow& window, Texture* texture);
+
+	void CollisionWithPlayer(bool top);
+	void CollisionEffect();
+
+	void SetMinionState(int minionState);
 };
 
 #endif

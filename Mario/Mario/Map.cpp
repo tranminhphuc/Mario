@@ -23,6 +23,7 @@ void Map::Update()
 {
 	UpdateBlock();
 	UpdateMinion();
+	UpdatePlayer();
 }
 
 void Map::UpdatePlayer()
@@ -264,6 +265,26 @@ void Map::SetUnderWater(bool underWater)
 	this->underWater = underWater;
 }
 
+sf::Vector2f Map::GetObjectID(int x, int y)
+{
+	return sf::Vector2f((float)(x < 0 ? 0 : x) / 32, (float)(y > Window::gameHeight ? 0 : Window::gameHeight - y + 32) / 32);
+}
+
+int Map::GetObjectX(int x)
+{
+	return (x < 0 ? 0 : x) / 32;
+}
+
+int Map::GetObjectY(int y)
+{
+	return (y > Window::gameHeight ? 0 : Window::gameHeight - y + 32) / 32;
+}
+
+int Map::GetLevel()
+{
+	return level;
+}
+
 void Map::SetLevel(int level)
 {
 	if (this->level != level)
@@ -283,7 +304,7 @@ Player* Map::GetPlayer()
 	return player;
 }
 
-void Map::Destroy(int x, int y, int id, int direction)
+bool Map::Destroy(int x, int y, int id, int direction)
 {
 	if (direction == 0)
 	{
@@ -367,6 +388,8 @@ void Map::Destroy(int x, int y, int id, int direction)
 	{
 
 	}
+
+	return false;
 }
 
 void Map::PlayerDeath()
@@ -383,7 +406,7 @@ TileSet* Map::GetTile(int x, int y)
 	return tile[x][y];
 }
 
-sf::Vector2i Map::getTilePosition(int x, int y)
+sf::Vector2i Map::GetTilePosition(int x, int y)
 {
 	return sf::Vector2i((int)(x < 0 ? 0 : x), (int)(y > 480 ? 0 : y));
 }
@@ -392,7 +415,7 @@ void Map::MoveMap(int x)
 {
 	if (xMap + x > 0)
 	{
-		//player->MoveX(x - xMap);
+		player->MoveX((int)(x - xMap));
 		xMap = 0;
 	}
 	else
@@ -4073,7 +4096,7 @@ void Map::AddKoppa(int x, int y, int minionState, bool moveDirection)
 }
 void Map::AddBowser(int x, int y, bool spawnHammer)
 {
-	minion[GetListID(x)].push_back(new Bowser(x, y));
+	minion[GetListID(x)].push_back(new Bowser(x, y, spawnHammer));
 }
 
 void Map::AddToad(int x, int y, bool peach)
@@ -4107,7 +4130,7 @@ void Map::AddHammer(int x, int y, bool moveDirection)
 
 void Map::AddLakito(int x, int y, int maxX)
 {
-	minion[GetListID(x)].push_back(new Lakito(x, y));
+	minion[GetListID(x)].push_back(new Lakito(x, y, maxX));
 }
 
 void Map::AddSpikey(int x, int y)

@@ -37,6 +37,8 @@ Cheep::Cheep(int xMinion, int yMinion, int minionType, int moveSpeed, bool moveD
 		this->jumpDistance = 11 * 32.0f + rand() % 80;
 		moveYDir = true;
 	}
+
+	this->collisionOnlyWithPlayer = true;
 }
 
 Cheep::~Cheep()
@@ -203,4 +205,14 @@ void Cheep::Draw(sf::RenderWindow & window, Texture * texture)
 
 void Cheep::CollisionWithPlayer(bool top)
 {
+	if (minionState > 1 && top)
+	{
+		SetMinionState(-2);
+		moveYDir = false;
+		jumpDistance = Window::gameHeight - yMinion;
+	}
+	else
+	{
+		Window::GetMap()->PlayerDeath();
+	}
 }

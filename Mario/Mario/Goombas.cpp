@@ -37,23 +37,23 @@ void Goombas::Draw(sf::RenderWindow& window, Texture* texture)
 
 void Goombas::CollisionWithPlayer(bool top)
 {
-	//if (Window::getMap()->GetPlayer()->GetStarEffect())
-	//{
-	//	SetMinionState(-2);
-	//}
-	//else if (top)
-	//{
-	//	if (minionState = 0)
-	//	{
-	//		minionState = 1;
-	//		//Window::getMap()->GetPlayer()->ResetJump();
-	//		//Window::getMap()->GetPlayer()->StartJump(1);
-	//	}
-	//}
-	//else
-	//{
-	//	//Window::getMap()->PlayerDeath();
-	//}
+	if (Window::GetMap()->GetPlayer()->GetStarEffect())
+	{
+		SetMinionState(-2);
+	}
+	else if (top)
+	{
+		if (minionState = 0)
+		{
+			minionState = 1;
+			Window::GetMap()->GetPlayer()->ResetJump();
+			Window::GetMap()->GetPlayer()->StartJump(1);
+		}
+	}
+	else
+	{
+		Window::GetMap()->PlayerDeath();
+	}
 }
 
 void Goombas::SetMinionState(int minionState)

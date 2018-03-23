@@ -44,9 +44,7 @@ void Koopa::Update()
 		MoveX();
 
 		if (jumpState == TrenMatDat)
-		{
 			StartJump(1);
-		}
 			
 	}
 	else if (minionState == 1 || minionState == 2)
@@ -183,16 +181,132 @@ void Koopa::MinionPhysics()
 
 void Koopa::CollisionEffect()
 {
+	if (minionState != 2 && moveSpeed != 0)
+		moveDirection = !moveDirection;
 }
 
 void Koopa::CollisionWithPlayer(bool top)
 {
+	if (Window::GetMap()->GetPlayer()->GetStarEffect())
+	{
+		SetMinionState(-2);
+	}
+	else if (top)
+	{
+		if (minionState == 0 || minionState == 3)
+		{
+			minionState = 1;
+			SetMinion();
+
+			Window::GetMap()->GetPlayer()->ResetJump();
+			Window::GetMap()->GetPlayer()->StartJump(1);
+			Window::GetMap()->GetPlayer()->SetY(Window::GetMap()->GetPlayer()->GetY() - 4);
+		}
+		else if (minionState == 1)
+		{
+			minionState = 2;
+			SetMinion();
+
+			Window::GetMap()->GetPlayer()->ResetJump();
+			Window::GetMap()->GetPlayer()->StartJump(1);
+			Window::GetMap()->GetPlayer()->SetY(Window::GetMap()->GetPlayer()->GetY() - 4);
+		}
+		else
+		{
+			if (moveSpeed > 0)
+			{
+				moveSpeed = 0;
+			}
+			else
+			{
+				if ((xMinion + width) / 2 < (Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth()) / 2)
+					moveDirection = true;
+				else
+					moveDirection = false;
+
+				moveSpeed = 6;
+			}
+
+			Window::GetMap()->GetPlayer()->SetY(Window::GetMap()->GetPlayer()->GetY() - 4);
+			Window::GetMap()->GetPlayer()->ResetJump();
+			Window::GetMap()->GetPlayer()->StartJump(1);
+		}
+	}
+	else
+	{
+		if (minionState == 2)
+		{
+			if (moveSpeed == 0)
+			{
+				moveDirection = (xMinion + width / 2 < Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth() / 2);
+				
+				if (moveDirection)
+					xMinion -= Window::GetMap()->GetPlayer()->GetMoveSpeed() + 1;
+				else
+					xMinion += Window::GetMap()->GetPlayer()->GetMoveSpeed() + 1;
+
+				moveSpeed = 6;
+			}
+			else
+			{
+				Window::GetMap()->PlayerDeath();
+			}
+		}
+		else
+		{
+			Window::GetMap()->PlayerDeath();
+		}
+	}
 }
 
 void Koopa::SetMinionState(int minionState)
 {
+	this->minionState = minionState;
+
+	if (this->minionState == 3)
+		deadTime = Window::GetTime();
+
+	Minion::SetMinionState(minionState);
 }
 
 void Koopa::SetMinion()
 {
+	switch (minionState)
+	{
+	case 0: case 3:
+		width = 32;
+		height = 32;
+		break;
+	case 1:
+		width = 32;
+		height = 32;
+		break;
+	case 2:
+		width = 32;
+		height = 32;
+		moveSpeed = 0;
+		break;
+	}
+
+	switch (id)
+	{
+	case 7:
+		id = 4;
+		break;
+	case 14:
+		id = 12;
+		break;
+	case 17:
+		id = 15;
+		break;
+	case 4:
+		id = 5;
+		break;
+	case 12:
+		id = 13;
+		break;
+	case 15:
+		id = 16;
+		break;
+	}
 }
