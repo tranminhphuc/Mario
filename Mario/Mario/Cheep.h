@@ -8,15 +8,18 @@
 class Cheep : public Minion
 {
 private:
-	bool moveY, moveYDir;
+	bool moveYDir;
 public:
 	Cheep(int xMinion, int yMinion, int minionType, int moveSpeed, bool moveDirection = false);
 	~Cheep();
 
-	void Update(unsigned int time);
+	void Update();
 	void Draw(sf::RenderWindow& window, Texture* texture);
 
+	void MinionPhysics();
 	void CollisionWithPlayer(bool top);
+
+	void ChangeDistance(float y, float distance);
 };
 
 #endif

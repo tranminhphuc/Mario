@@ -1430,21 +1430,21 @@ void Map::LoadMinionLevel_2_2()
 
 	AddCheep(75 * 32 + 28, Window::gameHeight - 5 * 32, 0, 1);
 	AddCheep(78 * 32 + 28, Window::gameHeight - 8 * 32, 0, 1);
-	AddCheep(81 * 32, +28, Window::gameHeight - 3 * 32 - 28, 0, 1);
+	AddCheep(81 * 32 + 28, Window::gameHeight - 3 * 32 - 28, 0, 1);
 	AddCheep(94 * 32 + 14, Window::gameHeight - 9 * 32, 0, 1);
 	AddCheep(101 * 32 + 28, Window::gameHeight - 5 * 32, 0, 1);
-	AddCheep(97 * 32 + 8, Window::gameHeight - 12 * 32, 1, 1);
+	AddCheep(97 * 32 + 8, Window::gameHeight - 12 * 32, 0, 1);
 	AddCheep(117 * 32 + 8, Window::gameHeight - 11 * 32, 0, 1);
-	AddCheep(127 * 32 + 24, Window::gameHeight - 5 * 32, 1, 1);
+	AddCheep(127 * 32 + 24, Window::gameHeight - 5 * 32, 0, 1);
 	AddCheep(131 * 32 + 8, Window::gameHeight - 4 * 32 - 4, 0, 1);
 	AddCheep(136 * 32 + 16, Window::gameHeight - 7 * 32, 0, 1);
 	AddCheep(145 * 32 + 8, Window::gameHeight - 5 * 32, 0, 1);
-	AddCheep(149 * 32 + 28, Window::gameHeight - 9 * 32 - 4, 1, 1);
+	AddCheep(149 * 32 + 28, Window::gameHeight - 9 * 32 - 4, 0, 1);
 	AddCheep(164 * 32, Window::gameHeight - 12 * 32, 0, 1);
-	AddCheep(167 * 32, Window::gameHeight - 4 * 32, 1, 1);
+	AddCheep(167 * 32, Window::gameHeight - 4 * 32, 0, 1);
 	AddCheep(175 * 32, Window::gameHeight - 7 * 32 - 4, 0, 1);
-	AddCheep(183 * 32, Window::gameHeight - 11 * 32, 1, 1);
-	AddCheep(186 * 32 + 16, Window::gameHeight - 8 * 32, 1, 1);
+	AddCheep(183 * 32, Window::gameHeight - 11 * 32, 0, 1);
+	AddCheep(186 * 32 + 16, Window::gameHeight - 8 * 32, 0, 1);
 }
 
 void Map::LoadMinionLevel_2_3()
