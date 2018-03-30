@@ -74,7 +74,7 @@ void Bowser::MinionPhysics()
 	}
 	else
 	{
-		if (!CheckCollisionLB(2, 2) && CheckCollisionRB(-2, 2))
+		if (!CheckCollisionLB(2, 2) && !CheckCollisionRB(-2, 2))
 		{
 			if (currentJumpDistance < 16)
 			{

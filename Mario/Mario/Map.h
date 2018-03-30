@@ -110,6 +110,9 @@ private:
 	void LoadSource();
 	void LoadGameData();
 	void LoadLevel();
+
+	void ReadMap(string file);
+
 	void CreateMap();
 	void ClearMap();
 	void ClearMinion();
@@ -180,32 +183,6 @@ private:
 	void LoadMinionLevel_8_2();
 	void LoadMinionLevel_8_3();
 	void LoadMinionLevel_8_4();
-
-	void DrawGND(int x, int y, int width, int height);
-	void DrawGND2(int x, int y, int width, int height);
-	void DrawGND2(int x, int y, int size, bool direction);
-	void DrawBrick(int x, int y, int width, int height);
-	void DrawBlockQ(int x, int y, int width);
-	void DrawBlockQ2(int x, int y, int width);
-	void DrawPipe(int x, int y, int height);
-	void DrawPipeHorizontal(int x, int y, int width);
-	void DrawPipeVertical(int x, int y, int height);
-	void DrawCoins(int x, int y, int width, int height);
-	void DrawEnd(int x, int y, int height);
-	void DrawCastleSmall(int x, int y);
-	void DrawCastleBig(int x, int y);
-	void DrawCastleWall(int x, int y, int width, int height);
-	void DrawT(int x, int y, int width, int height);
-	void DrawTMush(int x, int y, int width, int height);
-	void DrawWater(int x, int y, int width, int height);
-	void DrawLava(int x, int y, int width, int height);
-	void DrawBridge(int x, int y, int width);
-	void DrawBridge2(int x, int y, int width);
-	void DrawBonus(int x, int y, int width);
-	void DrawBonusEnd(int x);
-	void DrawSeeSaw(int x, int y, int width);
-	void DrawBulletBill(int x, int y, int height);
-	void DrawPlatformLine(int x);
 
 	int GetStartMap();
 	int GetEndMap();

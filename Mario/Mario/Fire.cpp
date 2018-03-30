@@ -24,7 +24,7 @@ void Fire::Update()
 {
 	xMinion -= 2;
 
-	if (xMinion += width < 0)
+	if (xMinion + width < 0)
 		minionState = -1;
 
 	if (toYMinion > yMinion)
