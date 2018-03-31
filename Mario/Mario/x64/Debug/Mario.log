@@ -1,3 +1,35 @@
-﻿cl : Command line warning D9028: minimal rebuild failure, reverting to normal build
+﻿  Squid.cpp
+  Generating Code...
+  Skipping... (no relevant changes detected)
+  main.cpp
+  Windows.cpp
+  Txt.cpp
+  Toad.cpp
+  Star.cpp
+  Spikey.cpp
+  Player.cpp
+  Plant.cpp
+  PauseMenu.cpp
+  OptionMenu.cpp
+  Mushroom.cpp
+  Minion.cpp
+  MenuManager.cpp
+  Menu.cpp
+  Map.cpp
+  MainMenu.cpp
+  LoadingMenu.cpp
+  Lakito.cpp
+  Koopa.cpp
+  HammerBro.cpp
+  Hammer.cpp
+  Goombas.cpp
+  Flower.cpp
+  FireBall.cpp
+  Fire.cpp
+  EventGame.cpp
   Cheep.cpp
+  BulletBill.cpp
+  Bowser.cpp
+  Beetle.cpp
+  Animation.cpp
   Mario.vcxproj -> E:\Mario\Mario\x64\Debug\Mario.exe

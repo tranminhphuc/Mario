@@ -98,6 +98,8 @@ void Lakito::Draw(sf::RenderWindow & window, Texture * texture)
 		texture->Draw(window, sf::Vector2f((float)xMinion + Window::GetMap()->GetX(), (float)yMinion - 16));
 }
 
+void Lakito::MinionPhysics() { };
+
 void Lakito::CollisionWithPlayer(bool top)
 {
 	if (Window::GetMap()->GetPlayer()->GetStarEffect() || top)

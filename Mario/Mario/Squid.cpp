@@ -79,6 +79,8 @@ void Squid::Draw(sf::RenderWindow & window, Texture * texture)
 	texture->Draw(window, sf::Vector2f((float)xMinion + Window::GetMap()->GetX(), (float)yMinion));
 }
 
+void Squid::MinionPhysics() { }
+
 void Squid::CollisionWithPlayer(bool top)
 {
 	Window::GetMap()->PlayerDeath();
