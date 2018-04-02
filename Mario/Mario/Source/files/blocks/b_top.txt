@@ -1,6 +1,5 @@
 1
-b_top.bmp
-0
+b_top.bmp 0
 1
 0
 1

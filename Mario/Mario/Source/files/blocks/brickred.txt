@@ -1,6 +1,5 @@
 1
-brickred.bmp
-0
+brickred.bmp 0
 1
 1
 1

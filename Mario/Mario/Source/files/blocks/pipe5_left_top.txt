@@ -1,6 +1,5 @@
 1
-pipe5_left_top.bmp
-0
+pipe5_left_top.bmp 0
 1
 1
 1

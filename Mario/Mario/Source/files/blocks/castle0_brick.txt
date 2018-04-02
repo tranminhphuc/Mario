@@ -1,6 +1,5 @@
 1
-castle0_brick.bmp
-0
+castle0_brick.bmp 0
 0
 0
 1

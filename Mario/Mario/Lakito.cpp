@@ -39,7 +39,7 @@ void Lakito::Update()
 
 		if (end)
 		{
-			xMinion = -1;
+			xMinion -= 1;
 
 			if (xMinion < -width)
 				minionState = -1;
@@ -59,35 +59,14 @@ void Lakito::Update()
 		}
 		else
 		{
-			if (followPlayer)
-			{
-				if (moveSpeed > 0)
-				{
-					xMinion += moveSpeed;
-					moveSpeed--;
-				}
-				else
-				{
-					followPlayer = false;
-				}
-			}
-			else
-			{
-				if (!moveDirection)
-				{
-					xMinion = -1;
+			moveSpeed = 0;
+			followPlayer = false;
+			xMinion += moveDirection ? 1 : -1;
 
-					if (xMinion < Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth() / 2 - 128)
-						moveDirection = true;
-				}
-				else
-				{
-					xMinion += 1;
-
-					if (xMinion > Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth() / 2 + 128)
-						moveDirection = false;
-				}
-			}
+			if (xMinion < Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth() / 2 - 128)
+				moveDirection = true;
+			else if (xMinion > Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth() / 2 + 128)
+				moveDirection = false;
 		}
 	}
 }

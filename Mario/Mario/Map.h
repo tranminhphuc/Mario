@@ -31,15 +31,8 @@ public:
 	enum MapType
 	{
 		BanNgay, // 0
-		HoangHon,
-		BuoiToi, // 4
-		BinhMinh,
-		LongDat, // 1
-		NuiLua, //3
-		Bien, // 2
-		Ho, // 7
-		ThienDuong, // 5
-		DiaNguc // 6
+		BanDem,
+		LongDat,
 	};
 	enum Level
 	{
@@ -209,8 +202,8 @@ public:
 
 	void ResetGameData();
 
-	void AddGoombas(int x, int y, bool moveDirection);
-	void AddKoppa(int x, int y, int minionState, bool moveDirection);
+	void AddGoombas(int x, int y, int id, bool moveDirection);
+	void AddKoppa(int x, int y, int id, int minionState, bool moveDirection);
 	void AddBowser(int x, int y, bool spawnHammer = false);
 	void AddToad(int x, int y, bool peach);
 	void AddSquid(int x, int y);

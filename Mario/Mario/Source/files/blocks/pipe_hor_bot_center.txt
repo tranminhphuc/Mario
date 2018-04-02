@@ -1,6 +1,5 @@
 1
-pipe_hor_bot_center.bmp
-0
+pipe_hor_bot_center.bmp 0
 1
 0
 1

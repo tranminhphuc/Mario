@@ -1,6 +1,5 @@
 1
-pipe2_right_bot.bmp
-0
+pipe2_right_bot.bmp 0
 1
 0
 1

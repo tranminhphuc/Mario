@@ -1,6 +1,5 @@
 1
-seesaw1_2.bmp
-0
+seesaw1_2.bmp 0
 0
 0
 1

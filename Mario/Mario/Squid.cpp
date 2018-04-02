@@ -44,7 +44,7 @@ void Squid::Update()
 				if (yMinion + 52 > Window::GetMap()->GetPlayer()->GetY())
 				{
 					moveDirection = Window::GetMap()->GetPlayer()->GetX() - Window::GetMap()->GetX() + Window::GetMap()->GetPlayer()->GetWidth() / 2 > xMinion;
-					moveXDistance = 96 * rand() % 32;
+					moveXDistance = 96 + rand() % 32;
 					ChangeID();
 				}
 				else
@@ -55,11 +55,8 @@ void Squid::Update()
 		}
 		else
 		{
-			if (moveXDistance == 64)
-				ChangeID();
-
 			xMinion += moveDirection ? 2 : -2;
-
+			
 			if (yMinion > Window::gameHeight - 12 * 32 - 4)
 				yMinion -= 2;
 

@@ -1,12 +1,8 @@
 4
-blockq1_0.bmp
-300
-blockq1_2.bmp
-30
-blockq1_1.bmp
-130
-blockq1_2.bmp
-140
+blockq1_0.bmp 300
+blockq1_2.bmp 30
+blockq1_1.bmp 130
+blockq1_2.bmp 140
 1
 1
 1

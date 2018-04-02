@@ -1,6 +1,5 @@
 1
-t_right2.bmp
-0
+t_right2.bmp 0
 1
 1
 1
