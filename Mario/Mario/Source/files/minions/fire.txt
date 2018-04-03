@@ -1,8 +1,5 @@
-2
-fire_0.bmp
-35
-fire_1.bmp
-35
-1
-1
-1
+collision  1
+canDestroy 1
+visible    1
+fire_0.bmp 35
+fire_1.bmp 35

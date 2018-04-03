@@ -426,32 +426,30 @@ void Map::MoveMap(int x)
 
 void Map::LoadImage(string file, vector<Object*>& object)
 {
-	int size;
 	bool collision, canDestroy, visible;
 
 	vector<string> name;
 	vector<unsigned int> time;
 
+	string text;
+	unsigned int delay;
+
 	fstream f;
 	f.open(file);
 
-	f >> size;
+	f >> text >> collision;
+	f >> text >> canDestroy;
+	f >> text >> visible;
 
-	for (int i = 0; i < size; i++)
+	while(!f.eof())
 	{
-		string image;
-		unsigned int delay;
-
-		f >> image;
+		f >> text;
 		f >> delay;
-
-		name.push_back("Source/images/" + image);
+		name.push_back("Source/images/" + text);
 		time.push_back(delay);
 	}
-
-	f >> collision >> canDestroy >> visible;
+	
 	f.close();
-
 	object.push_back(new Object(new Animation(name, time), collision, canDestroy, visible));
 }
 
@@ -1595,10 +1593,10 @@ void Map::LoadMinionLevel_4_2()
 	AddKoppa(168 * 32, Window::gameHeight - 3 * 32, 14, 1, true);
 	AddKoppa(169 * 32 + 16, Window::gameHeight - 3 * 32, 14, 1, true);
 
-	AddBeetle(83 * 32, Window::gameHeight - 3 * 32, true);
-	AddBeetle(88 * 32, Window::gameHeight - 3 * 32, true);
-	AddBeetle(154 * 32, Window::gameHeight - 6 * 32, true);
-	AddBeetle(179 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(83 * 32, Window::gameHeight - 3 * 32, 55, true);
+	AddBeetle(88 * 32, Window::gameHeight - 3 * 32, 55, true);
+	AddBeetle(154 * 32, Window::gameHeight - 6 * 32, 55, true);
+	AddBeetle(179 * 32, Window::gameHeight - 3 * 32, 55, true);
 }
 
 void Map::LoadMinionLevel_4_3()
@@ -1681,22 +1679,22 @@ void Map::LoadMinionLevel_5_2()
 	AddKoppa(246 * 32, Window::gameHeight - 3 * 32, 12, 0, true);
 	AddKoppa(266 * 32, Window::gameHeight - 8 * 32, 12, 0, true);
 
-	AddBeetle(216 * 32, Window::gameHeight - 3 * 32, true);
-	AddBeetle(217 * 32 + 4, Window::gameHeight - 3 * 32, true);
-	AddBeetle(218 * 32 + 8, Window::gameHeight - 3 * 32, true);
+	AddBeetle(216 * 32, Window::gameHeight - 3 * 32, 53, true);
+	AddBeetle(217 * 32 + 4, Window::gameHeight - 3 * 32, 53, true);
+	AddBeetle(218 * 32 + 8, Window::gameHeight - 3 * 32, 53, true);
 
 	AddHammerBro(126 * 32, Window::gameHeight - 7 * 32);
 	AddHammerBro(161 * 32, Window::gameHeight - 8 * 32);
 	AddHammerBro(200 * 32, Window::gameHeight - 8 * 32);
 	AddHammerBro(204 * 32, Window::gameHeight - 12 * 32);
 
-	/*AddSquid(17 * 32, Window::gameHeight - 4 * 32);
+	AddSquid(17 * 32, Window::gameHeight - 4 * 32);
 	AddSquid(34 * 32, Window::gameHeight - 4 * 32);
-	AddSquid(43 * 32 + 16, Window::gameHeight - 4 * 32);*/
+	AddSquid(43 * 32 + 16, Window::gameHeight - 4 * 32);
 	
 	AddCheep(27 * 32 + 16, Window::gameHeight - 9 * 32, 0, 1);
 	AddCheep(38 * 32 + 28, Window::gameHeight - 4 * 32, 0, 1);
-	AddCheep(48 * 32 + 16, Window::gameHeight - 6 * 32, 1, 1);
+	AddCheep(48 * 32 + 16, Window::gameHeight - 6 * 32, 0, 1);
 	AddCheep(53 * 32 + 16, Window::gameHeight - 11 * 32, 0, 1);
 }
 
@@ -1754,18 +1752,18 @@ void Map::LoadMinionLevel_6_2()
 	AddKoppa(128 * 32, Window::gameHeight - 4 * 32, 12, 0, true);
 	AddKoppa(291 * 32, Window::gameHeight - 12 * 32, 12, 0, true);
 
-	AddBeetle(139 * 32, Window::gameHeight - 3 * 32, true);
-	AddBeetle(177 * 32, Window::gameHeight - 3 * 32, true);
-	AddBeetle(205 * 32, Window::gameHeight - 11 * 32, true);
-	AddBeetle(248 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(139 * 32, Window::gameHeight - 3 * 32, 53, true);
+	AddBeetle(177 * 32, Window::gameHeight - 3 * 32, 53, true);
+	AddBeetle(205 * 32, Window::gameHeight - 11 * 32, 53, true);
+	AddBeetle(248 * 32, Window::gameHeight - 3 * 32, 53, true);
 
-	/*AddSquid(17 * 32, Window::gameHeight  - 5 * 32);
+	AddSquid(17 * 32, Window::gameHeight  - 5 * 32);
 	AddSquid(34 * 32, Window::gameHeight  - 5 * 32);
-	AddSquid(43 * 32 + 16, Window::gameHeight - 5 * 32);*/
+	AddSquid(43 * 32 + 16, Window::gameHeight - 5 * 32);
 
 	AddCheep(27 * 32 + 16, Window::gameHeight - 10 * 32, 0, 1);
 	AddCheep(38 * 32 + 28, Window::gameHeight - 5 * 32, 0, 1);
-	AddCheep(48 * 32 + 16, Window::gameHeight - 7 * 32, 1, 1);
+	AddCheep(48 * 32 + 16, Window::gameHeight - 7 * 32, 0, 1);
 	AddCheep(53 * 32 + 16, Window::gameHeight - 12 * 32, 0, 1);
 }
 
@@ -1804,7 +1802,7 @@ void Map::LoadMinionLevel_7_1()
 	AddKoppa(65 * 32, Window::gameHeight - 4 * 32, 12, 0, true);
 	AddKoppa(114 * 32, Window::gameHeight - 3 * 32, 11, 1, true);
 
-	AddBeetle(169 * 32, Window::gameHeight - 11 * 32, true);
+	AddBeetle(169 * 32, Window::gameHeight - 11 * 32, 53, true);
 
 	AddHammerBro(85 * 32, Window::gameHeight - 8 * 32);
 	AddHammerBro(87 * 32, Window::gameHeight - 12 * 32);
@@ -1816,7 +1814,7 @@ void Map::LoadMinionLevel_7_2()
 {
 	ClearMinion();
 
-	/*AddSquid(22 * 32, Window::gameHeight - 4 * 32);
+	AddSquid(22 * 32, Window::gameHeight - 4 * 32);
 	AddSquid(24 * 32, Window::gameHeight - 8 * 32);
 	AddSquid(46 * 32, Window::gameHeight - 6 * 32);
 	AddSquid(52 * 32, Window::gameHeight - 8 * 32);
@@ -1828,25 +1826,25 @@ void Map::LoadMinionLevel_7_2()
 	AddSquid(105 * 32, Window::gameHeight - 4 * 32);
 	AddSquid(150 * 32, Window::gameHeight - 7 * 32);
 	AddSquid(173 * 32, Window::gameHeight - 4 * 32);
-	AddSquid(179 * 32, Window::gameHeight - 4 * 32);*/
+	AddSquid(179 * 32, Window::gameHeight - 4 * 32);
 
 	AddCheep(75 * 32 + 28, Window::gameHeight - 5 * 32, 0, 1);
 	AddCheep(78 * 32 + 28, Window::gameHeight - 8 * 32, 0, 1);
 	AddCheep(81 * 32 + 28, Window::gameHeight - 3 * 32 - 28, 0, 1);
 	AddCheep(94 * 32 + 14, Window::gameHeight - 9 * 32, 0, 1);
 	AddCheep(101 * 32 + 28, Window::gameHeight - 5 * 32, 0, 1);
-	AddCheep(97 * 32 + 8, Window::gameHeight - 12 * 32, 1, 1);
+	AddCheep(97 * 32 + 8, Window::gameHeight - 12 * 32, 0, 1);
 	AddCheep(117 * 32 + 8, Window::gameHeight - 11 * 32, 0, 1);
-	AddCheep(127 * 32 + 24, Window::gameHeight - 5 * 32, 1, 1);
+	AddCheep(127 * 32 + 24, Window::gameHeight - 5 * 32, 0, 1);
 	AddCheep(131 * 32 + 8, Window::gameHeight - 4 * 32 - 4, 0, 1);
 	AddCheep(136 * 32 + 16, Window::gameHeight - 7 * 32, 0, 1);
 	AddCheep(145 * 32 + 8, Window::gameHeight - 5 * 32, 0, 1);
-	AddCheep(149 * 32 + 28, Window::gameHeight - 9 * 32 - 4, 1, 1);
+	AddCheep(149 * 32 + 28, Window::gameHeight - 9 * 32 - 4, 0, 1);
 	AddCheep(164 * 32, Window::gameHeight - 12 * 32, 0, 1);
-	AddCheep(167 * 32, Window::gameHeight - 4 * 32, 1, 1);
+	AddCheep(167 * 32, Window::gameHeight - 4 * 32, 0, 1);
 	AddCheep(175 * 32, Window::gameHeight - 7 * 32 - 4, 0, 1);
-	AddCheep(183 * 32, Window::gameHeight - 11 * 32, 1, 1);
-	AddCheep(186 * 32 + 16, Window::gameHeight - 8 * 32, 1, 1);
+	AddCheep(183 * 32, Window::gameHeight - 11 * 32, 0, 1);
+	AddCheep(186 * 32 + 16, Window::gameHeight - 8 * 32, 0, 1);
 }
 
 void Map::LoadMinionLevel_7_3()
@@ -1923,10 +1921,10 @@ void Map::LoadMinionLevel_8_1()
 	AddKoppa(340 * 32 + 16, Window::gameHeight - 3 * 32, 11, 1, true);
 	AddKoppa(342 * 32, Window::gameHeight - 3 * 32, 11, 1, true);
 
-	AddBeetle(18 * 32, Window::gameHeight - 3 * 32, true);
-	AddBeetle(81 * 32, Window::gameHeight - 3 * 32, true);
-	AddBeetle(254 * 32, Window::gameHeight - 3 * 32, true);
-	AddBeetle(283 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(18 * 32, Window::gameHeight - 3 * 32, 53, true);
+	AddBeetle(81 * 32, Window::gameHeight - 3 * 32, 53, true);
+	AddBeetle(254 * 32, Window::gameHeight - 3 * 32, 53, true);
+	AddBeetle(283 * 32, Window::gameHeight - 3 * 32, 53, true);
 }
 
 void Map::LoadMinionLevel_8_2()
@@ -1949,10 +1947,10 @@ void Map::LoadMinionLevel_8_2()
 	AddKoppa(175 * 32, Window::gameHeight - 7 * 32, 12, 0, true);
 	AddKoppa(203 * 32, Window::gameHeight - 9 * 32, 12, 0, true);
 
-	AddBeetle(111 * 32, Window::gameHeight - 3 * 32, true);
-	AddBeetle(121 * 32, Window::gameHeight - 3 * 32, true);
-	AddBeetle(123 * 32, Window::gameHeight - 3 * 32, true);
-	AddBeetle(189 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(111 * 32, Window::gameHeight - 3 * 32, 53, true);
+	AddBeetle(121 * 32, Window::gameHeight - 3 * 32, 53, true);
+	AddBeetle(123 * 32, Window::gameHeight - 3 * 32, 53, true);
+	AddBeetle(189 * 32, Window::gameHeight - 3 * 32, 53, true);
 
 	AddLakito(16 * 32, Window::gameHeight - 12 * 32, 216 * 32);
 }
@@ -1983,8 +1981,8 @@ void Map::LoadMinionLevel_8_4()
 	AddGoombas(57 * 32 + 16, Window::gameHeight - 3 * 32, 9, true);
 	AddGoombas(59 * 32, Window::gameHeight - 3 * 32, 9, true);
 
-	AddBeetle(139 * 32, Window::gameHeight - 3 * 32, true);
-	AddBeetle(141 * 32, Window::gameHeight - 3 * 32, true);
+	AddBeetle(139 * 32, Window::gameHeight - 3 * 32, 57, true);
+	AddBeetle(141 * 32, Window::gameHeight - 3 * 32, 57, true);
 
 	AddHammerBro(316 * 32, Window::gameHeight - 4 * 32);
 
@@ -2002,9 +2000,9 @@ void Map::LoadMinionLevel_8_4()
 	AddFireBall(446 * 32, Window::gameHeight - 7 * 32, 6, rand() % 360, true);
 	AddFireBall(454 * 32, Window::gameHeight - 8 * 32, 6, rand() % 360, false);*/
 
-	/*AddSquid(418 * 32, Window::gameHeight - 4 * 32);
+	AddSquid(418 * 32, Window::gameHeight - 4 * 32);
 	AddSquid(441 * 32, Window::gameHeight - 5 * 32);
-	AddSquid(443 * 32, Window::gameHeight - 9 * 32);*/
+	AddSquid(443 * 32, Window::gameHeight - 9 * 32);
 }
 
 void Map::AddGoombas(int x, int y, int id, bool moveDirection)
@@ -2060,9 +2058,9 @@ void Map::AddSpikey(int x, int y)
 	minion[GetListID(x)].push_back(new Spikey(x, y));
 }
 
-void Map::AddBeetle(int x, int y, bool moveDirection)
+void Map::AddBeetle(int x, int y, int id, bool moveDirection)
 {
-	minion[GetListID((int)x)].push_back(new Beetle(x, y, moveDirection));
+	minion[GetListID((int)x)].push_back(new Beetle(x, y, id, moveDirection));
 }
 
 void Map::AddVine(int x, int y, int id, int minionState)

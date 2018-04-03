@@ -1,5 +1,4 @@
-1
+collision  0
+canDestroy 1
+visible    1
 end0_l.bmp 0
-0
-1
-1

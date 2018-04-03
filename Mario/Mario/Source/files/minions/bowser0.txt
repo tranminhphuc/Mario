@@ -1,8 +1,5 @@
-2
-bowser0.bmp
-285
-bowser1.bmp
-285
-1
-1
-1
+collision  1
+canDestroy 1
+visible    1
+bowser0.bmp 285
+bowser1.bmp 285

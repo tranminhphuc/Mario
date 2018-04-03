@@ -1,12 +1,7 @@
-4
-hammer_0.bmp
-95
-hammer_1.bmp
-95
-hammer_2.bmp
-95
-hammer_3.bmp
-95
-1
-1
-1
+collision  1
+canDestroy 1
+visible    1
+hammer_0.bmp 95
+hammer_1.bmp 95
+hammer_2.bmp 95
+hammer_3.bmp 95

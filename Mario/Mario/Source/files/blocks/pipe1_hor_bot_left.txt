@@ -1,5 +1,4 @@
-1
+collision  1
+canDestroy 1
+visible    1
 pipe1_hor_bot_left.bmp 0
-1
-1
-1

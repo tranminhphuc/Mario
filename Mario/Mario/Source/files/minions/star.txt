@@ -1,12 +1,7 @@
-4
-star_0.bmp
-75
-star_1.bmp
-75
-star_2.bmp
-75
-star_3.bmp
-75
-1
-1
-1
+collision  1
+canDestroy 1
+visible    1
+star_0.bmp 75
+star_1.bmp 75
+star_2.bmp 75
+star_3.bmp 75

@@ -1,5 +1,4 @@
-1
+collision  1
+canDestroy 1
+visible    1
 gnd_4.bmp 0
-1
-1
-1

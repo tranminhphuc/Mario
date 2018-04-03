@@ -1,7 +1,7 @@
 #include "Beetle.h"
 #include "Windows.h"
 
-Beetle::Beetle(int xMinion, int yMinion, bool moveDirection)
+Beetle::Beetle(int xMinion, int yMinion, int id, bool moveDirection)
 {
 	this->xMinion = (float)xMinion;
 	this->yMinion = (float)yMinion;

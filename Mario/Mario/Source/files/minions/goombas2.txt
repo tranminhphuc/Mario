@@ -1,8 +1,5 @@
-2
-goombas2_0.bmp
-200
-goombas2_1.bmp
-200
-1
-1
-1
+collision  1
+canDestroy 1
+visible    1
+goombas2_0.bmp 200
+goombas2_1.bmp 200

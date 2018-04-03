@@ -1,7 +1,6 @@
-3
+collision  1
+canDestroy 1
+visible    1
 axe_0.bmp 225
 axe_1.bmp 225
 axe_2.bmp 200
-1
-1
-1

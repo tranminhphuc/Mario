@@ -1,8 +1,5 @@
-2
-koopa_0.bmp
-200
-koopa_1.bmp
-200
-1
-1
-1
+collision  1
+canDestroy 1
+visible    1
+koopa_0.bmp 200
+koopa_1.bmp 200

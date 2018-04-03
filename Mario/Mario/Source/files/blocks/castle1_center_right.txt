@@ -1,5 +1,4 @@
-1
+collision  0
+canDestroy 0
+visible    1
 castle1_center_right.bmp 0
-0
-0
-1

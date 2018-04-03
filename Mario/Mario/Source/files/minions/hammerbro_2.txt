@@ -1,8 +1,5 @@
-2
-hammerbro_2.bmp
-155
-hammerbro_3.bmp
-155
-1
-1
-1
+collision  1
+canDestroy 1
+visible    1
+hammerbro_2.bmp 155
+hammerbro_3.bmp 155

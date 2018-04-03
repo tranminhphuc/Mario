@@ -1,5 +1,4 @@
-1
+collision  1
+canDestroy 1
+visible    1
 blockq1_used.bmp 0
-1
-1
-1

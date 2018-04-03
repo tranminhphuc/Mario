@@ -1,5 +1,4 @@
-1
+collision  0
+canDestroy 0
+visible    0
 transp.bmp 0
-0
-0
-0

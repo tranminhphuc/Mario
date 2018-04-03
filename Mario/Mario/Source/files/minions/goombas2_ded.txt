@@ -1,6 +1,4 @@
-1
-goombas2_ded.bmp
-0
-1
-1
-1
+collision  1
+canDestroy 1
+visible    1
+goombas2_ded.bmp 0

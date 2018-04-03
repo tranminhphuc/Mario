@@ -229,7 +229,7 @@ bridge3.txt
 ----114----
 bridge4.txt
 ----115----
-axe_0.txt
+axe.txt
 ----116----
 bonus.txt
 ----117----

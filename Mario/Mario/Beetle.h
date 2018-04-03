@@ -8,7 +8,7 @@
 class Beetle : public Minion
 {
 public:
-	Beetle(int xMinion, int yMinion, bool moveDirection);
+	Beetle(int xMinion, int yMinion, int id, bool moveDirection);
 	~Beetle();
 
 	void Update();

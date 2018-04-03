@@ -1,5 +1,4 @@
-1
+collision  1
+canDestroy 1
+visible    1
 pipe1_hor_top_center.bmp 0
-1
-0
-1

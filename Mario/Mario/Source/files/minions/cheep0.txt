@@ -1,8 +1,5 @@
-2
-cheep0.bmp
-110
-cheep1.bmp
-110
-1
-1
-1
+collision  1
+canDestroy 1
+visible    1
+cheep0.bmp 110
+cheep1.bmp 110

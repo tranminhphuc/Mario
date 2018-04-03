@@ -1,8 +1,5 @@
-2
-beetle_0.bmp
-155
-beetle_1.bmp
-155
-1
-1
-1
+collision  1
+canDestroy 1
+visible    1
+beetle_0.bmp 155
+beetle_1.bmp 155

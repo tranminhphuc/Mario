@@ -1,8 +1,5 @@
-2
-spikey1_0.bmp
-175
-spikey1_1.bmp
-175
-1
-1
-1
+collision  1
+canDestroy 1
+visible    1
+spikey1_0.bmp 175
+spikey1_1.bmp 175

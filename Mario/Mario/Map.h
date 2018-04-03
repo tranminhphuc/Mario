@@ -213,7 +213,7 @@ public:
 	void AddHammer(int x, int y, bool moveDirection);
 	void AddLakito(int x, int y, int maxX);
 	void AddSpikey(int x, int y);
-	void AddBeetle(int x, int y, bool moveDirection);
+	void AddBeetle(int x, int y, int id, bool moveDirection);
 	void AddVine(int x, int y, int id, int minionState);
 	void AddFire(int x, int y, int toY);
 	void AddFireBall(int x, int y, int width, int id, bool left);
