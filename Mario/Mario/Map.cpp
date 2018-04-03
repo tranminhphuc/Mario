@@ -3,7 +3,7 @@
 
 Map::Map()
 {
-	player = new Player(84, 368);
+	player = new Player(84, 384);
 
 	xMap = 0;
 	yMap = 0;
@@ -719,7 +719,7 @@ void Map::LoadLevel_1_2()
 	mapWidth = 330;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = LongDat;
+	mapType = BanDem;
 
 	CreateMap();
 	LoadMinionLevel_1_2();
@@ -952,7 +952,7 @@ void Map::LoadLevel_4_2()
 	mapWidth = 435;
 	mapHeight = 15;
 	mapTime = 400;
-	mapType = LongDat;
+	mapType = BanDem;
 
 	CreateMap();
 	LoadMinionLevel_4_2();

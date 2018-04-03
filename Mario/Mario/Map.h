@@ -32,7 +32,7 @@ public:
 	{
 		BanNgay, // 0
 		BanDem,
-		LongDat,
+		//LongDat,
 	};
 	enum Level
 	{
