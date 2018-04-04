@@ -1,4 +1,4 @@
 collision  1
-canDestroy 1
+canDestroy 0
 visible    1
 blockq_used.bmp 0

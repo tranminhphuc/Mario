@@ -32,7 +32,8 @@ public:
 	{
 		BanNgay, // 0
 		BanDem,
-		//LongDat,
+		LongDat,
+		DiaNguc
 	};
 	enum Level
 	{
@@ -254,15 +255,15 @@ public:
 
 	Player* GetPlayer();
 
+	void CollectItem(int x, int y);
+	void CollectCoin(int x, int y);
+
 	bool Destroy(int x, int y, int id, int direction);
 	void PlayerDeath();
 
 	Object* GetObject(int id);
 	TileSet* GetTile(int x, int y);
 	sf::Vector2i GetTilePosition(int x, int y);
-
-	
 };
 
 #endif
-

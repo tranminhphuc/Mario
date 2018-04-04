@@ -123,6 +123,8 @@ public:
 	int GetMarioID();
 	void SetMarioID(int id);
 
+	void CollectCoin();
+
 	int GetCoin();
 	void SetCoin(int coin);
 

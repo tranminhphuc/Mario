@@ -1,0 +1,102 @@
+goombas
+x 703
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 1280
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 1632
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 1680
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 2560
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 2624
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 3104
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 3152
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 3648
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 3680
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 3968
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 4000
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 4096
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 4128
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 5472
+y 383
+id 5
+moveDirection 1
+===================
+goombas
+x 5594
+y 383
+id 5
+moveDirection 1
+===================
+koppa
+x 3424
+y 383
+id 5
+moveDirection 1
+===================

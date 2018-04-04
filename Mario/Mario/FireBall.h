@@ -22,6 +22,9 @@ public:
 	void Update(unsigned int time);
 	void Draw(sf::RenderWindow& window, Texture* texture);
 
+	void MoveX();
+	void MinionPhysics();
+
 	void CollisionWithPlayer(bool top);
 };
 

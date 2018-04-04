@@ -59,9 +59,9 @@ void Map::UpdateMinion()
 			{
 				if (minion[i][j]->minionState == -1)
 				{
-					//delete minion[i][j];
-					//minion[i].erase(minion[i].begin() + j);
-					//continue;
+					delete minion[i][j];
+					minion[i].erase(minion[i].begin() + j);
+					continue;
 				}
 
 				if (floor(minion[i][j]->xMinion / 160) != i)
@@ -304,92 +304,86 @@ Player* Map::GetPlayer()
 	return player;
 }
 
+void Map::CollectItem(int x, int y)
+{
+	if (tile[x][y]->GetPowerUp())
+	{
+		if (player->GetLevel() == 0)
+			minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Window::gameHeight - 32 * y, true, x, y));
+		else
+			minion[GetListID(32 * x)].push_back(new Flower(32 * x, Window::gameHeight - 32 * y, x, y));
+	}
+	else
+	{
+		minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Window::gameHeight - 32 * y, false, x, y));
+	}
+}
+
+void Map::CollectCoin(int x, int y)
+{
+	player->CollectCoin();
+	tile[x][y]->SetNumberOfCoin(tile[x][y]->getNumberOfCoin() - 1);
+
+	if (tile[x][y]->getNumberOfCoin() == 0)
+	{
+		tile[x][y]->SetNumberOfCoin(0);
+		SetTileID(x, y, mapType == BanNgay ? 14 : 16);
+	}
+}
+
 bool Map::Destroy(int x, int y, int id, int direction)
 {
 	if (direction == 0)
 	{
 		switch (id)
 		{
-		case 16: case 18:
+		case 13: case 15:
 			if (tile[x][y]->GetMushroom())
-			{
-				if (tile[x][y]->GetPowerUp())
-				{
-					/*if (player->GetLevel() == 0)
-						minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Window::gameHeight - 32 * y, true, x, y));
-					else
-						minion[GetListID(32 * x)].push_back(new Flower(32 * x, Window::gameHeight - 32 * y));*/
-				}
-				else
-				{
-					//minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Window::gameHeight - 32 * y, false, x, y));
-				}
-			}
-			else
-			{
-				player->SetScore(player->GetScore() + 200);
-				player->SetCoin(player->GetCoin() + 1);
-			}
-
-			if (tile[x][y]->getNumberOfCoin() > 1)
-			{
-				tile[x][y]->SetNumberOfCoin(tile[x][y]->getNumberOfCoin() - 1);
-			}
-			else
-			{
-				tile[x][y]->SetNumberOfCoin(0);
-				SetTileID(x, y, mapType == BanNgay ? 19 : 20);
-			}
+				CollectItem(x, y);
+			else if (tile[x][y]->getNumberOfCoin() > 0)
+				CollectCoin(x, y);
 			break;
 		case 10: case 11: case 12:
 			if (tile[x][y]->GetStar())
 			{
-				SetTileID(x, y, mapType == BanNgay ? 17 : 20);
-				//minion[GetListID(32 * x)].push_back(new Star(32 * x, Game::gameHeight - 32 * y, x, y));
+				SetTileID(x, y, mapType == BanNgay ? 14 : 17);
+				minion[GetListID(32 * x)].push_back(new Star(32 * x, Window::gameHeight - 32 * y, x, y));
 			}
 			else if (tile[x][y]->GetMushroom())
 			{
-				SetTileID(x, y, mapType == BanNgay ? 17 : 20);
-
-				if (tile[x][y]->GetPowerUp())
-				{
-					/*if (player->GetLevel() == 0)
-						minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Game::gameHeight - 32 * y, true, x, y));
-					else
-						minion[GetListID(32 * x)].push_back(new Flower(32 * x, Game::gameHeight - 32 * y));*/
-				}
-				else
-				{
-					//minion[GetListID(32 * x)].push_back(new Mushroom(32 * x, Game::gameHeight - 32 * y, true, x, y));
-				}
+				SetTileID(x, y, mapType == BanNgay ? 14 : 17);
+				CollectItem(x, y);
 			}
 			else if (tile[x][y]->getNumberOfCoin() > 0)
 			{
-				player->SetScore(player->GetScore() + 200);
-				player->SetCoin(player->GetCoin() + 1);
-				tile[x][y]->SetNumberOfCoin(tile[x][y]->getNumberOfCoin() - 1);
-
-				if (tile[x][y]->getNumberOfCoin() == 0)
-					SetTileID(x, y, mapType == BanNgay ? 17 : 20);
+				CollectCoin(x, y);
 			}
-			else
+			else if (player->GetLevel() > 0)
 			{
-				if (player->GetLevel() > 0)
-				{
-					SetTileID(x, y, 0);
-				}
+				SetTileID(x, y, 0);
 			}
 			break;
+		case 117:
+			if (tile[x][y]->GetMushroom())
+				CollectItem(x, y);
+			else
+				player->CollectCoin();
+
+			tile[x][y]->SetID(mapType == BanNgay || mapType == BanDem ? 14 : mapType == LongDat ? 16 : 17);
 		default:
 			break;
 		}
 	}
 	else if (direction == 1)
 	{
-
+		/*switch (id)
+		{
+		default:
+			break;
+		}*/
 	}
 
-	return false;
+	return true;
 }
 
 void Map::PlayerDeath()
@@ -1370,13 +1364,13 @@ void Map::LoadMinionLevel_1_4()
 	AddBowser(135 * 32, Window::gameHeight - 7 * 32);
 	AddToad(153 * 32, Window::gameHeight - 4 * 32, false);
 
-	/*AddFireBall(30 * 32, Window::gameHeight - 5 * 32, 6, rand() % 360, true);
+	AddFireBall(30 * 32, Window::gameHeight - 5 * 32, 6, rand() % 360, true);
 	AddFireBall(49 * 32, Window::gameHeight - 9 * 32, 6, rand() % 360, true);
 	AddFireBall(60 * 32, Window::gameHeight - 9 * 32, 6, rand() % 360, true);
 	AddFireBall(67 * 32, Window::gameHeight - 9 * 32, 6, rand() % 360, true);
 	AddFireBall(76 * 32, Window::gameHeight - 6 * 32, 6, rand() % 360, true);
 	AddFireBall(84 * 32, Window::gameHeight - 6 * 32, 6, rand() % 360, true);
-	AddFireBall(88 * 32, Window::gameHeight - 11 * 32, 6, rand() % 360, false);*/
+	AddFireBall(88 * 32, Window::gameHeight - 11 * 32, 6, rand() % 360, false);
 }
 
 void Map::LoadMinionLevel_2_1()
@@ -1453,12 +1447,12 @@ void Map::LoadMinionLevel_2_4()
 	AddBowser(135 * 32, Window::gameHeight - 7 * 32);
 	AddToad(153 * 32, Window::gameHeight - 4 * 32, false);
 
-	/*AddFireBall(49 * 32, Window::gameHeight - 5 * 32, 6, rand() % 360, true);
+	AddFireBall(49 * 32, Window::gameHeight - 5 * 32, 6, rand() % 360, true);
 	AddFireBall(55 * 32, Window::gameHeight - 9 * 32, 6, rand() % 360, true);
 	AddFireBall(61 * 32, Window::gameHeight - 5 * 32, 6, rand() % 360, true);
 	AddFireBall(73 * 32, Window::gameHeight - 5 * 32, 6, rand() % 360, true);
 	AddFireBall(82 * 32, Window::gameHeight - 8 * 32, 6, rand() % 360, true);
-	AddFireBall(92 * 32, Window::gameHeight - 4 * 32, 6, rand() % 360, false);*/
+	AddFireBall(92 * 32, Window::gameHeight - 4 * 32, 6, rand() % 360, false);
 }
 
 void Map::LoadMinionLevel_3_1()
@@ -1560,7 +1554,7 @@ void Map::LoadMinionLevel_3_4()
 	AddBowser(135 * 32, Window::gameHeight - 7 * 32);
 	AddToad(153 * 32, Window::gameHeight - 4 * 32, false);
 
-	/*AddFireBall(19 * 32, Window::gameHeight - 4 * 32, 6, rand() % 360, true);
+	AddFireBall(19 * 32, Window::gameHeight - 4 * 32, 6, rand() % 360, true);
 	AddFireBall(24 * 32, Window::gameHeight - 4 * 32, 6, rand() % 360, true);
 	AddFireBall(29 * 32, Window::gameHeight - 4 * 32, 6, rand() % 360, true);
 	AddFireBall(54 * 32, Window::gameHeight - 4 * 32, 6, rand() % 360, true);
@@ -1568,7 +1562,7 @@ void Map::LoadMinionLevel_3_4()
 	AddFireBall(64 * 32, Window::gameHeight - 4 * 32, 6, rand() % 360, true);
 	AddFireBall(64 * 32, Window::gameHeight - 10 * 32, 6, rand() % 360, false);
 	AddFireBall(80 * 32, Window::gameHeight - 4 * 32, 6, rand() % 360, true);
-	AddFireBall(80 * 32, Window::gameHeight - 10 * 32, 6, rand() % 360, false);*/
+	AddFireBall(80 * 32, Window::gameHeight - 10 * 32, 6, rand() % 360, false);
 }
 
 void Map::LoadMinionLevel_4_1()
@@ -1618,11 +1612,11 @@ void Map::LoadMinionLevel_4_4()
 	AddBowser(167 * 32, Window::gameHeight - 7 * 32);
 	AddToad(186 * 32, Window::gameHeight - 4 * 32, false);
 
-	/*AddFireBall(53 * 32, Window::gameHeight - 8 * 32, 6, rand() % 360, true);
+	AddFireBall(53 * 32, Window::gameHeight - 8 * 32, 6, rand() % 360, true);
 	AddFireBall(60 * 32, Window::gameHeight - 5 * 32, 6, rand() % 360, false);
 	AddFireBall(115 * 32, Window::gameHeight - 8 * 32, 6, rand() % 360, true);
 	AddFireBall(122 * 32, Window::gameHeight - 4 * 32, 6, rand() % 360, true);
-	AddFireBall(162 * 32, Window::gameHeight - 4 * 32, 6, rand() % 360, true);*/
+	AddFireBall(162 * 32, Window::gameHeight - 4 * 32, 6, rand() % 360, true);
 }
 
 void Map::LoadMinionLevel_5_1()
@@ -1721,7 +1715,7 @@ void Map::LoadMinionLevel_5_4()
 	AddBowser(135 * 32, Window::gameHeight - 7 * 32);
 	AddToad(153 * 32, Window::gameHeight - 4 * 32, false);
 
-	/*AddFireBall(23 * 32, Window::gameHeight - 7 * 32, 12, rand() % 360, true);
+	AddFireBall(23 * 32, Window::gameHeight - 7 * 32, 12, rand() % 360, true);
 	AddFireBall(43 * 32, Window::gameHeight - 1 * 32, 6, rand() % 360, false);
 	AddFireBall(49 * 32, Window::gameHeight - 6 * 32, 6, rand() % 360, true);
 	AddFireBall(55 * 32, Window::gameHeight - 1 * 32, 6, rand() % 360, false);
@@ -1731,7 +1725,7 @@ void Map::LoadMinionLevel_5_4()
 	AddFireBall(73 * 32, Window::gameHeight - 6 * 32, 6, rand() % 360, true);
 	AddFireBall(82 * 32, Window::gameHeight - 9 * 32, 6, rand() % 360, true);
 	AddFireBall(92 * 32, Window::gameHeight - 5 * 32, 6, rand() % 360, false);
-	AddFireBall(103 * 32, Window::gameHeight - 3 * 32, 6, rand() % 360, true);*/
+	AddFireBall(103 * 32, Window::gameHeight - 3 * 32, 6, rand() % 360, true);
 }
 
 void Map::LoadMinionLevel_6_1()
@@ -1779,7 +1773,7 @@ void Map::LoadMinionLevel_6_4()
 	AddBowser(135 * 32, Window::gameHeight - 7 * 32, true);
 	AddToad(153 * 32, Window::gameHeight - 7 * 32, false);
 
-	/*AddFireBall(23 * 32, Window::gameHeight - 9 * 32, 6, rand() % 360, true);
+	AddFireBall(23 * 32, Window::gameHeight - 9 * 32, 6, rand() % 360, true);
 	AddFireBall(30 * 32, Window::gameHeight - 5 * 32, 6, rand() % 360, true);
 	AddFireBall(37 * 32, Window::gameHeight - 9 * 32, 6, rand() % 360, true);
 	AddFireBall(49 * 32, Window::gameHeight - 9 * 32, 6, rand() % 360, true);
@@ -1789,7 +1783,7 @@ void Map::LoadMinionLevel_6_4()
 	AddFireBall(80 * 32, Window::gameHeight - 11 * 32, 6, rand() % 360, false);
 	AddFireBall(84 * 32, Window::gameHeight - 6 * 32, 6, rand() % 360, true);
 	AddFireBall(88 * 32, Window::gameHeight - 11 * 32, 6, rand() % 360, false);
-	AddFireBall(92 * 32, Window::gameHeight - 6 * 32, 6, rand() % 360, true);*/
+	AddFireBall(92 * 32, Window::gameHeight - 6 * 32, 6, rand() % 360, true);
 }
 
 void Map::LoadMinionLevel_7_1()
@@ -1858,7 +1852,6 @@ void Map::LoadMinionLevel_7_3()
 	AddKoppa(79 * 32, Window::gameHeight - 6 * 32, 11, 1, true);
 	AddKoppa(95 * 32, Window::gameHeight - 6 * 32, 11, 1, true);
 	AddKoppa(119 * 32, Window::gameHeight - 3 * 32, 11, 1, true);
-	mapType = BanNgay;
 }
 
 void Map::LoadMinionLevel_7_4()
@@ -1994,11 +1987,11 @@ void Map::LoadMinionLevel_8_4()
 	AddBowser(338 * 32, Window::gameHeight - 7 * 32, true);
 	AddToad(356 * 32, Window::gameHeight - 4 * 32, true);
 
-	/*AddFireBall(410 * 32, Window::gameHeight - 8 * 32, 6, rand() % 360, true);
+	AddFireBall(410 * 32, Window::gameHeight - 8 * 32, 6, rand() % 360, true);
 	AddFireBall(421 * 32, Window::gameHeight - 5 * 32, 6, rand() % 360, false);
 	AddFireBall(430 * 32, Window::gameHeight - 9 * 32, 6, rand() % 360, true);
 	AddFireBall(446 * 32, Window::gameHeight - 7 * 32, 6, rand() % 360, true);
-	AddFireBall(454 * 32, Window::gameHeight - 8 * 32, 6, rand() % 360, false);*/
+	AddFireBall(454 * 32, Window::gameHeight - 8 * 32, 6, rand() % 360, false);
 
 	AddSquid(418 * 32, Window::gameHeight - 4 * 32);
 	AddSquid(441 * 32, Window::gameHeight - 5 * 32);

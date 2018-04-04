@@ -9,9 +9,12 @@ FireBall::FireBall(int x, int y, int radius, int sliceID, bool moveDirection)
 	width = 16;
 	height = 16;
 
+	id = 25;
+
 	this->radius = radius;
 	this->moveDirection = moveDirection;
 	this->sliceID = sliceID;
+	this->slice = 2 * 3.14 / 360;
 
 	angle = slice * sliceID;
 
@@ -57,6 +60,10 @@ void FireBall::Draw(sf::RenderWindow & window, Texture * texture)
 {
 	texture->Draw(window, sf::Vector2f(xMinion + Window::GetMap()->GetX(), yMinion));
 }
+
+void FireBall::MoveX() { }
+
+void FireBall::MinionPhysics() { }
 
 void FireBall::CollisionWithPlayer(bool top)
 {

@@ -1,12 +1,12 @@
 #include "Star.h"
 #include "Windows.h"
 
-Star::Star(float xMinion, float yMinion, float x, float y)
+Star::Star(int xMinion, int yMinion, int x, int y)
 {
-	this->xMinion = xMinion;
-	this->yMinion = yMinion;
-	this->x = x;
-	this->y = y;
+	this->xMinion = (float)xMinion;
+	this->yMinion = (float)yMinion;
+	this->x = (float)x;
+	this->y = (float)y;
 
 	this->id = 4;
 
@@ -18,8 +18,8 @@ Star::Star(float xMinion, float yMinion, float x, float y)
 	this->inSpawnY = 30;
 	this->startJumpSpeed = 4;
 
-	this->x = x;
-	this->y = y;
+	this->x = (float)x;
+	this->y = (float)y;
 
 	this->width = 28;
 	this->height = 32;

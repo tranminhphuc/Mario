@@ -557,6 +557,12 @@ void Player::SetMarioID(int id)
 	this->id = id + 11 * level;
 }
 
+void Player::CollectCoin()
+{
+	score += 200;
+	coin += 1;
+}
+
 int Player::GetCoin()
 {
 	return coin;
