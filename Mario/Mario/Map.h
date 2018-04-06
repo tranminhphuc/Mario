@@ -24,6 +24,7 @@
 #include "Vine.h"
 #include "Fire.h"
 #include "FireBall.h"
+#include "EventGame.h"
 
 class Map
 {
@@ -83,7 +84,6 @@ private:
 	Player* player;
 
 	vector<string*> sourceMinion;
-
 	vector<string*> sourceBlock;
 
 	int mapWidth;
@@ -95,6 +95,9 @@ private:
 
 	bool underWater;
 	bool moveMap;
+
+	bool inEvent;
+	Event* event;
 
 	void LoadImage(string file, vector<Object*>& object);
 	void LoadFile(vector<string*> source, vector<Object*>& object);
@@ -264,6 +267,10 @@ public:
 	Object* GetObject(int id);
 	TileSet* GetTile(int x, int y);
 	sf::Vector2i GetTilePosition(int x, int y);
+
+	Event* GetEvent();
+	bool GetInEvent();
+	void SetInEvent(bool inEvent);
 };
 
 #endif
