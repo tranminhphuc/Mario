@@ -1,0 +1,154 @@
+Squid
+x 704
+y 351
+======================
+Squid
+x 768
+y 223
+======================
+Squid
+x 1472
+y 287
+======================
+Squid
+x 1664
+y 223
+======================
+Squid
+x 1760
+y 319
+======================
+Squid
+x 2464
+y 191
+======================
+Squid
+x 2656
+y 255
+======================
+Squid
+x 2880
+y 351
+======================
+Squid
+x 3008
+y 95
+======================
+Squid
+x 3360
+y 351
+======================
+Squid
+x 4800
+y 255
+======================
+Squid
+x 5536
+y 351
+======================
+Squid
+x 5728
+y 351
+======================
+Cheep
+x 2428
+y 319
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 2524
+y 223
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 2620
+y 355
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 3022
+y 191
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 3112
+y 95
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 3260
+y 319
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 3752
+y 127
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 4088
+y 319
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 4200
+y 347
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 4368
+y 255
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 4648
+y 319
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 4796
+y 187
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 5248
+y 95
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 5344
+y 351
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 5600
+y 251
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 5856
+y 127
+minionType 0
+moveSpeed 1
+======================
+Cheep
+x 5968
+y 223
+minionType 0
+moveSpeed 1
+======================

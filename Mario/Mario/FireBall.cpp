@@ -1,7 +1,7 @@
 #include "FireBall.h"
 #include "Windows.h"
 
-FireBall::FireBall(int x, int y, int radius, int sliceID, bool moveDirection)
+FireBall::FireBall(int x, int y, int radius, bool moveDirection)
 {
 	centerX = x;
 	centerY = y;
@@ -13,7 +13,7 @@ FireBall::FireBall(int x, int y, int radius, int sliceID, bool moveDirection)
 
 	this->radius = radius;
 	this->moveDirection = moveDirection;
-	this->sliceID = sliceID;
+	this->sliceID = rand() % 360;
 	this->slice = 2 * 3.14 / 360;
 
 	angle = slice * sliceID;

@@ -1,0 +1,45 @@
+Goombas
+x 1408
+y 95
+id 5
+======================
+Goombas
+x 1472
+y 95
+id 5
+======================
+Goombas
+x 2560
+y 159
+id 5
+======================
+Koopa
+x 952
+y 127
+id 11
+minionState 1
+======================
+Koopa
+x 2360
+y 127
+id 11
+minionState 3
+======================
+Koopa
+x 3512
+y 191
+id 11
+minionState 1
+======================
+Koopa
+x 3640
+y 159
+id 11
+minionState 3
+======================
+Koopa
+x 4248
+y 383
+id 11
+minionState 1
+======================

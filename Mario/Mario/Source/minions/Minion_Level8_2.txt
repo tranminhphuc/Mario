@@ -1,0 +1,107 @@
+Goombas
+x 5888
+y 287
+id 5
+======================
+Goombas
+x 5952
+y 223
+id 5
+======================
+Koopa
+x 568
+y 287
+id 12
+minionState 0
+======================
+Koopa
+x 768
+y 127
+id 12
+minionState 0
+======================
+Koopa
+x 1824
+y 351
+id 12
+minionState 0
+======================
+Koopa
+x 2112
+y 351
+id 12
+minionState 0
+======================
+Koopa
+x 2208
+y 351
+id 12
+minionState 0
+======================
+Koopa
+x 2944
+y 319
+id 12
+minionState 0
+======================
+Koopa
+x 3040
+y 351
+id 12
+minionState 0
+======================
+Koopa
+x 4448
+y 383
+id 12
+minionState 0
+======================
+Koopa
+x 5440
+y 319
+id 12
+minionState 0
+======================
+Koopa
+x 5504
+y 351
+id 12
+minionState 0
+======================
+Koopa
+x 5600
+y 255
+id 12
+minionState 0
+======================
+Koopa
+x 6496
+y 191
+id 12
+minionState 0
+======================
+Beetle
+x 3552
+y 383
+id 53
+======================
+Beetle
+x 3872
+y 383
+id 53
+======================
+Beetle
+x 3936
+y 383
+id 53
+======================
+Beetle
+x 6048
+y 383
+id 53
+======================
+Lakito
+x 512
+y 95
+maxX 6912
+======================

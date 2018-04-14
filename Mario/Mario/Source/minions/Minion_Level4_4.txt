@@ -1,0 +1,39 @@
+Bowser
+x 5344
+y 255
+======================
+Toad
+x 5952
+y 351
+peach 0
+======================
+FireBall
+x 1696
+y 223
+radius 6
+moveDirection 1
+======================
+FireBall
+x 1920
+y 319
+radius 6
+moveDirection 0
+======================
+FireBall
+x 3680
+y 223
+radius 6
+moveDirection 1
+======================
+FireBall
+x 3904
+y 351
+radius 6
+moveDirection 1
+======================
+FireBall
+x 5184
+y 351
+radius 6
+moveDirection 1
+======================

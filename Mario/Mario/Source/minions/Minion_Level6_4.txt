@@ -1,0 +1,75 @@
+Bowser
+x 4320
+y 255
+======================
+Toad
+x 4896
+y 255
+peach 0
+======================
+Fireball
+x 736
+y 191
+radius 6
+moveDirection 1
+======================
+Fireball
+x 960
+y 319
+radius 6
+moveDirection 1
+======================
+Fireball
+x 1184
+y 191
+radius 6
+moveDirection 1
+======================
+Fireball
+x 1568
+y 191
+radius 6
+moveDirection 1
+======================
+Fireball
+x 1920
+y 191
+radius 6
+moveDirection 1
+======================
+Fireball
+x 2144
+y 191
+radius 6
+moveDirection 1
+======================
+Fireball
+x 2432
+y 287
+radius 6
+moveDirection 1
+======================
+Fireball
+x 2560
+y 127
+radius 6
+moveDirection 0
+======================
+Fireball
+x 2688
+y 287
+radius 6
+moveDirection 1
+======================
+Fireball
+x 2816
+y 127
+radius 6
+moveDirection 0
+======================
+Fireball
+x 2944
+y 287
+radius 6
+moveDirection 1
+======================

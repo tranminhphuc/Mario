@@ -1,0 +1,104 @@
+Goombas
+x 1792
+y 383
+id 9
+======================
+Goombas
+x 1840
+y 383
+id 9
+======================
+Goombas
+x 1888
+y 383
+id 9
+======================
+Beetle
+x 4448
+y 383
+id 57
+======================
+Beetle
+x 4512
+y 383
+id 57
+======================
+HammerBro
+x 10112
+y 351
+======================
+Koopa
+x 4792
+y 319
+id 18
+minionState 0
+======================
+Koopa
+x 4856
+y 351
+id 18
+minionState 0
+======================
+Koopa
+x 5272
+y 351
+id 18
+minionState 0
+======================
+Koopa
+x 5336
+y 319
+id 18
+minionState 0
+======================
+Bowser
+x 10816
+y 255
+======================
+Toad
+x 11392
+y 351
+peach 1
+======================
+FireBall
+x 13120
+y 223
+radius 6
+moveDirection 1
+======================
+FireBall
+x 13472
+y 319
+radius 6
+moveDirection 0
+======================
+FireBall
+x 13760
+y 191
+radius 6
+moveDirection 1
+======================
+FireBall
+x 14272
+y 255
+radius 6
+moveDirection 1
+======================
+FireBall
+x 14528
+y 223
+radius 6
+moveDirection 0
+======================
+Squid
+x 13376
+y 351
+======================
+Squid
+x 14112
+y 319
+======================
+Squid
+x 14176
+y 191
+======================

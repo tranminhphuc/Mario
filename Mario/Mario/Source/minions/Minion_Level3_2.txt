@@ -1,0 +1,195 @@
+Goombas
+x 768
+y 383
+id 5
+======================
+Goombas
+x 816
+y 383
+id 5
+======================
+Goombas
+x 864
+y 383
+id 5
+======================
+Goombas
+x 2272
+y 383
+id 5
+======================
+Goombas
+x 2320
+y 383
+id 5
+======================
+Goombas
+x 2368
+y 383
+id 5
+======================
+Goombas
+x 3808
+y 383
+id 5
+======================
+Goombas
+x 3856
+y 383
+id 5
+======================
+Goombas
+x 3904
+y 383
+id 5
+======================
+Goombas
+x 5728
+y 383
+id 5
+======================
+Goombas
+x 5776
+y 383
+id 5
+======================
+Goombas
+x 5824
+y 383
+id 5
+======================
+Goombas
+x 6016
+y 383
+id 5
+======================
+Goombas
+x 6064
+y 383
+id 5
+======================
+Goombas
+x 6112
+y 383
+id 5
+======================
+Koopa
+x 544
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 1056
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 1104
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 1152
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 1376
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 1424
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 2112
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 2496
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 3136
+y 383
+id 18
+minionState 0
+======================
+Koopa
+x 3552
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 4288
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 4480
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 4528
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 4576
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 4800
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 4848
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 5184
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 5232
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 5280
+y 383
+id 17
+minionState 1
+======================
+Koopa
+x 5600
+y 383
+id 17
+minionState 1
+======================

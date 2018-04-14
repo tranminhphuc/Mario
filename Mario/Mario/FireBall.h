@@ -16,7 +16,7 @@ private:
 	
 	int sliceID;
 public:
-	FireBall(int x, int y, int radius, int sliceID, bool moveDirection);
+	FireBall(int x, int y, int radius, bool moveDirection);
 	~FireBall();
 
 	void Update(unsigned int time);

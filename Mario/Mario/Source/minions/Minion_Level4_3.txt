@@ -1,0 +1,36 @@
+Koopa
+x 894
+y 255
+id 11
+minionState 1
+======================
+Koopa
+x 928
+y 255
+id 11
+minionState 1
+======================
+Koopa
+x 1120
+y 95
+id 12
+minionState 3
+======================
+Koopa
+x 1248
+y 351
+id 11
+minionState 1
+======================
+Koopa
+x 2176
+y 383
+id 11
+minionState 1
+======================
+Koopa
+x 2496
+y 127
+id 11
+minionState 1
+======================
